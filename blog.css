@@ -37,7 +37,7 @@ a {
 
 
 /*
- * Masthead for nav
+ * Bar at the top of the page
  */
 
 .blog-masthead {
@@ -115,7 +115,7 @@ a {
 .blog-sidebar {
     background-color: #414142;
     margin-left: 0%;
-    padding-top: 150px;
+    padding-top: 100px;
     height: 100%;
     position: fixed;
     left: 0px;
@@ -135,6 +135,11 @@ a {
 .sidebar-module-inset ul:last-child,
 .sidebar-module-inset ol:last-child {
     margin-bottom: 0;
+}
+
+.pic {
+    width: 250px;
+
 }
 
 
