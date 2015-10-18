@@ -12,20 +12,16 @@
     <title>Blog Template for Bootstrap</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="blog.css">
+    <link rel="stylesheet" href="stylesheet.css">
     <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
 </head>
 
 
 <body ng-app="WebsiteApp">
 
-<div class="blog-masthead">
-    <div class="container">
-    </div>
-</div>
+<div id="top_blue_bar" class="blog-masthead"></div>
 
-
-<div class="blog-sidebar col-sm-3 col-sm-offset-1">
+<div id="sidebar" class="blog-sidebar col-sm-3 col-sm-offset-1">
 
     <img src="assets/prof_small_circle.png" class="zach_pic sidebar-module"/>
 
@@ -44,20 +40,14 @@
     </div>
 </div>
 
-<div class="content row">
-
-
-    <div class="row">
+<div id="content_pane" class="row">
 
         <div class="blog-header">
-            <h1 class="blog-title">{{ title }}</h1>
-            <p class="lead blog-description">{{ subtitle }}</p>
+            <h1 class="blog-title">{{ title }}Zach Posten</h1>
+            <p class="lead blog-description">{{ subtitle }}Sometimes I just want to give it all up and become a handsome billionaire.</p>
         </div>
 
         <div class="col-sm-8 blog-main" ng-view></div>
-
-    </div>
-
 
 </div>
 
