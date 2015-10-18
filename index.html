@@ -32,7 +32,6 @@
     <a href="#" class="nav_link"><div class="sidebar-module nav_link">HOME</div></a>
     <a href="#contact" class="nav_link"><div class="sidebar-module nav_link">CONTACT</div></a>
     <a href="#blog" class="nav_link"><div class="sidebar-module nav_link">BLOG</div></a>
-    <a href="#AddNewOrder"> Add New Order </a>
 
 
     <div class="sidebar-module">
@@ -51,18 +50,11 @@
     <div class="row">
 
         <div class="blog-header">
-            <h1 class="blog-title">Zach Posten</h1>
-
-            <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+            <h1 class="blog-title">{{ title }}</h1>
+            <p class="lead blog-description">{{ subtitle }}</p>
         </div>
 
-        <div class="col-sm-8 blog-main" ng-view>
-
-
-
-        </div>
-        <!-- /.blog-main -->
-
+        <div class="col-sm-8 blog-main" ng-view></div>
 
     </div>
 
