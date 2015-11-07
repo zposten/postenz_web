@@ -12,7 +12,7 @@ app.config(['$routeProvider', function($routeProvider) {
        })
        .when('/blog', {
            controller: 'BlogController',
-           templateUrl: 'views/blog.html'
+           templateUrl: 'views/ios_posts.html'
        })
        .otherwise({
            redirectTo: '/'
@@ -37,5 +37,16 @@ app.controller('BlogController', function($scope) {
     $scope.subtitle = 'My most inner thoughts about public matters';
 });
 
+
+app.directive('markdown', function($window) {
+    var converter = new $window.Showdown.converter();
+    return {
+        restrict: 'E',
+        link: function(scope, element, attrs) {
+            var htmlText = converter.makeHtml(element.text());
+            element.html(htmlText);
+        }
+    }
+});
 
 
