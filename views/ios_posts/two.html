@@ -1,0 +1,44 @@
+<div class="blog-header">
+    <h1 class="blog-title">{{ title }}</h1>
+    <p class="lead blog-description">{{ subtitle }}</p>
+</div>
+
+<div class="col-sm-8 blog-main">
+
+	<markdown>
+
+Why do most languages still require break statements inside of switch blocks?  Is Swift the beginning of the end for these break statements?
+
+*	Context
+	*	In lab this week, we were tasked researching and experimenting with various features of the Swift language.  One feature I particularly liked, was how Swift structures `switch` statements.  Specifically, I think it is fantastic that Swift `switch` statements do not fall through the bottom of each case and into the next one by default.  Instead, the entire `switch` statement finishes its execution as soon as the first matching case is completed, without requiring an explicit break statement.
+	*	After seeing Swift's brilliant `switch` statement design, I began thinking about a question that I've had since I was first introduced to `switch` statements in SE 1011; why do we require the programmer to insert an implicit `break` statement inside of every case?
+	
+*	Research
+	*	The consensus of the community seems to be that we still use `break` because that's the way it was done in C and the designers of new languages always want their syntax to be easily understood by programmers who are comfortable with this C-like syntax.
+	*	According to a popular answer on [this stack exchange article](http://programmers.stackexchange.com/questions/162574/why-do-we-have-to-use-break-in-switch), C was designed that way likely because of its concept as "portable assembly".  The C `switch` statement is basically an abstraction of a branch table, which has implicit fall-through.
+	*	The C# `switch` statement is interesting because it **requires** that explicit flow control (`break`, `goto`, `return` or `throw`) occur at the end of a case and will throw a compile time error if that flow control is omitted.  Fall-through can be achieved only by using an explicit `goto` at the end of a case.  MSDN says the reason for this is that although "implicit fall-through behavior is often used to reduce the amount of code needed", "as code moves from the initial development phase into a maintenance phase, [implicit fall-through] can lead to subtle errors that are very hard to debug".
+	*	[This Wikipedia article](http://en.wikipedia.org/wiki/Switch_statement) points out that many languages in the Pascal family also only execute the matching block, so this isn't a new idea.
+	*	In trying to find an answer for the fate of `break` (or other control flow) in `switch` statements, I looked into several up and coming languages to see how they implemented `switch` statements.
+		*	[Dart](https://www.dartlang.org/dart-tips/dart-tips-ep-8.html), Google's new "replacement" for Javascript, took a page out of C#'s book and throws an error if the control flow is omitted.
+		*	[D](http://dlang.org/statement.html#SwitchStatement), which was recently adopted by Facebook as a C++ replacement, also throws an error for any but the final case.
+		*	[Go](https://golang.org/ref/spec#Switch_statements), another Google backed language written expressly for the cloud, does not require a control flow statement.
+		*	Although the `break` in `switch` statements is not universal, it appears as though it will still be around for years to come.
+
+*	Status
+	*	Question is mostly resolved, though a concrete answer is likely not available.
+
+*	Comments
+	*	None
+
+	</markdown>
+
+
+</div>
+
+
+<nav>
+    <ul class="pager">
+        <li><a href="#blog/ios/1">Previous</a></li>
+        <li><a href="#blog/ios/2">Next</a></li>
+    </ul>
+</nav>
