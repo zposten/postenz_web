@@ -5,7 +5,22 @@
 
 <div class="col-sm-8 blog-main">
 
-    <a ui-sref=".ios">ios</a>
+    <div>
+        iOS posts
+        <ul>
+            <li><a ui-sref="blog.one">First</a></li>
+            <li><a ui-sref="blog.two">Second</a></li>
+        </ul>
+    </div>
+
     <div ui-view></div>
+
+
+    <nav>
+        <ul class="pager">
+            <li><a ui-sref="blog.one">Previous</a></li>
+            <li><a ui-sref="blog.two">Next</a></li>
+        </ul>
+    </nav>
 
 </div>

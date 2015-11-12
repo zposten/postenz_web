@@ -32,18 +32,14 @@ app.config(function($stateProvider, $urlRouterProvider){
                 $scope.subtitle = 'Real men do blog, and so do I';
             }
         })
-            .state('blog.ios', {
-                url: "/ios",
-                templateUrl: "views/blog.ios.html"
+            .state('blog.one', {
+                url: '/ios/one',
+                templateUrl: 'views/ios_posts/one.html'
             })
-                .state('blog.ios.one', {
-                    url: '/one',
-                    templateUrl: 'views/ios_posts/one.html'
-                })
-                .state('blog.ios.two', {
-                    url: '/two',
-                    templateUrl: 'views/ios_posts/two.html'
-                })
+            .state('blog.two', {
+                url: '/ios/two',
+                templateUrl: 'views/ios_posts/two.html'
+            })
 
 });
 
