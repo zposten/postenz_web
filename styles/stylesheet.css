@@ -2,10 +2,11 @@
  * Globals
  */
 
+
 body {
-    /*font-family: Georgia, "Times New Roman", Times, serif;*/
     color: #cecfd5;
     background-color: #525354; /*fbf7e0*/
+    width: 100%;
 }
 
 h1, .h1,
@@ -40,16 +41,13 @@ a {
  * Bar at the top of the page
  */
 
-.blog-masthead {
+.masthead {
     position: fixed;
     top: 0;
     width: 100%;
-    color: #ffffff;
     height: 100px;
-    text-align: center;
     padding-top: 15px;
     background-color: rgba(51, 196, 232, 1);
-    color: rgba(51, 196, 232, 1);
     z-index: 4;
 }
 #navigation a {
@@ -81,18 +79,18 @@ a {
  * Blog name and description
  */
 
-.blog-header {
+.header {
     padding-top: 100px;
     padding-bottom: 20px;
     padding-left: 15px;
 }
-.blog-title {
+.title {
     margin-top: 30px;
     margin-bottom: 0;
     font-size: 60px;
     font-weight: normal;
 }
-.blog-description {
+.subtitle {
     font-size: 20px;
     color: #999;
 }
@@ -106,7 +104,7 @@ a {
 /*
  * Main column and sidebar layout
  */
-.blog-main {
+.main-container {
     font-size: 18px;
     line-height: 1.5;
     width: 95%;
@@ -114,7 +112,7 @@ a {
 
 /* Sidebar modules for boxing content */
 
-.blog-sidebar {
+.sidebar {
     background-color: #414142;
     margin-left: 0%;
     margin-top: 100px;
@@ -144,7 +142,7 @@ a {
 }
 
 a.nav_link {
-    color: #fff;
+    color: white;
     font-family: 'Anton', sans-serif;
     font-size: x-large;
 }

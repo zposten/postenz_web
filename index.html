@@ -12,33 +12,27 @@
     <title>Zach Posten</title>
 
     <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/stylesheet.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Anton'>
+    <link rel='stylesheet' href='./stylesheets/main.css'>
 
-    <link href="./styles/photoswipe/site.css" rel="stylesheet">
-    <link href="./styles/photoswipe/photoswipe.css" rel="stylesheet">
-    <link href="./styles/photoswipe/default-skin.css" rel="stylesheet">
-    <link href="./styles/photoswipe/photoswipe_site.css" rel="stylesheet">
-
-    <script src="./js/photoswipe/photoswipe.js"></script>
-    <script src="./js/photoswipe/photoswipe-ui-default.js"></script>
-    <script src="./js/photoswipe/photoswipe_impl.js"></script>
-    <script src="./js/script.js"></script>
-
+    <link rel='stylesheet' href="./styles/photoswipe/site.css">
+    <link rel='stylesheet' href="./styles/photoswipe/photoswipe.css">
+    <link rel='stylesheet' href="./styles/photoswipe/default-skin.css">
+    <link rel='stylesheet' href="./styles/photoswipe/photoswipe_site.css">
 </head>
 
 
 <body ng-app="WebsiteApp">
 
-<div id="top_blue_bar" class="blog-masthead"></div>
+<div id="top_blue_bar" class="masthead"></div>
 
-<div id="sidebar" class="blog-sidebar col-sm-3 col-sm-offset-1">
+<div id="sidebar" class="sidebar col-sm-3 col-sm-offset-1">
     <img src="assets/prof_small_circle.png" class="zach_pic sidebar-module"/>
 
-    <a ui-sref="home" class="nav_link"><div class="sidebar-module nav_link">HOME</div></a>
-    <a ui-sref="contact" class="nav_link"><div class="sidebar-module nav_link">CONTACT</div></a>
-    <a ui-sref="blog" class="nav_link"><div class="sidebar-module nav_link">BLOG</div></a>
-    <a ui-sref="photos" class="nav_link"><div class="sidebar-module nav_link">PHOTOS</div></a>
+    <a ui-sref="home"     class="nav_link">  <div class="sidebar-module nav_link">HOME</div></a>
+    <a ui-sref="contact"  class="nav_link">  <div class="sidebar-module nav_link">CONTACT</div></a>
+    <a ui-sref="blog"     class="nav_link">  <div class="sidebar-module nav_link">BLOG</div></a>
+    <a ui-sref="photos"   class="nav_link">  <div class="sidebar-module nav_link">PHOTOS</div></a>
 
 
     <div class="sidebar-module">
@@ -74,8 +68,14 @@
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script><!--angular-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script><!--showdown-->
+
+<script src="./js/photoswipe/photoswipe.js"></script><!--photoswipe-->
+<script src="./js/photoswipe/photoswipe-ui-default.js"></script><!--photoswipe-->
+
+<script src="./js/photoswipe/photoswipe_impl.js"></script>
 <script src="js/util.js"></script>
 <script src="js/angular_app.js"></script>
+<script src="./js/script.js"></script>
 
 </body>
 </html>
