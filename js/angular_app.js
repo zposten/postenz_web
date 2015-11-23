@@ -41,6 +41,36 @@ app.config(function($stateProvider, $urlRouterProvider){
                 templateUrl: 'views/ios_posts/two.html'
             })
 
+        .state('photos', {
+            url: '/photos',
+            templateUrl: 'views/photos.html',
+            controller: function($scope) {
+                $scope.title = 'Posten Photography';
+                $scope.subtitle = 'I have taken at least one good photo';
+
+                $scope.photos = [
+                    {
+                        href: 'https://farm6.staticflickr.com/5789/22569131534_3df0b04b96_k.jpg',
+                        size: '2048x1612',
+                        thumbnail: 'https://farm6.staticflickr.com/5789/22569131534_413dc32383_n.jpg',
+                        caption: 'Lucy'
+                    },
+                    {
+                        href: 'https://farm6.staticflickr.com/5789/22569131534_3df0b04b96_k.jpg',
+                        size: '2048x1612',
+                        thumbnail: 'https://farm6.staticflickr.com/5789/22569131534_413dc32383_n.jpg',
+                        caption: 'Lucy'
+                    },
+                    {
+                        href: 'https://farm6.staticflickr.com/5789/22569131534_3df0b04b96_k.jpg',
+                        size: '2048x1612',
+                        thumbnail: 'https://farm6.staticflickr.com/5789/22569131534_413dc32383_n.jpg',
+                        caption: 'Lucy'
+                    }
+                ]
+            }
+        })
+
 });
 
 
