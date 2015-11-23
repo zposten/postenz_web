@@ -155,7 +155,8 @@
   width: 100% !important;
   height: auto !important;
   left: 0;
-  top: 0; }
+  top: 0; 
+}
 
 /*
 	Error message appears when image is not loaded
@@ -170,8 +171,10 @@
   font-size: 14px;
   line-height: 16px;
   margin-top: -8px;
-  color: #CCC; }
+  color: #CCC; 
+}
 
 .pswp__error-msg a {
   color: #CCC;
-  text-decoration: underline; }
+  text-decoration: underline; 
+}

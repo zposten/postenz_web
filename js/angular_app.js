@@ -45,6 +45,7 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: '/photos',
             templateUrl: 'views/photos.html',
             controller: function($scope) {
+
                 $scope.title = 'Posten Photography';
                 $scope.subtitle = 'I have taken at least one good photo';
 
@@ -86,3 +87,17 @@ app.directive('markdown', function($window) {
         }
     }
 });
+
+
+app.directive('photoswipe',  ['$rootScope', function($rootScope) {
+    return {
+        restrict: 'EA',
+        templateUrl: 'views/gallery.html',
+        link: function(scope, elem, attrs) {
+            //attrs references any attributes on the directive element in html
+            //elem is the actual DOM element of the directive,so you can bind it with jQuery
+
+            photoswipe.init('.demo-gallery');
+        }
+    };
+}]);
