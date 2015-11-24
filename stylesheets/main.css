@@ -1,14 +1,14 @@
 /*
  * Globals
  */
-/* line 22, ../sass/main.scss */
+/* line 10, ../sass/main.scss */
 body {
   color: #cecfd5;
   background-color: #525354;
   width: 100%;
 }
 
-/* line 28, ../sass/main.scss */
+/* line 16, ../sass/main.scss */
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   margin-top: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -16,14 +16,28 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   color: #dfe0e6;
 }
 
+/* line 23, ../sass/main.scss */
+a {
+  color: #33c4e8;
+}
+
+/* line 27, ../sass/main.scss */
+code {
+  background-color: #383838;
+  color: #cecfd5;
+}
+
 /* Override Bootstrap's default container. */
 @media (min-width: 1200px) {
-  /* line 37, ../sass/main.scss */
+  /* line 34, ../sass/main.scss */
   .container {
     width: 970px;
   }
 }
-/* line 43, ../sass/main.scss */
+/*
+ * Sections
+ */
+/* line 44, ../sass/main.scss */
 .masthead {
   position: fixed;
   top: 0;
@@ -34,15 +48,14 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   z-index: 4;
 }
 
-/* Blog name and description */
-/* line 78, ../sass/main.scss */
+/* line 55, ../sass/main.scss */
 .header {
   padding-top: 100px;
   padding-bottom: 20px;
   padding-left: 15px;
 }
 
-/* line 83, ../sass/main.scss */
+/* line 60, ../sass/main.scss */
 .title {
   margin-top: 30px;
   margin-bottom: 0;
@@ -50,122 +63,28 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-weight: normal;
 }
 
-/* line 89, ../sass/main.scss */
+/* line 66, ../sass/main.scss */
 .subtitle {
   font-size: 20px;
   color: #999;
 }
 
-/* line 94, ../sass/main.scss */
+/* line 71, ../sass/main.scss */
 .row {
   margin-left: 270px;
 }
 
-/* Main column and sidebar layout */
-/* line 101, ../sass/main.scss */
+/* line 76, ../sass/main.scss */
 .main-container {
   font-size: 18px;
   line-height: 1.5;
   width: 95%;
 }
 
-/* Sidebar modules for boxing content */
-/* line 108, ../sass/main.scss */
-.sidebar {
-  background-color: #414142;
-  margin-left: 0%;
-  margin-top: 100px;
-  height: 100%;
-  position: fixed;
-  left: 0px;
-  width: 250px;
-}
-
-/* line 118, ../sass/main.scss */
-.sidebar-module {
-  padding: 15px;
-  margin: 0 -15px 15px;
-}
-
-/* line 138, ../sass/main.scss */
-#zach_pic {
-  width: 250px;
-}
-
-/* line 142, ../sass/main.scss */
-a {
-  color: #33c4e8;
-}
-
-/* line 146, ../sass/main.scss */
-a.nav_link {
-  color: white;
-  font-size: x-large;
-  font-family: "Anton", sans-serif;
-  text-decoration: none;
-}
-/* line 152, ../sass/main.scss */
-a.nav_link .active {
-  background-color: #272727;
-}
-
-/* line 157, ../sass/main.scss */
-div.nav_link {
-  padding-top: 0;
-  padding-bottom: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-/* line 163, ../sass/main.scss */
-div.nav_link:hover {
-  background-color: #1c1c1d;
-}
-
-/* line 168, ../sass/main.scss */
-code {
-  background-color: #383838;
-  color: #cecfd5;
-}
-
-/* Pagination */
-/* line 175, ../sass/main.scss */
-.pager {
-  margin-bottom: 60px;
-  text-align: left;
-}
-
-/* line 179, ../sass/main.scss */
-.pager > li > a {
-  width: 140px;
-  padding: 10px 20px;
-  text-align: center;
-  border-radius: 30px;
-}
-
-/*
- * Blog posts
- */
-/* line 191, ../sass/main.scss */
-.blog-post {
-  margin-bottom: 60px;
-}
-
-/* line 194, ../sass/main.scss */
-.blog-post-title {
-  margin-bottom: 5px;
-  font-size: 40px;
-}
-
-/* line 198, ../sass/main.scss */
-.blog-post-meta {
-  margin-bottom: 20px;
-  color: #999;
-}
-
 /*
  * Footer
  */
-/* line 208, ../sass/main.scss */
+/* line 87, ../sass/main.scss */
 .blog-footer {
   padding: 40px 0;
   color: #999;
@@ -174,7 +93,7 @@ code {
   border-top: 1px solid #e5e5e5;
 }
 
-/* line 215, ../sass/main.scss */
+/* line 94, ../sass/main.scss */
 .blog-footer p:last-child {
   margin-bottom: 0;
 }

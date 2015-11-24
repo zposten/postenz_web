@@ -1,0 +1,62 @@
+@import "colors";
+
+$nav-font-stack: 'Anton', sans-serif;
+
+a.nav_link {
+  color: white;
+  font-size: x-large;
+  font-family: $nav-font-stack;
+  text-decoration: none;
+
+  .active {
+    background-color: $nav-light-highlight-color;
+  }
+}
+
+div.nav_link {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  &:hover {
+    background-color: $nav-dark-highlight-color;
+  }
+}
+
+#zach_pic {
+  width: 250px;
+}
+
+
+
+/* Sidebar modules for boxing content */
+.sidebar {
+  background-color: $nav-color;
+  margin-left: 0%;
+  margin-top: 100px;
+  height: 100%;
+  position: fixed;
+  left: 0px;
+  width: 250px;
+}
+
+.sidebar-module {
+  padding: 15px;
+  margin: 0 -15px 15px;
+}
+
+//.sidebar-module-inset {
+//  padding: 15px;
+//  background-color: #838383;
+//  background-color: #831e1a;
+//  border-radius: 4px;
+//}
+
+//.sidebar-module-inset {
+//  p, ul, ol {
+//    &:last-child {
+//      margin-bottom: 0;
+//    }
+//  }
+//}

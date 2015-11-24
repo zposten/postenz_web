@@ -1,19 +1,7 @@
 @import "compass";
-
-$main-blue: #33c4e8;
-
-$heading-color: #dfe0e6;
-$subtitle-color: #999;
-$font-color: #cecfd5;
+@import "colors";
 
 $font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$nav-font-stack: 'Anton', sans-serif;
-
-$nav-color: #414142;
-$nav-dark-highlight-color: #1c1c1d;
-$nav-light-highlight-color: #272727;
-$main-section-color: #525354;
-
 
 /*
  * Globals
@@ -32,6 +20,15 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   color: $heading-color;
 }
 
+a {
+  color: $main-blue;
+}
+
+code {
+  background-color: #383838;
+  color: #cecfd5;
+}
+
 /* Override Bootstrap's default container. */
 @media (min-width: 1200px) {
   .container {
@@ -39,6 +36,10 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   }
 }
 
+
+/*
+ * Sections
+ */
 
 .masthead {
   position: fixed;
@@ -49,32 +50,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   background-color: rgba(51, 196, 232, 1);
   z-index: 4;
 }
-//#navigation a {
-//  font-size: 14px;
-//  padding-left: 15px;
-//  padding-right: 15px;
-//  color: white;
-//  text-decoration: none;
-//  width: 250px;
-//}
 
 
-//.blog-nav .active:after {
-//  position: absolute;
-//  bottom: 0;
-//  left: 50%;
-//  width: 0;
-//  height: 0;
-//  margin-left: -5px;
-//  vertical-align: middle;
-//  content: " ";
-//  border-right: 5px solid transparent;
-//  border-bottom: 5px solid;
-//  border-left: 5px solid transparent;
-//}
-
-
- /* Blog name and description */
 .header {
   padding-top: 100px;
   padding-bottom: 20px;
@@ -93,111 +70,13 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 .row {
   margin-left: 270px;
-
 }
 
 
- /* Main column and sidebar layout */
 .main-container {
   font-size: 18px;
   line-height: 1.5;
   width: 95%;
-}
-
-/* Sidebar modules for boxing content */
-.sidebar {
-  background-color: $nav-color;
-  margin-left: 0%;
-  margin-top: 100px;
-  height: 100%;
-  position: fixed;
-  left: 0px;
-  width: 250px;
-}
-
-.sidebar-module {
-  padding: 15px;
-  margin: 0 -15px 15px;
-}
-
-//.sidebar-module-inset {
-//  padding: 15px;
-//  background-color: #838383;
-//  background-color: #831e1a;
-//  border-radius: 4px;
-//}
-
-//.sidebar-module-inset {
-//  p, ul, ol {
-//    &:last-child {
-//      margin-bottom: 0;
-//    }
-//  }
-//}
-
-#zach_pic {
-  width: 250px;
-}
-
-a {
-  color: $main-blue;
-}
-
-a.nav_link {
-  color: white;
-  font-size: x-large;
-  font-family: $nav-font-stack;
-  text-decoration: none;
-
-  .active {
-    background-color: $nav-light-highlight-color;
-  }
-}
-
-div.nav_link {
-  padding-top: 0;
-  padding-bottom: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-
-  &:hover {
-    background-color: $nav-dark-highlight-color;
-  }
-}
-
-code {
-  background-color: #383838;
-  color: #cecfd5;
-}
-
-
-/* Pagination */
-.pager {
-  margin-bottom: 60px;
-  text-align: left;
-}
-.pager > li > a {
-  width: 140px;
-  padding: 10px 20px;
-  text-align: center;
-  border-radius: 30px;
-}
-
-
-/*
- * Blog posts
- */
-
-.blog-post {
-  margin-bottom: 60px;
-}
-.blog-post-title {
-  margin-bottom: 5px;
-  font-size: 40px;
-}
-.blog-post-meta {
-  margin-bottom: 20px;
-  color: #999;
 }
 
 

@@ -1,3 +1,5 @@
+var photoswipe = photoswipe || {};
+
 photoswipe.photos = [
     {
         href: 'https://farm6.staticflickr.com/5789/22569131534_3df0b04b96_k.jpg',
@@ -45,6 +47,6 @@ photoswipe.photos = [
         href: 'https://farm1.staticflickr.com/604/22829660459_b9d278a60e_k.jpg',
         size: '2048x1365',
         thumbnail: 'https://farm1.staticflickr.com/604/22829660459_f91c6ba2ec_n.jpg',
-        caption: 'Jumping Fences in the Badlands'
+        caption: 'Jumping fences in the Badlands'
     }
 ];
