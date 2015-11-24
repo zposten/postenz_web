@@ -15,7 +15,6 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Anton'>
     <link rel='stylesheet' href='./stylesheets/main.css'>
 
-    <link rel='stylesheet' href="./styles/photoswipe/site.css">
     <link rel='stylesheet' href="./styles/photoswipe/photoswipe.css">
     <link rel='stylesheet' href="./styles/photoswipe/default-skin.css">
     <link rel='stylesheet' href="./styles/photoswipe/photoswipe_site.css">
@@ -27,12 +26,12 @@
 <div id="top_blue_bar" class="masthead"></div>
 
 <div id="sidebar" class="sidebar col-sm-3 col-sm-offset-1">
-    <img src="assets/prof_small_circle.png" class="zach_pic sidebar-module"/>
+    <img src="assets/prof_small_circle.png" id="zach_pic" class="sidebar-module"/>
 
-    <a ui-sref="home"     class="nav_link">  <div class="sidebar-module nav_link">HOME</div></a>
-    <a ui-sref="contact"  class="nav_link">  <div class="sidebar-module nav_link">CONTACT</div></a>
-    <a ui-sref="blog"     class="nav_link">  <div class="sidebar-module nav_link">BLOG</div></a>
-    <a ui-sref="photos"   class="nav_link">  <div class="sidebar-module nav_link">PHOTOS</div></a>
+    <a ui-sref="home"     class="nav_link" id="nav-home">     <div class="sidebar-module nav_link">HOME</div></a>
+    <a ui-sref="contact"  class="nav_link" id="nav-contact">  <div class="sidebar-module nav_link">CONTACT</div></a>
+    <a ui-sref="blog"     class="nav_link" id="nav-blog">     <div class="sidebar-module nav_link">BLOG</div></a>
+    <a ui-sref="photos"   class="nav_link" id="nav-photos">   <div class="sidebar-module nav_link">PHOTOGRAPHY</div></a>
 
 
     <div class="sidebar-module">
@@ -71,10 +70,11 @@
 
 <script src="./js/photoswipe/photoswipe.js"></script><!--photoswipe-->
 <script src="./js/photoswipe/photoswipe-ui-default.js"></script><!--photoswipe-->
-
 <script src="./js/photoswipe/photoswipe_impl.js"></script>
-<script src="js/util.js"></script>
-<script src="js/angular_app.js"></script>
+<script src="./js/photoswipe/photos.js"></script><!--photoswipe-->
+
+<script src="./js/util.js"></script>
+<script src="./js/angular_app.js"></script>
 <script src="./js/script.js"></script>
 
 </body>
