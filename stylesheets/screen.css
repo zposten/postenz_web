@@ -24,8 +24,16 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 a {
   color: #33c4e8;
 }
+/* line 26, ../sass/main.scss */
+a:visited {
+  color: #399ec6;
+}
+/* line 29, ../sass/main.scss */
+a:hover {
+  color: #399ec6;
+}
 
-/* line 27, ../sass/main.scss */
+/* line 34, ../sass/main.scss */
 code {
   background-color: #383838;
   color: #cecfd5;
@@ -33,7 +41,7 @@ code {
 
 /* Override Bootstrap's default container. */
 @media (min-width: 1200px) {
-  /* line 34, ../sass/main.scss */
+  /* line 41, ../sass/main.scss */
   .container {
     width: 970px;
   }
@@ -41,7 +49,7 @@ code {
 /*
  * Sections
  */
-/* line 44, ../sass/main.scss */
+/* line 51, ../sass/main.scss */
 .masthead {
   position: fixed;
   top: 0;
@@ -52,14 +60,14 @@ code {
   z-index: 4;
 }
 
-/* line 55, ../sass/main.scss */
+/* line 62, ../sass/main.scss */
 .header {
   padding-top: 100px;
   padding-bottom: 20px;
   padding-left: 15px;
 }
 
-/* line 60, ../sass/main.scss */
+/* line 67, ../sass/main.scss */
 .title {
   margin-top: 30px;
   margin-bottom: 0;
@@ -67,18 +75,18 @@ code {
   font-weight: normal;
 }
 
-/* line 66, ../sass/main.scss */
+/* line 73, ../sass/main.scss */
 .subtitle {
   font-size: 20px;
   color: #999;
 }
 
-/* line 71, ../sass/main.scss */
+/* line 78, ../sass/main.scss */
 .row {
   margin-left: 270px;
 }
 
-/* line 76, ../sass/main.scss */
+/* line 83, ../sass/main.scss */
 .main-container {
   font-size: 18px;
   line-height: 1.5;
@@ -88,7 +96,7 @@ code {
 /*
  * Footer
  */
-/* line 87, ../sass/main.scss */
+/* line 94, ../sass/main.scss */
 .blog-footer {
   padding: 40px 0;
   color: #999;
@@ -97,7 +105,7 @@ code {
   border-top: 1px solid #e5e5e5;
 }
 
-/* line 94, ../sass/main.scss */
+/* line 101, ../sass/main.scss */
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
