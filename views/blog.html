@@ -8,8 +8,14 @@
     <div>
         iOS posts
         <ul>
-            <li><a ui-sref="blog.one">First</a></li>
-            <li><a ui-sref="blog.two">Second</a></li>
+            <li><a ui-sref="blog.post({blogPostId: 1})">iOS UI Creation Methods</a></li>
+            <li><a ui-sref="blog.post({blogPostId: 2})">Break Statements</a></li>
+            <li><a ui-sref="blog.post({blogPostId: 3})">Hash Symbol</a></li>
+            <li><a ui-sref="blog.post({blogPostId: 4})">Static Data Storage</a></li>
+            <li><a ui-sref="blog.post({blogPostId: 5})">UIPopoverController</a></li>
+            <li><a ui-sref="blog.post({blogPostId: 6})">Transfer Delegate Selection to Parent</a></li>
+            <li><a ui-sref="blog.post({blogPostId: 7})">Variable Initialization</a></li>
+
         </ul>
     </div>
 
@@ -18,9 +24,11 @@
 
     <nav>
         <ul class="pager">
-            <li><a ui-sref="blog.one">Previous</a></li>
-            <li><a ui-sref="blog.two">Next</a></li>
+            <li class="prev">Previous</li>
+            <li class="next">Next</li>
         </ul>
     </nav>
+
+
 
 </div>

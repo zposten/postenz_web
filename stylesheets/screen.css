@@ -5,14 +5,14 @@
 /*
  * Globals
  */
-/* line 10, ../sass/main.scss */
+/* line 11, ../sass/_main.scss */
 body {
   color: #cecfd5;
   background-color: #525354;
-  width: 100%;
+  width: 99%;
 }
 
-/* line 16, ../sass/main.scss */
+/* line 17, ../sass/_main.scss */
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   margin-top: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -20,20 +20,20 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   color: #dfe0e6;
 }
 
-/* line 23, ../sass/main.scss */
+/* line 24, ../sass/_main.scss */
 a {
   color: #33c4e8;
 }
-/* line 26, ../sass/main.scss */
+/* line 27, ../sass/_main.scss */
 a:visited {
   color: #399ec6;
 }
-/* line 29, ../sass/main.scss */
+/* line 30, ../sass/_main.scss */
 a:hover {
   color: #399ec6;
 }
 
-/* line 34, ../sass/main.scss */
+/* line 35, ../sass/_main.scss */
 code {
   background-color: #383838;
   color: #cecfd5;
@@ -41,7 +41,7 @@ code {
 
 /* Override Bootstrap's default container. */
 @media (min-width: 1200px) {
-  /* line 41, ../sass/main.scss */
+  /* line 42, ../sass/_main.scss */
   .container {
     width: 970px;
   }
@@ -49,25 +49,24 @@ code {
 /*
  * Sections
  */
-/* line 51, ../sass/main.scss */
+/* line 52, ../sass/_main.scss */
 .masthead {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 100px;
-  padding-top: 15px;
+  height: 75px;
   background-color: #33c4e8;
   z-index: 4;
 }
 
-/* line 62, ../sass/main.scss */
+/* line 62, ../sass/_main.scss */
 .header {
-  padding-top: 100px;
+  padding-top: 75px;
   padding-bottom: 20px;
   padding-left: 15px;
 }
 
-/* line 67, ../sass/main.scss */
+/* line 67, ../sass/_main.scss */
 .title {
   margin-top: 30px;
   margin-bottom: 0;
@@ -75,18 +74,18 @@ code {
   font-weight: normal;
 }
 
-/* line 73, ../sass/main.scss */
+/* line 73, ../sass/_main.scss */
 .subtitle {
   font-size: 20px;
   color: #999;
 }
 
-/* line 78, ../sass/main.scss */
+/* line 78, ../sass/_main.scss */
 .row {
   margin-left: 270px;
 }
 
-/* line 83, ../sass/main.scss */
+/* line 83, ../sass/_main.scss */
 .main-container {
   font-size: 18px;
   line-height: 1.5;
@@ -96,7 +95,7 @@ code {
 /*
  * Footer
  */
-/* line 94, ../sass/main.scss */
+/* line 94, ../sass/_main.scss */
 .blog-footer {
   padding: 40px 0;
   color: #999;
@@ -105,88 +104,98 @@ code {
   border-top: 1px solid #e5e5e5;
 }
 
-/* line 101, ../sass/main.scss */
+/* line 101, ../sass/_main.scss */
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
 
-/* line 5, ../sass/nav.scss */
+/* line 6, ../sass/_nav.scss */
 a.nav_link {
   color: white;
   font-size: x-large;
   font-family: "Anton", sans-serif;
   text-decoration: none;
 }
-/* line 11, ../sass/nav.scss */
+/* line 12, ../sass/_nav.scss */
 a.nav_link .active {
   background-color: #272727;
 }
 
-/* line 16, ../sass/nav.scss */
+/* line 17, ../sass/_nav.scss */
 div.nav_link {
   padding-top: 0;
   padding-bottom: 0;
   margin-top: 0;
   margin-bottom: 0;
 }
-/* line 22, ../sass/nav.scss */
+/* line 23, ../sass/_nav.scss */
 div.nav_link:hover {
   background-color: #1c1c1d;
 }
 
-/* line 27, ../sass/nav.scss */
+/* line 28, ../sass/_nav.scss */
 #zach_pic {
   width: 250px;
 }
 
 /* Sidebar modules for boxing content */
-/* line 34, ../sass/nav.scss */
+/* line 35, ../sass/_nav.scss */
 .sidebar {
   background-color: #414142;
   margin-left: 0%;
-  margin-top: 100px;
+  margin-top: 75px;
   height: 100%;
   position: fixed;
   left: 0px;
   width: 250px;
 }
 
-/* line 44, ../sass/nav.scss */
+/* line 45, ../sass/_nav.scss */
 .sidebar-module {
   padding: 15px;
   margin: 0 -15px 15px;
 }
 
 /* Pagination */
-/* line 4, ../sass/blog.scss */
+/* line 4, ../sass/_blog.scss */
 .pager {
   margin-bottom: 60px;
   text-align: left;
 }
-
-/* line 8, ../sass/blog.scss */
-.pager > li > a {
+/* line 8, ../sass/_blog.scss */
+.pager li {
   width: 140px;
   padding: 10px 20px;
   text-align: center;
   border-radius: 30px;
+  display: inline-block;
+  background-color: #383838;
+  border: 1px solid #ddd;
+}
+/* line 18, ../sass/_blog.scss */
+.pager .next {
+  float: right;
+}
+/* line 21, ../sass/_blog.scss */
+.pager .prev {
+  float: left;
 }
 
 /*
  * Blog posts
  */
-/* line 20, ../sass/blog.scss */
+/* line 35, ../sass/_blog.scss */
 .blog-post {
   margin-bottom: 60px;
 }
 
-/* line 23, ../sass/blog.scss */
+/* line 38, ../sass/_blog.scss */
 .blog-post-title {
   margin-bottom: 5px;
   font-size: 40px;
 }
 
-/* line 27, ../sass/blog.scss */
+/* line 42, ../sass/_blog.scss */
 .blog-post-meta {
   margin-bottom: 20px;
   color: #999;
@@ -197,7 +206,7 @@ div.nav_link:hover {
 	Styles for basic PhotoSwipe functionality (sliding area, open/close transitions)
 */
 /* pswp = photoswipe */
-/* line 6, ../sass/photoswipe.scss */
+/* line 6, ../sass/_photoswipe.scss */
 .pswp {
   display: none;
   position: absolute;
@@ -215,19 +224,19 @@ div.nav_link:hover {
   outline: none;
 }
 
-/* line 21, ../sass/photoswipe.scss */
+/* line 21, ../sass/_photoswipe.scss */
 .pswp * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 24, ../sass/photoswipe.scss */
+/* line 24, ../sass/_photoswipe.scss */
 .pswp img {
   max-width: none;
 }
 
 /* style is added when JS option showHideOpacity is set to true */
-/* line 28, ../sass/photoswipe.scss */
+/* line 28, ../sass/_photoswipe.scss */
 .pswp--animate_opacity {
   /* 0.001, because opacity:0 doesn't trigger Paint action, which causes lag at start of transition */
   opacity: 0.001;
@@ -237,12 +246,12 @@ div.nav_link:hover {
   transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
 }
 
-/* line 36, ../sass/photoswipe.scss */
+/* line 36, ../sass/_photoswipe.scss */
 .pswp--open {
   display: block;
 }
 
-/* line 39, ../sass/photoswipe.scss */
+/* line 39, ../sass/_photoswipe.scss */
 .pswp--zoom-allowed .pswp__img {
   /* autoprefixer: off */
   cursor: -webkit-zoom-in;
@@ -250,7 +259,7 @@ div.nav_link:hover {
   cursor: zoom-in;
 }
 
-/* line 45, ../sass/photoswipe.scss */
+/* line 45, ../sass/_photoswipe.scss */
 .pswp--zoomed-in .pswp__img {
   /* autoprefixer: off */
   cursor: -webkit-grab;
@@ -258,7 +267,7 @@ div.nav_link:hover {
   cursor: grab;
 }
 
-/* line 51, ../sass/photoswipe.scss */
+/* line 51, ../sass/_photoswipe.scss */
 .pswp--dragging .pswp__img {
   /* autoprefixer: off */
   cursor: -webkit-grabbing;
@@ -270,7 +279,7 @@ div.nav_link:hover {
 	Background is added as a separate element.
 	As animating opacity is much faster than animating rgba() background-color.
 */
-/* line 61, ../sass/photoswipe.scss */
+/* line 61, ../sass/_photoswipe.scss */
 .pswp__bg {
   position: absolute;
   left: 0;
@@ -283,7 +292,7 @@ div.nav_link:hover {
   will-change: opacity;
 }
 
-/* line 72, ../sass/photoswipe.scss */
+/* line 72, ../sass/_photoswipe.scss */
 .pswp__scroll-wrap {
   position: absolute;
   left: 0;
@@ -293,7 +302,7 @@ div.nav_link:hover {
   overflow: hidden;
 }
 
-/* line 80, ../sass/photoswipe.scss */
+/* line 80, ../sass/_photoswipe.scss */
 .pswp__container,
 .pswp__zoom-wrap {
   -ms-touch-action: none;
@@ -306,7 +315,7 @@ div.nav_link:hover {
 }
 
 /* Prevent selection and tap highlights */
-/* line 91, ../sass/photoswipe.scss */
+/* line 91, ../sass/_photoswipe.scss */
 .pswp__container,
 .pswp__img {
   -webkit-user-select: none;
@@ -317,7 +326,7 @@ div.nav_link:hover {
   -webkit-touch-callout: none;
 }
 
-/* line 100, ../sass/photoswipe.scss */
+/* line 100, ../sass/_photoswipe.scss */
 .pswp__zoom-wrap {
   position: absolute;
   width: 100%;
@@ -329,7 +338,7 @@ div.nav_link:hover {
   transition: transform 333ms cubic-bezier(0.4, 0, 0.22, 1);
 }
 
-/* line 110, ../sass/photoswipe.scss */
+/* line 110, ../sass/_photoswipe.scss */
 .pswp__bg {
   will-change: opacity;
   /* for open/close transition */
@@ -337,20 +346,20 @@ div.nav_link:hover {
   transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
 }
 
-/* line 116, ../sass/photoswipe.scss */
+/* line 116, ../sass/_photoswipe.scss */
 .pswp--animated-in .pswp__bg,
 .pswp--animated-in .pswp__zoom-wrap {
   -webkit-transition: none;
   transition: none;
 }
 
-/* line 121, ../sass/photoswipe.scss */
+/* line 121, ../sass/_photoswipe.scss */
 .pswp__container,
 .pswp__zoom-wrap {
   -webkit-backface-visibility: hidden;
 }
 
-/* line 125, ../sass/photoswipe.scss */
+/* line 125, ../sass/_photoswipe.scss */
 .pswp__item {
   position: absolute;
   left: 0;
@@ -360,7 +369,7 @@ div.nav_link:hover {
   overflow: hidden;
 }
 
-/* line 133, ../sass/photoswipe.scss */
+/* line 133, ../sass/_photoswipe.scss */
 .pswp__img {
   position: absolute;
   width: auto;
@@ -373,7 +382,7 @@ div.nav_link:hover {
 	stretched thumbnail or div placeholder element (see below)
 	style is added to avoid flickering in webkit/blink when layers overlap
 */
-/* line 144, ../sass/photoswipe.scss */
+/* line 144, ../sass/_photoswipe.scss */
 .pswp__img--placeholder {
   -webkit-backface-visibility: hidden;
 }
@@ -382,12 +391,12 @@ div.nav_link:hover {
 	div element that matches size of large image
 	large image loads on top of it
 */
-/* line 151, ../sass/photoswipe.scss */
+/* line 151, ../sass/_photoswipe.scss */
 .pswp__img--placeholder--blank {
   background: #222;
 }
 
-/* line 154, ../sass/photoswipe.scss */
+/* line 154, ../sass/_photoswipe.scss */
 .pswp--ie .pswp__img {
   width: 100% !important;
   height: auto !important;
@@ -399,7 +408,7 @@ div.nav_link:hover {
 	Error message appears when image is not loaded
 	(JS option errorMsg controls markup)
 */
-/* line 165, ../sass/photoswipe.scss */
+/* line 165, ../sass/_photoswipe.scss */
 .pswp__error-msg {
   position: absolute;
   left: 0;
@@ -412,7 +421,7 @@ div.nav_link:hover {
   color: #CCC;
 }
 
-/* line 177, ../sass/photoswipe.scss */
+/* line 177, ../sass/_photoswipe.scss */
 .pswp__error-msg a {
   color: #CCC;
   text-decoration: underline;
@@ -437,7 +446,7 @@ div.nav_link:hover {
 
  */
 /* <button> css reset */
-/* line 24, ../sass/photoswipe-default-skin.scss */
+/* line 24, ../sass/_photoswipe-default-skin.scss */
 .pswp__button {
   width: 44px;
   height: 44px;
@@ -458,31 +467,31 @@ div.nav_link:hover {
   box-shadow: none;
 }
 
-/* line 42, ../sass/photoswipe-default-skin.scss */
+/* line 42, ../sass/_photoswipe-default-skin.scss */
 .pswp__button:focus,
 .pswp__button:hover {
   opacity: 1;
 }
 
-/* line 45, ../sass/photoswipe-default-skin.scss */
+/* line 45, ../sass/_photoswipe-default-skin.scss */
 .pswp__button:active {
   outline: none;
   opacity: 0.9;
 }
 
-/* line 48, ../sass/photoswipe-default-skin.scss */
+/* line 48, ../sass/_photoswipe-default-skin.scss */
 .pswp__button::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
 
 /* pswp__ui--over-close class it added when mouse is over element that should close gallery */
-/* line 53, ../sass/photoswipe-default-skin.scss */
+/* line 53, ../sass/_photoswipe-default-skin.scss */
 .pswp__ui--over-close .pswp__button--close {
   opacity: 1;
 }
 
-/* line 56, ../sass/photoswipe-default-skin.scss */
+/* line 56, ../sass/_photoswipe-default-skin.scss */
 .pswp__button,
 .pswp__button--arrow--left:before,
 .pswp__button--arrow--right:before {
@@ -494,62 +503,62 @@ div.nav_link:hover {
 
 @media (-webkit-min-device-pixel-ratio: 1.1), (-webkit-min-device-pixel-ratio: 1.09375), (min-resolution: 105dpi), (min-resolution: 1.1dppx) {
   /* Serve SVG sprite if browser supports SVG and resolution is more than 105dpi */
-  /* line 66, ../sass/photoswipe-default-skin.scss */
+  /* line 66, ../sass/_photoswipe-default-skin.scss */
   .pswp--svg .pswp__button,
   .pswp--svg .pswp__button--arrow--left:before,
   .pswp--svg .pswp__button--arrow--right:before {
     background-image: url("../assets/photoswipe/default-skin/default-skin.svg");
   }
 
-  /* line 70, ../sass/photoswipe-default-skin.scss */
+  /* line 70, ../sass/_photoswipe-default-skin.scss */
   .pswp--svg .pswp__button--arrow--left,
   .pswp--svg .pswp__button--arrow--right {
     background: none;
   }
 }
-/* line 74, ../sass/photoswipe-default-skin.scss */
+/* line 74, ../sass/_photoswipe-default-skin.scss */
 .pswp__button--close {
   background-position: 0 -44px;
 }
 
-/* line 77, ../sass/photoswipe-default-skin.scss */
+/* line 77, ../sass/_photoswipe-default-skin.scss */
 .pswp__button--share {
   background-position: -44px -44px;
 }
 
-/* line 80, ../sass/photoswipe-default-skin.scss */
+/* line 80, ../sass/_photoswipe-default-skin.scss */
 .pswp__button--fs {
   display: none;
 }
 
-/* line 83, ../sass/photoswipe-default-skin.scss */
+/* line 83, ../sass/_photoswipe-default-skin.scss */
 .pswp--supports-fs .pswp__button--fs {
   display: block;
 }
 
-/* line 86, ../sass/photoswipe-default-skin.scss */
+/* line 86, ../sass/_photoswipe-default-skin.scss */
 .pswp--fs .pswp__button--fs {
   background-position: -44px 0;
 }
 
-/* line 89, ../sass/photoswipe-default-skin.scss */
+/* line 89, ../sass/_photoswipe-default-skin.scss */
 .pswp__button--zoom {
   display: none;
   background-position: -88px 0;
 }
 
-/* line 93, ../sass/photoswipe-default-skin.scss */
+/* line 93, ../sass/_photoswipe-default-skin.scss */
 .pswp--zoom-allowed .pswp__button--zoom {
   display: block;
 }
 
-/* line 96, ../sass/photoswipe-default-skin.scss */
+/* line 96, ../sass/_photoswipe-default-skin.scss */
 .pswp--zoomed-in .pswp__button--zoom {
   background-position: -132px 0;
 }
 
 /* no arrows on touch screens */
-/* line 100, ../sass/photoswipe-default-skin.scss */
+/* line 100, ../sass/_photoswipe-default-skin.scss */
 .pswp--touch .pswp__button--arrow--left,
 .pswp--touch .pswp__button--arrow--right {
   visibility: hidden;
@@ -559,7 +568,7 @@ div.nav_link:hover {
 	Arrow buttons hit area
 	(icon is added to :before pseudo-element)
 */
-/* line 108, ../sass/photoswipe-default-skin.scss */
+/* line 108, ../sass/_photoswipe-default-skin.scss */
 .pswp__button--arrow--left,
 .pswp__button--arrow--right {
   background: none;
@@ -570,17 +579,17 @@ div.nav_link:hover {
   position: absolute;
 }
 
-/* line 117, ../sass/photoswipe-default-skin.scss */
+/* line 117, ../sass/_photoswipe-default-skin.scss */
 .pswp__button--arrow--left {
   left: 0;
 }
 
-/* line 120, ../sass/photoswipe-default-skin.scss */
+/* line 120, ../sass/_photoswipe-default-skin.scss */
 .pswp__button--arrow--right {
   right: 0;
 }
 
-/* line 123, ../sass/photoswipe-default-skin.scss */
+/* line 123, ../sass/_photoswipe-default-skin.scss */
 .pswp__button--arrow--left:before,
 .pswp__button--arrow--right:before {
   content: '';
@@ -591,13 +600,13 @@ div.nav_link:hover {
   position: absolute;
 }
 
-/* line 132, ../sass/photoswipe-default-skin.scss */
+/* line 132, ../sass/_photoswipe-default-skin.scss */
 .pswp__button--arrow--left:before {
   left: 6px;
   background-position: -138px -44px;
 }
 
-/* line 136, ../sass/photoswipe-default-skin.scss */
+/* line 136, ../sass/_photoswipe-default-skin.scss */
 .pswp__button--arrow--right:before {
   right: 6px;
   background-position: -94px -44px;
@@ -608,7 +617,7 @@ div.nav_link:hover {
 	2. Share modal/popup and links
 
  */
-/* line 145, ../sass/photoswipe-default-skin.scss */
+/* line 145, ../sass/_photoswipe-default-skin.scss */
 .pswp__counter,
 .pswp__share-modal {
   -webkit-user-select: none;
@@ -617,7 +626,7 @@ div.nav_link:hover {
   user-select: none;
 }
 
-/* line 152, ../sass/photoswipe-default-skin.scss */
+/* line 152, ../sass/_photoswipe-default-skin.scss */
 .pswp__share-modal {
   display: block;
   background: rgba(0, 0, 0, 0.5);
@@ -635,12 +644,12 @@ div.nav_link:hover {
   will-change: opacity;
 }
 
-/* line 168, ../sass/photoswipe-default-skin.scss */
+/* line 168, ../sass/_photoswipe-default-skin.scss */
 .pswp__share-modal--hidden {
   display: none;
 }
 
-/* line 171, ../sass/photoswipe-default-skin.scss */
+/* line 171, ../sass/_photoswipe-default-skin.scss */
 .pswp__share-tooltip {
   z-index: 1620;
   position: absolute;
@@ -661,7 +670,7 @@ div.nav_link:hover {
   will-change: transform;
 }
 
-/* line 189, ../sass/photoswipe-default-skin.scss */
+/* line 189, ../sass/_photoswipe-default-skin.scss */
 .pswp__share-tooltip a {
   display: block;
   padding: 8px 12px;
@@ -671,29 +680,29 @@ div.nav_link:hover {
   line-height: 18px;
 }
 
-/* line 196, ../sass/photoswipe-default-skin.scss */
+/* line 196, ../sass/_photoswipe-default-skin.scss */
 .pswp__share-tooltip a:hover {
   text-decoration: none;
   color: #000;
 }
 
-/* line 199, ../sass/photoswipe-default-skin.scss */
+/* line 199, ../sass/_photoswipe-default-skin.scss */
 .pswp__share-tooltip a:first-child {
   /* round corners on the first/last list item */
   border-radius: 2px 2px 0 0;
 }
 
-/* line 202, ../sass/photoswipe-default-skin.scss */
+/* line 202, ../sass/_photoswipe-default-skin.scss */
 .pswp__share-tooltip a:last-child {
   border-radius: 0 0 2px 2px;
 }
 
-/* line 205, ../sass/photoswipe-default-skin.scss */
+/* line 205, ../sass/_photoswipe-default-skin.scss */
 .pswp__share-modal--fade-in {
   opacity: 1;
 }
 
-/* line 207, ../sass/photoswipe-default-skin.scss */
+/* line 207, ../sass/_photoswipe-default-skin.scss */
 .pswp__share-modal--fade-in .pswp__share-tooltip {
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
@@ -701,12 +710,12 @@ div.nav_link:hover {
 }
 
 /* increase size of share links on touch devices */
-/* line 213, ../sass/photoswipe-default-skin.scss */
+/* line 213, ../sass/_photoswipe-default-skin.scss */
 .pswp--touch .pswp__share-tooltip a {
   padding: 16px 12px;
 }
 
-/* line 216, ../sass/photoswipe-default-skin.scss */
+/* line 216, ../sass/_photoswipe-default-skin.scss */
 a.pswp__share--facebook:before {
   content: '';
   display: block;
@@ -722,30 +731,30 @@ a.pswp__share--facebook:before {
   pointer-events: none;
 }
 
-/* line 230, ../sass/photoswipe-default-skin.scss */
+/* line 230, ../sass/_photoswipe-default-skin.scss */
 a.pswp__share--facebook:hover {
   background: #3E5C9A;
   color: #FFF;
 }
 
-/* line 233, ../sass/photoswipe-default-skin.scss */
+/* line 233, ../sass/_photoswipe-default-skin.scss */
 a.pswp__share--facebook:hover:before {
   border-bottom-color: #3E5C9A;
 }
 
-/* line 236, ../sass/photoswipe-default-skin.scss */
+/* line 236, ../sass/_photoswipe-default-skin.scss */
 a.pswp__share--twitter:hover {
   background: #55ACEE;
   color: #FFF;
 }
 
-/* line 240, ../sass/photoswipe-default-skin.scss */
+/* line 240, ../sass/_photoswipe-default-skin.scss */
 a.pswp__share--pinterest:hover {
   background: #CCC;
   color: #CE272D;
 }
 
-/* line 244, ../sass/photoswipe-default-skin.scss */
+/* line 244, ../sass/_photoswipe-default-skin.scss */
 a.pswp__share--download:hover {
   background: #DDD;
 }
@@ -755,7 +764,7 @@ a.pswp__share--download:hover {
 	3. Index indicator ("1 of X" counter)
 
  */
-/* line 252, ../sass/photoswipe-default-skin.scss */
+/* line 252, ../sass/_photoswipe-default-skin.scss */
 .pswp__counter {
   position: absolute;
   left: 0;
@@ -773,7 +782,7 @@ a.pswp__share--download:hover {
 	4. Caption
 
  */
-/* line 268, ../sass/photoswipe-default-skin.scss */
+/* line 268, ../sass/_photoswipe-default-skin.scss */
 .pswp__caption {
   position: absolute;
   left: 0;
@@ -782,13 +791,13 @@ a.pswp__share--download:hover {
   min-height: 44px;
 }
 
-/* line 274, ../sass/photoswipe-default-skin.scss */
+/* line 274, ../sass/_photoswipe-default-skin.scss */
 .pswp__caption small {
   font-size: 11px;
   color: #BBB;
 }
 
-/* line 278, ../sass/photoswipe-default-skin.scss */
+/* line 278, ../sass/_photoswipe-default-skin.scss */
 .pswp__caption__center {
   text-align: left;
   max-width: 420px;
@@ -799,13 +808,13 @@ a.pswp__share--download:hover {
   color: #CCC;
 }
 
-/* line 287, ../sass/photoswipe-default-skin.scss */
+/* line 287, ../sass/_photoswipe-default-skin.scss */
 .pswp__caption--empty {
   display: none;
 }
 
 /* Fake caption element, used to calculate height of next/prev image */
-/* line 291, ../sass/photoswipe-default-skin.scss */
+/* line 291, ../sass/_photoswipe-default-skin.scss */
 .pswp__caption--fake {
   visibility: hidden;
 }
@@ -817,7 +826,7 @@ a.pswp__share--download:hover {
 	You can play with it here - http://codepen.io/dimsemenov/pen/yyBWoR
 
  */
-/* line 301, ../sass/photoswipe-default-skin.scss */
+/* line 301, ../sass/_photoswipe-default-skin.scss */
 .pswp__preloader {
   width: 44px;
   height: 44px;
@@ -832,42 +841,42 @@ a.pswp__share--download:hover {
   direction: ltr;
 }
 
-/* line 314, ../sass/photoswipe-default-skin.scss */
+/* line 314, ../sass/_photoswipe-default-skin.scss */
 .pswp__preloader__icn {
   width: 20px;
   height: 20px;
   margin: 12px;
 }
 
-/* line 319, ../sass/photoswipe-default-skin.scss */
+/* line 319, ../sass/_photoswipe-default-skin.scss */
 .pswp__preloader--active {
   opacity: 1;
 }
 
-/* line 321, ../sass/photoswipe-default-skin.scss */
+/* line 321, ../sass/_photoswipe-default-skin.scss */
 .pswp__preloader--active .pswp__preloader__icn {
   /* We use .gif in browsers that don't support CSS animation */
   background: url("../assets/photoswipe/default-skin/preloader.gif") 0 0 no-repeat;
 }
 
-/* line 325, ../sass/photoswipe-default-skin.scss */
+/* line 325, ../sass/_photoswipe-default-skin.scss */
 .pswp--css_animation .pswp__preloader--active {
   opacity: 1;
 }
 
-/* line 327, ../sass/photoswipe-default-skin.scss */
+/* line 327, ../sass/_photoswipe-default-skin.scss */
 .pswp--css_animation .pswp__preloader--active .pswp__preloader__icn {
   -webkit-animation: clockwise 500ms linear infinite;
   animation: clockwise 500ms linear infinite;
 }
 
-/* line 330, ../sass/photoswipe-default-skin.scss */
+/* line 330, ../sass/_photoswipe-default-skin.scss */
 .pswp--css_animation .pswp__preloader--active .pswp__preloader__donut {
   -webkit-animation: donut-rotate 1000ms cubic-bezier(0.4, 0, 0.22, 1) infinite;
   animation: donut-rotate 1000ms cubic-bezier(0.4, 0, 0.22, 1) infinite;
 }
 
-/* line 334, ../sass/photoswipe-default-skin.scss */
+/* line 334, ../sass/_photoswipe-default-skin.scss */
 .pswp--css_animation .pswp__preloader__icn {
   background: none;
   opacity: 0.75;
@@ -879,7 +888,7 @@ a.pswp__share--download:hover {
   margin: 0;
 }
 
-/* line 344, ../sass/photoswipe-default-skin.scss */
+/* line 344, ../sass/_photoswipe-default-skin.scss */
 .pswp--css_animation .pswp__preloader__cut {
   /*
 			The idea of animating inner circle is based on Polymer ("material") loading indicator
@@ -891,7 +900,7 @@ a.pswp__share--download:hover {
   overflow: hidden;
 }
 
-/* line 354, ../sass/photoswipe-default-skin.scss */
+/* line 354, ../sass/_photoswipe-default-skin.scss */
 .pswp--css_animation .pswp__preloader__donut {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -909,7 +918,7 @@ a.pswp__share--download:hover {
 }
 
 @media screen and (max-width: 1024px) {
-  /* line 370, ../sass/photoswipe-default-skin.scss */
+  /* line 370, ../sass/_photoswipe-default-skin.scss */
   .pswp__preloader {
     position: relative;
     left: auto;
@@ -972,7 +981,7 @@ a.pswp__share--download:hover {
 
  */
 /* root element of UI */
-/* line 421, ../sass/photoswipe-default-skin.scss */
+/* line 421, ../sass/_photoswipe-default-skin.scss */
 .pswp__ui {
   -webkit-font-smoothing: auto;
   visibility: visible;
@@ -981,7 +990,7 @@ a.pswp__share--download:hover {
 }
 
 /* top black bar with buttons and "1 of X" indicator */
-/* line 428, ../sass/photoswipe-default-skin.scss */
+/* line 428, ../sass/_photoswipe-default-skin.scss */
 .pswp__top-bar {
   position: absolute;
   left: 0;
@@ -990,7 +999,7 @@ a.pswp__share--download:hover {
   width: 100%;
 }
 
-/* line 435, ../sass/photoswipe-default-skin.scss */
+/* line 435, ../sass/_photoswipe-default-skin.scss */
 .pswp__caption,
 .pswp__top-bar,
 .pswp--has_mouse .pswp__button--arrow--left,
@@ -1002,32 +1011,32 @@ a.pswp__share--download:hover {
 }
 
 /* pswp--has_mouse class is added only when two subsequent mousemove events occur */
-/* line 445, ../sass/photoswipe-default-skin.scss */
+/* line 445, ../sass/_photoswipe-default-skin.scss */
 .pswp--has_mouse .pswp__button--arrow--left,
 .pswp--has_mouse .pswp__button--arrow--right {
   visibility: visible;
 }
 
-/* line 449, ../sass/photoswipe-default-skin.scss */
+/* line 449, ../sass/_photoswipe-default-skin.scss */
 .pswp__top-bar,
 .pswp__caption {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* pswp__ui--fit class is added when main image "fits" between top bar and bottom bar (caption) */
-/* line 454, ../sass/photoswipe-default-skin.scss */
+/* line 454, ../sass/_photoswipe-default-skin.scss */
 .pswp__ui--fit .pswp__top-bar,
 .pswp__ui--fit .pswp__caption {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* pswp__ui--idle class is added when mouse isn't moving for several seconds (JS option timeToIdle) */
-/* line 459, ../sass/photoswipe-default-skin.scss */
+/* line 459, ../sass/_photoswipe-default-skin.scss */
 .pswp__ui--idle .pswp__top-bar {
   opacity: 0;
 }
 
-/* line 462, ../sass/photoswipe-default-skin.scss */
+/* line 462, ../sass/_photoswipe-default-skin.scss */
 .pswp__ui--idle .pswp__button--arrow--left,
 .pswp__ui--idle .pswp__button--arrow--right {
   opacity: 0;
@@ -1037,7 +1046,7 @@ a.pswp__share--download:hover {
 	pswp__ui--hidden class is added when controls are hidden
 	e.g. when user taps to toggle visibility of controls
 */
-/* line 470, ../sass/photoswipe-default-skin.scss */
+/* line 470, ../sass/_photoswipe-default-skin.scss */
 .pswp__ui--hidden .pswp__top-bar,
 .pswp__ui--hidden .pswp__caption,
 .pswp__ui--hidden .pswp__button--arrow--left,
@@ -1047,19 +1056,19 @@ a.pswp__share--download:hover {
 }
 
 /* pswp__ui--one-slide class is added when there is just one item in gallery */
-/* line 478, ../sass/photoswipe-default-skin.scss */
+/* line 478, ../sass/_photoswipe-default-skin.scss */
 .pswp__ui--one-slide .pswp__button--arrow--left,
 .pswp__ui--one-slide .pswp__button--arrow--right,
 .pswp__ui--one-slide .pswp__counter {
   display: none;
 }
 
-/* line 483, ../sass/photoswipe-default-skin.scss */
+/* line 483, ../sass/_photoswipe-default-skin.scss */
 .pswp__element--disabled {
   display: none !important;
 }
 
-/* line 486, ../sass/photoswipe-default-skin.scss */
+/* line 486, ../sass/_photoswipe-default-skin.scss */
 .pswp--minimal--dark .pswp__top-bar {
   background: none;
 }
@@ -1068,7 +1077,7 @@ a.pswp__share--download:hover {
 /*margin: 0;*/
 /*padding: 0; */
 /*}*/
-/* line 6, ../sass/photoswipe-site.scss */
+/* line 6, ../sass/_photoswipe-site.scss */
 figure {
   display: block;
 }
@@ -1078,7 +1087,7 @@ figure {
 /*-webkit-box-sizing: border-box;*/
 /*box-sizing: border-box;*/
 /*}*/
-/* line 16, ../sass/photoswipe-site.scss */
+/* line 16, ../sass/_photoswipe-site.scss */
 .zimg {
   max-height: 200px;
   height: 200px;
@@ -1086,7 +1095,7 @@ figure {
   border: 0;
 }
 
-/* line 23, ../sass/photoswipe-site.scss */
+/* line 23, ../sass/_photoswipe-site.scss */
 a.zimg > img {
   height: 100%;
 }
@@ -1112,18 +1121,18 @@ a.zimg > img {
 /*font-size: 19px;*/
 /*line-height: 29px;*/
 /*}*/
-/* line 52, ../sass/photoswipe-site.scss */
+/* line 52, ../sass/_photoswipe-site.scss */
 .section--head p {
   color: #666;
 }
 
-/* line 56, ../sass/photoswipe-site.scss */
+/* line 56, ../sass/_photoswipe-site.scss */
 .section {
   width: 100%;
   margin-top: 176px;
 }
 
-/* line 61, ../sass/photoswipe-site.scss */
+/* line 61, ../sass/_photoswipe-site.scss */
 .section--head {
   margin: 0;
   background: #EEE;
@@ -1141,13 +1150,13 @@ a.zimg > img {
 /*margin: 0 12px 12px 0;*/
 /*width: 200px;*/
 /*}*/
-/* line 80, ../sass/photoswipe-site.scss */
+/* line 80, ../sass/_photoswipe-site.scss */
 img.img--with_border {
   border: 1px solid #DDD;
   border-radius: 2px;
 }
 
-/* line 85, ../sass/photoswipe-site.scss */
+/* line 85, ../sass/_photoswipe-site.scss */
 .img-desc {
   margin-left: 212px;
 }
@@ -1167,14 +1176,14 @@ img.img--with_border {
 /*max-width: 100%;*/
 /*height: auto;*/
 /*}*/
-/* line 107, ../sass/photoswipe-site.scss */
+/* line 107, ../sass/_photoswipe-site.scss */
 .demo-gallery {
   width: 100%;
   height: auto;
   float: left;
 }
 
-/* line 113, ../sass/photoswipe-site.scss */
+/* line 113, ../sass/_photoswipe-site.scss */
 .demo-gallery a {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
@@ -1184,18 +1193,18 @@ img.img--with_border {
   line-height: 0;
 }
 
-/* line 122, ../sass/photoswipe-site.scss */
+/* line 122, ../sass/_photoswipe-site.scss */
 a.demo-gallery__img--main {
   width: auto;
   height: auto;
 }
 
-/* line 128, ../sass/photoswipe-site.scss */
+/* line 128, ../sass/_photoswipe-site.scss */
 .demo-gallery figure {
   display: none;
 }
 
-/* line 132, ../sass/photoswipe-site.scss */
+/* line 132, ../sass/_photoswipe-site.scss */
 .demo-gallery__title {
   line-height: 14px;
   font-size: 14px;
@@ -1205,20 +1214,20 @@ a.demo-gallery__img--main {
   float: left;
 }
 
-/* line 141, ../sass/photoswipe-site.scss */
+/* line 141, ../sass/_photoswipe-site.scss */
 .share-buttons h2 {
   text-align: center;
   border: 0;
 }
 
-/* line 146, ../sass/photoswipe-site.scss */
+/* line 146, ../sass/_photoswipe-site.scss */
 .share-buttons {
   text-align: center;
   position: relative;
   margin: 0 0 24px;
 }
 
-/* line 151, ../sass/photoswipe-site.scss */
+/* line 151, ../sass/_photoswipe-site.scss */
 .share-buttons a {
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -1233,67 +1242,67 @@ a.demo-gallery__img--main {
   cursor: pointer;
 }
 
-/* line 164, ../sass/photoswipe-site.scss */
+/* line 164, ../sass/_photoswipe-site.scss */
 .share-buttons a:hover {
   opacity: 0.7;
 }
 
-/* line 167, ../sass/photoswipe-site.scss */
+/* line 167, ../sass/_photoswipe-site.scss */
 #tweet {
   background: #0096c4;
 }
 
-/* line 170, ../sass/photoswipe-site.scss */
+/* line 170, ../sass/_photoswipe-site.scss */
 #like {
   background: #3b5998;
 }
 
-/* line 173, ../sass/photoswipe-site.scss */
+/* line 173, ../sass/_photoswipe-site.scss */
 #gplus {
   background: #d34836;
 }
 
 @media screen and (max-width: 1000px) {
-  /* line 180, ../sass/photoswipe-site.scss */
+  /* line 180, ../sass/_photoswipe-site.scss */
   .row--wide {
     max-width: 800px;
   }
 
-  /* line 183, ../sass/photoswipe-site.scss */
+  /* line 183, ../sass/_photoswipe-site.scss */
   .row--wide img {
     float: none;
   }
 
-  /* line 186, ../sass/photoswipe-site.scss */
+  /* line 186, ../sass/_photoswipe-site.scss */
   .img-desc {
     margin-left: 0;
   }
 
-  /* line 189, ../sass/photoswipe-site.scss */
+  /* line 189, ../sass/_photoswipe-site.scss */
   .section {
     margin-top: 132px;
   }
 
-  /* line 192, ../sass/photoswipe-site.scss */
+  /* line 192, ../sass/_photoswipe-site.scss */
   .section--head {
     margin-top: 0;
     padding: 30px 0;
   }
 
-  /* line 196, ../sass/photoswipe-site.scss */
+  /* line 196, ../sass/_photoswipe-site.scss */
   .row--nav {
     font-size: 24px;
     line-height: 1.1;
   }
 }
 @media screen and (max-width: 650px) {
-  /* line 205, ../sass/photoswipe-site.scss */
+  /* line 205, ../sass/_photoswipe-site.scss */
   .block__ui-separated .col-50 {
     position: relative;
     top: 0;
   }
 
-  /* line 209, ../sass/photoswipe-site.scss */
+  /* line 209, ../sass/_photoswipe-site.scss */
   .block__ui-separated img {
     max-width: 100%;
     width: 100%;
@@ -1301,80 +1310,80 @@ a.demo-gallery__img--main {
   }
 }
 @media screen and (max-width: 450px) {
-  /* line 219, ../sass/photoswipe-site.scss */
+  /* line 219, ../sass/_photoswipe-site.scss */
   .col-50:nth-child(1) {
     margin-right: 0;
   }
 
-  /* line 222, ../sass/photoswipe-site.scss */
+  /* line 222, ../sass/_photoswipe-site.scss */
   .row--wide img {
     margin-bottom: 6px;
   }
 
-  /* line 225, ../sass/photoswipe-site.scss */
+  /* line 225, ../sass/_photoswipe-site.scss */
   .col-50 {
     width: 100%;
     margin-bottom: 12px;
   }
 
-  /* line 229, ../sass/photoswipe-site.scss */
+  /* line 229, ../sass/_photoswipe-site.scss */
   .row {
     padding: 0 18px;
   }
 
-  /* line 232, ../sass/photoswipe-site.scss */
+  /* line 232, ../sass/_photoswipe-site.scss */
   .section {
     margin-top: 88px;
   }
 
-  /* line 235, ../sass/photoswipe-site.scss */
+  /* line 235, ../sass/_photoswipe-site.scss */
   .docs {
     margin-top: 32px;
   }
 
-  /* line 238, ../sass/photoswipe-site.scss */
+  /* line 238, ../sass/_photoswipe-site.scss */
   .section--head {
     margin-top: 0;
     padding: 24px 0;
   }
 }
 @media screen and (max-width: 700px) {
-  /* line 246, ../sass/photoswipe-site.scss */
+  /* line 246, ../sass/_photoswipe-site.scss */
   .demo-gallery {
     max-width: 500px;
   }
 
-  /* line 249, ../sass/photoswipe-site.scss */
+  /* line 249, ../sass/_photoswipe-site.scss */
   .demo-gallery a {
     width: 120px;
     margin: 0 4px 4px 0;
   }
 
-  /* line 253, ../sass/photoswipe-site.scss */
+  /* line 253, ../sass/_photoswipe-site.scss */
   a.demo-gallery__img--main {
     width: 164px;
   }
 }
 @media screen and (max-width: 450px) {
-  /* line 259, ../sass/photoswipe-site.scss */
+  /* line 259, ../sass/_photoswipe-site.scss */
   .demo-gallery a {
     width: 95px;
     margin: 0 1px 1px 0;
   }
 
-  /* line 263, ../sass/photoswipe-site.scss */
+  /* line 263, ../sass/_photoswipe-site.scss */
   a.demo-gallery__img--main {
     width: 127px;
   }
 }
 @media screen and (max-width: 350px) {
-  /* line 270, ../sass/photoswipe-site.scss */
+  /* line 270, ../sass/_photoswipe-site.scss */
   .demo-gallery a {
     width: 81px;
     margin: 0 1px 1px 0;
   }
 
-  /* line 274, ../sass/photoswipe-site.scss */
+  /* line 274, ../sass/_photoswipe-site.scss */
   a.demo-gallery__img--main {
     width: 109px;
   }

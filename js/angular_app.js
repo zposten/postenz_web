@@ -36,15 +36,13 @@ app.config(function($stateProvider, $urlRouterProvider){
                 $scope.subtitle = 'Real men do blog, and so do I';
 
                 highlightSelectedNav('nav-blog');
+                addPagerClickListeners();
             }
         })
-            .state('blog.one', {
-                url: '/ios/one',
-                templateUrl: 'views/ios_posts/one.html'
-            })
-            .state('blog.two', {
-                url: '/ios/two',
-                templateUrl: 'views/ios_posts/two.html'
+
+            .state('blog.post', {
+                url: '/{blogPostId}',
+                templateUrl: function(params){ return 'views/blog_posts/' + params.blogPostId + '.html'; }
             })
 
         .state('photos', {

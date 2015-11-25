@@ -1,0 +1,45 @@
+@import "colors";
+
+/* Pagination */
+.pager {
+  margin-bottom: 60px;
+  text-align: left;
+
+  li {
+      width: 140px;
+      padding: 10px 20px;
+      text-align: center;
+      border-radius: 30px;
+      display: inline-block;
+      background-color: $code-back-color;
+      border: 1px solid #ddd;
+  }
+
+  .next {
+    float: right;
+  }
+  .prev {
+    float: left;
+  }
+}
+.pager > li {
+}
+
+
+
+
+/*
+ * Blog posts
+ */
+
+.blog-post {
+  margin-bottom: 60px;
+}
+.blog-post-title {
+  margin-bottom: 5px;
+  font-size: 40px;
+}
+.blog-post-meta {
+  margin-bottom: 20px;
+  color: $subtitle-color;
+}

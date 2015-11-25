@@ -1,0 +1,25 @@
+<div class="col-sm-8 main-container">
+
+    <markdown>
+
+Often when building an application, static data is required for some function of the application.  What is the preferred way to store this data when building an iOS application?
+
+*	Context
+	*	The application I'm building for the course project requires a series of strings to be read in from a file.  In the past I've done this by merely reading from a text file, or by storing the data in a project resource file that can be accessed programmatically.  
+	*	I first attempted to read from a local text file.  This worked fine in a playground, but once the application was launched on the simulator, I no longer had access to these local files.  
+	*	I then, based on online instruction, attempted to add the aforementioned text files as project resource files through Xcode.  However this process was tricky and produced no positive results.  
+	
+*	Research
+	*	In lab, I brought this problem to the attention of Dr. Sebern.  He pointed me in the direction of Plists, or property lists as a workable solution to my problem.
+	*	According to [developer.apple.com](https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/AboutInformationPropertyListFiles.html), iOS uses a required property list, `Info.plist`, in order to obtain information about an app and how it is configured.
+	*	In addition to the required `Info.plist`, developers can create property lists of their own for situations precisely like this one.  "OS X and iOS ignore any custom keys you include in an Info.plist file. If you want to include app-specific configuration information in your Info.plist file, you may do so freely as long as your key names do not conflict with the ones Apple uses." 
+	*	Property lists are structured using XML and are useful for storing Arrays, Dictionaries, and Strings.  This XML can be edited directly, or one can using the Xcode UI to make changes to the property file which will be translated by Xcode into the proper XML format. 
+	*	[NSCookBook.com](http://nscookbook.com/2013/02/ios-programming-recipe-13-using-property-lists-plists/) warns the developer that although useful, there are several scenarios when Plists shouldn't be used:
+		*	If the data being stored is too large.  The entirety of the Plist file gets loaded into memory, so if the file becomes too large performance problems can arise.
+		*	The data needs to be updated often.  Add and remove operations are better suited for Core Data or SQL.
+		*	The data does not primarily consist of strings and numbers.
+
+    </markdown>
+
+
+</div>
