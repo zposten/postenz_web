@@ -2,7 +2,7 @@ var app = angular.module('WebsiteApp', ['ui.router']); //['ngRoute']);
 
 app.config(function($stateProvider, $urlRouterProvider){
 
-    // For any unmatched url, send to /route1
+    // For any unmatched url, send to /home
     $urlRouterProvider.otherwise("/home");
 
     $stateProvider

@@ -37,6 +37,10 @@ code {
   color: $code-fore-color;
 }
 
+.main-container > p {
+  margin-bottom: 15px;
+}
+
 /* Override Bootstrap's default container. */
 @media (min-width: 1200px) {
   .container {
@@ -72,7 +76,7 @@ code {
 }
 .subtitle {
   font-size: 20px;
-  color: #999;
+  color: $subtitle-color;
 }
 
 .row {
@@ -83,7 +87,7 @@ code {
 .main-container {
   font-size: 18px;
   line-height: 1.5;
-  width: 95%;
+  width: 1000px;
 }
 
 
