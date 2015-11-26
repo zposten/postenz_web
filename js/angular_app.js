@@ -7,8 +7,8 @@ app.config(function($stateProvider, $urlRouterProvider){
 
     $stateProvider
         .state('home', {
-            url: "/home",
-            templateUrl: "views/home.html",
+            url: '/home',
+            templateUrl: 'views/home.html',
             controller: function($scope) {
                 $scope.title = 'Zach Posten'
                 $scope.subtitle = 'Sometimes I just want to give it all up and become a handsome billionaire.'
@@ -17,8 +17,17 @@ app.config(function($stateProvider, $urlRouterProvider){
             }
         })
 
+        .state('bio', {
+            url: '/bio',
+            templateUrl: 'views/bio.html',
+            controller: function($scope) {
+                $scope.title = 'My Bio';
+                $scope.subtitle = 'A head-first dash toward an unrealistic goal.';
+            }
+        })
+
         .state('contact', {
-            url: "/contact",
+            url: '/contact',
             templateUrl: "views/contact.html",
             controller: function($scope) {
                 $scope.title = 'Contact Information'
