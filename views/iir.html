@@ -1,0 +1,19 @@
+<div class="header">
+    <h1 class="title">{{ title }}</h1>
+    <p class="lead subtitle">{{ subtitle }}</p>
+</div>
+
+<div class="col-sm-8 main-container">
+
+    <form role="form">
+        <div class="form-group">
+            <label for="iir-topic">The topic in question:</label>
+            <input type="text" class="form-control" id="iir-topic" placeholder="Enter your topic here">
+        </div>
+        <button class="btn btn-default" onclick="iir.generate()">Submit</button>
+    </form>
+
+    <br/><br/>
+    <h2 id="iir-response"></h2>
+
+</div>
