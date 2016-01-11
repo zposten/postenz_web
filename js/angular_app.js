@@ -74,7 +74,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/iir.html',
       controller: function ($scope) {
         $scope.title = 'Does the internet think it\'s racist?';
-        $scope.subtitle = '';
+        $scope.description = 'This applet crawls the appropriate parts of the internet and determines it\'s' +
+          ' collective opinion through textual analysis.  The results do not reflect my own beliefs in any way.';
       }
     })
 

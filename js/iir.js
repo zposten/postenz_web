@@ -2,16 +2,16 @@
 var iir = iir || {};
 
 iir.verbs = [
-  'thinks',
-  'does conclude',
-  'has determined',
+  'thinks that',
+  'does conclude that',
+  'has determined that',
+  'is of the opinion that',
   'is sickened by you,',
   'is sickened by you, you racist you.$',
-  'believes',
-  'is of the opinion',
+  'doesn\'t like you, racist.$',
+  'believes that',
   'is aghast that you\'re even capable of typing something so racist;',
-  'is absolutely disgusted by your existence,',
-  'doesn\'t like you, racist.$'
+  'is absolutely disgusted,'
 ];
 
 iir.descriptions = [
@@ -25,14 +25,20 @@ iir.descriptions = [
   '<span id="iir-res-pct"></span><script>iir.pct();</script>',
   '<span id="iir-res-pct"></span><script>iir.pct();</script>',
   '<span id="iir-res-pct"></span><script>iir.pct();</script>',
+  '<span id="iir-res-pct"></span><script>iir.pct();</script>',
+  '<span id="iir-res-pct"></span><script>iir.pct();</script>',
+  '<span id="iir-res-pct"></span><script>iir.pct();</script>'
 ];
 
 iir.query = function() {
 
-  $('body').loading();
+  var toLoad = '.main-container';
+  $(toLoad).loading();
+  $('#iir-response').hide();
   setInterval(function() {
-    $('body').loading('stop');
-  }, util.randInt(5000));
+    $(toLoad).loading('stop');
+    $('#iir-response').show();
+  }, 3000);
 
   var verb = util.randArrEntry(iir.verbs);
   var desc = util.randArrEntry(iir.descriptions);
