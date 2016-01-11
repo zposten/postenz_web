@@ -58,6 +58,9 @@ iir.generate = function() {
 
   if(!topic) {
     query = '<b><i>Please enter a topic to search!</i></b>';
+  } else if(input.val().toLowerCase().indexOf("posten") > -1) {
+    query = iir.query(); // for loading screen
+    query = 'The internet believes that that is 0% racist and <i>really</i> awesome to boot.';
   } else {
     query = iir.query();
   }
