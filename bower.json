@@ -1,0 +1,22 @@
+{
+  "name": "postenz_web",
+  "homepage": "https://github.com/zposten/postenz_web",
+  "authors": [
+    "Zach Posten <zposten@gmail.com>"
+  ],
+  "description": "Zach Posten's personal website",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-loading": "~1.1.0"
+  }
+}
