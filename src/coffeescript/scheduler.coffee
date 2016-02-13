@@ -16,7 +16,7 @@ class Section
     @sessions = []
     for jsonSession in jsonSessions
       for dow in jsonSession.dows
-        @sessions.push(new Session(dow, jsonSession.startTime, jsonSession.endTime))
+        @sessions.push new Session(dow, jsonSession.startTime, jsonSession.endTime)
 
   overlap: (otherSection) ->
     overlap = false
@@ -26,23 +26,18 @@ class Section
 
 
 
-class Course
-  constructor: (name, number, sessions) ->
-    @name = name
-    @number = number
-    @sessions = sessions
-
-
 class Scheduler
   constructor: (jsonCourses) ->
-    @courses = JSON.parse(jsonCourses)
-
-
+    @sections = []
+    objCourses = JSON.parse(jsonCourses)
+    for course in objCourses
+      for sec in course.sections
+        @sections.push new Section(course.name, course.number, sec.number, sec.sessions)
 
   combine: ->
     chosen = []
-    schedules = []
-    recursiveCombine(@courses, chosen, schedules)
+    @schedules = []
+    recursiveCombine(@courses, chosen, @schedules)
 
   recursiveCombine: (courses, chosen, schedules) ->
     if chosen.length is courses.length
@@ -53,13 +48,14 @@ class Scheduler
 
     for section in course
       if not overlap([section], chosen)
-        chosen.push(section)
+        chosen.push section
         recursiveCombine(courses, chosen, schedules)
-        chosen.pop()
+        chosen.pop
 
-  overlap: (scheduleA, scheduleB) ->
-
-
+  overlap: (sectionsArrOne, sectionsArrTwo) ->
+    for secA in sectionsArrOne
+      for secB in sectionsArrTwo
+        return true if secA.overlap(secB)
 
     return false
 
