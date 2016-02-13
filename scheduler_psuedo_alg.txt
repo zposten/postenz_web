@@ -1,0 +1,15 @@
+
+
+
+combine(courses, chosen, schedules) 
+	if(chosen.length == courses.length) 
+		schedules.add(chosen)
+		return
+
+	next = chosen.length
+	course = courses[next]
+	for each section in course
+		if not overlap(section, chosen)
+			chosen.add(section)
+			combine(courses, chosen, schedule)
+			chosen.remove(section)
