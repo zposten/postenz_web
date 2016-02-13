@@ -171,7 +171,7 @@ var framework = {
 			// 
 			// This detection is made because of buggy top/bottom toolbars
 			// that don't trigger window.resize event.
-			// For more info refer to _isFixedPosition variable in core.js
+			// For more info refer to _isFixedPosition variable in core.javascript
 
 			if (/iP(hone|od)/.test(navigator.platform)) {
 				var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
@@ -1331,7 +1331,7 @@ var publicMethods = {
 /**
  * Mouse/touch/pointer event handlers.
  * 
- * separated from @core.js for readability
+ * separated from @core.javascript for readability
  */
 
 var MIN_SWIPE_DISTANCE = 30,
@@ -2489,7 +2489,7 @@ _registerModule('Gestures', {
 
 /*>>show-hide-transition*/
 /**
- * show-hide-transition.js:
+ * show-hide-transition.javascript:
  *
  * Manages initial opening or closing transition.
  *
@@ -3171,7 +3171,7 @@ _registerModule('Controller', {
 
 /*>>tap*/
 /**
- * tap.js:
+ * tap.javascript:
  *
  * Displatches tap and double-tap events.
  * 
@@ -3254,7 +3254,7 @@ _registerModule('Tap', {
 /*>>desktop-zoom*/
 /**
  *
- * desktop-zoom.js:
+ * desktop-zoom.javascript:
  *
  * - Binds mousewheel event for paning zoomed image.
  * - Manages "dragging", "zoomed-in", "zoom-out" classes.
@@ -3429,7 +3429,7 @@ _registerModule('DesktopZoom', {
 /*>>history*/
 /**
  *
- * history.js:
+ * history.javascript:
  *
  * - Back button to close gallery.
  * 

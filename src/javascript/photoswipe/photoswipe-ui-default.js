@@ -312,7 +312,7 @@ var PhotoSwipeUI_Default =
 								// show preloader if progressive loading is not enabled, 
 								// or image width is not defined yet (because of slow connection)
 								_toggleLoadingIndicator(false); 
-								// items-controller.js function allowProgressiveImg
+								// items-controller.javascript function allowProgressiveImg
 							}
 							
 						} else {
