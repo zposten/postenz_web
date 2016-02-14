@@ -25,7 +25,6 @@ class Section
         overlap = overlap or mySession.overlap(theirSession)
 
 
-
 class Scheduler
   constructor: (jsonCourses) ->
     @sections = []
