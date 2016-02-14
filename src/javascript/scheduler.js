@@ -3,7 +3,8 @@
   var Scheduler, Section, Session;
 
   Session = (function() {
-    function Session(dow, strStartTime, strEndTime) {
+    function Session(dow1, strStartTime, strEndTime) {
+      this.dow = dow1;
       this.startTime = util.parseTime(strStartTime);
       this.endTime = util.parseTime(strEndTime);
     }
@@ -74,10 +75,11 @@
     }
 
     Scheduler.prototype.combine = function() {
-      var chosen;
+      var chosen, schedules;
       chosen = [];
-      this.schedules = [];
-      return recursiveCombine(this.courses, chosen, this.schedules);
+      schedules = [];
+      recursiveCombine(this.courses, chosen, this.schedules);
+      return schedules;
     };
 
     Scheduler.prototype.recursiveCombine = function(courses, chosen, schedules) {

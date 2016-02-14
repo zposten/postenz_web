@@ -1,5 +1,5 @@
 class Session
-  constructor: (dow, strStartTime, strEndTime) ->
+  constructor: (@dow, strStartTime, strEndTime) ->
     @startTime = util.parseTime(strStartTime)
     @endTime = util.parseTime(strEndTime)
 
@@ -8,11 +8,7 @@ class Session
         (@startTime < otherSession.endTime and @endTime > otherSession.startTime)
 
 class Section
-  constructor: (courseName, courseNumber, sectionNum, jsonSessions) ->
-    @courseName = courseName
-    @courseNumber = courseNumber
-    @sectionNum = sectionNum
-
+  constructor: (@courseName, @courseNumber, @sectionNum, jsonSessions) ->
     @sessions = []
     for jsonSession in jsonSessions
       for dow in jsonSession.dows
@@ -35,8 +31,9 @@ class Scheduler
 
   combine: ->
     chosen = []
-    @schedules = []
+    schedules = []
     recursiveCombine(@courses, chosen, @schedules)
+    return schedules
 
   recursiveCombine: (courses, chosen, schedules) ->
     if chosen.length is courses.length
@@ -57,6 +54,9 @@ class Scheduler
         return true if secA.overlap(secB)
 
     return false
+
+
+
 
 
 

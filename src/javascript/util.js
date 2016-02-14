@@ -37,11 +37,25 @@ util.randInt = function (length, offset) {
     return Math.floor(num);
 };
 
-util.parseTime = function(strTime) {
+util.parseTime = function (strTime) {
     var time = strTime.match(/(\d+)(?::(\d\d))?\s*(p?)/);
 
     var d = new Date();
-    d.setHours( parseInt(time[1]) + (time[3] ? 12 : 0) );
-    d.setMinutes( parseInt(time[2]) || 0 );
+    d.setHours(parseInt(time[1]) + (time[3] ? 12 : 0));
+    d.setMinutes(parseInt(time[2]) || 0);
     return d;
+};
+
+util.formatHour = function (hour) {
+    if (hour == 0) {
+        return "12:00 AM";
+    }
+    if (hour < 12) {
+        return hour + ":00 AM";
+    }
+    if (hour == 12) {
+        return "12:00 PM";
+    }
+    hour -= 12;
+    return hour + ":00 PM";
 };

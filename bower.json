@@ -17,6 +17,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery-loading": "~1.1.0"
+    "jquery-loading": "~1.1.0",
+    "jsrender": "^0.9.72"
   }
 }
