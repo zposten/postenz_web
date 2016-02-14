@@ -19,34 +19,34 @@
 
   Section = (function() {
     function Section(courseName, courseNumber, sectionNum, jsonSessions) {
-      var dow, i, j, jsonSession, len, len1, ref;
+      var dow, j, jsonSession, k, len, len1, ref;
       this.courseName = courseName;
       this.courseNumber = courseNumber;
       this.sectionNum = sectionNum;
       this.sessions = [];
-      for (i = 0, len = jsonSessions.length; i < len; i++) {
-        jsonSession = jsonSessions[i];
+      for (j = 0, len = jsonSessions.length; j < len; j++) {
+        jsonSession = jsonSessions[j];
         ref = jsonSession.dows;
-        for (j = 0, len1 = ref.length; j < len1; j++) {
-          dow = ref[j];
+        for (k = 0, len1 = ref.length; k < len1; k++) {
+          dow = ref[k];
           this.sessions.push(new Session(dow, jsonSession.startTime, jsonSession.endTime));
         }
       }
     }
 
     Section.prototype.overlap = function(otherSection) {
-      var i, len, mySession, overlap, ref, results, theirSession;
+      var j, len, mySession, overlap, ref, results, theirSession;
       overlap = false;
       ref = this.sessions;
       results = [];
-      for (i = 0, len = ref.length; i < len; i++) {
-        mySession = ref[i];
+      for (j = 0, len = ref.length; j < len; j++) {
+        mySession = ref[j];
         results.push((function() {
-          var j, len1, ref1, results1;
+          var k, len1, ref1, results1;
           ref1 = otherSection.sessions;
           results1 = [];
-          for (j = 0, len1 = ref1.length; j < len1; j++) {
-            theirSession = ref1[j];
+          for (k = 0, len1 = ref1.length; k < len1; k++) {
+            theirSession = ref1[k];
             results1.push(overlap = overlap || mySession.overlap(theirSession));
           }
           return results1;
@@ -60,42 +60,61 @@
   })();
 
   Scheduler = (function() {
-    function Scheduler(jsonCourses) {
-      var course, i, j, len, len1, objCourses, ref, sec;
-      this.sections = [];
-      objCourses = JSON.parse(jsonCourses);
-      for (i = 0, len = objCourses.length; i < len; i++) {
-        course = objCourses[i];
-        ref = course.sections;
-        for (j = 0, len1 = ref.length; j < len1; j++) {
-          sec = ref[j];
-          this.sections.push(new Section(course.name, course.number, sec.number, sec.sessions));
-        }
-      }
+    function Scheduler(objCourses) {
+      this.parseObj(objCourses);
     }
 
+    Scheduler.prototype.parseObj = function(jsonCourses) {
+      var c, course, j, k, len, len1, ref, results, sec;
+      this.courses = [];
+      results = [];
+      for (j = 0, len = jsonCourses.length; j < len; j++) {
+        c = jsonCourses[j];
+        course = {
+          name: c.name,
+          number: c.number,
+          sections: []
+        };
+        ref = c.sections;
+        for (k = 0, len1 = ref.length; k < len1; k++) {
+          sec = ref[k];
+          course.sections.push(new Section(c.name, c.number, sec.number, sec.sessions));
+        }
+        results.push(this.courses.push(course));
+      }
+      return results;
+    };
+
     Scheduler.prototype.combine = function() {
-      var chosen, schedules;
-      chosen = [];
+      var schedules;
       schedules = [];
-      recursiveCombine(this.courses, chosen, this.schedules);
+      this.recursiveCombine(this.courses, [], schedules, 0);
       return schedules;
     };
 
-    Scheduler.prototype.recursiveCombine = function(courses, chosen, schedules) {
-      var course, i, len, next, results, section;
-      if (chosen.length === courses.length) {
-        schedules.push(chosen);
+    Scheduler.prototype.recursiveCombine = function(courses, chosenSections, schedules, level) {
+      var course, i, j, k, len, next, ref, results, section, tabs;
+      tabs = '';
+      for (i = j = 0, ref = level; 0 <= ref ? j <= ref : j >= ref; i = 0 <= ref ? ++j : --j) {
+        tabs += '\t';
       }
-      next = chosen.length;
-      course = chosen[next];
+      console.log(tabs + "courses:  " + JSON.stringify(courses));
+      console.log(tabs + "chosenSections:  " + JSON.stringify(chosenSections));
+      console.log(tabs + "schedules:  " + JSON.stringify(schedules));
+      console.log('=====================================');
+      if (chosenSections.length === Object.size(courses)) {
+        schedules.push(chosenSections);
+        return;
+      }
+      next = chosenSections.length;
+      course = courses[next];
       results = [];
-      for (i = 0, len = course.length; i < len; i++) {
-        section = course[i];
-        if (!overlap([section], chosen)) {
-          chosen.push(section);
-          recursiveCombine(courses, chosen, schedules);
-          results.push(chosen.pop);
+      for (k = 0, len = course.length; k < len; k++) {
+        section = course[k];
+        if (!this.overlap(section, chosenSections)) {
+          chosenSections.push(section);
+          this.recursiveCombine(courses, chosenSections, schedules, level + 1);
+          results.push(chosenSections.pop);
         } else {
           results.push(void 0);
         }
@@ -103,23 +122,29 @@
       return results;
     };
 
-    Scheduler.prototype.overlap = function(sectionsArrOne, sectionsArrTwo) {
-      var i, j, len, len1, secA, secB;
-      for (i = 0, len = sectionsArrOne.length; i < len; i++) {
-        secA = sectionsArrOne[i];
-        for (j = 0, len1 = sectionsArrTwo.length; j < len1; j++) {
-          secB = sectionsArrTwo[j];
-          if (secA.overlap(secB)) {
-            return true;
-          }
+    Scheduler.prototype.overlap = function(secA, sectionsArr) {
+      var j, len, secB;
+      for (j = 0, len = sectionsArr.length; j < len; j++) {
+        secB = sectionsArr[j];
+        if (secA.overlap(secB)) {
+          return true;
         }
       }
       return false;
     };
 
+    Scheduler.prototype.makeSchedules = function() {
+      var tableMaker;
+      this.schedules = this.combine();
+      tableMaker = new TableMaker(this.schedules);
+      return tableMaker.makeHtml();
+    };
+
     return Scheduler;
 
   })();
+
+  window.Scheduler = Scheduler;
 
 }).call(this);
 

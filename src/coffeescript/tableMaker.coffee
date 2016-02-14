@@ -1,12 +1,13 @@
 class TableMaker
   constructor: (@schedules) ->
-    for schedule in @schedules
-      makeHtml(schedule)
 
   makeHtml: (schedule) ->
-    tableHtml = makeBaseTableHtml(schedule)
-    classDivs = makeClassDivs(schedule)
-    return '<div class="schedule"><div class="schedule-table">#{tableHtml}#{classDivs}</div></div>';
+    tables = []
+    for schedule in @schedules
+      tableHtml = makeBaseTableHtml(schedule)
+      classDivs = makeClassDivs(schedule)
+      tables.push '<div class="schedule"><div class="schedule-table">' + tableHtml + classDivs + '</div></div>'
+    return tables;
 
 
   makeBasicTableHtml: (sectionArr) ->
@@ -45,3 +46,6 @@ class TableMaker
 
 
   makeClassDivs: (sectionArr) ->
+    return ''
+
+window.TableMaker = TableMaker

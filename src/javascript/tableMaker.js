@@ -4,20 +4,20 @@
 
   TableMaker = (function() {
     function TableMaker(schedules) {
-      var i, len, ref, schedule;
       this.schedules = schedules;
-      ref = this.schedules;
-      for (i = 0, len = ref.length; i < len; i++) {
-        schedule = ref[i];
-        makeHtml(schedule);
-      }
     }
 
     TableMaker.prototype.makeHtml = function(schedule) {
-      var classDivs, tableHtml;
-      tableHtml = makeBaseTableHtml(schedule);
-      classDivs = makeClassDivs(schedule);
-      return '<div class="schedule"><div class="schedule-table">#{tableHtml}#{classDivs}</div></div>';
+      var classDivs, i, len, ref, tableHtml, tables;
+      tables = [];
+      ref = this.schedules;
+      for (i = 0, len = ref.length; i < len; i++) {
+        schedule = ref[i];
+        tableHtml = makeBaseTableHtml(schedule);
+        classDivs = makeClassDivs(schedule);
+        tables.push('<div class="schedule"><div class="schedule-table">' + tableHtml + classDivs + '</div></div>');
+      }
+      return tables;
     };
 
     TableMaker.prototype.makeBasicTableHtml = function(sectionArr) {
@@ -70,11 +70,15 @@
       }).apply(this);
     };
 
-    TableMaker.prototype.makeClassDivs = function(sectionArr) {};
+    TableMaker.prototype.makeClassDivs = function(sectionArr) {
+      return '';
+    };
 
     return TableMaker;
 
   })();
+
+  window.TableMaker = TableMaker;
 
 }).call(this);
 

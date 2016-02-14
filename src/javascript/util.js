@@ -59,3 +59,11 @@ util.formatHour = function (hour) {
     hour -= 12;
     return hour + ":00 PM";
 };
+
+Object.size = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};

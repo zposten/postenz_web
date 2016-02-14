@@ -22,40 +22,56 @@ class Section
 
 
 class Scheduler
-  constructor: (jsonCourses) ->
-    @sections = []
-    objCourses = JSON.parse(jsonCourses)
-    for course in objCourses
-      for sec in course.sections
-        @sections.push new Section(course.name, course.number, sec.number, sec.sessions)
+  constructor: (objCourses) ->
+    @parseObj(objCourses)
+
+  parseObj: (jsonCourses) ->
+    @courses = []
+    for c in jsonCourses
+      course = {name: c.name, number: c.number, sections: []}
+      for sec in c.sections
+        course.sections.push new Section(c.name, c.number, sec.number, sec.sessions)
+      @courses.push course
 
   combine: ->
-    chosen = []
     schedules = []
-    recursiveCombine(@courses, chosen, @schedules)
+    @recursiveCombine(@courses, [], schedules, 0)
     return schedules
 
-  recursiveCombine: (courses, chosen, schedules) ->
-    if chosen.length is courses.length
-      schedules.push(chosen)
+  recursiveCombine: (courses, chosenSections, schedules, level) ->
+    tabs = ''
+    for i in [0..level]
+      tabs += '\t'
+    console.log tabs + "courses:  " + JSON.stringify(courses)
+    console.log tabs + "chosenSections:  " + JSON.stringify(chosenSections)
+    console.log tabs + "schedules:  " + JSON.stringify(schedules)
+    console.log '====================================='
 
-    next = chosen.length
-    course = chosen[next]
+    if chosenSections.length is Object.size(courses)
+      schedules.push chosenSections
+      return
+
+    next = chosenSections.length
+    course = courses[next]
 
     for section in course
-      if not overlap([section], chosen)
-        chosen.push section
-        recursiveCombine(courses, chosen, schedules)
-        chosen.pop
+      if not @overlap(section, chosenSections)
+        chosenSections.push section
+        @recursiveCombine(courses, chosenSections, schedules, level+1)
+        chosenSections.pop
 
-  overlap: (sectionsArrOne, sectionsArrTwo) ->
-    for secA in sectionsArrOne
-      for secB in sectionsArrTwo
-        return true if secA.overlap(secB)
-
+  overlap: (secA, sectionsArr) ->
+    for secB in sectionsArr
+      return true if secA.overlap(secB)
     return false
 
+  makeSchedules: ->
+    @schedules = @combine()
+    tableMaker = new TableMaker(@schedules)
+    return tableMaker.makeHtml()
 
+
+window.Scheduler = Scheduler
 
 
 

@@ -24,7 +24,7 @@ File watchers can be configured in WebStorm to automatically transcompile coffee
 		1. **Program:**  `C:\Ruby22-x64\bin\compass.bat`
 		1. **Arguments:**  `compile $UnixSeparators($ProjectFileDir$\src)$`
 		1. **Working directory:**  `$FileDir$`
-	1. CoffeeScript:
+	1. [CoffeeScript](https://www.jetbrains.com/webstorm/help/transpiling-coffeescript-to-javascript.html):
 		1. **File type:**  CoffeeScript
 		1. **Scope:**:  Project Files
 		1. **Program:**  `C:\Users\zpost\AppData\Roaming\npm\coffee.cmd`
