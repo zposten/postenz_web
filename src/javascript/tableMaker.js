@@ -3,18 +3,18 @@
   var TableMaker;
 
   TableMaker = (function() {
-    function TableMaker(schedules) {
-      this.schedules = schedules;
+    function TableMaker(sectionDoubleArr) {
+      this.schedules = sectionDoubleArr;
     }
 
     TableMaker.prototype.makeHtml = function(schedule) {
-      var classDivs, i, len, ref, tableHtml, tables;
+      var classDivs, i, len, ref, sectionArr, tableHtml, tables;
       tables = [];
       ref = this.schedules;
       for (i = 0, len = ref.length; i < len; i++) {
-        schedule = ref[i];
-        tableHtml = makeBaseTableHtml(schedule);
-        classDivs = makeClassDivs(schedule);
+        sectionArr = ref[i];
+        tableHtml = this.makeBasicTableHtml(sectionArr);
+        classDivs = this.makeClassDivs(sectionArr);
         tables.push('<div class="schedule"><div class="schedule-table">' + tableHtml + classDivs + '</div></div>');
       }
       return tables;
@@ -25,7 +25,7 @@
       thead = '<thead><tr><th class="time">Time</th><th>Monday</th><th>Tuesday</th>' + '<th>Wednesday</th><th>Thursday</th><th>Friday</th></tr></thead>';
       rowTempl = $.templates("<tr><th>{{:time}}</th><td></td><td></td><td></td><td></td><td></td></tr>");
       tableRows = '';
-      ref = getTimeRange(schedule);
+      ref = this.getTimeRange(sectionArr);
       for (i = 0, len = ref.length; i < len; i++) {
         hour = ref[i];
         tableRows += rowTempl.render({
@@ -54,15 +54,21 @@
             secLast = session.endTime;
           }
         }
-        first = ((first === null) || (secFirst < first))({
-          secFirst: first
-        });
-        last = ((last === null) || (secLast > last))({
-          secLast: last
-        });
-        first.setHours(first.getHours() - 1);
+        if ((first === null) || (secFirst < first)) {
+          first = secFirst;
+        }
+        if ((last === null) || (secLast > last)) {
+          last = secLast;
+        }
+      }
+      if (first === null || last === null) {
+        return [0];
+      }
+      if (last.getMinutes() > 0) {
         last.setHours(last.getHours() + 1);
       }
+      first.setHours(first.getHours() - 1);
+      last.setHours(last.getHours() + 1);
       return (function() {
         results = [];
         for (var k = ref1 = first.getHours(), ref2 = last.getHours(); ref1 <= ref2 ? k <= ref2 : k >= ref2; ref1 <= ref2 ? k++ : k--){ results.push(k); }

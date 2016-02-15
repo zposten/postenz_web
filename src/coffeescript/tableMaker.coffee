@@ -1,11 +1,12 @@
 class TableMaker
-  constructor: (@schedules) ->
+  constructor: (sectionDoubleArr) ->
+    @schedules = sectionDoubleArr
 
   makeHtml: (schedule) ->
     tables = []
-    for schedule in @schedules
-      tableHtml = makeBaseTableHtml(schedule)
-      classDivs = makeClassDivs(schedule)
+    for sectionArr in @schedules
+      tableHtml = @makeBasicTableHtml(sectionArr)
+      classDivs = @makeClassDivs(sectionArr)
       tables.push '<div class="schedule"><div class="schedule-table">' + tableHtml + classDivs + '</div></div>'
     return tables;
 
@@ -16,7 +17,7 @@ class TableMaker
 
     rowTempl = $.templates("<tr><th>{{:time}}</th><td></td><td></td><td></td><td></td><td></td></tr>")
     tableRows = ''
-    for hour in getTimeRange(schedule)
+    for hour in @getTimeRange(sectionArr)
       tableRows += rowTempl.render({time: util.formatHour(hour)})
 
     tableHtml = "<table>#{thead}<tbody>#{tableRows}</tbody></table>"
@@ -36,11 +37,18 @@ class TableMaker
         if (secLast == null) or (session.endTime > secLast)
           secLast = session.endTime
 
-      first = ((first is null) or (secFirst < first)) secFirst: first
-      last = ((last is null) or (secLast > last)) secLast: last
 
-      first.setHours(first.getHours() - 1)
-      last.setHours(last.getHours() + 1)
+      first = secFirst if (first is null) or (secFirst < first)
+      last = secLast if (last is null) or (secLast > last)
+
+    return [0] if first is null or last is null
+
+    # If last goes past the hour, add an additional hour
+    last.setHours(last.getHours() + 1) if last.getMinutes() > 0
+
+    # Add one hour on either side of the range
+    first.setHours(first.getHours() - 1)
+    last.setHours(last.getHours() + 1)
 
     return [first.getHours()..last.getHours()]
 

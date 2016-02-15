@@ -18,6 +18,10 @@
   ],
   "dependencies": {
     "jquery-loading": "~1.1.0",
-    "jsrender": "^0.9.72"
+    "jsrender": "^0.9.72",
+    "jquery": "^2.2.0"
+  },
+  "devDependencies": {
+    "jasmine-jquery": "^2.1.1"
   }
 }

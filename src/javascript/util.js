@@ -38,32 +38,63 @@ util.randInt = function (length, offset) {
 };
 
 util.parseTime = function (strTime) {
-    var time = strTime.match(/(\d+)(?::(\d\d))?\s*(p?)/);
+    var time = strTime.match(/(\d+)(?::(\d\d))?\s*([pP]?)/);
 
     var d = new Date();
-    d.setHours(parseInt(time[1]) + (time[3] ? 12 : 0));
-    d.setMinutes(parseInt(time[2]) || 0);
+    var hours = parseInt(time[1], 10);
+    var minutes = parseInt(time[2], 10);
+
+    var isPM = time[3];
+    var increment = isPM ? 12 : 0;
+
+    if (hours == 12) {
+        if(isPM) {
+            increment = 0;
+        } else {
+            hours = 0;
+        }
+    }
+
+    d.setHours(hours + increment);
+    d.setMinutes(minutes || 0);
+    d.setSeconds(0);
+
+    //var str = 'PARSETIME:  \n\tinput: {0}\n\thours: {1}\n\tmins: {2}\n\tisPM: {3}\n\tincrement: {4}\n\toutput: {5}';
+    //console.log(str.format(strTime, hours, minutes, isPM, increment, d.toLocaleTimeString()));
+
     return d;
 };
 
 util.formatHour = function (hour) {
-    if (hour == 0) {
-        return "12:00 AM";
-    }
-    if (hour < 12) {
-        return hour + ":00 AM";
-    }
-    if (hour == 12) {
-        return "12:00 PM";
-    }
-    hour -= 12;
-    return hour + ":00 PM";
+    if (hour == 0) return "12:00 AM";
+    if (hour < 12) return hour + ":00 AM";
+    if (hour == 12) return "12:00 PM";
+    return (hour - 12) + ":00 PM";
 };
 
-Object.size = function(obj) {
+/***************************************/
+/** JAVASCRIPT LANGUAGE MANIPULATIONS */
+/*************************************/
+
+Object.size = function (obj) {
     var size = 0, key;
     for (key in obj) {
         if (obj.hasOwnProperty(key)) size++;
     }
     return size;
 };
+
+/**
+ * Add a format() method to the string prototype
+ */
+if (!String.prototype.format) {
+    String.prototype.format = function () {
+        var args = arguments;
+        return this.replace(/{(\d+)}/g, function (match, number) {
+            return typeof args[number] != 'undefined'
+                ? args[number]
+                : match
+                ;
+        });
+    };
+}

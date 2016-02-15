@@ -1,7 +1,27 @@
 class Session
   constructor: (@dow, strStartTime, strEndTime) ->
-    @startTime = util.parseTime(strStartTime)
-    @endTime = util.parseTime(strEndTime)
+    @startTime = @parseTime(strStartTime)
+    @endTime = @parseTime(strEndTime)
+
+  parseTime: (strTime) ->
+    time = strTime.match(/(\d+)(?::(\d\d))?\s*([pP]?)/)
+    d = new Date()
+    hours = parseInt(time[1], 10)
+    minutes = parseInt(time[2], 10)
+    isPM = time[3]
+    increment = if isPM then 12 else 0
+
+    if hours is 12
+      if isPM
+        increment = 0
+      else
+        hours = 0
+
+    d.setHours(hours + increment)
+    d.setMinutes(minutes || 0)
+    d.setSeconds(0)
+    return d
+
 
   overlap: (otherSession) ->
     onSameDay = @dow is otherSession.dow
@@ -18,7 +38,7 @@ class Session
     return thisOverlapsThat or thatOverlapsThis
 
 class Section
-  constructor: (@courseName, @courseNumber, @sectionNum, jsonSessions) ->
+  constructor: (@courseName, @courseNumber, @number, jsonSessions) ->
     @sessions = []
     for jsonSession in jsonSessions
       for dow in jsonSession.dows
@@ -29,7 +49,12 @@ class Section
     for mySession in @sessions
       for theirSession in otherSection.sessions
         overlap = overlap or mySession.overlap(theirSession)
+    return overlap
 
+class Course
+  constructor: (@name, @number, @sections = []) ->
+  addSection: (section) ->
+    @sections.push section
 
 class Scheduler
   constructor: (objCourses) ->
@@ -38,37 +63,29 @@ class Scheduler
   parseObj: (jsonCourses) ->
     @courses = []
     for c in jsonCourses
-      course = {name: c.name, number: c.number, sections: []}
+      course = new Course(c.name, c.number);
       for sec in c.sections
-        course.sections.push new Section(c.name, c.number, sec.number, sec.sessions)
+        course.addSection new Section(c.name, c.number, sec.number, sec.sessions)
       @courses.push course
 
   combine: ->
     schedules = []
-    @recursiveCombine(@courses, [], schedules, 0)
+    @recursiveCombine(@courses, [], schedules)
     return schedules
 
-  recursiveCombine: (courses, chosenSections, schedules, level) ->
-    tabs = ''
-    for i in [0..level]
-      tabs += '\t'
-    console.log tabs + "courses:  " + JSON.stringify(courses)
-    console.log tabs + "chosenSections:  " + JSON.stringify(chosenSections)
-    console.log tabs + "schedules:  " + JSON.stringify(schedules)
-    console.log '====================================='
-
+  recursiveCombine: (courses, chosenSections, schedules) ->
     if chosenSections.length is Object.size(courses)
-      schedules.push chosenSections
+      schedules.push [chosenSections...]
       return
 
     next = chosenSections.length
     course = courses[next]
-
-    for section in course
+    for section in course.sections
       if not @overlap(section, chosenSections)
         chosenSections.push section
-        @recursiveCombine(courses, chosenSections, schedules, level+1)
-        chosenSections.pop
+        @recursiveCombine(courses, chosenSections, schedules)
+        chosenSections.pop()
+
 
   overlap: (secA, sectionsArr) ->
     for secB in sectionsArr
