@@ -4,8 +4,18 @@ class Session
     @endTime = util.parseTime(strEndTime)
 
   overlap: (otherSession) ->
-    return (otherSession.startTime < @endTime and otherSession.endTime > @startTime) or
-        (@startTime < otherSession.endTime and @endTime > otherSession.startTime)
+    onSameDay = @dow is otherSession.dow
+    return false if not onSameDay
+
+    thatStartsB4ThisEnds = otherSession.startTime < @endTime
+    thatEndsAfterThisStarts = otherSession.endTime > @startTime
+    thisOverlapsThat = thatStartsB4ThisEnds and thatEndsAfterThisStarts
+
+    thisStartsB4ThatEnds = @startTime < otherSession.endTime
+    thisEndsAfterThatStarts = @endTime > otherSession.startTime
+    thatOverlapsThis = thisStartsB4ThatEnds and thisEndsAfterThatStarts
+
+    return thisOverlapsThat or thatOverlapsThis
 
 class Section
   constructor: (@courseName, @courseNumber, @sectionNum, jsonSessions) ->
@@ -72,6 +82,10 @@ class Scheduler
 
 
 window.Scheduler = Scheduler
+
+test = {Section: Section, Session: Session}
+window.test = test
+
 
 
 
