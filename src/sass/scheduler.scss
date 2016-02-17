@@ -1,3 +1,5 @@
+@import "colors";
+
 .schedule {
   margin: 0 0 40px 0;
   padding: 0;
@@ -145,6 +147,87 @@
     background-color: #ff775c;
   }
 }
+
+div.schd-section-time-dow {
+  display: inline-block;
+  width: 25px;
+  text-align: center;
+  //height: 20px;
+}
+
+input.schd-section-time-dow {
+  width: 25px;
+  margin: 0;
+  padding: 0;
+
+}
+
+input.sec-num {
+  width: 100px;
+}
+
+select.schd-section-time-hour {
+  //color: $nav-dark-highlight-color;
+  color: $nav-color;
+}
+
+div.schd-section-time {
+  //display: table-cell;
+  display:flex;
+  align-items:center;
+}
+
+div.schd-section {
+  margin-left: 30px;
+  margin-top: 20px;
+  min-width: 420px;
+
+  div.schd-section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+
+    div.schd-section-times {
+      width: 400px;
+
+      .add-time {
+        margin-top: 10px;
+      }
+    }
+
+    &.alt {
+      background-color: $nav-color;
+    }
+
+  }
+
+  .schd-add-section {
+    margin-top: 20px;
+    margin-left: 30px;
+
+  }
+
+}
+
+.clear {
+  clear: both;
+}
+
+
+div.schd-course {
+  padding-top: 30px;
+
+  .schd-add-course {
+    margin-top: 30px;
+  }
+}
+
+
+
+
+
+
+
 
 .schedule-table thead tr > th:first-child {
   border-left: 1px solid #292929;

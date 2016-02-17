@@ -79,7 +79,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     ' programming because, well,  that\'s what I do all day.  Sometimes though, I get started on' +
                     ' something' +
                     ' and become engrossed in the project until it\'s complete.  Below are examples of those times.';
+                $scope.days = ['M', 'T', 'W', 'R', 'F'];
 
+                highlightSelectedNav('nav-apps');
             }
         })
 
@@ -98,8 +100,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'views/scheduler.html',
             controller: function($scope) {
                 $scope.title = 'Class Scheduler';
-                $scope.description = 'MSOE has a very useful scheduling application that every student makes use' +
-                    ' of when he or she is choosing their classes every quarter.  Other schools aren\'t quite' +
+                $scope.description = 'MSOE has a very useful scheduling application that students can make use of' +
+                    ' of when choosing their classes each quarter.  Other schools aren\'t quite' +
                     ' so lucky though and have to go through this tedious process of finding possible schedules' +
                     ' manually.  To help with this, I have implemented a scheduling application that any student at' +
                     ' any university should be able to make use of.'
@@ -134,3 +136,9 @@ app.directive('photoswipe', ['$rootScope', function ($rootScope) {
         }
     };
 }]);
+
+app.directive('selectTime', function () {
+    return {
+        templateUrl: 'views/select-time.html'
+    };
+});

@@ -94,13 +94,12 @@ code {
 .main-container {
   font-size: 18px;
   line-height: 1.5;
-  width: 1000px;
 }
 
 /*
  * Footer
  */
-/* line 98, ../sass/_main.scss */
+/* line 99, ../sass/_main.scss */
 .blog-footer {
   padding: 40px 0;
   color: #999;
@@ -109,7 +108,7 @@ code {
   border-top: 1px solid #e5e5e5;
 }
 
-/* line 105, ../sass/_main.scss */
+/* line 106, ../sass/_main.scss */
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
