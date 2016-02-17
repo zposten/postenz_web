@@ -2,107 +2,121 @@ var app = angular.module('WebsiteApp', ['ui.router']); //['ngRoute']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
 
-  // For any unmatched url, send to /home
-  $urlRouterProvider.otherwise("/home");
+    // For any unmatched url, send to /home
+    $urlRouterProvider.otherwise("/home");
 
-  $stateProvider
-    .state('home', {
-      url: '/home',
-      templateUrl: 'views/home.html',
-      controller: function ($scope) {
-        $scope.title = 'Zach Posten'
-        $scope.subtitle = 'Sometimes I just want to give it all up and become a handsome billionaire.'
+    $stateProvider
+        .state('home', {
+            url: '/home',
+            templateUrl: 'views/home.html',
+            controller: function ($scope) {
+                $scope.title = 'Zach Posten'
+                $scope.subtitle = 'Sometimes I just want to give it all up and become a handsome billionaire.'
 
-        highlightSelectedNav('nav-home');
-      }
-    })
+                highlightSelectedNav('nav-home');
+            }
+        })
 
-    .state('bio', {
-      url: '/bio',
-      templateUrl: 'views/bio.html',
-      controller: function ($scope) {
-        $scope.title = 'My Bio';
-        $scope.subtitle = 'A head-first dash toward an unrealistic goal.';
-      }
-    })
+        .state('bio', {
+            url: '/bio',
+            templateUrl: 'views/bio.html',
+            controller: function ($scope) {
+                $scope.title = 'My Bio';
+                $scope.subtitle = 'A head-first dash toward an unrealistic goal.';
+            }
+        })
 
-    .state('contact', {
-      url: '/contact',
-      templateUrl: "views/contact.html",
-      controller: function ($scope) {
-        $scope.title = 'Contact Information'
-        $scope.subtitle = 'How you\'ll reach me when you inevitably want to';
+        .state('contact', {
+            url: '/contact',
+            templateUrl: "views/contact.html",
+            controller: function ($scope) {
+                $scope.title = 'Contact Information'
+                $scope.subtitle = 'How you\'ll reach me when you inevitably want to';
 
-        highlightSelectedNav('nav-contact');
-      }
-    })
+                highlightSelectedNav('nav-contact');
+            }
+        })
 
-    .state('blog', {
-      url: "/blog",
-      templateUrl: "views/blog.html",
-      controller: function ($scope) {
-        $scope.title = 'The Blog';
-        $scope.subtitle = 'Real men do blog, and so do I';
+        .state('blog', {
+            url: "/blog",
+            templateUrl: "views/blog.html",
+            controller: function ($scope) {
+                $scope.title = 'The Blog';
+                $scope.subtitle = 'Real men do blog, and so do I';
 
-        highlightSelectedNav('nav-blog');
-        addPagerClickListeners();
-      }
-    })
+                highlightSelectedNav('nav-blog');
+                addPagerClickListeners();
+            }
+        })
 
-    .state('blog.post', {
-      url: '/{blogPostId}',
-      templateUrl: function (params) {
-        return 'views/blog_posts/' + params.blogPostId + '.html';
-      }
-    })
+        .state('blog.post', {
+            url: '/{blogPostId}',
+            templateUrl: function (params) {
+                return 'views/blog_posts/' + params.blogPostId + '.html';
+            }
+        })
 
-    .state('photos', {
-      url: '/photos',
-      templateUrl: 'views/photos.html',
-      controller: function ($scope) {
+        .state('photos', {
+            url: '/photos',
+            templateUrl: 'views/photos.html',
+            controller: function ($scope) {
 
-        $scope.title = 'Posten Photography';
-        $scope.subtitle = 'I have taken at least one good photo';
-        $scope.photos = photoswipe.photos;
+                $scope.title = 'Posten Photography';
+                $scope.subtitle = 'I have taken at least one good photo';
+                $scope.photos = photoswipe.photos;
 
-        highlightSelectedNav('nav-photos');
-      }
-    })
+                highlightSelectedNav('nav-photos');
+            }
+        })
 
-    .state('iir', {
-      url: '/isItRacist',
-      templateUrl: 'views/iir.html',
-      controller: function ($scope) {
-        $scope.title = 'Does the internet think it\'s racist?';
-        $scope.description = 'This applet crawls the appropriate parts of the internet and determines it\'s' +
-          ' collective opinion through textual analysis.  The results do not reflect my own beliefs in any way.';
-      }
-    })
+        .state('iir', {
+            url: '/isItRacist',
+            templateUrl: 'views/iir.html',
+            controller: function ($scope) {
+                $scope.title = 'Does the internet think it\'s racist?';
+                $scope.description = 'This applet crawls the appropriate parts of the internet and determines it\'s' +
+                    ' collective opinion through textual analysis.  The results do not reflect my own beliefs in any way.';
+            }
+        })
+
+        .state('scheduler', {
+            url: '/scheduler',
+            templateUrl: 'views/scheduler.html',
+            controller: function($scope) {
+                $scope.title = 'Class Scheduler';
+                $scope.description = 'MSOE has this very useful scheduling application that every student makes use' +
+                    ' of when he or she is scheduling for their classes every quarter.  Other schools aren\'t quite' +
+                    ' so lucky however and have to do this tedious process of finding possible schedules manually.' +
+                    '  To help with this I have implemented a scheduling application that any student at' +
+                    ' any university should be able to make use of.'
+            }
+        })
+
 
 });
 
 
 app.directive('markdown', function ($window) {
-  var converter = new $window.Showdown.converter();
-  return {
-    restrict: 'E',
-    link: function (scope, element, attrs) {
-      var htmlText = converter.makeHtml(element.text());
-      element.html(htmlText);
+    var converter = new $window.Showdown.converter();
+    return {
+        restrict: 'E',
+        link: function (scope, element, attrs) {
+            var htmlText = converter.makeHtml(element.text());
+            element.html(htmlText);
+        }
     }
-  }
 });
 
 
 app.directive('photoswipe', ['$rootScope', function ($rootScope) {
-  return {
-    restrict: 'EA',
-    templateUrl: 'views/gallery.html',
-    link: function (scope, elem, attrs) {
-      //attrs references any attributes on the directive element in html
-      //elem is the actual DOM element of the directive,so you can bind it with jQuery
+    return {
+        restrict: 'EA',
+        templateUrl: 'views/gallery.html',
+        link: function (scope, elem, attrs) {
+            //attrs references any attributes on the directive element in html
+            //elem is the actual DOM element of the directive,so you can bind it with jQuery
 
-      photoswipe.init('.demo-gallery');
-    }
-  };
+            photoswipe.init('.demo-gallery');
+        }
+    };
 }]);

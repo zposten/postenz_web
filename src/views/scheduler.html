@@ -1,0 +1,31 @@
+<div class="header">
+    <h1 class="title">{{ title }}</h1>
+</div>
+
+<div class="col-sm-8 main-container">
+
+    <p>{{ description }}</p>
+
+    <div id="here" style="width: 621px"></div>
+
+    <script>
+
+        $(document).ready(function () {
+
+            var input = JSON.parse('[ { "name": "Cloud Computing", "number": "CS 4230", "sections": [ { "number": "011", ' +
+                    '"sessions": [ { "dows": [1, 3], "startTime": "4:00 PM", "endTime": "4:50 PM" },  { "dows": [2], "startTime": ' +
+                    '"3:00 PM", "endTime": "4:50 PM" } ] },  { "number": "012", "sessions": [ { "dows": [1, 3], "startTime": ' +
+                    '"4:00 PM", "endTime": "4:50 PM" },  { "dows": [4], "startTime": "3:00 PM", "endTime": "4:50 PM" } ] } ] },  ' +
+                    '{ "name": "Complex Variables", "number": "MA 381", "sections": [ { "number": "001", "sessions": [ { "dows": [' +
+                    '2, 4, 5], "startTime": "2:00 PM", "endTime": "2:50 PM" } ] } ] } ]'
+            );
+
+            var scheduler = new window.Scheduler(input);
+
+            $('div#here').html(scheduler.makeSchedules());
+
+        });
+
+    </script>
+
+</div>
