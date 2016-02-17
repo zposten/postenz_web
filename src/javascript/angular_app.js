@@ -40,9 +40,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('blog', {
             url: "/blog",
             templateUrl: "views/blog.html",
-            controller: function ($scope) {
+            controller: function ($scope, $sce) {
                 $scope.title = 'The Blog';
-                $scope.subtitle = 'Real men do blog, and so do I';
+                $scope.subtitle = $sce.trustAsHtml('I will be updating this page in the <strike ng-bind-html>near</strike> future, I promise');
 
                 highlightSelectedNav('nav-blog');
                 addPagerClickListeners();
@@ -69,6 +69,20 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             }
         })
 
+        .state('apps', {
+            url: '/apps',
+            templateUrl: 'views/apps.html',
+            controller: function ($scope) {
+
+                $scope.title = 'Applets';
+                $scope.description = 'In the little free time that I do have, I don\'t always like to spend it' +
+                    ' programming because, well,  that\'s what I do all day.  Sometimes though, I get started on' +
+                    ' something' +
+                    ' and become engrossed in the project until it\'s complete.  Below are examples of those times.';
+
+            }
+        })
+
         .state('iir', {
             url: '/isItRacist',
             templateUrl: 'views/iir.html',
@@ -84,10 +98,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'views/scheduler.html',
             controller: function($scope) {
                 $scope.title = 'Class Scheduler';
-                $scope.description = 'MSOE has this very useful scheduling application that every student makes use' +
-                    ' of when he or she is scheduling for their classes every quarter.  Other schools aren\'t quite' +
-                    ' so lucky however and have to do this tedious process of finding possible schedules manually.' +
-                    '  To help with this I have implemented a scheduling application that any student at' +
+                $scope.description = 'MSOE has a very useful scheduling application that every student makes use' +
+                    ' of when he or she is choosing their classes every quarter.  Other schools aren\'t quite' +
+                    ' so lucky though and have to go through this tedious process of finding possible schedules' +
+                    ' manually.  To help with this, I have implemented a scheduling application that any student at' +
                     ' any university should be able to make use of.'
             }
         })

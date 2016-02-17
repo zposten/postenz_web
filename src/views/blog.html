@@ -1,6 +1,7 @@
 <div class="header">
     <h1 class="title">{{ title }}</h1>
-    <p class="lead subtitle">{{ subtitle }}</p>
+    <!--<p class="lead subtitle">{{ subtitle }}</p>-->
+    <p class="lead subtitle" ng-bind-html="subtitle"></p>
 </div>
 
 <div class="col-sm-8 main-container">
