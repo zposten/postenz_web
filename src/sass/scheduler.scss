@@ -86,12 +86,18 @@
     font-weight: bold;
   }
 
+  .course-text {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
   .dayM, .dayT, .dayW, .dayR, .dayF {
     position: absolute;
     width: 111px;
     top: 0;
     text-align: center;
     box-sizing: border-box;
+    display: table;
   }
 
   .dayM {

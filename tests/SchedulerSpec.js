@@ -207,6 +207,9 @@ describe("Scheduler", function () {
         expect(schedules[1][0].number).toEqual('012');
         expect(schedules[1][1].courseNumber).toEqual('MA 381');
         expect(schedules[1][1].number).toEqual('001');
+
+        var html = scheduler.makeSchedules();
+        console.log(html);
     });
 
 

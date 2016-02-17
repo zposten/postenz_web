@@ -31,6 +31,13 @@
       return d;
     };
 
+    Session.prototype.lengthInMins = function() {
+      var hourOffset, minuteOffset;
+      hourOffset = this.endTime.getHours() - this.startTime.getHours();
+      minuteOffset = (hourOffset * 60) + this.endTime.getMinutes() - this.startTime.getMinutes();
+      return minuteOffset;
+    };
+
     Session.prototype.overlap = function(otherSession) {
       var onSameDay, thatEndsAfterThisStarts, thatOverlapsThis, thatStartsB4ThisEnds, thisEndsAfterThatStarts, thisOverlapsThat, thisStartsB4ThatEnds;
       onSameDay = this.dow === otherSession.dow;

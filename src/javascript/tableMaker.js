@@ -7,7 +7,7 @@
       this.schedules = sectionDoubleArr;
     }
 
-    TableMaker.prototype.makeHtml = function(schedule) {
+    TableMaker.prototype.makeHtml = function() {
       var classDivs, i, len, ref, sectionArr, tableHtml, tables;
       tables = [];
       ref = this.schedules;
@@ -25,7 +25,8 @@
       thead = '<thead><tr><th class="time">Time</th><th>Monday</th><th>Tuesday</th>' + '<th>Wednesday</th><th>Thursday</th><th>Friday</th></tr></thead>';
       rowTempl = $.templates("<tr><th>{{:time}}</th><td></td><td></td><td></td><td></td><td></td></tr>");
       tableRows = '';
-      ref = this.getTimeRange(sectionArr);
+      this.tableTimeRange = this.getTimeRange(sectionArr);
+      ref = this.tableTimeRange;
       for (i = 0, len = ref.length; i < len; i++) {
         hour = ref[i];
         tableRows += rowTempl.render({
@@ -37,7 +38,7 @@
     };
 
     TableMaker.prototype.getTimeRange = function(sectionArr) {
-      var first, i, j, k, last, len, len1, ref, ref1, ref2, results, secFirst, secLast, section, session;
+      var endHour, first, i, j, k, last, len, len1, ref, results, secFirst, secLast, section, session, startHour;
       first = null;
       last = null;
       for (i = 0, len = sectionArr.length; i < len; i++) {
@@ -64,20 +65,89 @@
       if (first === null || last === null) {
         return [0];
       }
+      startHour = first.getHours();
+      endHour = last.getHours();
       if (last.getMinutes() > 0) {
-        last.setHours(last.getHours() + 1);
+        endHour++;
       }
-      first.setHours(first.getHours() - 1);
-      last.setHours(last.getHours() + 1);
+      startHour--;
+      endHour++;
       return (function() {
         results = [];
-        for (var k = ref1 = first.getHours(), ref2 = last.getHours(); ref1 <= ref2 ? k <= ref2 : k >= ref2; ref1 <= ref2 ? k++ : k--){ results.push(k); }
+        for (var k = startHour; startHour <= endHour ? k <= endHour : k >= endHour; startHour <= endHour ? k++ : k--){ results.push(k); }
         return results;
       }).apply(this);
     };
 
     TableMaker.prototype.makeClassDivs = function(sectionArr) {
+      var classDiv, divs, i, j, len, len1, range, ref, sec, sectionIndex, ses, tableStartTime;
+      divs = [];
+      tableStartTime = new Date();
+      range = this.tableTimeRange;
+      tableStartTime.setHours(range[0]);
+      tableStartTime.setMinutes(0);
+      sectionIndex = 0;
+      for (i = 0, len = sectionArr.length; i < len; i++) {
+        sec = sectionArr[i];
+        ref = sec.sessions;
+        for (j = 0, len1 = ref.length; j < len1; j++) {
+          ses = ref[j];
+          classDiv = this.makeClassDiv(sec.courseNumber, sec.number, ses.dow, sectionIndex, ses.startTime, ses.lengthInMins(), tableStartTime);
+          divs.push(classDiv);
+        }
+        sectionIndex++;
+      }
+      return divs.join("\n");
+    };
+
+    TableMaker.prototype.makeClassDiv = function(courseNumber, sectionNumber, dow, colorIndex, classStartTime, lengthInMins, tableStartTime) {
+      var baseHtml, dataObj;
+      baseHtml = ["<div class='{{:dayClass}} {{:colorClass}}' style='height: {{:height}}px;top: {{:top}}px;'>", "  <div class='course-text'>", "    <span class='course-name'>{{:courseNumber}}/{{:sectionNumber}}</span>", "  </div>", "</div>"].join("\n");
+      dataObj = {
+        dayClass: this.getDayClass(dow),
+        colorClass: this.getColorClass(colorIndex),
+        height: this.calcHeight(lengthInMins),
+        top: this.calcTopMargin(classStartTime, tableStartTime),
+        courseNumber: courseNumber,
+        sectionNumber: sectionNumber
+      };
+      return $.templates(baseHtml).render(dataObj);
+    };
+
+    TableMaker.prototype.getDayClass = function(dow) {
+      switch (dow) {
+        case 1:
+          return 'dayM';
+        case 2:
+          return 'dayT';
+        case 3:
+          return 'dayW';
+        case 4:
+          return 'dayR';
+        case 5:
+          return 'dayF';
+      }
       return '';
+    };
+
+    TableMaker.prototype.getColorClass = function(colorIndex) {
+      return 'color' + colorIndex;
+    };
+
+    TableMaker.prototype.calcHeight = function(lengthInMins) {
+      return this.pixelHeightOfOneMin() * lengthInMins;
+    };
+
+    TableMaker.prototype.pixelHeightOfOneMin = function() {
+      return 49 / 60;
+    };
+
+    TableMaker.prototype.calcTopMargin = function(classStartTime, tableStartTime) {
+      var hourOffset, minuteOffset, titleBarHeight;
+      hourOffset = classStartTime.getHours() - tableStartTime.getHours();
+      minuteOffset = (hourOffset * 60) + classStartTime.getMinutes() - tableStartTime.getMinutes();
+      titleBarHeight = 27;
+      return titleBarHeight + (this.pixelHeightOfOneMin() * minuteOffset);
     };
 
     return TableMaker;

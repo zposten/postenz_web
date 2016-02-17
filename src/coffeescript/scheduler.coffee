@@ -22,6 +22,10 @@ class Session
     d.setSeconds(0)
     return d
 
+  lengthInMins: ->
+    hourOffset = @endTime.getHours() - @startTime.getHours()
+    minuteOffset = (hourOffset * 60) + @endTime.getMinutes() - @startTime.getMinutes()
+    return minuteOffset
 
   overlap: (otherSession) ->
     onSameDay = @dow is otherSession.dow
