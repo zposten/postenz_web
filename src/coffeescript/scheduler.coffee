@@ -52,7 +52,7 @@ class Section
 
     @sessions = []
     for jsonSession in jsonSessions
-      if jsonSession.dows.length is 0
+      if (not jsonSession.dows) or (jsonSession.dows.length is 0)
         throw new Error "Invalid JSON: No dows selected for section: " + info
       for dow in jsonSession.dows
         try

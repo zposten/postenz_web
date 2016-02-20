@@ -60,6 +60,7 @@
           var err, error, html, json, jsonObj, scheduler;
           try {
             json = _this.makeJson();
+            console.log('MADE JSON:  ' + json);
             jsonObj = JSON.parse(json);
             scheduler = new window.Scheduler(jsonObj);
             html = scheduler.makeSchedules();

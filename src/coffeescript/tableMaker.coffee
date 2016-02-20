@@ -12,13 +12,34 @@ class TableMaker
 
 
   makeBasicTableHtml: (sectionArr) ->
-    thead = '<thead><tr><th class="time">Time</th><th>Monday</th><th>Tuesday</th>' +
-      '<th>Wednesday</th><th>Thursday</th><th>Friday</th></tr></thead>'
+    thead = [
+      "<thead>"
+      "<tr>"
+      "<th class='time'>Time</th>"
+      "<th>Monday</th>"
+      "<th>Tuesday</th>"
+      "<th>Wednesday</th>"
+      "<th>Thursday</th>"
+      "<th>Friday</th>"
+      "</tr>"
+      "</thead>"
+    ].join('')
 
-    rowTempl = $.templates("<tr><th>{{:time}}</th><td></td><td></td><td></td><td></td><td></td></tr>")
-    tableRows = ''
+    tr = [
+      "<tr>"
+      "<th>{{:time}}</th>"
+      "<td></td>"
+      "<td></td>"
+      "<td></td>"
+      "<td></td>"
+      "<td></td>"
+      "</tr>"
+    ].join('')
+
+    rowTempl = $.templates(tr)
     @tableTimeRange = @getTimeRange(sectionArr)
 
+    tableRows = ''
     for hour in @tableTimeRange
       tableRows += rowTempl.render({time: util.formatHour(hour)})
 
@@ -103,7 +124,7 @@ class TableMaker
     return ''
 
   getColorClass: (colorIndex) ->
-    return 'color' + colorIndex
+    return 'color' + (colorIndex % 7)
 
   calcHeight: (lengthInMins) ->
     return @pixelHeightOfOneMin() * lengthInMins

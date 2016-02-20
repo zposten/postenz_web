@@ -18,6 +18,7 @@ $schd-table-dow-col-width: ($schd-table-width - $schd-table-time-col-width) / 5;
 $schd-input-indent: 30px;
 
 .schedule {
+  width: $schd-table-width;
   margin: 0 0 40px 0;
   padding: 0;
   font-family: "HelveticaMedium", "Helvetica Neue", Helvetica, Arial, sans-serif;

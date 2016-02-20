@@ -39,6 +39,8 @@ class SchedulerInput
     $('#make-schedules').on 'click', (event) =>
       try
         json = @makeJson()
+        console.log 'MADE JSON:  ' + json
+
         jsonObj = JSON.parse(json);
         scheduler = new window.Scheduler(jsonObj)
         html = scheduler.makeSchedules()

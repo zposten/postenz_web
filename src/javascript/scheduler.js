@@ -73,7 +73,7 @@
       this.sessions = [];
       for (i = 0, len = jsonSessions.length; i < len; i++) {
         jsonSession = jsonSessions[i];
-        if (jsonSession.dows.length === 0) {
+        if ((!jsonSession.dows) || (jsonSession.dows.length === 0)) {
           throw new Error("Invalid JSON: No dows selected for section: " + info);
         }
         ref = jsonSession.dows;

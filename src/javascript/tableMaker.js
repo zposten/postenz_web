@@ -21,11 +21,12 @@
     };
 
     TableMaker.prototype.makeBasicTableHtml = function(sectionArr) {
-      var hour, i, len, ref, rowTempl, tableHtml, tableRows, thead;
-      thead = '<thead><tr><th class="time">Time</th><th>Monday</th><th>Tuesday</th>' + '<th>Wednesday</th><th>Thursday</th><th>Friday</th></tr></thead>';
-      rowTempl = $.templates("<tr><th>{{:time}}</th><td></td><td></td><td></td><td></td><td></td></tr>");
-      tableRows = '';
+      var hour, i, len, ref, rowTempl, tableHtml, tableRows, thead, tr;
+      thead = ["<thead>", "<tr>", "<th class='time'>Time</th>", "<th>Monday</th>", "<th>Tuesday</th>", "<th>Wednesday</th>", "<th>Thursday</th>", "<th>Friday</th>", "</tr>", "</thead>"].join('');
+      tr = ["<tr>", "<th>{{:time}}</th>", "<td></td>", "<td></td>", "<td></td>", "<td></td>", "<td></td>", "</tr>"].join('');
+      rowTempl = $.templates(tr);
       this.tableTimeRange = this.getTimeRange(sectionArr);
+      tableRows = '';
       ref = this.tableTimeRange;
       for (i = 0, len = ref.length; i < len; i++) {
         hour = ref[i];
@@ -131,7 +132,7 @@
     };
 
     TableMaker.prototype.getColorClass = function(colorIndex) {
-      return 'color' + colorIndex;
+      return 'color' + (colorIndex % 7);
     };
 
     TableMaker.prototype.calcHeight = function(lengthInMins) {
