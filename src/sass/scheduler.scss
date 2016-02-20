@@ -166,21 +166,10 @@ input.sec-num {
   width: 100px;
 }
 
-select.schd-section-time-hour {
-  //color: $nav-dark-highlight-color;
-  color: $nav-color;
-}
-
-div.schd-section-time {
-  //display: table-cell;
-  display:flex;
-  align-items:center;
-}
-
-div.schd-section {
+div.schd-sections {
   margin-left: 30px;
   margin-top: 20px;
-  min-width: 420px;
+  min-width: 550px;
 
   div.schd-section {
     padding-top: 20px;
@@ -188,10 +177,24 @@ div.schd-section {
     padding-left: 20px;
 
     div.schd-section-times {
-      width: 400px;
+      min-width: inherit;
 
       .schd-add-time, .schd-rmv-time {
         margin-top: 10px;
+      }
+
+      div.schd-section-time {
+        width: 500px;
+        display:flex;
+        align-items:center;
+
+        select {
+          color: $nav-color;
+        }
+
+        select.ampm {
+          background-color: $subtitle-color;
+        }
       }
     }
 
@@ -220,7 +223,7 @@ div.schd-course {
   padding-top: 30px;
 }
 
-.schd-add-course, .schd-rmv-course {
+.schd-add-course, .schd-rmv-course, #make-schedules {
   margin-top: 30px;
 }
 

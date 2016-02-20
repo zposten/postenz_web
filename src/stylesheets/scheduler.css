@@ -175,71 +175,74 @@ input.sec-num {
 }
 
 /* line 169, ../sass/scheduler.scss */
-select.schd-section-time-hour {
-  color: #414142;
-}
-
-/* line 174, ../sass/scheduler.scss */
-div.schd-section-time {
-  display: flex;
-  align-items: center;
-}
-
-/* line 180, ../sass/scheduler.scss */
-div.schd-section {
+div.schd-sections {
   margin-left: 30px;
   margin-top: 20px;
-  min-width: 420px;
+  min-width: 550px;
 }
-/* line 185, ../sass/scheduler.scss */
-div.schd-section div.schd-section {
+/* line 174, ../sass/scheduler.scss */
+div.schd-sections div.schd-section {
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 20px;
 }
-/* line 190, ../sass/scheduler.scss */
-div.schd-section div.schd-section div.schd-section-times {
-  width: 400px;
+/* line 179, ../sass/scheduler.scss */
+div.schd-sections div.schd-section div.schd-section-times {
+  min-width: inherit;
 }
-/* line 193, ../sass/scheduler.scss */
-div.schd-section div.schd-section div.schd-section-times .schd-add-time, div.schd-section div.schd-section div.schd-section-times .schd-rmv-time {
+/* line 182, ../sass/scheduler.scss */
+div.schd-sections div.schd-section div.schd-section-times .schd-add-time, div.schd-sections div.schd-section div.schd-section-times .schd-rmv-time {
   margin-top: 10px;
 }
-/* line 198, ../sass/scheduler.scss */
-div.schd-section div.schd-section.alt {
+/* line 186, ../sass/scheduler.scss */
+div.schd-sections div.schd-section div.schd-section-times div.schd-section-time {
+  width: 500px;
+  display: flex;
+  align-items: center;
+}
+/* line 191, ../sass/scheduler.scss */
+div.schd-sections div.schd-section div.schd-section-times div.schd-section-time select {
+  color: #414142;
+}
+/* line 195, ../sass/scheduler.scss */
+div.schd-sections div.schd-section div.schd-section-times div.schd-section-time select.ampm {
+  background-color: #999;
+}
+/* line 201, ../sass/scheduler.scss */
+div.schd-sections div.schd-section.alt {
   background-color: #414142;
 }
-/* line 204, ../sass/scheduler.scss */
-div.schd-section .schd-add-section {
+/* line 207, ../sass/scheduler.scss */
+div.schd-sections .schd-add-section {
   margin-top: 20px;
   margin-left: 30px;
 }
-/* line 208, ../sass/scheduler.scss */
-div.schd-section .schd-rmv-section {
+/* line 211, ../sass/scheduler.scss */
+div.schd-sections .schd-rmv-section {
   margin-top: 20px;
 }
 
-/* line 214, ../sass/scheduler.scss */
+/* line 217, ../sass/scheduler.scss */
 .clear {
   clear: both;
 }
 
-/* line 219, ../sass/scheduler.scss */
+/* line 222, ../sass/scheduler.scss */
 div.schd-course {
   padding-top: 30px;
 }
 
-/* line 223, ../sass/scheduler.scss */
-.schd-add-course, .schd-rmv-course {
+/* line 226, ../sass/scheduler.scss */
+.schd-add-course, .schd-rmv-course, #make-schedules {
   margin-top: 30px;
 }
 
-/* line 234, ../sass/scheduler.scss */
+/* line 237, ../sass/scheduler.scss */
 .schedule-table thead tr > th:first-child {
   border-left: 1px solid #292929;
 }
 
-/* line 238, ../sass/scheduler.scss */
+/* line 241, ../sass/scheduler.scss */
 .schedule-table thead tr > th:last-child {
   border-right: 1px solid #292929;
 }

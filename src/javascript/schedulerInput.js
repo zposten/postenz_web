@@ -7,7 +7,12 @@
       this.addTimeListener();
       this.addSectionListener();
       this.addCourseListener();
+      this.addMakeSchedulesListener();
     }
+
+    SchedulerInput.go = function() {
+      return new SchedulerInput();
+    };
 
     SchedulerInput.prototype.addTimeListener = function() {
       this.add('.schd-add-time');
@@ -46,28 +51,41 @@
       })(this));
     };
 
+    SchedulerInput.prototype.addMakeSchedulesListener = function() {
+      return $('#make-schedules').on('click', (function(_this) {
+        return function(event) {
+          var jsonObj, scheduler;
+          jsonObj = JSON.parse(_this.makeJson());
+          scheduler = new window.Scheduler(jsonObj);
+          return $('div#schedule-wrapper').html(scheduler.makeSchedules());
+        };
+      })(this));
+    };
+
     SchedulerInput.prototype.makeJson = function() {
       var course, courses, i, json, len;
       json = '';
       courses = $('#schd-courses').children('.schd-course');
       for (i = 0, len = courses.length; i < len; i++) {
         course = courses[i];
-        json += this.makeCourseJson(course);
+        json += this.makeCourseJson($(course));
         json += ',';
       }
       json = util.removeLastChar(json);
-      return '[' + json + ']';
+      json = '[' + json + ']';
+      console.log(json);
+      return json;
     };
 
     SchedulerInput.prototype.makeCourseJson = function(course) {
       var i, json, len, name, number, section, sections;
-      name = course.children('inout.course-name')[0].val();
+      name = this.getValFirstChild(course, 'input.course-name').trim();
       number = name;
       json = '{"name": "{0}", "number": "{1}", "sections": ['.format(name, number);
-      sections = course.children('.schd-section');
+      sections = course.find('.schd-section');
       for (i = 0, len = sections.length; i < len; i++) {
         section = sections[i];
-        json += this.makeSectionJson(section);
+        json += this.makeSectionJson($(section));
         json += ',';
       }
       json = util.removeLastChar(json);
@@ -77,36 +95,53 @@
 
     SchedulerInput.prototype.makeSectionJson = function(section) {
       var i, json, len, number, session, sessions;
-      number = section.children('input.sec-num')[0].val();
+      number = this.getValFirstChild(section, 'input.sec-num');
       json = '{"number": "{0}", "sessions": ['.format(number);
-      sessions = section.children('.schd-section-time');
-      for (i = 0, len = session.length; i < len; i++) {
-        session = session[i];
-        json += this.makeSessionJson(session);
+      sessions = section.find('.schd-section-time');
+      for (i = 0, len = sessions.length; i < len; i++) {
+        session = sessions[i];
+        json += this.makeSessionJson($(session));
         json += ',';
       }
       json = util.removeLastChar(json);
       json += ']}';
       return json;
-      return {
-        makeSessionJson: function(session) {
-          var checkedDay, checkedDays, day, dow, dows, index, j, len1, results;
-          checkedDays = session.children('.dow-wrapper > input.schd-section-time-dow:checked');
-          dows = [];
-          results = [];
-          for (index = j = 0, len1 = checkedDays.length; j < len1; index = ++j) {
-            checkedDay = checkedDays[index];
-            day = checkedDay.val();
-            dow = ['M', 'T', 'W', 'R', 'F'].indexOf(day.trim());
-            if (dow > 0) {
-              results.push(dows.push(dow));
-            } else {
-              results.push(void 0);
-            }
-          }
-          return results;
+    };
+
+    SchedulerInput.prototype.makeSessionJson = function(session) {
+      var checkedDay, checkedDays, day, dow, endHour, endMin, endPeriod, i, json, len, startHour, startMin, startPeriod, str;
+      checkedDays = session.find('input.schd-section-time-dow:checked');
+      if (checkedDays.length === 0) {
+        return '';
+      }
+      json = '{"dows": [';
+      for (i = 0, len = checkedDays.length; i < len; i++) {
+        checkedDay = checkedDays[i];
+        day = $(checkedDay).val();
+        dow = ['S', 'M', 'T', 'W', 'R', 'F', 'Sa'].indexOf(day.trim());
+        if (dow > 0) {
+          json += dow + ',';
         }
-      };
+      }
+      json = util.removeLastChar(json);
+      json += '],';
+      startHour = this.getValFirstChild(session, 'select.schd-section-start-time-hour');
+      startMin = this.getValFirstChild(session, 'select.schd-section-start-time-min');
+      startPeriod = this.getValFirstChild(session, 'select.schd-section-start-time-period');
+      endHour = this.getValFirstChild(session, 'select.schd-section-end-time-hour');
+      endMin = this.getValFirstChild(session, 'select.schd-section-end-time-min');
+      endPeriod = this.getValFirstChild(session, 'select.schd-section-end-time-period');
+      str = '"startTime": "{0}:{1} {2}","endTime": "{3}:{4} {5}"}';
+      json += str.format(startHour, startMin, startPeriod, endHour, endMin, endPeriod);
+      return json;
+    };
+
+    SchedulerInput.prototype.getValFirstChild = function(jqueryObj, selector) {
+      var children, firstChild, val;
+      children = jqueryObj.find(selector);
+      firstChild = children[0];
+      val = $(firstChild).val();
+      return val || '';
     };
 
     return SchedulerInput;

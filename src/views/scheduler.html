@@ -12,12 +12,11 @@
             <label style="font-size: 25px">Course</label>
             <input type="text" class="form-control course-name" placeholder="Course Name">
 
-            <div class="schd-section">
+            <div class="schd-sections">
                 <div class="schd-section alt">
                     <input class="sec-num form-control col-md-6" type="text" placeholder="Section #">
 
                     <div class="schd-section-times col-md-6">
-                        <div select-time></div>
                         <div select-time></div>
                         <button class="btn btn-default schd-add-time">Add Time</button>
                         <button class="btn btn-default schd-rmv-time">Remove Time</button>
@@ -35,6 +34,7 @@
         <button class="btn btn-default schd-rmv-course">Remove Course</button>
     </div>
 
+    <button class="btn btn-primary" id="make-schedules">Make Schedules!</button>
 
 
 
@@ -44,27 +44,26 @@
 
 
 
-    <br><br><br><br><br><br><br><br><br><br><br><br>
 
     <div id="schedule-wrapper" style="width: 621px"></div>
 
     <script>
         $(document).ready(function () {
-            var input = JSON.parse('[ { "name": "Cloud Computing", "number": "CS 4230", "sections": [ { "number": "011", ' +
-                    '"sessions": [ { "dows": [1, 5], "startTime": "4:00 PM", "endTime": "4:50 PM" },  { "dows": [2], "startTime": ' +
-                    '"3:00 PM", "endTime": "4:50 PM" } ] },  { "number": "012", "sessions": [ { "dows": [1, 2], "startTime": ' +
-                    '"4:00 PM", "endTime": "4:50 PM" },  { "dows": [4], "startTime": "3:00 PM", "endTime": "4:50 PM" } ] } ] },  ' +
-                    '{ "name": "Complex Variables", "number": "MA 381", "sections": [ { "number": "001", "sessions": [ { "dows": [' +
-                    '2, 3, 4], "startTime": "2:00 PM", "endTime": "2:50 PM" } ] } ] } ]'
-            );
-            var scheduler = new window.Scheduler(input);
-            $('div#schedule-wrapper').html(scheduler.makeSchedules());
+//            var input = JSON.parse('[ { "name": "Cloud Computing", "number": "CS 4230", "sections": [ { "number": "011", ' +
+//                    '"sessions": [ { "dows": [1, 5], "startTime": "4:00 PM", "endTime": "4:50 PM" },  { "dows": [2], "startTime": ' +
+//                    '"3:00 PM", "endTime": "4:50 PM" } ] },  { "number": "012", "sessions": [ { "dows": [1, 2], "startTime": ' +
+//                    '"4:00 PM", "endTime": "4:50 PM" },  { "dows": [4], "startTime": "3:00 PM", "endTime": "4:50 PM" } ] } ] },  ' +
+//                    '{ "name": "Complex Variables", "number": "MA 381", "sections": [ { "number": "001", "sessions": [ { "dows": [' +
+//                    '2, 3, 4], "startTime": "2:00 PM", "endTime": "2:50 PM" } ] } ] } ]'
+//            );
+
+//            var input =
+//                    JSON.parse('[{ "name": "ma385", "number": "ma385", "sections": [{ "number": "011", "sessions": [{ "dows": [1], "startTime": "1:00 AM", "endTime": "2:00 am" }]}]}]');
+//
+//            var scheduler = new window.Scheduler(input);
+//            $('div#schedule-wrapper').html(scheduler.makeSchedules());
 
 
-            $('button.add-section').click(function () {
-//                $(this).
-//                http://stackoverflow.com/questions/5156790/creating-a-dynamic-html-form
-            })
 
 
         });

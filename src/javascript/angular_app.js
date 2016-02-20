@@ -98,15 +98,21 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('scheduler', {
             url: '/scheduler',
             templateUrl: 'views/scheduler.html',
-            controller: function($scope) {
+            controller: function ($scope) {
                 $scope.title = 'Class Scheduler';
                 $scope.description = 'MSOE has a very useful scheduling application that students can make use of' +
                     ' of when choosing their classes each quarter.  Other schools aren\'t quite' +
                     ' so lucky though and have to go through this tedious process of finding possible schedules' +
                     ' manually.  To help with this, I have implemented a scheduling application that any student at' +
                     ' any university should be able to make use of.'
+                $scope.init = function () {
+                    $scope.days = ['M', 'T', 'W', 'R', 'F'];
+                    $scope.hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+                    $scope.mins = ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'];
+                };
 
-                var input = new window.SchedulerInput();
+
+                window.SchedulerInput.go();
             }
         })
 
