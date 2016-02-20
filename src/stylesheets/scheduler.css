@@ -202,7 +202,7 @@ div.schd-section div.schd-section div.schd-section-times {
   width: 400px;
 }
 /* line 193, ../sass/scheduler.scss */
-div.schd-section div.schd-section div.schd-section-times .add-time {
+div.schd-section div.schd-section div.schd-section-times .schd-add-time, div.schd-section div.schd-section div.schd-section-times .schd-rmv-time {
   margin-top: 10px;
 }
 /* line 198, ../sass/scheduler.scss */
@@ -214,27 +214,32 @@ div.schd-section .schd-add-section {
   margin-top: 20px;
   margin-left: 30px;
 }
+/* line 208, ../sass/scheduler.scss */
+div.schd-section .schd-rmv-section {
+  margin-top: 20px;
+}
 
-/* line 212, ../sass/scheduler.scss */
+/* line 214, ../sass/scheduler.scss */
 .clear {
   clear: both;
 }
 
-/* line 217, ../sass/scheduler.scss */
+/* line 219, ../sass/scheduler.scss */
 div.schd-course {
   padding-top: 30px;
 }
-/* line 220, ../sass/scheduler.scss */
-div.schd-course .schd-add-course {
+
+/* line 223, ../sass/scheduler.scss */
+.schd-add-course, .schd-rmv-course {
   margin-top: 30px;
 }
 
-/* line 232, ../sass/scheduler.scss */
+/* line 234, ../sass/scheduler.scss */
 .schedule-table thead tr > th:first-child {
   border-left: 1px solid #292929;
 }
 
-/* line 236, ../sass/scheduler.scss */
+/* line 238, ../sass/scheduler.scss */
 .schedule-table thead tr > th:last-child {
   border-right: 1px solid #292929;
 }

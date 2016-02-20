@@ -105,6 +105,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     ' so lucky though and have to go through this tedious process of finding possible schedules' +
                     ' manually.  To help with this, I have implemented a scheduling application that any student at' +
                     ' any university should be able to make use of.'
+
+                var input = new window.SchedulerInput();
             }
         })
 
