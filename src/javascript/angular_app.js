@@ -110,9 +110,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     $scope.hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
                     $scope.mins = ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'];
                 };
-
-
-                //window.SchedulerInput.go();
+                window.SchedulerInput.init();
             }
         })
 

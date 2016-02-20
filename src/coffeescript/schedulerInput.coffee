@@ -5,7 +5,7 @@ class SchedulerInput
     @addCourseListener()
     @addMakeSchedulesListener()
 
-  @go: ->
+  @init: ->
     new SchedulerInput()
 
   addTimeListener: ->

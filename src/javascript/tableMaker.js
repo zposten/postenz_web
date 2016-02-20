@@ -139,14 +139,14 @@
     };
 
     TableMaker.prototype.pixelHeightOfOneMin = function() {
-      return 49 / 60;
+      return 50 / 60;
     };
 
     TableMaker.prototype.calcTopMargin = function(classStartTime, tableStartTime) {
       var hourOffset, minuteOffset, titleBarHeight;
       hourOffset = classStartTime.getHours() - tableStartTime.getHours();
       minuteOffset = (hourOffset * 60) + classStartTime.getMinutes() - tableStartTime.getMinutes();
-      titleBarHeight = 27;
+      titleBarHeight = 25;
       return titleBarHeight + (this.pixelHeightOfOneMin() * minuteOffset);
     };
 

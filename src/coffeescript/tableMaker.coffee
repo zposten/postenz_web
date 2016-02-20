@@ -109,12 +109,12 @@ class TableMaker
     return @pixelHeightOfOneMin() * lengthInMins
 
   pixelHeightOfOneMin: ->
-    return 49 / 60 # 49 pixels tall divided by 60 mins/hr
+    return 50 / 60 # 50 pixels tall divided by 60 mins/hr
 
   calcTopMargin: (classStartTime, tableStartTime) ->
     hourOffset = classStartTime.getHours() - tableStartTime.getHours()
     minuteOffset = (hourOffset * 60) + classStartTime.getMinutes() - tableStartTime.getMinutes()
-    titleBarHeight = 27 # pixels
+    titleBarHeight = 25 # pixels
 
     return titleBarHeight + (@pixelHeightOfOneMin() * minuteOffset)
 

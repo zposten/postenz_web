@@ -10,7 +10,7 @@
       this.addMakeSchedulesListener();
     }
 
-    SchedulerInput.go = function() {
+    SchedulerInput.init = function() {
       return new SchedulerInput();
     };
 

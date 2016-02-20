@@ -1,28 +1,30 @@
 @import "colors";
 
+$schd-table-total-row-height: 50px;
+$schd-table-border-height: 1px;
+$schd-table-dow-total-row-height: 25px;
+$schd-table-dow-row-padding: 5px;
+$schd-table-dow-line-height: $schd-table-dow-total-row-height - 2*$schd-table-dow-row-padding;
+$schd-font-size: 13px;
+
+$schd-table-width: 650px;
+$schd-table-time-col-width: 70px;
+$schd-table-dow-col-width: ($schd-table-width - $schd-table-time-col-width) / 5;
+
+@mixin day-left($day-num) {
+  left: $schd-table-time-col-width + ($day-num - 1)*$schd-table-dow-col-width;
+}
+
+$schd-input-indent: 30px;
+
 .schedule {
   margin: 0 0 40px 0;
   padding: 0;
   font-family: "HelveticaMedium", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 17px;
-  color: #464646;
+  font-size: $schd-font-size;
+  line-height: $schd-table-dow-line-height;
+  color: $light-black;
   background-color: white;
-
-  h2 {
-    display: inline;
-    vertical-align: middle;
-
-  }
-
-  .schedule-details {
-    display: none;
-    padding-top: 5px;
-
-    p {
-      margin-bottom: 10px;
-    }
-  }
 }
 
 .schedule-table {
@@ -30,7 +32,7 @@
   margin-top: 20px;
 
   table {
-    width: 620px;
+    width: $schd-table-width;
     table-layout: fixed;
     max-width: 100%;
     background-color: transparent;
@@ -42,45 +44,43 @@
   td, th {
     padding: 0;
     box-sizing: border-box;
-    line-height: 17px;
+    line-height: $schd-table-dow-line-height;
     text-align: left;
     vertical-align: top;
   }
 
   thead th {
-    width: 110px;
-    padding: 5px;
-    background: #292929;
-    color: #fff;
+    width: $schd-table-dow-col-width;
+    padding: $schd-table-dow-row-padding;
+    background: $off-black;
+    color: white;
     text-align: center;
     vertical-align: bottom;
     -webkit-print-color-adjust: exact;
   }
 
   thead th.time {
-    width: 70px;
+    width: $schd-table-time-col-width;
   }
 
   tbody {
     td, th {
-      border-bottom: 1px solid #9a9a9a;
-      border-right: 1px solid #9a9a9a;
+      border-bottom: $schd-table-border-height solid $fifty-percent-gray;
+      border-right: $schd-table-border-height solid $fifty-percent-gray;
     }
 
     td {
-      background: #ededed;
+      background: $schd-back-color;
     }
 
     th {
+      line-height: $schd-table-total-row-height - $schd-table-border-height;
+      height: $schd-table-total-row-height - $schd-table-border-height;
       text-align: center;
-      background: #cecece;
-      height: 48px;
-      line-height: 48px;
+      background: $schd-left-color;
       white-space: nowrap;
-      border-left: 1px solid #9a9a9a;
+      border-left: $schd-table-border-height solid $fifty-percent-gray;
       font-weight: normal;
-      font-size: 13px;
-      -webkit-print-color-adjust: exact;
     }
   }
 
@@ -95,7 +95,7 @@
 
   .dayM, .dayT, .dayW, .dayR, .dayF {
     position: absolute;
-    width: 111px;
+    width: $schd-table-dow-col-width + 1;
     top: 0;
     text-align: center;
     box-sizing: border-box;
@@ -103,57 +103,61 @@
   }
 
   .dayM {
-    left: 70px;
+    @include day-left(1);
   }
   .dayT {
-    left: 180px;
+    @include day-left(2);
   }
   .dayW {
-    left: 290px;
+    @include day-left(3);
   }
   .dayR {
-    left: 400px;
+    @include day-left(4);
   }
   .dayF {
-    left: 510px;
+    @include day-left(5);
   }
 
   .color0 {
-    border: 1px solid #0D47A1;
-    background-color: #2196F3;
+    border: $schd-table-border-height solid $dark-blue;
+    background-color: $blue;
     color: $light-white;
   }
   .color1 {
-    border: 1px solid #FF6F00;
-    background-color: #FFC107;
+    border: $schd-table-border-height solid $dark-amber;
+    background-color: $amber;
     color: $light-black;
   }
   .color2 {
-    border: 1px solid #B71C1C;
-    background-color: #F44336;
+    border: $schd-table-border-height solid $dark-red;
+    background-color: $red;
     color: $light-white;
   }
   .color3 {
-    border: 1px solid #1B5E20;
-    background-color: #4CAF50;
+    border: $schd-table-border-height solid $dark-green;
+    background-color: $green;
     color: $light-black;
   }
   .color4 {
-    border: 1px solid #4A148C;
-    background-color: #9C27B0;
+    border: $schd-table-border-height solid $dark-purple;
+    background-color: $purple;
     color: $light-white;
   }
   .color5 {
-    border: 1px solid #004D40;
-    background-color: #009688;
+    border: $schd-table-border-height solid $dark-teal;
+    background-color: $teal;
     color: $light-white;
   }
   .color6 {
-    border: 1px solid #880E4F;
-    background-color: #E91E63;
+    border: $schd-table-border-height solid $dark-pink;
+    background-color: $pink;
     color: $light-white;
   }
 }
+
+//====================
+//SCHEDULER INPUT
+//====================
 
 div.schd-section-time-dow {
   display: inline-block;
@@ -173,7 +177,7 @@ input.sec-num {
 }
 
 div.schd-sections {
-  margin-left: 30px;
+  margin-left: $schd-input-indent;
   margin-top: 20px;
   min-width: 550px;
 
@@ -191,8 +195,8 @@ div.schd-sections {
 
       div.schd-section-time {
         width: 500px;
-        display:flex;
-        align-items:center;
+        display: flex;
+        align-items: center;
 
         select {
           color: $nav-color;
@@ -225,21 +229,18 @@ div.schd-sections {
   clear: both;
 }
 
-
 div.schd-course {
-  padding-top: 30px;
+  padding-top: $schd-input-indent;
 }
 
 .schd-add-course, .schd-rmv-course, #make-schedules {
-  margin-top: 30px;
+  margin-top: $schd-input-indent;
 }
 
-
-
-
-
-
-
+div#schedule-wrapper {
+  margin-top: $schd-input-indent;
+  color: #640000;
+}
 
 .schedule-table thead tr > th:first-child {
   border-left: 1px solid #292929;
