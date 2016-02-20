@@ -39,12 +39,74 @@
         return function(event) {
           var siblings;
           siblings = $(event.currentTarget).siblings('div');
-          console.log(siblings);
           if (siblings.length > 1) {
             return siblings.last().remove();
           }
         };
       })(this));
+    };
+
+    SchedulerInput.prototype.makeJson = function() {
+      var course, courses, i, json, len;
+      json = '';
+      courses = $('#schd-courses').children('.schd-course');
+      for (i = 0, len = courses.length; i < len; i++) {
+        course = courses[i];
+        json += this.makeCourseJson(course);
+        json += ',';
+      }
+      json = util.removeLastChar(json);
+      return '[' + json + ']';
+    };
+
+    SchedulerInput.prototype.makeCourseJson = function(course) {
+      var i, json, len, name, number, section, sections;
+      name = course.children('inout.course-name')[0].val();
+      number = name;
+      json = '{"name": "{0}", "number": "{1}", "sections": ['.format(name, number);
+      sections = course.children('.schd-section');
+      for (i = 0, len = sections.length; i < len; i++) {
+        section = sections[i];
+        json += this.makeSectionJson(section);
+        json += ',';
+      }
+      json = util.removeLastChar(json);
+      json += ']}';
+      return json;
+    };
+
+    SchedulerInput.prototype.makeSectionJson = function(section) {
+      var i, json, len, number, session, sessions;
+      number = section.children('input.sec-num')[0].val();
+      json = '{"number": "{0}", "sessions": ['.format(number);
+      sessions = section.children('.schd-section-time');
+      for (i = 0, len = session.length; i < len; i++) {
+        session = session[i];
+        json += this.makeSessionJson(session);
+        json += ',';
+      }
+      json = util.removeLastChar(json);
+      json += ']}';
+      return json;
+      return {
+        makeSessionJson: function(session) {
+          var checkedDay, checkedDays, day, dow, dows, index, j, len1, results;
+          checkedDays = session.children('.dow-wrapper > input.schd-section-time-dow:checked');
+          dows = [];
+          results = [];
+          for (index = j = 0, len1 = checkedDays.length; j < len1; index = ++j) {
+            checkedDay = checkedDays[index];
+            day = checkedDay.val();
+            dow = ['M', 'T', 'W', 'R', 'F'].indexOf(day.trim());
+            if (dow > 0) {
+              results.push(dows.push(dow));
+            } else {
+              results.push(void 0);
+            }
+          }
+          return results;
+        }
+      };
     };
 
     return SchedulerInput;

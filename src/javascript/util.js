@@ -72,6 +72,10 @@ util.formatHour = function (hour) {
     return (hour - 12) + ":00 PM";
 };
 
+util.removeLastChar = function(str) {
+    return str.substring(0, str.length - 1);
+};
+
 /***************************************/
 /** JAVASCRIPT LANGUAGE MANIPULATIONS */
 /*************************************/
