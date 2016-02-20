@@ -1,9 +1,12 @@
 class Session
   constructor: (@dow, strStartTime, strEndTime) ->
-    @startTime = @parseTime(strStartTime)
-    @endTime = @parseTime(strEndTime)
+    @startTime = Session.parseTime(strStartTime)
+    @endTime = Session.parseTime(strEndTime)
 
-  parseTime: (strTime) ->
+    if @endTime < @startTime
+      throw new Error "Invalid Session: End time must be after start time"
+
+  @parseTime: (strTime) ->
     time = strTime.match(/(\d+)(?::(\d\d))?\s*([pP]?)/)
     d = new Date()
     hours = parseInt(time[1], 10)
@@ -43,10 +46,19 @@ class Session
 
 class Section
   constructor: (@courseName, @courseNumber, @number, jsonSessions) ->
+    info = "courseName=>'{0}', courseNumber=>'{1}', number=>'{2}'".format(@courseName, @courseNumber, @number)
+    if not @courseName or not @courseNumber or not @number
+      throw new Error "Invalid JSON: Section info: " + info
+
     @sessions = []
     for jsonSession in jsonSessions
+      if jsonSession.dows.length is 0
+        throw new Error "Invalid JSON: No dows selected for section: " + info
       for dow in jsonSession.dows
-        @sessions.push new Session(dow, jsonSession.startTime, jsonSession.endTime)
+        try
+          @sessions.push new Session(dow, jsonSession.startTime, jsonSession.endTime)
+        catch err
+          throw new Error "For Section: {0}: {1}".format(info, err.message)
 
   overlap: (otherSection) ->
     overlap = false
@@ -62,11 +74,14 @@ class Course
 
 class Scheduler
   constructor: (objCourses) ->
-    @parseObj(objCourses)
+    try
+      @parseObj(objCourses)
+    catch err
+      console.error err.stack
 
-  parseObj: (jsonCourses) ->
+  parseObj: (@jsonCourses) ->
     @courses = []
-    for c in jsonCourses
+    for c in @jsonCourses
       course = new Course(c.name, c.number);
       for sec in c.sections
         course.addSection new Section(c.name, c.number, sec.number, sec.sessions)
@@ -97,7 +112,16 @@ class Scheduler
     return false
 
   makeSchedules: ->
+    if (not @courses) or (@courses.length is 0)
+      return 'An error occurred in Scheduler while parsing JSON'
+
     @schedules = @combine()
+
+    if @schedules.length is 0
+      console.log 'No schedules could be generated from:'
+      console.log @courses
+      return ''
+
     tableMaker = new TableMaker(@schedules)
     return tableMaker.makeHtml()
 

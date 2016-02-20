@@ -7,7 +7,7 @@
   font-size: 13px;
   line-height: 17px;
   color: #464646;
-  background-color: #ffffff;
+  background-color: white;
 
   h2 {
     display: inline;
@@ -119,32 +119,39 @@
   }
 
   .color0 {
-    border: 1px solid #805e00;
-    background-color: #ffba00;
+    border: 1px solid #0D47A1;
+    background-color: #2196F3;
+    color: $light-white;
   }
   .color1 {
-    border: 1px solid #406c78;
-    background-color: #77c8df;
+    border: 1px solid #FF6F00;
+    background-color: #FFC107;
+    color: $light-black;
   }
   .color2 {
-    border: 1px solid #6e2169;
-    background-color: #ff74f7;
+    border: 1px solid #B71C1C;
+    background-color: #F44336;
+    color: $light-white;
   }
   .color3 {
-    border: 1px solid #898c31;
-    background-color: #f8ff42;
+    border: 1px solid #1B5E20;
+    background-color: #4CAF50;
+    color: $light-black;
   }
   .color4 {
-    border: 1px solid #306612;
-    background-color: #78d446;
+    border: 1px solid #4A148C;
+    background-color: #9C27B0;
+    color: $light-white;
   }
   .color5 {
-    border: 1px solid #564a80;
-    background-color: #ad94ff;
+    border: 1px solid #004D40;
+    background-color: #009688;
+    color: $light-white;
   }
   .color6 {
-    border: 1px solid #803c2e;
-    background-color: #ff775c;
+    border: 1px solid #880E4F;
+    background-color: #E91E63;
+    color: $light-white;
   }
 }
 
@@ -152,7 +159,6 @@ div.schd-section-time-dow {
   display: inline-block;
   width: 25px;
   text-align: center;
-  //height: 20px;
 }
 
 input.schd-section-time-dow {
@@ -200,15 +206,16 @@ div.schd-sections {
 
     &.alt {
       background-color: $nav-color;
+      min-width: inherit;
+      margin-top: 20px;
     }
 
   }
 
-  .schd-add-section {
+  button.schd-add-section {
     margin-top: 20px;
-    margin-left: 30px;
   }
-  .schd-rmv-section {
+  button.schd-rmv-section {
     margin-top: 20px;
   }
 

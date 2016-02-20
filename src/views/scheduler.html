@@ -37,33 +37,28 @@
     <button class="btn btn-primary" id="make-schedules">Make Schedules!</button>
 
 
-
-
-
-
-
-
-
-
     <div id="schedule-wrapper" style="width: 621px"></div>
 
     <script>
         $(document).ready(function () {
-//            var input = JSON.parse('[ { "name": "Cloud Computing", "number": "CS 4230", "sections": [ { "number": "011", ' +
-//                    '"sessions": [ { "dows": [1, 5], "startTime": "4:00 PM", "endTime": "4:50 PM" },  { "dows": [2], "startTime": ' +
-//                    '"3:00 PM", "endTime": "4:50 PM" } ] },  { "number": "012", "sessions": [ { "dows": [1, 2], "startTime": ' +
-//                    '"4:00 PM", "endTime": "4:50 PM" },  { "dows": [4], "startTime": "3:00 PM", "endTime": "4:50 PM" } ] } ] },  ' +
-//                    '{ "name": "Complex Variables", "number": "MA 381", "sections": [ { "number": "001", "sessions": [ { "dows": [' +
-//                    '2, 3, 4], "startTime": "2:00 PM", "endTime": "2:50 PM" } ] } ] } ]'
-//            );
-
-//            var input =
-//                    JSON.parse('[{ "name": "ma385", "number": "ma385", "sections": [{ "number": "011", "sessions": [{ "dows": [1], "startTime": "1:00 AM", "endTime": "2:00 am" }]}]}]');
-//
-//            var scheduler = new window.Scheduler(input);
-//            $('div#schedule-wrapper').html(scheduler.makeSchedules());
+            var input = JSON.parse('[ { "name": "Cloud Computing", "number": "CS 4230", "sections": [ { "number": "011", ' +
+                    '"sessions": [ { "dows": [1, 5], "startTime": "4:00 PM", "endTime": "4:50 PM" },  { "dows": [2], "startTime": ' +
+                    '"3:00 PM", "endTime": "4:50 PM" } ] },  { "number": "012", "sessions": [ { "dows": [1, 2], "startTime": ' +
+                    '"4:00 PM", "endTime": "4:50 PM" },  { "dows": [4], "startTime": "3:00 PM", "endTime": "4:50 PM" } ] } ] },  ' +
+                    '{ "name": "Complex Variables", "number": "MA 381", "sections": [ { "number": "001", "sessions": [ { "dows": [' +
+                    '2, 3, 4], "startTime": "2:00 PM", "endTime": "2:50 PM" } ] } ] } ]'
+            );
 
 
+            input =
+                    JSON.parse('[{"name": "Cloud Computing","number": "CS 4230","sections": [{"number": "011","sessions": [{"dows": [1, 3],"startTime": "3:00 PM","endTime": "3:50 PM"}, {"dows": [2],"startTime": "3:00 PM","endTime": "4:50 PM"}]}, {"number": "012","sessions": [{"dows": [1, 3],"startTime": "4:00 PM","endTime": "4:50 PM"}, {"dows": [4],"startTime": "3:00 PM","endTime": "4:50 PM"}]}]}, {"name": "Complex Variables","number": "MA 381","sections": [{"number": "001","sessions": [{"dows": [2, 4, 5],"startTime": "2:00 PM","endTime": "2:50 PM"}]}]},{"name": "BOOZ","number": "BOOZ","sections": [{"number": "001","sessions": [{"dows": [5],"startTime": "3:00 PM","endTime": "3:50 PM"}]}]},{"name": "BEER","number": "BEER","sections": [{"number": "001","sessions": [{"dows": [5],"startTime": "4:00 PM","endTime": "4:50 PM"}]}]},{"name": "GIRLZ","number": "GIRLZ","sections": [{"number": "001","sessions": [{"dows": [5],"startTime": "5:00 PM","endTime": "5:50 PM"}]}]},{"name": "STUFF","number": "STUFF","sections": [{"number": "001","sessions": [{"dows": [5],"startTime": "6:00 PM","endTime": "6:50 PM"}]}]}]');
+
+            console.log('INPUT OBJECT:');
+            console.log(input);
+
+            var scheduler = new window.Scheduler(input);
+            var html = scheduler.makeSchedules();
+            $('div#schedule-wrapper').html(html);
 
 
         });

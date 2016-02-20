@@ -33,10 +33,20 @@ class SchedulerInput
 
 
   addMakeSchedulesListener: ->
+    noSchedules = 'No schedules could be generated'
+    badJson = 'Invalid JSON string supplied'
+
     $('#make-schedules').on 'click', (event) =>
-      jsonObj = JSON.parse(@makeJson());
-      scheduler = new window.Scheduler(jsonObj);
-      $('div#schedule-wrapper').html(scheduler.makeSchedules());
+      try
+        json = @makeJson()
+        jsonObj = JSON.parse(json);
+        scheduler = new window.Scheduler(jsonObj)
+        html = scheduler.makeSchedules()
+        $('div#schedule-wrapper').html(html or noSchedules)
+      catch err
+        $('div#schedule-wrapper').html(badJson)
+
+
 
   makeJson: ->
     json = ''
@@ -46,19 +56,28 @@ class SchedulerInput
       json += ','
 
     json = util.removeLastChar json
-    json = '[' + json + ']';
-    console.log json
-    return json
+    return '' if not json
+    return '[' + json + ']'
 
   makeCourseJson: (course) ->
     name = @getValFirstChild(course, 'input.course-name').trim()
     number = name
-    json = '{"name": "{0}", "number": "{1}", "sections": ['.format(name, number)
 
+    if not name or not number
+      throw new Error "Invalid course name ({0}) or number ({1})".format(name, number)
+
+    json = '{"name": "{0}", "number": "{1}", "sections": ['.format(name, number)
     sections = course.find('.schd-section')
+
+    if sections.length is 0
+      throw new Error "No sections found for course: {0}/{1}".format(name, number)
+
     for section in sections
-      json += @makeSectionJson $(section)
-      json += ','
+      try
+        json += @makeSectionJson $(section)
+        json += ','
+      catch err
+        throw new Error err.message + " for course {0}/{1}".format(name, number)
 
     json = util.removeLastChar json
     json += ']}'
@@ -69,6 +88,12 @@ class SchedulerInput
     json = '{"number": "{0}", "sessions": ['.format(number)
 
     sessions = section.find('.schd-section-time')
+
+    if not number
+      throw new Error "Invalid section number ({0})".format(number)
+    if sessions.length is 0
+      throw new Error "No sessions found for section: {0}".format(number)
+
     for session in sessions
       json += @makeSessionJson $(session)
       json += ','

@@ -52,12 +52,22 @@
     };
 
     SchedulerInput.prototype.addMakeSchedulesListener = function() {
+      var badJson, noSchedules;
+      noSchedules = 'No schedules could be generated';
+      badJson = 'Invalid JSON string supplied';
       return $('#make-schedules').on('click', (function(_this) {
         return function(event) {
-          var jsonObj, scheduler;
-          jsonObj = JSON.parse(_this.makeJson());
-          scheduler = new window.Scheduler(jsonObj);
-          return $('div#schedule-wrapper').html(scheduler.makeSchedules());
+          var err, error, html, json, jsonObj, scheduler;
+          try {
+            json = _this.makeJson();
+            jsonObj = JSON.parse(json);
+            scheduler = new window.Scheduler(jsonObj);
+            html = scheduler.makeSchedules();
+            return $('div#schedule-wrapper').html(html || noSchedules);
+          } catch (error) {
+            err = error;
+            return $('div#schedule-wrapper').html(badJson);
+          }
         };
       })(this));
     };
@@ -72,21 +82,33 @@
         json += ',';
       }
       json = util.removeLastChar(json);
-      json = '[' + json + ']';
-      console.log(json);
-      return json;
+      if (!json) {
+        return '';
+      }
+      return '[' + json + ']';
     };
 
     SchedulerInput.prototype.makeCourseJson = function(course) {
-      var i, json, len, name, number, section, sections;
+      var err, error, i, json, len, name, number, section, sections;
       name = this.getValFirstChild(course, 'input.course-name').trim();
       number = name;
+      if (!name || !number) {
+        throw new Error("Invalid course name ({0}) or number ({1})".format(name, number));
+      }
       json = '{"name": "{0}", "number": "{1}", "sections": ['.format(name, number);
       sections = course.find('.schd-section');
+      if (sections.length === 0) {
+        throw new Error("No sections found for course: {0}/{1}".format(name, number));
+      }
       for (i = 0, len = sections.length; i < len; i++) {
         section = sections[i];
-        json += this.makeSectionJson($(section));
-        json += ',';
+        try {
+          json += this.makeSectionJson($(section));
+          json += ',';
+        } catch (error) {
+          err = error;
+          throw new Error(err.message + " for course {0}/{1}".format(name, number));
+        }
       }
       json = util.removeLastChar(json);
       json += ']}';
@@ -98,6 +120,12 @@
       number = this.getValFirstChild(section, 'input.sec-num');
       json = '{"number": "{0}", "sessions": ['.format(number);
       sessions = section.find('.schd-section-time');
+      if (!number) {
+        throw new Error("Invalid section number ({0})".format(number));
+      }
+      if (sessions.length === 0) {
+        throw new Error("No sessions found for section: {0}".format(number));
+      }
       for (i = 0, len = sessions.length; i < len; i++) {
         session = sessions[i];
         json += this.makeSessionJson($(session));

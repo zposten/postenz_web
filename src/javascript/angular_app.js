@@ -112,7 +112,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 };
 
 
-                window.SchedulerInput.go();
+                //window.SchedulerInput.go();
             }
         })
 

@@ -6,11 +6,14 @@
   Session = (function() {
     function Session(dow1, strStartTime, strEndTime) {
       this.dow = dow1;
-      this.startTime = this.parseTime(strStartTime);
-      this.endTime = this.parseTime(strEndTime);
+      this.startTime = Session.parseTime(strStartTime);
+      this.endTime = Session.parseTime(strEndTime);
+      if (this.endTime < this.startTime) {
+        throw new Error("Invalid Session: End time must be after start time");
+      }
     }
 
-    Session.prototype.parseTime = function(strTime) {
+    Session.parseTime = function(strTime) {
       var d, hours, increment, isPM, minutes, time;
       time = strTime.match(/(\d+)(?::(\d\d))?\s*([pP]?)/);
       d = new Date();
@@ -59,17 +62,29 @@
 
   Section = (function() {
     function Section(courseName, courseNumber, number, jsonSessions) {
-      var dow, i, j, jsonSession, len, len1, ref;
+      var dow, err, error, i, info, j, jsonSession, len, len1, ref;
       this.courseName = courseName;
       this.courseNumber = courseNumber;
       this.number = number;
+      info = "courseName=>'{0}', courseNumber=>'{1}', number=>'{2}'".format(this.courseName, this.courseNumber, this.number);
+      if (!this.courseName || !this.courseNumber || !this.number) {
+        throw new Error("Invalid JSON: Section info: " + info);
+      }
       this.sessions = [];
       for (i = 0, len = jsonSessions.length; i < len; i++) {
         jsonSession = jsonSessions[i];
+        if (jsonSession.dows.length === 0) {
+          throw new Error("Invalid JSON: No dows selected for section: " + info);
+        }
         ref = jsonSession.dows;
         for (j = 0, len1 = ref.length; j < len1; j++) {
           dow = ref[j];
-          this.sessions.push(new Session(dow, jsonSession.startTime, jsonSession.endTime));
+          try {
+            this.sessions.push(new Session(dow, jsonSession.startTime, jsonSession.endTime));
+          } catch (error) {
+            err = error;
+            throw new Error("For Section: {0}: {1}".format(info, err.message));
+          }
         }
       }
     }
@@ -110,19 +125,27 @@
 
   Scheduler = (function() {
     function Scheduler(objCourses) {
-      this.parseObj(objCourses);
+      var err, error;
+      try {
+        this.parseObj(objCourses);
+      } catch (error) {
+        err = error;
+        console.error(err.stack);
+      }
     }
 
     Scheduler.prototype.parseObj = function(jsonCourses) {
-      var c, course, i, j, len, len1, ref, results, sec;
+      var c, course, i, j, len, len1, ref, ref1, results, sec;
+      this.jsonCourses = jsonCourses;
       this.courses = [];
+      ref = this.jsonCourses;
       results = [];
-      for (i = 0, len = jsonCourses.length; i < len; i++) {
-        c = jsonCourses[i];
+      for (i = 0, len = ref.length; i < len; i++) {
+        c = ref[i];
         course = new Course(c.name, c.number);
-        ref = c.sections;
-        for (j = 0, len1 = ref.length; j < len1; j++) {
-          sec = ref[j];
+        ref1 = c.sections;
+        for (j = 0, len1 = ref1.length; j < len1; j++) {
+          sec = ref1[j];
           course.addSection(new Section(c.name, c.number, sec.number, sec.sessions));
         }
         results.push(this.courses.push(course));
@@ -173,7 +196,15 @@
 
     Scheduler.prototype.makeSchedules = function() {
       var tableMaker;
+      if ((!this.courses) || (this.courses.length === 0)) {
+        return 'An error occurred in Scheduler while parsing JSON';
+      }
       this.schedules = this.combine();
+      if (this.schedules.length === 0) {
+        console.log('No schedules could be generated from:');
+        console.log(this.courses);
+        return '';
+      }
       tableMaker = new TableMaker(this.schedules);
       return tableMaker.makeHtml();
     };
