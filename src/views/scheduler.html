@@ -4,7 +4,7 @@
 
 <div class="col-sm-8 main-container">
 
-    <p>{{ description }}</p><br><br>
+    <p>{{ description }}</p><br>
 
     <div id="schd-courses">
         <div class="schd-course">
@@ -47,7 +47,7 @@
 
             var scheduler = new window.Scheduler(input);
             var html = scheduler.makeSchedules();
-            $('div#schedule-wrapper').html(html);
+            $('div#schedule-wrapper').html("<br><br><h4>Sample Schedules</h4>" + html);
 
 
         });
