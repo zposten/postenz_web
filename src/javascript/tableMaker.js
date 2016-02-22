@@ -17,13 +17,13 @@
         classDivs = this.makeClassDivs(sectionArr);
         tables.push('<div class="schedule"><div class="schedule-table">' + tableHtml + classDivs + '</div></div>');
       }
-      return tables;
+      return tables.join('\n');
     };
 
     TableMaker.prototype.makeBasicTableHtml = function(sectionArr) {
       var hour, i, len, ref, rowTempl, tableHtml, tableRows, thead, tr;
-      thead = ["<thead>", "<tr>", "<th class='time'>Time</th>", "<th>Monday</th>", "<th>Tuesday</th>", "<th>Wednesday</th>", "<th>Thursday</th>", "<th>Friday</th>", "</tr>", "</thead>"].join('');
-      tr = ["<tr>", "<th>{{:time}}</th>", "<td></td>", "<td></td>", "<td></td>", "<td></td>", "<td></td>", "</tr>"].join('');
+      thead = ["<thead>", "  <tr>", "    <th class='time'>Time</th>", "    <th>Monday</th>", "    <th>Tuesday</th>", "    <th>Wednesday</th>", "    <th>Thursday</th>", "    <th>Friday</th>", "  </tr>", "</thead>"].join('\n');
+      tr = ["<tr>", "  <th>{{:time}}</th>", "  <td></td>", "  <td></td>", "  <td></td>", "  <td></td>", "  <td></td>", "</tr>"].join('\n');
       rowTempl = $.templates(tr);
       this.tableTimeRange = this.getTimeRange(sectionArr);
       tableRows = '';
@@ -136,6 +136,7 @@
     };
 
     TableMaker.prototype.calcHeight = function(lengthInMins) {
+      lengthInMins = Math.max(lengthInMins, 25);
       return this.pixelHeightOfOneMin() * lengthInMins;
     };
 

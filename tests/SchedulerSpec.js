@@ -129,7 +129,14 @@ describe("Scheduler", function () {
 
             function expectTableRange(html, startHour, endHour) {
                 for (var i = startHour; i < endHour; ++i) {
-                    expect(html).toContain(getRowAtHour(i));
+                    html = removeWhitespace(html);
+                    var row = removeWhitespace(getRowAtHour(i));
+
+                    expect(html).toContain(row);
+                }
+
+                function removeWhitespace(str) {
+                    return str.replace(/\s/g, '');
                 }
 
                 function getRowAtHour(hour) {

@@ -8,33 +8,33 @@ class TableMaker
       tableHtml = @makeBasicTableHtml(sectionArr)
       classDivs = @makeClassDivs(sectionArr)
       tables.push '<div class="schedule"><div class="schedule-table">' + tableHtml + classDivs + '</div></div>'
-    return tables;
+    return tables.join('\n')
 
 
   makeBasicTableHtml: (sectionArr) ->
     thead = [
       "<thead>"
-      "<tr>"
-      "<th class='time'>Time</th>"
-      "<th>Monday</th>"
-      "<th>Tuesday</th>"
-      "<th>Wednesday</th>"
-      "<th>Thursday</th>"
-      "<th>Friday</th>"
-      "</tr>"
+      "  <tr>"
+      "    <th class='time'>Time</th>"
+      "    <th>Monday</th>"
+      "    <th>Tuesday</th>"
+      "    <th>Wednesday</th>"
+      "    <th>Thursday</th>"
+      "    <th>Friday</th>"
+      "  </tr>"
       "</thead>"
-    ].join('')
+    ].join('\n')
 
     tr = [
       "<tr>"
-      "<th>{{:time}}</th>"
-      "<td></td>"
-      "<td></td>"
-      "<td></td>"
-      "<td></td>"
-      "<td></td>"
+      "  <th>{{:time}}</th>"
+      "  <td></td>"
+      "  <td></td>"
+      "  <td></td>"
+      "  <td></td>"
+      "  <td></td>"
       "</tr>"
-    ].join('')
+    ].join('\n')
 
     rowTempl = $.templates(tr)
     @tableTimeRange = @getTimeRange(sectionArr)
@@ -129,6 +129,7 @@ class TableMaker
     return 'color' + (colorIndex % 7)
 
   calcHeight: (lengthInMins) ->
+    lengthInMins = Math.max lengthInMins, 25
     return @pixelHeightOfOneMin() * lengthInMins
 
   pixelHeightOfOneMin: ->
@@ -140,7 +141,6 @@ class TableMaker
     titleBarHeight = 25 # pixels
 
     return titleBarHeight + (@pixelHeightOfOneMin() * minuteOffset)
-
 
 
 window.TableMaker = TableMaker
