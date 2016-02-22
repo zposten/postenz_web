@@ -14,9 +14,8 @@
     }
 
     Session.parseTime = function(strTime) {
-      var d, hours, increment, isPM, minutes, time;
+      var date, hours, increment, isPM, minutes, time;
       time = strTime.match(/(\d+)(?::(\d\d))?\s*([pP]?)/);
-      d = new Date();
       hours = parseInt(time[1], 10);
       minutes = parseInt(time[2], 10);
       isPM = time[3];
@@ -28,17 +27,18 @@
           hours = 0;
         }
       }
-      d.setHours(hours + increment);
-      d.setMinutes(minutes || 0);
-      d.setSeconds(0);
-      return d;
+      date = new Date();
+      date.setHours(hours + increment);
+      date.setMinutes(minutes || 0);
+      date.setSeconds(0);
+      return date;
     };
 
     Session.prototype.lengthInMins = function() {
       var hourOffset, minuteOffset;
       hourOffset = this.endTime.getHours() - this.startTime.getHours();
-      minuteOffset = (hourOffset * 60) + this.endTime.getMinutes() - this.startTime.getMinutes();
-      return minuteOffset;
+      minuteOffset = this.endTime.getMinutes() - this.startTime.getMinutes();
+      return (hourOffset * 60) + minuteOffset;
     };
 
     Session.prototype.overlap = function(otherSession) {

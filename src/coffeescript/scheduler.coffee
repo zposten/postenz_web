@@ -8,27 +8,27 @@ class Session
 
   @parseTime: (strTime) ->
     time = strTime.match(/(\d+)(?::(\d\d))?\s*([pP]?)/)
-    d = new Date()
     hours = parseInt(time[1], 10)
     minutes = parseInt(time[2], 10)
     isPM = time[3]
-    increment = if isPM then 12 else 0
 
+    increment = if isPM then 12 else 0
     if hours is 12
       if isPM
         increment = 0
       else
         hours = 0
 
-    d.setHours(hours + increment)
-    d.setMinutes(minutes || 0)
-    d.setSeconds(0)
-    return d
+    date = new Date()
+    date.setHours(hours + increment)
+    date.setMinutes(minutes || 0)
+    date.setSeconds(0)
+    return date
 
   lengthInMins: ->
     hourOffset = @endTime.getHours() - @startTime.getHours()
-    minuteOffset = (hourOffset * 60) + @endTime.getMinutes() - @startTime.getMinutes()
-    return minuteOffset
+    minuteOffset = @endTime.getMinutes() - @startTime.getMinutes()
+    return (hourOffset * 60) + minuteOffset
 
   overlap: (otherSession) ->
     onSameDay = @dow is otherSession.dow

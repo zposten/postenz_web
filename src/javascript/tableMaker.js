@@ -103,7 +103,7 @@
 
     TableMaker.prototype.makeClassDiv = function(courseNumber, sectionNumber, dow, colorIndex, classStartTime, lengthInMins, tableStartTime) {
       var baseHtml, dataObj;
-      baseHtml = ["<div class='{{:dayClass}} {{:colorClass}}' style='height: {{:height}}px;top: {{:top}}px;'>", "  <div class='course-text'>", "    <span class='course-name'>{{:courseNumber}}/{{:sectionNumber}}</span>", "  </div>", "</div>"].join("\n");
+      baseHtml = ["<div class='{{:dayClass}} {{:colorClass}}' style='height: {{:height}}px;top: {{:top}}px;'>", "  <div class='course-text'>", "    <span class='course-name' style='max-height: {{:height-5}}px;'>", "      {{:courseNumber}}/{{:sectionNumber}}", "    </span>", "  </div>", "</div>"].join("\n");
       dataObj = {
         dayClass: this.getDayClass(dow),
         colorClass: this.getColorClass(colorIndex),

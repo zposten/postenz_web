@@ -11,10 +11,6 @@ $schd-table-width: 650px;
 $schd-table-time-col-width: 70px;
 $schd-table-dow-col-width: ($schd-table-width - $schd-table-time-col-width) / 5;
 
-@mixin day-left($day-num) {
-  left: $schd-table-time-col-width + ($day-num - 1)*$schd-table-dow-col-width;
-}
-
 $schd-input-indent: 30px;
 
 .schedule {
@@ -87,6 +83,10 @@ $schd-input-indent: 30px;
 
   .course-name {
     font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: $schd-table-dow-col-width - 1;
+    display: inline-block;
   }
 
   .course-text {
@@ -101,6 +101,10 @@ $schd-input-indent: 30px;
     text-align: center;
     box-sizing: border-box;
     display: table;
+  }
+
+  @mixin day-left($day-num) {
+    left: $schd-table-time-col-width + ($day-num - 1)*$schd-table-dow-col-width;
   }
 
   .dayM {

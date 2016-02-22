@@ -99,7 +99,9 @@ class TableMaker
     baseHtml = [
       "<div class='{{:dayClass}} {{:colorClass}}' style='height: {{:height}}px;top: {{:top}}px;'>"
       "  <div class='course-text'>"
-      "    <span class='course-name'>{{:courseNumber}}/{{:sectionNumber}}</span>"
+      "    <span class='course-name' style='max-height: {{:height-5}}px;'>"
+      "      {{:courseNumber}}/{{:sectionNumber}}"
+      "    </span>"
       "  </div>"
       "</div>"
     ].join("\n")
