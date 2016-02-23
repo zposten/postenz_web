@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <meta name="description" content="Zach's Website">
+    <meta name="author" content="Zach Posten">
+    <link rel="icon" href="assets/zach_icon.ico">
+
+    <title>Zach Posten</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton">
+    <link rel="stylesheet" href="src/stylesheets/screen.css">
+    <link rel="stylesheet" href="src/stylesheets/scheduler.css">
+    <link href="bower_components/jquery-loading/src/loading.css" rel="stylesheet">
+</head>
+
+
+<body ng-app="WebsiteApp">
+
+<script src="src/javascript/googleAnalytics.js"></script>
+<div id="top_blue_bar" class="masthead"></div>
+
+<div id="sidebar" class="sidebar col-sm-3 col-sm-offset-1">
+    <img src="assets/prof_small_circle.png" id="zach_pic" class="sidebar-module"/>
+
+    <a ui-sref="home" class="nav_link" id="nav-home">
+        <div class="sidebar-module nav_link">HOME</div>
+    </a>
+    <a ui-sref="contact" class="nav_link" id="nav-contact">
+        <div class="sidebar-module nav_link">CONTACT</div>
+    </a>
+    <a ui-sref="blog" class="nav_link" id="nav-blog">
+        <div class="sidebar-module nav_link">BLOG</div>
+    </a>
+    <a ui-sref="photos" class="nav_link" id="nav-photos">
+        <div class="sidebar-module nav_link">PHOTOGRAPHY</div>
+    </a>
+    <a ui-sref="apps" class="nav_link" id="nav-apps">
+        <div class="sidebar-module nav_link">APPLETS</div>
+    </a>
+</div>
+
+<div id="content-pane" class="row" ui-view></div>
+
+
+
+<!--============================================================-->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<!--libraries-->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/showdown/dist/showdown.min.js"></script>
+<script src="bower_components/jquery-loading/src/loading.js"></script>
+<script src="bower_components/jsrender/jsrender.min.js"></script>
+
+<!--website classes-->
+<script src="src/javascript/util.js"></script>
+<script src="src/javascript/angular_app.js"></script>
+<script src="src/javascript/script.js"></script>
+<script src="src/javascript/iir.js"></script>
+
+<!--photoswipe-->
+<script src="src/javascript/photoswipe/photoswipe.js"></script>
+<script src="src/javascript/photoswipe/photoswipe-ui-default.js"></script>
+<script src="src/javascript/photoswipe/photoswipe_impl.js"></script>
+<script src="src/javascript/photoswipe/photos.js"></script>
+
+<!--scheduler-->
+<script src="src/javascript/scheduler.js"></script>
+<script src="src/javascript/tableMaker.js"></script>
+<script src="src/javascript/schedulerInput.js"></script>
+
+
+</body>
+</html>
