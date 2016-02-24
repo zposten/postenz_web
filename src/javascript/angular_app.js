@@ -73,22 +73,20 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/apps',
             templateUrl: 'src/views/apps.html',
             controller: function ($scope) {
-
+                highlightSelectedNav('nav-apps');
                 $scope.title = 'Applets';
                 $scope.description = 'In the little free time that I do have, I don\'t always like to spend it' +
                     ' programming because, well,  that\'s what I do all day.  Sometimes though, I get started on' +
                     ' something' +
                     ' and become engrossed in the project until it\'s complete.  Below are examples of those times.';
-                $scope.days = ['M', 'T', 'W', 'R', 'F'];
-
-                highlightSelectedNav('nav-apps');
             }
         })
 
         .state('iir', {
-            url: '/isItRacist',
+            url: '/apps/isItRacist',
             templateUrl: 'src/views/iir.html',
             controller: function ($scope) {
+                highlightSelectedNav('nav-apps');
                 $scope.title = 'Does the internet think it\'s racist?';
                 $scope.description = 'This applet crawls the appropriate parts of the internet and determines it\'s' +
                     ' collective opinion through textual analysis.  The results do not reflect my own beliefs in any way.';
@@ -96,9 +94,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
 
         .state('scheduler', {
-            url: '/scheduler',
+            url: '/apps/scheduler',
             templateUrl: 'src/views/scheduler.html',
             controller: function ($scope) {
+                highlightSelectedNav('nav-apps');
                 $scope.title = 'Class Scheduler';
                 $scope.description = 'MSOE has a very useful scheduling application that students can make use of' +
                     ' of when choosing their classes each quarter.  Other schools aren\'t quite' +
