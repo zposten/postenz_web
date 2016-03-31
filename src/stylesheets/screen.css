@@ -94,13 +94,12 @@ code {
 .main-container {
   font-size: 18px;
   line-height: 1.5;
-  width: 1000px;
 }
 
 /*
  * Footer
  */
-/* line 98, ../sass/_main.scss */
+/* line 99, ../sass/_main.scss */
 .blog-footer {
   padding: 40px 0;
   color: #999;
@@ -109,7 +108,7 @@ code {
   border-top: 1px solid #e5e5e5;
 }
 
-/* line 105, ../sass/_main.scss */
+/* line 106, ../sass/_main.scss */
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
@@ -500,7 +499,7 @@ div.nav_link:hover {
 .pswp__button,
 .pswp__button--arrow--left:before,
 .pswp__button--arrow--right:before {
-  background: url("../assets/photoswipe/default-skin/default-skin.png") 0 0 no-repeat;
+  background: url("../../assets/photoswipe/default-skin/default-skin.png") 0 0 no-repeat;
   background-size: 264px 88px;
   width: 44px;
   height: 44px;
@@ -512,7 +511,7 @@ div.nav_link:hover {
   .pswp--svg .pswp__button,
   .pswp--svg .pswp__button--arrow--left:before,
   .pswp--svg .pswp__button--arrow--right:before {
-    background-image: url("../assets/photoswipe/default-skin/default-skin.svg");
+    background-image: url("../../assets/photoswipe/default-skin/default-skin.svg");
   }
 
   /* line 70, ../sass/_photoswipe-default-skin.scss */
@@ -861,7 +860,7 @@ a.pswp__share--download:hover {
 /* line 321, ../sass/_photoswipe-default-skin.scss */
 .pswp__preloader--active .pswp__preloader__icn {
   /* We use .gif in browsers that don't support CSS animation */
-  background: url("../assets/photoswipe/default-skin/preloader.gif") 0 0 no-repeat;
+  background: url("../../assets/photoswipe/default-skin/preloader.gif") 0 0 no-repeat;
 }
 
 /* line 325, ../sass/_photoswipe-default-skin.scss */

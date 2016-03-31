@@ -72,5 +72,5 @@ iir.generate = function() {
 iir.pct = function() {
   var pct = Math.floor(Math.random() * 40 + 60);
   $('#iir-res-pct').text(pct + '% racist!!!');
-}
+};
 

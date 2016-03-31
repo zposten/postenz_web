@@ -1,0 +1,57 @@
+<div class="header">
+    <h1 class="title">{{ title }}</h1>
+</div>
+
+<div class="col-sm-8 main-container">
+
+    <p>{{ description }}</p><br>
+
+    <div id="schd-courses">
+        <div class="schd-course">
+
+            <label style="font-size: 25px">Course</label>
+            <input type="text" class="form-control course-name" placeholder="Course Name">
+
+            <div class="schd-sections">
+                <div class="schd-section alt">
+                    <input class="sec-num form-control col-md-6" type="text" placeholder="Section #">
+
+                    <div class="schd-section-times col-md-6">
+                        <div select-time></div>
+                        <button class="btn btn-default schd-add-time">Add Time</button>
+                        <button class="btn btn-default schd-rmv-time">Remove Time</button>
+                    </div>
+                    <br>
+                    <div class="clear"></div>
+                </div>
+
+                <button class="btn btn-default schd-add-section">Add Section</button>
+                <button class="btn btn-default schd-rmv-section">Remove Section</button>
+            </div>
+        </div>
+
+        <button class="btn btn-default schd-add-course">Add Course</button>
+        <button class="btn btn-default schd-rmv-course">Remove Course</button>
+    </div>
+
+    <button class="btn btn-primary" id="make-schedules">Make Schedules!</button>
+
+
+    <div id="schedule-wrapper" style="width: 621px"></div>
+
+    <script>
+        $(document).ready(function () {
+//
+            var input =
+                    JSON.parse('[{"name": "CS 4230", "number": "CS 4230", "sections": [{"number": "011", "sessions": [{"dows": [1,3],"startTime": "4:00 PM","endTime": "4:50 PM"},{"dows": [1,3],"startTime": "3:00 PM","endTime": "4:50 PM"}]},{"number": "012", "sessions": [{"dows": [1,3],"startTime": "4:00 PM","endTime": "4:50 PM"},{"dows": [4],"startTime": "3:00 PM","endTime": "4:50 PM"}]}]},{"name": "MA 381", "number": "MA 381", "sections": [{"number": "001", "sessions": [{"dows": [2,4,5],"startTime": "2:00 PM","endTime": "2:50 PM"}]}]},{"name": "CS 382", "number": "CS 382", "sections": [{"number": "001", "sessions": [{"dows": [5],"startTime": "10:00 AM","endTime": "10:50 AM"}]}]},{"name": "CS 3205", "number": "CS 3205", "sections": [{"number": "001", "sessions": [{"dows": [2,5],"startTime": "3:00 PM","endTime": "3:50 PM"}]}]},{"name": "SE 400", "number": "SE 400", "sections": [{"number": "001", "sessions": [{"dows": [3],"startTime": "12:00 PM","endTime": "12:50 PM"}]},{"number": "002", "sessions": [{"dows": [4],"startTime": "12:00 PM","endTime": "12:50 PM"}]},{"number": "003", "sessions": [{"dows": [1],"startTime": "12:00 PM","endTime": "12:50 PM"}]}]},{"name": "SE 3192", "number": "SE 3192", "sections": [{"number": "001", "sessions": [{"dows": [1,3],"startTime": "8:00 AM","endTime": "10:50 AM"}]},{"number": "002", "sessions": [{"dows": [2,4],"startTime": "8:00 AM","endTime": "10:50 AM"}]}]}]');
+
+            var scheduler = new window.Scheduler(input);
+            var html = scheduler.makeSchedules();
+            $('div#schedule-wrapper').html("<br><br><h4>Sample Schedules</h4>" + html);
+
+
+        });
+
+    </script>
+
+</div>

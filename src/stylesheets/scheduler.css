@@ -1,0 +1,251 @@
+/* line 16, ../sass/scheduler.scss */
+.schedule {
+  width: 650px;
+  margin: 0 0 40px 0;
+  padding: 0;
+  font-family: "HelveticaMedium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 15px;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: white;
+}
+
+/* line 27, ../sass/scheduler.scss */
+.schedule-table {
+  position: relative;
+  margin-top: 20px;
+}
+/* line 31, ../sass/scheduler.scss */
+.schedule-table table {
+  width: 650px;
+  table-layout: fixed;
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 0;
+}
+/* line 41, ../sass/scheduler.scss */
+.schedule-table td, .schedule-table th {
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 15px;
+  text-align: left;
+  vertical-align: top;
+}
+/* line 49, ../sass/scheduler.scss */
+.schedule-table thead th {
+  width: 116px;
+  padding: 5px;
+  background: #242424;
+  color: white;
+  text-align: center;
+  vertical-align: bottom;
+  -webkit-print-color-adjust: exact;
+}
+/* line 59, ../sass/scheduler.scss */
+.schedule-table thead th.time {
+  width: 70px;
+}
+/* line 64, ../sass/scheduler.scss */
+.schedule-table tbody td, .schedule-table tbody th {
+  border-bottom: 1px solid #808080;
+  border-right: 1px solid #808080;
+}
+/* line 69, ../sass/scheduler.scss */
+.schedule-table tbody td {
+  background: #e5e5e5;
+}
+/* line 73, ../sass/scheduler.scss */
+.schedule-table tbody th {
+  line-height: 49px;
+  height: 49px;
+  text-align: center;
+  background: #c7c7c7;
+  white-space: nowrap;
+  border-left: 1px solid #808080;
+  font-weight: normal;
+}
+/* line 84, ../sass/scheduler.scss */
+.schedule-table .course-name {
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 115px;
+  display: inline-block;
+}
+/* line 92, ../sass/scheduler.scss */
+.schedule-table .course-text {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* line 97, ../sass/scheduler.scss */
+.schedule-table .dayM, .schedule-table .dayT, .schedule-table .dayW, .schedule-table .dayR, .schedule-table .dayF {
+  position: absolute;
+  width: 117px;
+  top: 0;
+  text-align: center;
+  box-sizing: border-box;
+  display: table;
+}
+/* line 110, ../sass/scheduler.scss */
+.schedule-table .dayM {
+  left: 70px;
+}
+/* line 113, ../sass/scheduler.scss */
+.schedule-table .dayT {
+  left: 186px;
+}
+/* line 116, ../sass/scheduler.scss */
+.schedule-table .dayW {
+  left: 302px;
+}
+/* line 119, ../sass/scheduler.scss */
+.schedule-table .dayR {
+  left: 418px;
+}
+/* line 122, ../sass/scheduler.scss */
+.schedule-table .dayF {
+  left: 534px;
+}
+/* line 126, ../sass/scheduler.scss */
+.schedule-table .color0 {
+  border: 1px solid #0D47A1;
+  background-color: #2196F3;
+  color: rgba(255, 255, 255, 0.87);
+}
+/* line 131, ../sass/scheduler.scss */
+.schedule-table .color1 {
+  border: 1px solid #FF6F00;
+  background-color: #FFC107;
+  color: rgba(0, 0, 0, 0.87);
+}
+/* line 136, ../sass/scheduler.scss */
+.schedule-table .color2 {
+  border: 1px solid #B71C1C;
+  background-color: #F44336;
+  color: rgba(255, 255, 255, 0.87);
+}
+/* line 141, ../sass/scheduler.scss */
+.schedule-table .color3 {
+  border: 1px solid #1B5E20;
+  background-color: #4CAF50;
+  color: rgba(0, 0, 0, 0.87);
+}
+/* line 146, ../sass/scheduler.scss */
+.schedule-table .color4 {
+  border: 1px solid #4A148C;
+  background-color: #9C27B0;
+  color: rgba(255, 255, 255, 0.87);
+}
+/* line 151, ../sass/scheduler.scss */
+.schedule-table .color5 {
+  border: 1px solid #004D40;
+  background-color: #009688;
+  color: rgba(255, 255, 255, 0.87);
+}
+/* line 156, ../sass/scheduler.scss */
+.schedule-table .color6 {
+  border: 1px solid #880E4F;
+  background-color: #E91E63;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+/* line 167, ../sass/scheduler.scss */
+div.schd-section-time-dow {
+  display: inline-block;
+  width: 25px;
+  text-align: center;
+}
+
+/* line 173, ../sass/scheduler.scss */
+input.schd-section-time-dow {
+  width: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 180, ../sass/scheduler.scss */
+input.sec-num {
+  width: 100px;
+}
+
+/* line 184, ../sass/scheduler.scss */
+div.schd-sections {
+  margin-left: 30px;
+  margin-top: 20px;
+  min-width: 550px;
+}
+/* line 189, ../sass/scheduler.scss */
+div.schd-sections div.schd-section {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+}
+/* line 194, ../sass/scheduler.scss */
+div.schd-sections div.schd-section div.schd-section-times {
+  min-width: inherit;
+}
+/* line 197, ../sass/scheduler.scss */
+div.schd-sections div.schd-section div.schd-section-times .schd-add-time, div.schd-sections div.schd-section div.schd-section-times .schd-rmv-time {
+  margin-top: 10px;
+}
+/* line 201, ../sass/scheduler.scss */
+div.schd-sections div.schd-section div.schd-section-times div.schd-section-time {
+  width: 500px;
+  display: flex;
+  align-items: center;
+}
+/* line 206, ../sass/scheduler.scss */
+div.schd-sections div.schd-section div.schd-section-times div.schd-section-time select {
+  color: #414142;
+}
+/* line 210, ../sass/scheduler.scss */
+div.schd-sections div.schd-section div.schd-section-times div.schd-section-time select.ampm {
+  background-color: #999;
+}
+/* line 216, ../sass/scheduler.scss */
+div.schd-sections div.schd-section.alt {
+  background-color: #414142;
+  min-width: inherit;
+  margin-top: 20px;
+}
+/* line 224, ../sass/scheduler.scss */
+div.schd-sections button.schd-add-section {
+  margin-top: 20px;
+}
+/* line 227, ../sass/scheduler.scss */
+div.schd-sections button.schd-rmv-section {
+  margin-top: 20px;
+}
+
+/* line 233, ../sass/scheduler.scss */
+.clear {
+  clear: both;
+}
+
+/* line 237, ../sass/scheduler.scss */
+div.schd-course {
+  padding-top: 30px;
+}
+
+/* line 241, ../sass/scheduler.scss */
+.schd-add-course, .schd-rmv-course, #make-schedules {
+  margin-top: 30px;
+}
+
+/* line 245, ../sass/scheduler.scss */
+div#schedule-wrapper {
+  margin-top: 30px;
+  color: #640000;
+}
+
+/* line 250, ../sass/scheduler.scss */
+.schedule-table thead tr > th:first-child {
+  border-left: 1px solid #292929;
+}
+
+/* line 254, ../sass/scheduler.scss */
+.schedule-table thead tr > th:last-child {
+  border-right: 1px solid #292929;
+}
