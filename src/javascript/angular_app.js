@@ -113,16 +113,47 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             }
         })
 
+        .state('recipes', {
+            url: '/recipes',
+            templateUrl: 'src/views/recipes.html',
+            controller: function($scope) {
+                $scope.title = 'Not So Fancy Foods';
+                $scope.description = "I'm not much of a cook, but I love to eat.  I will be filling this page with" +
+                    " recipes that I've tried and particularly enjoyed.  This is as much for my reference as anyone" +
+                    " else's, but please do try your hand and let me know what you think!";
+            }
+        })
 
+        .state('recipes.recipe', {
+            url: '/{recipeName}',
+            template: function () {return '<markdown id="recipe"></markdown>';},
+            controller: function($scope, $stateParams, $window) {
+                var url = 'http://poste.nz/assets/recipes/recipe-' + $stateParams.recipeName + '.md';
+
+                var rawFile = new XMLHttpRequest();
+                rawFile.open("GET", url, true);
+                rawFile.onreadystatechange = function () {
+                    if(rawFile.readyState === 4 && rawFile.status === 200) {
+                        var converter = new $window.showdown.Converter({tasklists: true});
+                        $('markdown#recipe').html(converter.makeHtml(rawFile.responseText));
+                        $('markdown#recipe input').prop('disabled', false);
+                        $('markdown').addClass('markdown-body');
+                        $('markdown').find('*').addClass('markdown');
+                    }
+                };
+                rawFile.send(null);
+            }
+        })
 });
 
 
 app.directive('markdown', function ($window) {
-    var converter = new $window.Showdown.converter();
+    var converter = new $window.showdown.Converter();
     return {
         restrict: 'E',
         link: function (scope, element, attrs) {
-            var htmlText = converter.makeHtml(element.text());
+            var markdownText = element.text();
+            var htmlText = converter.makeHtml(markdownText);
             element.html(htmlText);
         }
     }

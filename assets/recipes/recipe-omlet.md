@@ -13,19 +13,21 @@ My mom's omelets are famous where I come from, and for good reason.  It was diff
 
 ## Preparation
 
-#### Bacon
+### Bacon
 1. Cook bacon, save grease
 1. Break up into small pieces
 
-#### Potatoes
-1. Heat up most of a bottle of pure vegetable oil until potatoes sizzle when placed in them
+### Potatoes
+1. Peel potatoes
+1. Dice into small cubes (or you know, rectangular prisms).
+1. Pour most of a bottle of pure vegetable oil into a large frying pan and heat until potatoes sizzle when placed in.
 1. Let sit for five minutes (stir too early and the potatoes will turn to mush).
-1. Stir until cooked
-1. Place the potatoes in a large bowl lined with a paper towel
+1. Stir until potato cuboids are golden brown.
+1. Dump the potatoes in a large bowl lined with paper towel
 
-#### Eggs
+### Eggs
 1. 2 eggs/omelet
-1. Add a quarter cup of milk for five eggs
+1. Add a quarter cup of milk for every five eggs
 1. Add about a shake of each salt and pepper per egg for flavoring
 
 
