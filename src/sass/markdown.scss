@@ -3,7 +3,6 @@
 .markdown-body {
   width: 45em;
   margin: 16px auto;
-  padding: 30px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   overflow: hidden;
@@ -46,20 +45,23 @@
 
   h1, h2, h3, h4, h5, h6 {
     margin-top: 15px;
-    margin-bottom: 15px;
     position: relative;
     font-weight: bold;
   }
   h1 {
     font-size: 30px;
-    margin: 0.67em 0;
-    border-bottom: 1px solid $markdown-underline-color;
-    padding-bottom: 0.3em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    padding-top: 15px;
+    padding-bottom: 10px;
     line-height: 1.2;
+    margin-bottom: 20px;
   }
   h2 {
     font-size: 21px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     line-height: 1.225;
+    padding-top: 10px;
+    padding-bottom: 5px;
   }
   h3 {
     font-size: 16px;

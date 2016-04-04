@@ -117,6 +117,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/recipes',
             templateUrl: 'src/views/recipes.html',
             controller: function($scope) {
+                highlightSelectedNav('nav-blog');
                 $scope.title = 'Not So Fancy Foods';
                 $scope.description = "I'm not much of a cook, but I love to eat.  I will be filling this page with" +
                     " recipes that I've tried and particularly enjoyed.  This is as much for my reference as anyone" +

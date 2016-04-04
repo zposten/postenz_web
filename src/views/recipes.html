@@ -5,5 +5,12 @@
 </div>
 
 <div class="col-sm-8 main-container">
+    Recipes
+    <!--See here: https://github.com/angular-ui/ui-router/wiki/URL-Routing-->
+    <ul>
+        <li><a ui-sref="recipes.recipe({recipeName: 'omelet'})">Mom's Omlets</a></li>
+        <li><a ui-sref="recipes.recipe({recipeName: 'chicken-and-rice'})">Mom's Chicken and Rice</a></li>
+        <li><a ui-sref="recipes.recipe({recipeName: 'one-pot-taco-pasta'})">One Pot Taco Pasta</a></li>
+    </ul>
     <div ui-view class="col-sm-8 main-container"></div>
 </div>
