@@ -76,6 +76,20 @@ util.removeLastChar = function(str) {
     return str.substring(0, str.length - 1);
 };
 
+util.insertMarkdown = function(mdFileUrl, containerSelector) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", mdFileUrl, true);
+    rawFile.onreadystatechange = function () {
+        if(rawFile.readyState === 4 && rawFile.status === 200) {
+            var converter = new window.showdown.Converter({tasklists: true});
+            $(containerSelector).html(converter.makeHtml(rawFile.responseText));
+            $(containerSelector + ' input').prop('disabled', false);
+            $(containerSelector).addClass('markdown-body');
+        }
+    };
+    rawFile.send(null);
+}
+
 /***************************************/
 /** JAVASCRIPT LANGUAGE MANIPULATIONS */
 /*************************************/

@@ -51,8 +51,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         .state('blog.post', {
             url: '/{blogPostId}',
-            templateUrl: function (params) {
-                return 'src/views/blog_posts/' + params.blogPostId + '.html';
+            template: function () {return '<markdown id="blogpost"></markdown>';},
+            controller: function($scope, $stateParams, $window) {
+                var url = 'http://poste.nz/assets/blog-posts/blog' + $stateParams.blogPostId + '.md';
+                util.insertMarkdown(url, 'markdown#blogpost');
             }
         })
 
@@ -130,19 +132,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             template: function () {return '<markdown id="recipe"></markdown>';},
             controller: function($scope, $stateParams, $window) {
                 var url = 'http://poste.nz/assets/recipes/recipe-' + $stateParams.recipeName + '.md';
-
-                var rawFile = new XMLHttpRequest();
-                rawFile.open("GET", url, true);
-                rawFile.onreadystatechange = function () {
-                    if(rawFile.readyState === 4 && rawFile.status === 200) {
-                        var converter = new $window.showdown.Converter({tasklists: true});
-                        $('markdown#recipe').html(converter.makeHtml(rawFile.responseText));
-                        $('markdown#recipe input').prop('disabled', false);
-                        $('markdown').addClass('markdown-body');
-                        $('markdown').find('*').addClass('markdown');
-                    }
-                };
-                rawFile.send(null);
+                util.insertMarkdown(url, 'markdown#recipe');
             }
         })
 });
