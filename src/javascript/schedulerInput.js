@@ -16,7 +16,27 @@
 
     SchedulerInput.prototype.addTimeListener = function() {
       this.add('.schd-add-time');
-      return this.remove('.schd-rmv-time');
+      this.remove('.schd-rmv-time');
+      this.hourSetAmPm('start');
+      return this.hourSetAmPm('end');
+    };
+
+    SchedulerInput.prototype.hourSetAmPm = function(startEnd) {
+      var ampmSelector, hourSelector;
+      hourSelector = '.schd-section-' + startEnd + '-time-hour';
+      ampmSelector = '.schd-section-' + startEnd + '-time-period';
+      return $(hourSelector).on('change', function(event) {
+        var ampm, hour, i, isAm, val;
+        val = $(this).val();
+        isAm = false;
+        for (hour = i = 8; i <= 11; hour = ++i) {
+          if (val == hour) {
+            isAm = true;
+          }
+        }
+        ampm = $(this).siblings(ampmSelector).last();
+        return ampm.val(isAm ? "AM" : "PM");
+      });
     };
 
     SchedulerInput.prototype.addSectionListener = function() {

@@ -11,6 +11,24 @@ class SchedulerInput
   addTimeListener: ->
     @add('.schd-add-time')
     @remove('.schd-rmv-time')
+    @hourSetAmPm('start')
+    @hourSetAmPm('end')
+
+
+  hourSetAmPm: (startEnd) ->
+    hourSelector = '.schd-section-' + startEnd + '-time-hour'
+    ampmSelector = '.schd-section-' + startEnd + '-time-period'
+
+    $(hourSelector).on 'change', (event) ->
+      val = $(this).val()
+      isAm = false
+      for hour in [8..11]
+        if `val == hour`
+          isAm = true
+
+      ampm = $(this).siblings(ampmSelector).last()
+      ampm.val(if isAm then "AM" else "PM")
+
 
   addSectionListener: ->
     @add('.schd-add-section')
