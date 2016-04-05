@@ -32,9 +32,11 @@
     SchedulerInput.prototype.add = function(selector) {
       return $(selector).on('click', (function(_this) {
         return function(event) {
-          var target;
+          var clone, target;
           target = $(event.currentTarget);
-          return target.siblings('div').last().clone(true).insertBefore(target);
+          clone = target.siblings('div').last().clone(true);
+          _this.resetCourseHtml(clone);
+          return clone.insertBefore(target);
         };
       })(this));
     };
@@ -49,6 +51,14 @@
           }
         };
       })(this));
+    };
+
+    SchedulerInput.prototype.resetCourseHtml = function(course) {
+      course.find('.float-input').val('');
+      course.find('select').attr('selectedIndex', 0);
+      course.find('input:checkbox').prop('checked', false);
+      course.find('.schd-section').not(':first').remove();
+      return course.find('[select-time]').not(':first').remove();
     };
 
     SchedulerInput.prototype.addMakeSchedulesListener = function() {

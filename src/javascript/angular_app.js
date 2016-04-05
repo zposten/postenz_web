@@ -97,7 +97,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         .state('scheduler', {
             url: '/apps/scheduler',
-            templateUrl: 'src/views/scheduler.html',
+            templateUrl: 'src/views/scheduler/scheduler.html',
             controller: function ($scope) {
                 highlightSelectedNav('nav-apps');
                 $scope.title = 'Class Scheduler';
@@ -111,7 +111,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     $scope.hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
                     $scope.mins = ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'];
                 };
-                window.SchedulerInput.init();
+                $('.schd-course').ready(window.SchedulerInput.init());
             }
         })
 
@@ -150,10 +150,25 @@ app.directive('markdown', function ($window) {
     }
 });
 
+app.directive('floatInput', function(){
+    return{
+        restrict: 'AE',
+        replace: true,
+        templateUrl: 'src/views/controls/float-input.html',
+        link: function(scope, elem, attrs){
+            var hint = attrs.hint || attrs.label || attrs.placeholder;
+            $(elem.find('.float-input-lbl')[0]).text(hint);
+            elem.find('*').addClass(attrs.class);
+            elem.find('*').removeClass('float-input-group');
+            // if(attrs.width) elem.css('width', attrs.width);
+        }
+    }
+});
+
 
 app.directive('photoswipe', ['$rootScope', function ($rootScope) {
     return {
-        restrict: 'EA',
+        restrict: 'AE',
         templateUrl: 'src/views/gallery.html',
         link: function (scope, elem, attrs) {
             //attrs references any attributes on the directive element in html
@@ -164,8 +179,10 @@ app.directive('photoswipe', ['$rootScope', function ($rootScope) {
     };
 }]);
 
+
+app.directive('schdCourse', function () {
+    return {templateUrl: 'src/views/scheduler/schd-course.html'};
+});
 app.directive('selectTime', function () {
-    return {
-        templateUrl: 'src/views/select-time.html'
-    };
+    return {templateUrl: 'src/views/scheduler/select-time.html'};
 });
