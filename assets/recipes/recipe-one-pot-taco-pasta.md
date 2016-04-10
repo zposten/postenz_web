@@ -2,6 +2,7 @@
 [*Original Recipe*](http://www.kraftrecipes.com/recipes/one-pot-taco-pasta-127214.aspx)
 
 ## Ingredients
+
 - 1 lb extra-lean ground beef
 - 1 yellow onion, chopped
 - 1 cup **each** chopped red and yellow peppers

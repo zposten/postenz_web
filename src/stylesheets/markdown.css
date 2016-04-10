@@ -1,0 +1,467 @@
+/* line 3, ../sass/markdown.scss */
+.markdown-body {
+  width: 45em;
+  margin: 16px auto;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+/* line 14, ../sass/markdown.scss */
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 19, ../sass/markdown.scss */
+.markdown-body a:active, .markdown-body a:hover {
+  outline: 0;
+}
+/* line 22, ../sass/markdown.scss */
+.markdown-body a:hover, .markdown-body a:focus, .markdown-body a:active {
+  text-decoration: underline;
+}
+/* line 26, ../sass/markdown.scss */
+.markdown-body b, .markdown-body strong {
+  font-weight: bold;
+}
+/* line 30, ../sass/markdown.scss */
+.markdown-body mark {
+  background: #ff0;
+  color: #cecfd5;
+  font-style: italic;
+  font-weight: bold;
+}
+/* line 37, ../sass/markdown.scss */
+.markdown-body sub, .markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+/* line 43, ../sass/markdown.scss */
+.markdown-body sup {
+  top: -0.5em;
+}
+/* line 46, ../sass/markdown.scss */
+.markdown-body sub {
+  bottom: -0.25em;
+}
+/* line 50, ../sass/markdown.scss */
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6 {
+  margin-top: 15px;
+  position: relative;
+  font-weight: bold;
+}
+/* line 55, ../sass/markdown.scss */
+.markdown-body h1 {
+  font-size: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  padding-top: 15px;
+  padding-bottom: 10px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+/* line 63, ../sass/markdown.scss */
+.markdown-body h2 {
+  font-size: 21px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  line-height: 1.225;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+/* line 70, ../sass/markdown.scss */
+.markdown-body h3 {
+  font-size: 16px;
+  line-height: 1.43;
+}
+/* line 74, ../sass/markdown.scss */
+.markdown-body h4 {
+  font-size: 14px;
+}
+/* line 77, ../sass/markdown.scss */
+.markdown-body h5 {
+  font-size: 12px;
+}
+/* line 80, ../sass/markdown.scss */
+.markdown-body h6 {
+  font-size: 11px;
+}
+/* line 84, ../sass/markdown.scss */
+.markdown-body ol ol, .markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+/* line 87, ../sass/markdown.scss */
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+/* line 93, ../sass/markdown.scss */
+.markdown-body ul, .markdown-body ol {
+  padding-left: 2em;
+}
+/* line 96, ../sass/markdown.scss */
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+/* line 103, ../sass/markdown.scss */
+.markdown-body li > p {
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+/* line 108, ../sass/markdown.scss */
+.markdown-body p, .markdown-body blockquote, .markdown-body ul, .markdown-body ol, .markdown-body dl, .markdown-body table, .markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+/* line 117, ../sass/markdown.scss */
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 0;
+}
+/* line 124, ../sass/markdown.scss */
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+/* line 130, ../sass/markdown.scss */
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* line 135, ../sass/markdown.scss */
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+/* line 140, ../sass/markdown.scss */
+.markdown-body pre {
+  overflow: auto;
+}
+/* line 144, ../sass/markdown.scss */
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+/* line 149, ../sass/markdown.scss */
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+/* line 153, ../sass/markdown.scss */
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+/* line 158, ../sass/markdown.scss */
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+/* line 165, ../sass/markdown.scss */
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+/* line 172, ../sass/markdown.scss */
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+/* line 178, ../sass/markdown.scss */
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+/* line 189, ../sass/markdown.scss */
+.markdown-body pre > code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+/* line 198, ../sass/markdown.scss */
+.markdown-body .code {
+  width: 100%;
+}
+/* line 201, ../sass/markdown.scss */
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  word-wrap: normal;
+}
+/* line 206, ../sass/markdown.scss */
+.markdown-body pre code:before, .markdown-body pre code:after {
+  content: normal;
+}
+/* line 211, ../sass/markdown.scss */
+.markdown-body code, .markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 3px;
+}
+/* line 221, ../sass/markdown.scss */
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
+/* line 230, ../sass/markdown.scss */
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+}
+/* line 238, ../sass/markdown.scss */
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+/* line 244, ../sass/markdown.scss */
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+/* line 247, ../sass/markdown.scss */
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+/* line 253, ../sass/markdown.scss */
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+/* line 262, ../sass/markdown.scss */
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+/* line 268, ../sass/markdown.scss */
+.markdown-body hr:after {
+  clear: both;
+}
+/* line 272, ../sass/markdown.scss */
+.markdown-body blockquote {
+  margin: 0;
+}
+/* line 276, ../sass/markdown.scss */
+.markdown-body ul, .markdown-body ol {
+  padding: 0 0 0 2em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+/* line 282, ../sass/markdown.scss */
+.markdown-body dd {
+  margin-left: 0;
+}
+/* line 286, ../sass/markdown.scss */
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+/* line 297, ../sass/markdown.scss */
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+/* line 303, ../sass/markdown.scss */
+.markdown-body h1 .headeranchor, .markdown-body h2 .headeranchor, .markdown-body h3 .headeranchor, .markdown-body h4 .headeranchor, .markdown-body h5 .headeranchor, .markdown-body h6 .headeranchor {
+  display: none;
+  color: #cecfd5;
+  vertical-align: middle;
+}
+/* line 311, ../sass/markdown.scss */
+.markdown-body h1:hover .headeranchor-link, .markdown-body h2:hover .headeranchor-link, .markdown-body h3:hover .headeranchor-link, .markdown-body h4:hover .headeranchor-link, .markdown-body h5:hover .headeranchor-link, .markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+/* line 318, ../sass/markdown.scss */
+.markdown-body h1:hover .headeranchor-link .headeranchor, .markdown-body h2:hover .headeranchor-link .headeranchor, .markdown-body h3:hover .headeranchor-link .headeranchor, .markdown-body h4:hover .headeranchor-link .headeranchor, .markdown-body h5:hover .headeranchor-link .headeranchor, .markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+/* line 324, ../sass/markdown.scss */
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+/* line 332, ../sass/markdown.scss */
+.markdown-body dl {
+  padding: 0;
+}
+/* line 336, ../sass/markdown.scss */
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+/* line 344, ../sass/markdown.scss */
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+/* line 349, ../sass/markdown.scss */
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+/* line 355, ../sass/markdown.scss */
+.markdown-body blockquote > :first-child {
+  margin-top: 0;
+}
+/* line 359, ../sass/markdown.scss */
+.markdown-body blockquote > :last-child {
+  margin-bottom: 0;
+}
+/* line 363, ../sass/markdown.scss */
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: keep-all;
+  border-color: #414142;
+}
+/* line 370, ../sass/markdown.scss */
+.markdown-body table th, .markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #414142;
+}
+/* line 374, ../sass/markdown.scss */
+.markdown-body table th {
+  font-weight: bold;
+  text-align: center;
+}
+/* line 378, ../sass/markdown.scss */
+.markdown-body table tr {
+  background-color: #525354;
+}
+/* line 383, ../sass/markdown.scss */
+.markdown-body table tr:nth-child(2n) {
+  background-color: rgba(65, 65, 66, 0.7);
+}
+/* line 388, ../sass/markdown.scss */
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* line 401, ../sass/markdown.scss */
+.markdown-body .headeranchor:before {
+  content: '\f05c';
+}
+/* line 405, ../sass/markdown.scss */
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+/* line 409, ../sass/markdown.scss */
+.markdown-body .task-list-item + .task-list-item {
+  margin-top: 3px;
+}
+/* line 413, ../sass/markdown.scss */
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: normal;
+  color: inherit;
+  margin: 0;
+}
+/* line 420, ../sass/markdown.scss */
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+/* line 424, ../sass/markdown.scss */
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+/* line 429, ../sass/markdown.scss */
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* line 437, ../sass/markdown.scss */
+.markdown-body > *:first-child {
+  margin-top: 0 !important;
+}
+
+/* line 441, ../sass/markdown.scss */
+.markdown-body > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* line 445, ../sass/markdown.scss */
+.footer {
+  padding-top: 200px;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  /* line 452, ../sass/markdown.scss */
+  .markdown-body {
+    font-size: 14px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  /* line 458, ../sass/markdown.scss */
+  .markdown-body {
+    font-size: 16px;
+  }
+}

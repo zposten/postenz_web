@@ -364,23 +364,24 @@
     display: block;
     width: 100%;
     overflow: auto;
-    word-break: normal;
     word-break: keep-all;
+    border-color: $nav-color;
 
     th, td {
       padding: 6px 13px;
-      border: 1px solid #ddd;
+      border: 1px solid $nav-color;
     }
     th {
       font-weight: bold;
+      text-align: center;
     }
     tr {
-      background-color: #fff;
-      border-top: 1px solid #ccc;
+      background-color: $main-section-color;
+      //border-top: 1px solid red;
     }
 
     tr:nth-child(2n) {
-      background-color: #f8f8f8;
+      background-color: rgba(65, 65, 66, 0.7);
     }
   }
 

@@ -12,7 +12,7 @@ My mom's omelets are famous where I come from, and for good reason.  It was diff
 - Yellow onion (optional)
 - Sausage (optional)
 
-## Preparation
+## Prep
 
 ### Bacon
 1. Cook bacon, save grease
@@ -33,7 +33,7 @@ My mom's omelets are famous where I come from, and for good reason.  It was diff
 1. Add about a shake of each salt and pepper per egg for flavoring
 
 
-## Cooking
+## Make It
 
 - [ ] Coat the bottom of the pan in bacon oil by tipping the pan around
 - [ ] Pour the eggs into the pan to fill the bottom in a quick fashion so part of it doesn't start to cook before the rest
