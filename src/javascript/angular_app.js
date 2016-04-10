@@ -124,6 +124,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 $scope.description = "I'm not much of a cook, but I love to eat.  I will be filling this page with" +
                     " recipes that I've tried and particularly enjoyed.  This is as much for my reference as anyone" +
                     " else's, but please do try your hand and let me know what you think!";
+                $scope.recipes = [
+                    {recipeName: 'omelet', recipeTitle: 'Mom\'s Omlets'},
+                    {recipeName: 'chicken-and-rice', recipeTitle: 'Mom\'s Chicken and Rice'},
+                    {recipeName: 'one-pot-taco-pasta', recipeTitle: 'One Pot Taco Pasta'},
+                    {recipeName: 'goulash', recipeTitle: 'American Goulash'},
+                    {recipeName: 'bbq-chicken', recipeTitle: 'Crockpot BBQ Chicken'}
+                ]
             }
         })
 
