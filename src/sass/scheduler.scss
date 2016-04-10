@@ -164,6 +164,14 @@ $schd-input-indent: 30px;
 //SCHEDULER INPUT
 //====================
 
+div.schd-section-times {
+  float: left;
+}
+div.schd-section-time {
+  margin-top: 10px;
+  background-color: #4a4a4a;
+}
+
 div.schd-section-time-dow {
   display: inline-block;
   width: 25px;
@@ -174,11 +182,11 @@ input.schd-section-time-dow {
   width: 25px;
   margin: 0;
   padding: 0;
-
 }
 
-input.sec-num {
+.sec-num {
   width: 100px;
+  float: left;
 }
 
 div.schd-sections {
@@ -238,8 +246,13 @@ div.schd-course {
   padding-top: $schd-input-indent;
 }
 
-.schd-add-course, .schd-rmv-course, #make-schedules {
+.schd-add-course, .schd-rmv-course {
   margin-top: $schd-input-indent;
+}
+
+#make-schedules {
+  margin-top: 75px;
+  background-color: $main-blue;
 }
 
 div#schedule-wrapper {

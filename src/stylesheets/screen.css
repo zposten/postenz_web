@@ -5,6 +5,7 @@
 /*
  * Globals
  */
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500);
 /* line 11, ../sass/_main.scss */
 body {
   color: #cecfd5;
@@ -142,9 +143,8 @@ div.nav_link:hover {
   width: 250px;
 }
 
-/* Sidebar modules for boxing content */
-/* line 35, ../sass/_nav.scss */
-.sidebar {
+/* line 32, ../sass/_nav.scss */
+.nav {
   background-color: #414142;
   margin-left: 0%;
   margin-top: 75px;
@@ -152,9 +152,10 @@ div.nav_link:hover {
   position: fixed;
   left: 0px;
   width: 250px;
+  padding-left: 15px;
 }
 
-/* line 45, ../sass/_nav.scss */
+/* line 43, ../sass/_nav.scss */
 .sidebar-module {
   padding: 15px;
   margin: 0 -15px 15px;
@@ -1390,5 +1391,106 @@ a.demo-gallery__img--main {
   /* line 274, ../sass/_photoswipe-site.scss */
   a.demo-gallery__img--main {
     width: 109px;
+  }
+}
+/* line 13, ../sass/_float-input.scss */
+.float-input-group {
+  height: 50px;
+  padding-top: 15px;
+  margin-bottom: 20px;
+  width: 300px;
+}
+
+/* line 20, ../sass/_float-input.scss */
+.float-input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: inherit;
+  border: none;
+  border-bottom: 1px solid #1c1c1d;
+  background-color: transparent;
+  color: #cecfd5;
+}
+
+/* line 31, ../sass/_float-input.scss */
+.float-input:focus {
+  outline: none;
+}
+
+/* line 35, ../sass/_float-input.scss */
+.float-input-lbl {
+  font-family: "Roboto";
+  color: #999;
+  font-size: 14px;
+  font-weight: normal;
+  position: relative;
+  pointer-events: none;
+  left: 5px;
+  top: -45px;
+  transition: 0.2s ease all;
+}
+
+/*==============================*/
+/* BOTTOM BARS =============== */
+/* line 49, ../sass/_float-input.scss */
+.float-input-bar {
+  position: relative;
+  display: block;
+  width: 315px;
+}
+
+/* line 55, ../sass/_float-input.scss */
+.float-input-bar:before,
+.float-input-bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #33c4e8;
+  transition: 0.2s ease all;
+}
+
+/* line 66, ../sass/_float-input.scss */
+.float-input-bar:before {
+  left: 50%;
+}
+
+/* line 70, ../sass/_float-input.scss */
+.float-input-bar:after {
+  right: 50%;
+}
+
+/*==============================*/
+/* ACTIVE STATE ============== */
+/* line 76, ../sass/_float-input.scss */
+.float-input:focus ~ .float-input-bar:before,
+.float-input:focus ~ .float-input-bar:after {
+  width: 50%;
+}
+
+/* line 81, ../sass/_float-input.scss */
+.float-input:focus ~ .float-input-highlight {
+  animation: inputHighlighter 0.3s ease;
+}
+
+/* line 85, ../sass/_float-input.scss */
+.float-input:focus ~ .float-input-lbl,
+.float-input:valid ~ .float-input-lbl {
+  top: -65px;
+  font-size: 14px;
+  color: #33c4e8;
+}
+
+/*==============================*/
+/* ANIMATION ================ */
+@keyframes inputHighlighter {
+  from {
+    background: #33c4e8;
+  }
+  to {
+    width: 0;
+    background: transparent;
   }
 }

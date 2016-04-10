@@ -16,7 +16,27 @@
 
     SchedulerInput.prototype.addTimeListener = function() {
       this.add('.schd-add-time');
-      return this.remove('.schd-rmv-time');
+      this.remove('.schd-rmv-time');
+      this.hourSetAmPm('start');
+      return this.hourSetAmPm('end');
+    };
+
+    SchedulerInput.prototype.hourSetAmPm = function(startEnd) {
+      var ampmSelector, hourSelector;
+      hourSelector = '.schd-section-' + startEnd + '-time-hour';
+      ampmSelector = '.schd-section-' + startEnd + '-time-period';
+      return $(hourSelector).on('change', function(event) {
+        var ampm, hour, i, isAm, val;
+        val = $(this).val();
+        isAm = false;
+        for (hour = i = 8; i <= 11; hour = ++i) {
+          if (val == hour) {
+            isAm = true;
+          }
+        }
+        ampm = $(this).siblings(ampmSelector).last();
+        return ampm.val(isAm ? "AM" : "PM");
+      });
     };
 
     SchedulerInput.prototype.addSectionListener = function() {
@@ -32,9 +52,11 @@
     SchedulerInput.prototype.add = function(selector) {
       return $(selector).on('click', (function(_this) {
         return function(event) {
-          var target;
+          var clone, target;
           target = $(event.currentTarget);
-          return target.siblings('div').last().clone(true).insertBefore(target);
+          clone = target.siblings('div').last().clone(true);
+          _this.resetCourseHtml(clone);
+          return clone.insertBefore(target);
         };
       })(this));
     };
@@ -49,6 +71,14 @@
           }
         };
       })(this));
+    };
+
+    SchedulerInput.prototype.resetCourseHtml = function(course) {
+      course.find('.float-input').val('');
+      course.find('select').attr('selectedIndex', 0);
+      course.find('input:checkbox').prop('checked', false);
+      course.find('.schd-section').not(':first').remove();
+      return course.find('[select-time]').not(':first').remove();
     };
 
     SchedulerInput.prototype.addMakeSchedulesListener = function() {

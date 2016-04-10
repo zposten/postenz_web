@@ -26,20 +26,18 @@ div.nav_link {
 }
 
 #zach_pic {
-  width: 250px;
+  width: $nav-width;
 }
 
-
-
-/* Sidebar modules for boxing content */
-.sidebar {
+.nav {
   background-color: $nav-color;
   margin-left: 0%;
   margin-top: $masthead-height;
   height: 100%;
   position: fixed;
   left: 0px;
-  width: 250px;
+  width: $nav-width;
+  padding-left: 15px;
 }
 
 .sidebar-module {

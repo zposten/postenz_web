@@ -11,6 +11,24 @@ class SchedulerInput
   addTimeListener: ->
     @add('.schd-add-time')
     @remove('.schd-rmv-time')
+    @hourSetAmPm('start')
+    @hourSetAmPm('end')
+
+
+  hourSetAmPm: (startEnd) ->
+    hourSelector = '.schd-section-' + startEnd + '-time-hour'
+    ampmSelector = '.schd-section-' + startEnd + '-time-period'
+
+    $(hourSelector).on 'change', (event) ->
+      val = $(this).val()
+      isAm = false
+      for hour in [8..11]
+        if `val == hour`
+          isAm = true
+
+      ampm = $(this).siblings(ampmSelector).last()
+      ampm.val(if isAm then "AM" else "PM")
+
 
   addSectionListener: ->
     @add('.schd-add-section')
@@ -20,16 +38,25 @@ class SchedulerInput
     @add('.schd-add-course')
     @remove('.schd-rmv-course')
 
-
   add: (selector) ->
     $(selector).on 'click', (event) =>
       target = $(event.currentTarget)
-      target.siblings('div').last().clone(true).insertBefore(target)
+      clone = target.siblings('div').last().clone(true)
+      @resetCourseHtml(clone)
+      clone.insertBefore(target)
 
   remove: (selector) ->
     $(selector).on 'click', (event) =>
       siblings = $(event.currentTarget).siblings('div')
       siblings.last().remove() if siblings.length > 1
+
+  resetCourseHtml: (course) ->
+    course.find('.float-input').val('')
+    course.find('select').attr('selectedIndex', 0)
+    course.find('input:checkbox').prop('checked', false)
+    course.find('.schd-section').not(':first').remove()
+    course.find('[select-time]').not(':first').remove()
+
 
 
   addMakeSchedulesListener: ->

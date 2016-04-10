@@ -88,7 +88,7 @@ util.insertMarkdown = function(mdFileUrl, containerSelector) {
         }
     };
     rawFile.send(null);
-}
+};
 
 /***************************************/
 /** JAVASCRIPT LANGUAGE MANIPULATIONS */
