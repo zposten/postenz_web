@@ -413,7 +413,6 @@
     font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
     line-height: normal;
     color: inherit;
-    font: inherit;
     margin: 0;
   }
 
@@ -440,6 +439,10 @@
 
 .markdown-body > *:last-child {
   margin-bottom: 0 !important;
+}
+
+.footer {
+  padding-top: 200px;
 }
 
 
