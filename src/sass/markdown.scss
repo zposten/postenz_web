@@ -417,13 +417,21 @@
     margin: 0;
   }
 
-  html input[disabled] {
-    cursor: default;
-  }
-
+  $checkbox-size: 20px;
   input[type="checkbox"] {
     box-sizing: border-box;
     padding: 0;
+    width: $checkbox-size;
+    height: $checkbox-size;
+    background: white;
+    border-radius: 5px;
+    border: 2px solid #555;
+  }
+  input[type='checkbox']:checked {
+    background: #abd;
+  }
+  input[disabled] {
+    cursor: default;
   }
 
   .task-list-item input {
