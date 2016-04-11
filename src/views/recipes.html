@@ -5,10 +5,8 @@
 
 <div class="col-sm-8 main-container">
     Recipes
-    <!--See here: https://github.com/angular-ui/ui-router/wiki/URL-Routing-->
     <ul>
-
-        <li ng-repeat="r in recipes"><a ui-sref="recipes.recipe({{r}})">{{r.recipeTitle}}</a></li>
+        <li ng-repeat="r in recipes"><a ui-sref="recipes.recipe(r)">{{r.title}}</a></li>
     </ul>
     <div ui-view></div>
     <div class="footer"></div>

@@ -77,17 +77,12 @@ util.removeLastChar = function(str) {
 };
 
 util.insertMarkdown = function(mdFileUrl, containerSelector) {
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", mdFileUrl, true);
-    rawFile.onreadystatechange = function () {
-        if(rawFile.readyState === 4 && rawFile.status === 200) {
-            var converter = new window.showdown.Converter({tasklists: true, tables: true});
-            $(containerSelector).html(converter.makeHtml(rawFile.responseText));
-            $(containerSelector + ' input').prop('disabled', false);
-            $(containerSelector).addClass('markdown-body');
-        }
-    };
-    rawFile.send(null);
+    $.get(mdFileUrl, function(data) {
+        var converter = new window.showdown.Converter({tasklists: true, tables: true});
+        $(containerSelector).html(converter.makeHtml(data));
+        $(containerSelector + ' input').prop('disabled', false);
+        $(containerSelector).addClass('markdown-body');
+    });
 };
 
 /***************************************/

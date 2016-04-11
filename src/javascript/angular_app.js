@@ -125,20 +125,20 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     " recipes that I've tried and particularly enjoyed.  This is as much for my reference as anyone" +
                     " else's, but please do try your hand and let me know what you think!";
                 $scope.recipes = [
-                    {recipeName: 'omelet', recipeTitle: 'Mom\'s Omlets'},
-                    {recipeName: 'chicken-and-rice', recipeTitle: 'Mom\'s Chicken and Rice'},
-                    {recipeName: 'one-pot-taco-pasta', recipeTitle: 'One Pot Taco Pasta'},
-                    {recipeName: 'goulash', recipeTitle: 'American Goulash'},
-                    {recipeName: 'bbq-chicken', recipeTitle: 'Crockpot BBQ Chicken'}
+                    {name: 'omelet',             title: 'Mom\'s Omlets'},
+                    {name: 'chicken-and-rice',   title: 'Mom\'s Chicken and Rice'},
+                    {name: 'one-pot-taco-pasta', title: 'One Pot Taco Pasta'},
+                    {name: 'goulash',            title: 'American Goulash'},
+                    {name: 'bbq-chicken',        title: 'Crockpot BBQ Chicken'}
                 ]
             }
         })
 
         .state('recipes.recipe', {
-            url: '/{recipeName}',
+            url: '/{name}',
             template: function () {return '<markdown id="recipe"></markdown>';},
-            controller: function($scope, $stateParams, $window) {
-                var url = 'http://poste.nz/assets/recipes/recipe-' + $stateParams.recipeName + '.md';
+            controller: function($scope, $stateParams) {
+                var url = 'assets/recipes/recipe-' + $stateParams.name + '.md';
                 util.insertMarkdown(url, 'markdown#recipe');
             }
         })
