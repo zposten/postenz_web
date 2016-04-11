@@ -3,16 +3,18 @@
 
 ## Ingredients
 
-- 1 lb extra-lean ground beef
-- 1 yellow onion, chopped
-- 1 cup **each** chopped red and yellow peppers
-- 1 clove garlic, minced
-- 1 Tbsp chili powder
-- 3 cups water
-- 1 can (15 oz) tomato sauce
-- 3 cups spiral pasta
-- 1/2 cup frozen corn
-- 1 cup Mexican style shredded four cheese
+| Ingredient                         | Amount            |
+|------------------------------------|-------------------|
+| Extra-lean ground beef             | 1 lb              |
+| Yellow onion, chopped              | 1                 |
+| Red and yellow peppers, chopped    | 1 cup of **each** |
+| Garlic, minced                     | 1 clove           |
+| Chili powder                       | 1 tbsp            |
+| Water                              | 3 cups            |
+| Tomato sauce                       | 15 oz             |
+| Rotini (spiral pasta)              | 3 cups            |
+| Frozen corn                        | ½ cup             |
+| Mexican style shredded four cheese | 1 cup             |
 
 ## Make It 
 - [ ] Brown meat with yellow onions in large skillet

@@ -7,7 +7,7 @@ This recipe is dead simple, but is delicious every time!
 # Ingredients
 
 | Ingredient                          | Amount       |
-|-------------------------------------|---------     |
+|-------------------------------------|--------------|
 | Boneless, skinless chicken breasts  | 2 lbs        |
 | BBQ sauce                           | 1 cup        |
 | Zesty Italian dressing              | ¼ cup        |
