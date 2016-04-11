@@ -1,5 +1,5 @@
 # American Goulash
-[*Original Recipe*](http://www.gonnawantseconds.com/2012/11/american-goulash/)
+[Original Recipe](http://www.gonnawantseconds.com/2012/11/american-goulash/)
 
 ## Ingredients
 

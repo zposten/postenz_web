@@ -1,6 +1,6 @@
 # Crockpot BBQ Chicken
 
-[*Original Recipe*](http://www.familyfreshmeals.com/2014/06/best-crockpot-bbq-chicken.html)
+[Original Recipe](http://www.familyfreshmeals.com/2014/06/best-crockpot-bbq-chicken.html)
 
 This recipe is dead simple, but is delicious every time!
 

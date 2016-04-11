@@ -1,5 +1,5 @@
 # One-Pot Taco Pasta
-[*Original Recipe*](http://www.kraftrecipes.com/recipes/one-pot-taco-pasta-127214.aspx)
+[Original Recipe](http://www.kraftrecipes.com/recipes/one-pot-taco-pasta-127214.aspx)
 
 ## Ingredients
 

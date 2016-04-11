@@ -53,7 +53,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/{blogPostId}',
             template: function () {return '<markdown id="blogpost"></markdown>';},
             controller: function($scope, $stateParams, $window) {
-                var url = 'http://poste.nz/assets/blog-posts/blog' + $stateParams.blogPostId + '.md';
+                var url = 'assets/blog-posts/blog' + $stateParams.blogPostId + '.md';
                 util.insertMarkdown(url, 'markdown#blogpost');
             }
         })
@@ -129,7 +129,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     {name: 'chicken-and-rice',   title: 'Mom\'s Chicken and Rice'},
                     {name: 'one-pot-taco-pasta', title: 'One Pot Taco Pasta'},
                     {name: 'goulash',            title: 'American Goulash'},
-                    {name: 'bbq-chicken',        title: 'Crockpot BBQ Chicken'}
+                    {name: 'bbq-chicken',        title: 'Crockpot BBQ Chicken'},
+                    {name: 'french-toast',       title: 'Scotty\'s French Toast'}
                 ]
             }
         })
