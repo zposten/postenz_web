@@ -10,8 +10,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/home',
             templateUrl: 'src/views/home.html',
             controller: function ($scope) {
-                $scope.title = 'Zach Posten'
-                $scope.subtitle = 'Sometimes I just want to give it all up and become a handsome billionaire.'
+                $scope.title = 'Zach Posten';
+                $scope.subtitle = 'Sometimes I just want to give it all up and become a handsome billionaire.';
+                $scope.resumeUrl = 'https://drive.google.com/open?id=0B1UtegqS9PrTNjQ5TEQteGdqeWM';
 
                 highlightSelectedNav('nav-home');
             }
@@ -30,7 +31,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/contact',
             templateUrl: "src/views/contact.html",
             controller: function ($scope) {
-                $scope.title = 'Contact Information'
+                $scope.title = 'Contact Information';
                 $scope.subtitle = 'How you\'ll reach me when you inevitably want to';
 
                 highlightSelectedNav('nav-contact');
