@@ -38,27 +38,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             }
         })
 
-        .state('blog', {
-            url: "/blog",
-            templateUrl: "src/views/blog.html",
-            controller: function ($scope, $sce) {
-                $scope.title = 'The Blog';
-                $scope.subtitle = $sce.trustAsHtml('I will be updating this page in the <strike ng-bind-html>near</strike> future, I promise');
-
-                highlightSelectedNav('nav-blog');
-                addPagerClickListeners();
-            }
-        })
-
-        .state('blog.post', {
-            url: '/{blogPostId}',
-            template: function () {return '<markdown id="blogpost"></markdown>';},
-            controller: function($scope, $stateParams, $window) {
-                var url = 'assets/blog-posts/blog' + $stateParams.blogPostId + '.md';
-                util.insertMarkdown(url, 'markdown#blogpost');
-            }
-        })
-
         .state('photos', {
             url: '/photos',
             templateUrl: 'src/views/photos.html',
@@ -106,40 +85,149 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     ' of when choosing their classes each quarter.  Other schools aren\'t quite' +
                     ' so lucky though and have to go through this tedious process of finding possible schedules' +
                     ' manually.  To help with this, I have implemented a scheduling application that any student at' +
-                    ' any university should be able to make use of.'
-                $scope.init = function () {
-                    $scope.days = ['M', 'T', 'W', 'R', 'F'];
-                    $scope.hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-                    $scope.mins = ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'];
-                    window.SchedulerInput.init();
-                };
+                    ' any university should be able to make use of.';
+                $scope.days = ['M', 'T', 'W', 'R', 'F'];
+                $scope.hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+                $scope.mins = ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'];
+
+                $scope.init = window.SchedulerInput.init;
+            }
+        })
+
+        .state('blog', {
+            url: "/blog",
+            templateUrl: "src/views/blog.html",
+            controller: function ($scope, $sce, $state) {
+                $scope.title = 'The Blog';
+                var sub = 'I will be updating this page in the <strike ng-bind-html>near</strike> future, I promise';
+                $scope.subtitle = $sce.trustAsHtml(sub);
+                $scope.categories = [
+                    {list: 'ios', title: 'iOS posts'}
+                ];
+                $scope.ios = [
+                    'iOS UI Creation Methods',
+                    'Break Statements',
+                    'Hash Symbol',
+                    'Static Data Storage',
+                    'UIPopoverController',
+                    'Transfer Delegate Selection to Parent',
+                    'Variable Initialization'
+                ];
+
+                highlightSelectedNav('nav-blog');
+                addPagerClickListeners();
+                $state.go('blog.categories');
+            }
+        })
+        
+        .state('blog.categories', {
+            url: '/categories',
+            // template: '<div class="selection-item" ng-repeat="c in categories" ui-sref="blog.list(c)"><div>{{c.title}}</div></div>'
+            template: [
+                '<div class="selection-item" ui-sref="recipes"><div>Recipes</div></div>',
+                '<div class="selection-item" ng-repeat="c in categories" ui-sref="blog.list(c)"><div>{{c.title}}</div></div>'
+            ].join('\n')
+        })
+
+        .state('blog.list', {
+            url: '/{list}',
+            template: '<ul id="blog-list"></ul>',
+            controller: function($scope, $stateParams) {
+                var items = $scope.$parent[$stateParams.list];
+
+                var html = '';
+                for(var i=0; i < items.length; ++i) {
+                    var url = '#/blog/item/' + $stateParams.list + '/' + i;
+                    var item = '<li><a href="{0}">{1}</a></li>';
+                    item = item.format(url, items[i]);
+
+                    html += item;
+                }
+
+                $('#blog-list').html(html);
+            }
+        })
+
+        .state('blog.post', {
+            url: '/item/{list}/{blogPostId}',
+            template: function () {
+                return '<markdown id="blogpost"></markdown>';
+            },
+            controller: function ($scope, $stateParams, $window) {
+                var url = 'assets/blog-posts/{0}/blog{1}.md';
+                url = url.format($stateParams.list, $stateParams.blogPostId);
+                util.insertMarkdown(url, 'markdown#blogpost');
             }
         })
 
         .state('recipes', {
-            url: '/recipes',
-            templateUrl: 'src/views/recipes.html',
-            controller: function($scope) {
+            url: '/blog/recipes',
+            template: [
+                '<div class="header">',
+                '  <h1 class="title">{{ title }}</h1>',
+                '</div>',
+                '<div class="col-sm-8 main-container">',
+                '  <p>{{ description }}</p><br>',
+                '  <div ui-view></div>',
+                '  <div class="footer"></div>',
+                '</div>'
+            ].join('\n'),
+            controller: function ($scope, $state) {
                 highlightSelectedNav('nav-blog');
                 $scope.title = 'Not So Fancy Foods';
                 $scope.description = "I'm not much of a cook, but I love to eat.  I will be filling this page with" +
                     " recipes that I've tried and particularly enjoyed.  This is as much for my reference as anyone" +
                     " else's, but please do try your hand and let me know what you think!";
-                $scope.recipes = [
-                    {name: 'omelet',             title: 'Mom\'s Omlets'},
-                    {name: 'chicken-and-rice',   title: 'Mom\'s Chicken and Rice'},
+                $scope.recipes_dinner = [
+                    {name: 'chicken-and-rice', title: 'Mom\'s Chicken and Rice'},
                     {name: 'one-pot-taco-pasta', title: 'One Pot Taco Pasta'},
-                    {name: 'goulash',            title: 'American Goulash'},
-                    {name: 'bbq-chicken',        title: 'Crockpot BBQ Chicken'},
-                    {name: 'french-toast',       title: 'Scotty\'s French Toast'}
-                ]
+                    {name: 'goulash', title: 'American Goulash'},
+                    {name: 'bbq-chicken', title: 'Crockpot BBQ Chicken'}
+                ];
+                $scope.recipes_breakfast = [
+                    {name: 'omelet', title: 'Mom\'s Omlets'},
+                    {name: 'french-toast', title: 'Scotty\'s French Toast'}
+                ];
+
+                $state.go('recipes.meals');
+            }
+        })
+
+        .state('recipes.meals', {
+            url: '/meals',
+            template: [
+                '<div class="selection-item breakfast" ui-sref="recipes.meal({meal: \'breakfast\'})">',
+                '  <div id="breakfast">Breakfast Foods</div>',
+                '</div>',
+                '<div class="selection-item dinner" ui-sref="recipes.meal({meal: \'dinner\'})">',
+                '  <div id="dinner">Dinner Foods</div>',
+                '</div>'
+            ].join('\n')
+        })
+
+        .state('recipes.meal', {
+            url: '/meals/{meal}',
+            template: '<ul id="recipes"></ul>',
+            controller: function ($scope, $stateParams, $compile) {
+                var html = '';
+                var recipes = $scope.$parent['recipes_' + $stateParams.meal];
+
+                for (var i = 0; i < recipes.length; ++i) {
+                    var item = '<li ><a href="#/blog/recipes/meals/{0}/{1}">{2}</a></li>';
+                    item = item.format($stateParams.meal, recipes[i].name, recipes[i].title);
+                    html += item;
+                }
+
+                $('#recipes').html(html);
             }
         })
 
         .state('recipes.recipe', {
-            url: '/{name}',
-            template: function () {return '<markdown id="recipe"></markdown>';},
-            controller: function($scope, $stateParams) {
+            url: '/meals/{meal}/{name}',
+            template: function () {
+                return '<markdown id="recipe"></markdown>';
+            },
+            controller: function ($scope, $stateParams) {
                 var url = 'assets/recipes/recipe-' + $stateParams.name + '.md';
                 util.insertMarkdown(url, 'markdown#recipe');
             }
@@ -159,12 +247,12 @@ app.directive('markdown', function ($window) {
     }
 });
 
-app.directive('floatInput', function(){
-    return{
+app.directive('floatInput', function () {
+    return {
         restrict: 'AE',
         replace: true,
         templateUrl: 'src/views/controls/float-input.html',
-        link: function(scope, elem, attrs){
+        link: function (scope, elem, attrs) {
             var hint = attrs.hint || attrs.label || attrs.placeholder;
             $(elem.find('.float-input-lbl')[0]).text(hint);
             elem.find('*').addClass(attrs.class);
@@ -197,7 +285,6 @@ app.directive('selectTime', function () {
 });
 
 
-
 /*
  * The whenReady directive allows you to execute the content of a when-ready
  * attribute after the element is ready (i.e. done loading all sub directives and DOM
@@ -206,35 +293,37 @@ app.directive('selectTime', function () {
  * Execute multiple expressions by delimiting them with a semi-colon. If there
  * is more than one expression, and the last expression evaluates to true, then
  * all expressions prior will be evaluated after all text nodes in the element
- * have been interpolated (i.e. {{placeholders}} replaced with actual values). 
+ * have been interpolated (i.e. {{placeholders}} replaced with actual values).
  *
  * Caveats: if other directives exists on the same element as this directive
  * and destroy the element thus preventing other directives from loading, using
  * this directive won't work. The optimal way to use this is to put this
  * directive on an outer element.
  */
-app.directive('whenReady', ['$interpolate', function($interpolate) {
+app.directive('whenReady', ['$interpolate', function ($interpolate) {
     return {
         restrict: 'A',
         priority: Number.MIN_SAFE_INTEGER, // execute last, after all other directives if any.
-        link: function($scope, $element, $attributes) {
+        link: function ($scope, $element, $attributes) {
             var expressions = $attributes.whenReady.split(';');
             var waitForInterpolation = false;
-            
+
             function evalExpressions(expressions) {
-                expressions.forEach(function(expression) {
+                expressions.forEach(function (expression) {
                     $scope.$eval(expression);
                 });
             }
-            
-            if ($attributes.whenReady.trim().length == 0) { return; }
-            
+
+            if ($attributes.whenReady.trim().length == 0) {
+                return;
+            }
+
             if (expressions.length > 1) {
                 if ($scope.$eval(expressions.pop())) {
                     waitForInterpolation = true;
                 }
             }
-            
+
             if (waitForInterpolation) {
                 requestAnimationFrame(function checkIfInterpolated() {
                     if ($element.text().indexOf($interpolate.startSymbol()) >= 0) { // if the text still has {{placeholders}}

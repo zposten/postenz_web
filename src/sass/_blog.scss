@@ -6,13 +6,13 @@
   text-align: left;
 
   li {
-      width: 140px;
-      padding: 10px 20px;
-      text-align: center;
-      border-radius: 30px;
-      display: inline-block;
-      background-color: $code-back-color;
-      border: 1px solid #ddd;
+    width: 140px;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 30px;
+    display: inline-block;
+    background-color: $code-back-color;
+    border: 1px solid #ddd;
   }
 
   .next {
@@ -22,11 +22,9 @@
     float: left;
   }
 }
+
 .pager > li {
 }
-
-
-
 
 /*
  * Blog posts
@@ -35,11 +33,36 @@
 .blog-post {
   margin-bottom: 60px;
 }
+
 .blog-post-title {
   margin-bottom: 5px;
   font-size: 40px;
 }
+
 .blog-post-meta {
   margin-bottom: 20px;
   color: $subtitle-color;
+}
+
+/*
+ * Selection Rectangles
+ */
+
+div.selection-item {
+  float: left;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 200px;
+  height: 200px;
+  background-color: $main-blue-transparent;
+  border-radius: 20px;
+  margin-right: 20px;
+}
+
+div.selection-item:hover {
+  background-color: $main-blue-transparent-darker;
 }

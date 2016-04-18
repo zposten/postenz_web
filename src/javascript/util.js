@@ -76,13 +76,15 @@ util.removeLastChar = function(str) {
     return str.substring(0, str.length - 1);
 };
 
-util.insertMarkdown = function(mdFileUrl, containerSelector) {
+util.insertMarkdown = function(mdFileUrl, containerSelector, error) {
     $.get(mdFileUrl, function(data) {
         var converter = new window.showdown.Converter({tasklists: true, tables: true});
         $(containerSelector).html(converter.makeHtml(data));
         $(containerSelector + ' input').prop('disabled', false);
         $(containerSelector).addClass('markdown-body');
-    });
+    }).fail(function () {
+        if (error) error();
+    })
 };
 
 /***************************************/
@@ -97,17 +99,12 @@ Object.size = function (obj) {
     return size;
 };
 
-/**
- * Add a format() method to the string prototype
- */
-if (!String.prototype.format) {
-    String.prototype.format = function () {
-        var args = arguments;
-        return this.replace(/{(\d+)}/g, function (match, number) {
-            return typeof args[number] != 'undefined'
-                ? args[number]
-                : match
-                ;
-        });
-    };
-}
+String.prototype.format = function () {
+    var args = arguments;
+    return this.replace(/{(\d+)}/g, function (match, number) {
+        return typeof args[number] != 'undefined'
+            ? args[number]
+            : match
+            ;
+    });
+};
