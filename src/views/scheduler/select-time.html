@@ -1,15 +1,15 @@
-<div class="schd-section-time" ng-init="init()">
-    <div class="dow-wrapper">
+<div class="schd-section-time row">
+
+    <div class="dow-wrapper col-sm-3 col-xs-11">
         <div class="schd-section-time-dow" ng-repeat="day in days">{{day}}</div>
         <br>
         <input class="schd-section-time-dow" type="checkbox" name="c1-s1-dow" value="{{day}}" ng-repeat="day in days">
     </div>
 
-    <div>
+    <div class="start-time col-sm-4 col-xs-6">
         <select class="schd-section-start-time-hour">
             <option ng-repeat="hour in hours" value="{{hour}}">{{hour}}</option>
         </select>
-        :
         <select class="schd-section-start-time-min">
             <option ng-repeat="min in mins" value="{{min}}">{{min}}</option>
         </select>
@@ -17,11 +17,12 @@
             <option value="AM">AM</option>
             <option value="PM">PM</option>
         </select>
-        to
+    </div>
+
+    <div class="end-time col-sm-4 col-xs-6">
         <select class="schd-section-end-time-hour">
             <option ng-repeat="hour in hours" value="{{hour}}">{{hour}}</option>
         </select>
-        :
         <select class="schd-section-end-time-min">
             <option ng-repeat="min in mins" value="{{min}}">{{min}}</option>
         </select>
@@ -30,4 +31,5 @@
             <option value="PM">PM</option>
         </select>
     </div>
+
 </div>

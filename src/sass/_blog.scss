@@ -1,5 +1,52 @@
 @import "colors";
 
+div.blogpost {
+  background-color: $main-section-highlight-color;
+  width:  100%;
+  padding: 20px;
+  border-radius: 20px;
+
+  h1 {
+    color: $off-white;
+    margin: 0 0 20px 0;
+    padding: 0;
+    font-size: 3.5em;
+    letter-spacing: -2px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 900;
+    line-height: 1.1;
+    text-align: center;
+  }
+}
+
+/*
+ * Selection Rectangles
+ */
+
+div.selection-item {
+  float: left;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 300px;
+  height: 200px;
+  background-color: $main-blue-transparent;
+  border-radius: 20px;
+}
+
+div.selection-item:hover {
+  background-color: $main-blue-transparent-darker;
+}
+
+div.selection-item-container {
+    display: flex;
+    justify-content: center;
+}
+
+
 /* Pagination */
 .pager {
   margin-bottom: 60px;
@@ -21,48 +68,19 @@
   .prev {
     float: left;
   }
-}
 
-.pager > li {
-}
+  /*
+   * Footer
+   */
 
-/*
- * Blog posts
- */
-
-.blog-post {
-  margin-bottom: 60px;
-}
-
-.blog-post-title {
-  margin-bottom: 5px;
-  font-size: 40px;
-}
-
-.blog-post-meta {
-  margin-bottom: 20px;
-  color: $subtitle-color;
-}
-
-/*
- * Selection Rectangles
- */
-
-div.selection-item {
-  float: left;
-  position: relative;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 200px;
-  height: 200px;
-  background-color: $main-blue-transparent;
-  border-radius: 20px;
-  margin-right: 20px;
-}
-
-div.selection-item:hover {
-  background-color: $main-blue-transparent-darker;
+  .blog-footer {
+    padding: 40px 0;
+    color: $subtitle-color;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: 1px solid #e5e5e5;
+  }
+  .blog-footer p:last-child {
+    margin-bottom: 0;
+  }
 }

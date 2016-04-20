@@ -1,4 +1,4 @@
-# One-Pot Taco Pasta
+# One Pot Taco Pasta
 [Original Recipe](http://www.kraftrecipes.com/recipes/one-pot-taco-pasta-127214.aspx)
 
 ## Ingredients
@@ -16,7 +16,7 @@
 | Frozen corn                        | ½ cup             |
 | Mexican style shredded four cheese | 1 cup             |
 
-## Make It 
+## Make It
 - [ ] Brown meat with yellow onions in large skillet
 - [ ] Add peppers, cook 5 min or until crips-tender, stirring occasionally
 - [ ] Stir in garlic and chili powder; cook 1 min.
@@ -27,6 +27,3 @@
 
 #### Extra, extra!
 Add in chopped fresh cilantro along with the cheese
-
-
-

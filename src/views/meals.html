@@ -1,0 +1,17 @@
+<div class="row">
+    <div ng-repeat="m in meals"
+         class="selection-item-container col-sm-12 col-md-6">
+
+        <div class="selection-item {{ m.meal }}"
+             ui-sref="recipes.meal(m)">
+             {{ m.title }}
+        </div>
+    </div>
+</div>
+
+
+<!--<div class="selection-item-container">-->
+    <!--<div class="selection-item" ng-repeat="m in meals" ui-sref="recipes.meal(m)">-->
+        <!--<div>{{ m.title }}</div>-->
+    <!--</div>-->
+<!--</div>-->

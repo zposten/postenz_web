@@ -8,7 +8,13 @@
 @import "main";
 @import "nav";
 @import "blog";
-@import "photoswipe";
-@import "photoswipe-default-skin";
-@import "photoswipe-site";
-@import "float-input";
+
+@import "photoswipe/photoswipe";
+@import "photoswipe/photoswipe-default-skin";
+@import "photoswipe/photoswipe-site";
+
+@import "markdown";
+@import "scheduler";
+
+@import "controls/float-input";
+@import "controls/toggle";

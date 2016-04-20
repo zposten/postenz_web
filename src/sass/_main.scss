@@ -1,4 +1,3 @@
-@import "compass";
 @import "colors";
 @import "sizes";
 
@@ -11,7 +10,6 @@ $font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif;
 body {
   color: $font-color;
   background-color: $main-section-color;
-  width: 99%;
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
@@ -28,45 +26,58 @@ a {
     color: $link-visited-color;
   }
   &:hover {
-    color: $link-visited-color;
+    color: $main-blue-transparent-darker;
   }
 }
 
 code {
-  background-color: $code-back-color;
   color: $code-fore-color;
+  background-color: $code-back-color;
 }
-
-.main-container > p {
-  margin-bottom: 15px;
-}
-
-/* Override Bootstrap's default container. */
-@media (min-width: 1200px) {
-  .container {
-    width: 970px;
-  }
-}
-
 
 /*
  * Sections
  */
 
+#page-wrapper {
+  padding-left: 0;
+  transition: all 0.5s ease;
+
+  &.toggled {
+    padding-left: 250px;
+
+    #sidebar-wrapper {
+      width: 250px;
+    }
+
+    #page-content-wrapper {
+      position: absolute;
+      margin-right: -250px;
+    }
+  }
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    margin-top: $masthead-height-small;
+}
+
 .masthead {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  height: $masthead-height;
+  height: $masthead-height-small;
   background-color: $main-blue;
   z-index: 4;
 }
 
-
 .header {
-  padding-top: $masthead-height;
-  padding-bottom: 20px;
-  padding-left: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .title {
   margin-top: 30px;
@@ -77,33 +88,34 @@ code {
 .subtitle {
   font-size: 20px;
   color: $subtitle-color;
-}
-
-.row {
-  margin-left: 270px;
-}
-
-
-.main-container {
-  font-size: 18px;
-  line-height: 1.5;
-  //width: 1000px;
-  //width: 80%;
-}
-
-
-/*
- * Footer
- */
-
-.blog-footer {
-  padding: 40px 0;
-  color: $subtitle-color;
   text-align: center;
-  background-color: #f9f9f9;
-  border-top: 1px solid #e5e5e5;
-}
-.blog-footer p:last-child {
-  margin-bottom: 0;
+  width: 80%;
 }
 
+.row.center-row {
+  display: flex;
+  justify-content: center;
+}
+
+.social-icon:hover {
+  $scale: 1.2;
+  -webkit-transform: scale($scale, $scale); // Safari
+  transform: scale($scale, $scale);
+}
+
+
+@media(min-width: $hide-sidebar-width) {
+  #page-content-wrapper {
+    margin-top: $masthead-height;
+  }
+
+  .masthead {
+    height: $masthead-height;
+  }
+
+  #content-pane {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+}

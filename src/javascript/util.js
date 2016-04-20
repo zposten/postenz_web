@@ -87,6 +87,15 @@ util.insertMarkdown = function(mdFileUrl, containerSelector, error) {
     })
 };
 
+util.getAngularElementScope = function (elem) {
+  return angular.element(elem).scope();
+}
+
+util.findScopeAttrInHeirarchy = function (attr) {
+  if(scope[attr]) return scope[attr];
+  if(scope.$parent) findScopeAttrInHeirarchy(scope.$parent, attr);
+}
+
 /***************************************/
 /** JAVASCRIPT LANGUAGE MANIPULATIONS */
 /*************************************/

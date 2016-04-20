@@ -4,7 +4,7 @@
 
 This recipe is dead simple, but is delicious every time!
 
-# Ingredients
+## Ingredients
 
 | Ingredient                          | Amount       |
 |-------------------------------------|--------------|
@@ -14,7 +14,7 @@ This recipe is dead simple, but is delicious every time!
 | Brown Sugar                         | ¼ cup        |
 | Worcestershire sauce                | 1 tbsp       |
 
-# Make It
+## Make It
 
 - [ ] Lightly season chicken breast with salt or other seasonings
 - [ ] Put the chicken in your crockpot

@@ -7,10 +7,12 @@ $heading-color: #dfe0e6;
 $subtitle-color: #999;
 $font-color: #cecfd5;
 
-$nav-color: #414142;
-$nav-dark-highlight-color: #1c1c1d;
-$nav-light-highlight-color: #272727;
-$main-section-color: #525354;
+$nav-color: #181818;//#414142;
+$nav-dark-highlight-color: #404040;//#1c1c1d;
+$nav-light-highlight-color: #282828;//#272727;
+
+$main-section-color: #282828;//#525354;
+$main-section-highlight-color: #383838;//#4C4C4C;
 
 $link-visited-color: #399ec6;
 $code-back-color: #383838;
@@ -23,6 +25,7 @@ $schd-left-color: #c7c7c7;
 $light-black: rgba(0, 0, 0, 0.87);
 $light-white: rgba(255, 255, 255, 0.87);
 $off-black: #242424;
+$off-white: #F1F1F1;
 $fifty-percent-gray: #808080;
 
 // Google Material Design Colors

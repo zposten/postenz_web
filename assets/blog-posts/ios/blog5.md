@@ -12,7 +12,7 @@ Date submitted: 29 April 2015
 
 ---
 
-### Question 
+### Question
 
 When a navigation controller is used to transition the user to a different view where they need to make a selection, how can this selection data be transferred back to the main view?
 
@@ -27,8 +27,11 @@ When a navigation controller is used to transition the user to a different view 
 		*	The first step is to create a protocol which represents your delegate.  This protocol will have one function, which is called by the delegating object on the delegate to inform the delegate of the change.
 			*	The slightly confusing part to this particular example is that the mainVC will be the delegate because it needs to receive the information (the selection), and selectionVC will be the delegating object
 			*	The delegate protocol should look something like this:
-				*	`protocol CategoriesControllerDelegate {
-					func categorySelected(selectedCategory: String) -> Void }`
+			```
+			protocol CategoriesControllerDelegate {
+			    func categorySelected(selectedCategory: String) -> Void
+			}
+			```
 		*	After the delegate procol is implemented, a delegate property needs to be added to the delegating object (selectionVC), and initialized to nil:
 			*	`var delegate: CategoriesControllerDelegate? = nil`
 		*	The delegate (mainVC) then needs to implement the delegate protocol that was created:
@@ -36,15 +39,20 @@ When a navigation controller is used to transition the user to a different view 
 			*	`func categorySelected(selectedCategory: String) {...}`
 				*	Whatever processing needs to be done when the selection is made should be placed in this function.
 		*	At some point prior to its invocation, the delegate reference contained by the delegating object needs to be set to the actual delegate object.  In this example, it makes sense to do this immediately before the selection view is shown by the navigation controller.  For this reason the processing is done inside of the `prepareForSegue()` method:
-			*	`override func prepareForSegue(segue: UIStoryboardSegue, sender: 	AnyObject?) {`
-					`if let cc = segue.destinationViewController as? CategoriesController {`
-						`self.categoryController = cc`
-						`cc.delegate = self`
-					<br/>`}` <br/> `}`
+		```
+		override func prepareForSegue(segue: UIStoryboardSegue, sender: 	AnyObject?) {
+			if let cc = segue.destinationViewController as? CategoriesController {
+				self.categoryController = cc
+				cc.delegate = self
+			}
+		}
+		```
 		*	Finally, the delegating object needs to call the delegate function on it's delegate reference whenever the necessary information is captured.  In this example, this information is captured in the tableView callback method which gets called when the user selects an item from the table view:
-			*	`override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {`
-			`self.delegate?.categorySelected(self.selectedItem)`      
-			`}`
+		```
+		override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+			self.delegate?.categorySelected(self.selectedItem)
+		}
+		```
 *	Status
 	*	The question has been resolved.
 *	Comments

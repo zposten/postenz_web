@@ -1,0 +1,104 @@
+@import "colors";
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500);
+
+$float-input-main-color: $main-blue;
+$float-input-underline-color: $nav-dark-highlight-color;
+$float-input-focus-underline-color: $main-blue;
+
+$float-input-hint-color: $subtitle-color;
+$float-input-text-color: $font-color;
+
+$float-input-lbl-top: -45px;
+
+.float-input-group {
+  height: 50px;
+  padding-top: 15px;
+  margin-bottom: 20px;
+}
+
+.float-input {
+  font-size: 18px;
+  padding: 10px 10px 2px 5px;
+  display: block;
+  width: inherit;
+  border: none;
+  border-bottom: 1px solid $float-input-underline-color;
+  background-color: transparent;
+  color: $float-input-text-color;
+}
+
+.float-input:focus {
+  outline: none;
+}
+
+.float-input-lbl {
+  font-family: "Roboto";
+  color: $float-input-hint-color;
+  font-size: 14px;
+  font-weight: normal;
+  position: relative;
+  pointer-events: none;
+  left: 5px;
+  top: $float-input-lbl-top;
+  transition: 0.2s ease all;
+}
+
+/*==============================*/
+/* BOTTOM BARS =============== */
+.float-input-bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.float-input-bar:before,
+.float-input-bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: $float-input-focus-underline-color;
+  transition: 0.2s ease all;
+}
+
+.float-input-bar:before {
+  left: 50%;
+}
+
+.float-input-bar:after {
+  right: 50%;
+}
+
+/*==============================*/
+/* ACTIVE STATE ============== */
+.float-input:focus ~ .float-input-bar:before,
+.float-input:focus ~ .float-input-bar:after {
+  width: 50%;
+}
+
+.float-input:focus ~ .float-input-highlight {
+  animation: inputHighlighter 0.3s ease;
+}
+
+.float-input:focus ~ .float-input-lbl,
+.float-input:valid ~ .float-input-lbl {
+  top: $float-input-lbl-top - 20;
+  font-size: 14px;
+  color: $float-input-main-color;
+}
+
+/*==============================*/
+/* ANIMATION ================ */
+
+@keyframes inputHighlighter {
+  from {
+    background: $float-input-main-color;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+
+

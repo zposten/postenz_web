@@ -1,18 +1,19 @@
-<div class="header">
-    <h1 class="title">{{ title }}</h1>
-    <!--<p class="lead subtitle">{{ subtitle }}</p>-->
-    <p class="lead subtitle" ng-bind-html="subtitle"></p>
-</div>
+<div class="row center-row">
+  <div class="col-md-12 col-lg-9">
+    <div class="header row">
+        <h1 class="title">{{ title }}</h1>
+        <p class="subtitle">{{ subtitle }}</p>
+    </div>
 
-<div class="col-sm-8 main-container">
-
+    <p class="description">{{ description }}</p><br>
     <div ui-view></div>
 
-    <!--<nav>-->
-        <!--<ul class="pager">-->
-            <!--<li class="prev">Previous</li>-->
-            <!--<li class="next">Next</li>-->
-        <!--</ul>-->
-    <!--</nav>-->
-
+  </div>
 </div>
+
+<!--<nav>-->
+    <!--<ul class="pager">-->
+        <!--<li class="prev">Previous</li>-->
+        <!--<li class="next">Next</li>-->
+    <!--</ul>-->
+<!--</nav>-->

@@ -15,8 +15,8 @@
     };
 
     SchedulerInput.prototype.addTimeListener = function() {
-      this.add('.schd-add-time');
-      this.remove('.schd-rmv-time');
+      this.createAddClickListener('.schd-add-time', '.schd-section', '.schd-section-time');
+      this.createRemoveClickListener('.schd-rmv-time', '.schd-section', '.schd-section-time');
       this.hourSetAmPm('start');
       return this.hourSetAmPm('end');
     };
@@ -25,7 +25,7 @@
       var ampmSelector, hourSelector;
       hourSelector = '.schd-section-' + startEnd + '-time-hour';
       ampmSelector = '.schd-section-' + startEnd + '-time-period';
-      return $(hourSelector).on('change', function(event) {
+      return $('#schd-courses').on('change', hourSelector, function(event) {
         var ampm, hour, i, isAm, val;
         val = $(this).val();
         isAm = false;
@@ -40,34 +40,52 @@
     };
 
     SchedulerInput.prototype.addSectionListener = function() {
-      this.add('.schd-add-section');
-      return this.remove('.schd-rmv-section');
+      this.createAddClickListener('.schd-add-section', '.schd-course', '.schd-section');
+      return this.createRemoveClickListener('.schd-rmv-section', '.schd-course', '.schd-section');
     };
 
-    SchedulerInput.prototype.addCourseListener = function() {
-      this.add('.schd-add-course');
-      return this.remove('.schd-rmv-course');
-    };
-
-    SchedulerInput.prototype.add = function(selector) {
-      return $(selector).on('click', (function(_this) {
+    SchedulerInput.prototype.createAddClickListener = function(btnSelector, specificitySelector, cloneSelector) {
+      return $(btnSelector).on('click', (function(_this) {
         return function(event) {
-          var clone, target;
+          var target, theClone, toClone;
           target = $(event.currentTarget);
-          clone = target.siblings('div').last().clone(true);
-          _this.resetCourseHtml(clone);
-          return clone.insertBefore(target);
+          toClone = target.closest(specificitySelector).find(cloneSelector).last();
+          theClone = toClone.clone(true);
+          _this.resetCourseHtml(theClone);
+          return theClone.insertAfter(toClone);
         };
       })(this));
     };
 
-    SchedulerInput.prototype.remove = function(selector) {
-      return $(selector).on('click', (function(_this) {
+    SchedulerInput.prototype.createRemoveClickListener = function(btnSelector, specificitySelector, rmvSelector) {
+      return $(btnSelector).on('click', (function(_this) {
         return function(event) {
-          var siblings;
-          siblings = $(event.currentTarget).siblings('div');
-          if (siblings.length > 1) {
-            return siblings.last().remove();
+          var courseElements, target;
+          target = $(event.currentTarget);
+          courseElements = target.closest(specificitySelector).find(rmvSelector);
+          if (courseElements.length > 1) {
+            return courseElements.last().remove();
+          }
+        };
+      })(this));
+    };
+
+    SchedulerInput.prototype.addCourseListener = function() {
+      $('.schd-add-course').on('click', (function(_this) {
+        return function(event) {
+          var theClone, toClone;
+          toClone = $('div[schd-course]').last();
+          theClone = toClone.clone(true);
+          _this.resetCourseHtml(theClone);
+          return theClone.insertAfter(toClone);
+        };
+      })(this));
+      return $('.schd-rmv-course').on('click', (function(_this) {
+        return function(event) {
+          var courses;
+          courses = $('div[schd-course]');
+          if (courses.length > 1) {
+            return courses.last().remove();
           }
         };
       })(this));
@@ -78,7 +96,7 @@
       course.find('select').attr('selectedIndex', 0);
       course.find('input:checkbox').prop('checked', false);
       course.find('.schd-section').not(':first').remove();
-      return course.find('[select-time]').not(':first').remove();
+      return course.find('.schd-section-time').not(':first').remove();
     };
 
     SchedulerInput.prototype.addMakeSchedulesListener = function() {

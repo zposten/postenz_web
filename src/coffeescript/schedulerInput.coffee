@@ -9,8 +9,8 @@ class SchedulerInput
     new SchedulerInput()
 
   addTimeListener: ->
-    @add('.schd-add-time')
-    @remove('.schd-rmv-time')
+    @createAddClickListener('.schd-add-time', '.schd-section', '.schd-section-time')
+    @createRemoveClickListener('.schd-rmv-time', '.schd-section', '.schd-section-time')
     @hourSetAmPm('start')
     @hourSetAmPm('end')
 
@@ -19,7 +19,7 @@ class SchedulerInput
     hourSelector = '.schd-section-' + startEnd + '-time-hour'
     ampmSelector = '.schd-section-' + startEnd + '-time-period'
 
-    $(hourSelector).on 'change', (event) ->
+    $('#schd-courses').on 'change', hourSelector, (event) ->
       val = $(this).val()
       isAm = false
       for hour in [8..11]
@@ -31,31 +31,42 @@ class SchedulerInput
 
 
   addSectionListener: ->
-    @add('.schd-add-section')
-    @remove('.schd-rmv-section')
+    @createAddClickListener('.schd-add-section', '.schd-course', '.schd-section')
+    @createRemoveClickListener('.schd-rmv-section', '.schd-course', '.schd-section')
+
+  createAddClickListener: (btnSelector, specificitySelector, cloneSelector) ->
+    $(btnSelector).on 'click', (event) =>
+      target = $(event.currentTarget)
+
+      toClone = target.closest(specificitySelector).find(cloneSelector).last()
+      theClone = toClone.clone(true)
+      @resetCourseHtml(theClone)
+      theClone.insertAfter(toClone)
+
+  createRemoveClickListener: (btnSelector, specificitySelector, rmvSelector) ->
+    $(btnSelector).on 'click', (event) =>
+      target = $(event.currentTarget)
+
+      courseElements = target.closest(specificitySelector).find(rmvSelector)
+      courseElements.last().remove() if courseElements.length > 1
 
   addCourseListener: ->
-    @add('.schd-add-course')
-    @remove('.schd-rmv-course')
+    $('.schd-add-course').on 'click', (event) =>
+      toClone = $('div[schd-course]').last()
+      theClone = toClone.clone(true)
+      @resetCourseHtml(theClone)
+      theClone.insertAfter(toClone)
 
-  add: (selector) ->
-    $(selector).on 'click', (event) =>
-      target = $(event.currentTarget)
-      clone = target.siblings('div').last().clone(true)
-      @resetCourseHtml(clone)
-      clone.insertBefore(target)
-
-  remove: (selector) ->
-    $(selector).on 'click', (event) =>
-      siblings = $(event.currentTarget).siblings('div')
-      siblings.last().remove() if siblings.length > 1
+    $('.schd-rmv-course').on 'click', (event) =>
+      courses = $('div[schd-course]');
+      courses.last().remove() if courses.length > 1
 
   resetCourseHtml: (course) ->
     course.find('.float-input').val('')
     course.find('select').attr('selectedIndex', 0)
     course.find('input:checkbox').prop('checked', false)
     course.find('.schd-section').not(':first').remove()
-    course.find('[select-time]').not(':first').remove()
+    course.find('.schd-section-time').not(':first').remove()
 
 
 
