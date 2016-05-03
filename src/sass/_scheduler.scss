@@ -1,4 +1,4 @@
-@import "colors";
+@import "util";
 
 $schd-table-total-row-height: 50px;
 $schd-table-border-height: 1px;
@@ -214,7 +214,9 @@ div.schd-sections {
         margin-left: 0;
         padding: 15px 0 15px 15px;
 
-        & > div {
+        & > .dow-wrapper,
+        & > .start-time,
+        & > .end-time {
           min-width: 155px;
           padding: 0;
         }

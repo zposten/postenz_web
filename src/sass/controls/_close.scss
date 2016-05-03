@@ -1,0 +1,60 @@
+@import "../util";
+
+$font: normal 100%/normal Arial, Helvetica, sans-serif;
+$default-color: $main-blue; //#1abc9c;
+$hover-color: red;
+$diameter: 0.75em;
+
+
+.zp-close {
+  background: $default-color;
+  color: black;
+  display: inline-block;
+  width:  $diameter;
+  height: $diameter;
+  position: relative;
+  border: none;
+  @include box-sizing(content-box);
+  @include border-radius(1em);
+  @include text-overflow(clip);
+  @include transform(rotateZ(471.54426539266757deg));
+}
+
+.zp-close:hover {
+  background: $hover-color;
+  @include transition(background 350ms cubic-bezier(0.42, 0, 0.58, 1) 10ms, all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms);
+  @include transform(rotateX(-1.7188733853924696deg) rotateZ(19.48056503444799deg));
+}
+
+.zp-close:active {
+  background: $default-color;
+  @include box-shadow(2px 2px 9px 1px rgba(0,0,0,0.5) inset);
+  @include transition(none);
+  @include transform(rotateZ(471.54426539266757deg));
+}
+
+.zp-close::before,
+.zp-close::after {
+  display: inline-block;
+  @include box-sizing(content-box);
+  width: 0.45em;
+  height: 0.1em;
+  position: absolute;
+  content: "";
+  top: 0.33em;
+  left: 0.155em;
+  border: none;
+  font: $font;
+  color: black;
+  background: white;
+  text-shadow: none;
+  @include text-overflow(clip);
+}
+
+.zp-close::before {
+  @include transform(rotateZ(24.064227395494576deg));
+}
+
+.zp-close::after {
+  @include transform(rotateZ(-66.46310423517549deg));
+}
