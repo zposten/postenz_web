@@ -1,13 +1,14 @@
 @import "../util";
 
-$default-color: $main-blue; //#1abc9c;
+$default-color: $main-blue;
 $hover-color: red;
 
 $diameter: 20px;
-$x-bar-width:  $diameter * 0.45  / 0.75;
-$x-bar-height: $diameter * 0.1   / 0.75;
-$x-bar-top:    $diameter * 0.33  / 0.75;
-$x-bar-left:   $diameter * 0.155 / 0.75;
+$border-radius: $diameter * 1     / 0.75;
+$x-bar-width:   $diameter * 0.45  / 0.75;
+$x-bar-height:  $diameter * 0.1   / 0.75;
+$x-bar-top:     $diameter * 0.33  / 0.75;
+$x-bar-left:    $diameter * 0.155 / 0.75;
 
 
 .zp-close {
@@ -19,7 +20,7 @@ $x-bar-left:   $diameter * 0.155 / 0.75;
   position: relative;
   border: none;
   @include box-sizing(content-box);
-  @include border-radius(1em);
+  @include border-radius($border-radius);
   @include text-overflow(clip);
   @include transform(rotateZ(471.54426539266757deg));
 }
@@ -27,13 +28,15 @@ $x-bar-left:   $diameter * 0.155 / 0.75;
 .zp-close:hover {
   background: $hover-color;
 
-  $tran-time: cubic-bezier(0.42, 0, 0.58, 1);
-  @include transition(background 350ms $tran-time 10ms, all 200ms $tran-time 10ms);
+  $trans-rate-of-change: cubic-bezier(0.42, 0, 0.58, 1);
+  @include transition(
+            background 350ms $trans-rate-of-change 10ms,
+            all 200ms $trans-rate-of-change 10ms
+  );
   @include transform(rotateX(-1.7188733853924696deg) rotateZ(19.48056503444799deg));
 }
 
 .zp-close:active {
-  background: $default-color;
   @include box-shadow(2px 2px 9px 1px rgba(0,0,0,0.5) inset);
   @include transition(none);
   @include transform(rotateZ(471.54426539266757deg));
@@ -43,15 +46,14 @@ $x-bar-left:   $diameter * 0.155 / 0.75;
 .zp-close::after {
   position: absolute;
   display: inline-block;
-  width: $x-bar-width;
+  width:  $x-bar-width;
   height: $x-bar-height;
-  top: $x-bar-top;
-  left: $x-bar-left;
+  top:    $x-bar-top;
+  left:   $x-bar-left;
   content: "";
   border: none;
   color: black;
   background: white;
-  text-shadow: none;
   @include box-sizing(content-box);
   @include text-overflow(clip);
 }
@@ -63,3 +65,5 @@ $x-bar-left:   $diameter * 0.155 / 0.75;
 .zp-close::after {
   @include transform(rotateZ(-66.46310423517549deg));
 }
+
+

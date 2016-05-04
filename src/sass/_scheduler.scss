@@ -210,15 +210,24 @@ div.schd-sections {
         margin-top: 10px;
       }
 
+      $sec-time-padding: 15px;
+
+      .close-wrapper {
+        position: absolute;
+        right: 5px;
+        top: $sec-time-padding;
+      }
+
       div.schd-section-time {
         margin-left: 0;
-        padding: 15px 0 15px 15px;
+        padding: $sec-time-padding 0 $sec-time-padding $sec-time-padding;
 
         & > .dow-wrapper,
         & > .start-time,
         & > .end-time {
           min-width: 155px;
           padding: 0;
+          height: 100%
         }
 
         .start-time, .end-time {
