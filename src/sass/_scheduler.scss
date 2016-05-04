@@ -1,4 +1,4 @@
-@import "colors";
+@import "util";
 
 $schd-table-total-row-height: 50px;
 $schd-table-border-height: 1px;
@@ -172,6 +172,7 @@ div.schd-section-times {
 div.schd-section-time {
   margin-top: 10px;
   background-color: #4a4a4a;
+  position: relative;
 
   &:not(:first-child) {
     margin-left: 16.66666667%;
@@ -200,23 +201,22 @@ input.schd-section-time-dow {
 div.schd-sections {
 
   div.schd-section {
-    padding: 15px;
+    padding: 25px 15px 15px 15px;
     background-color: $nav-color;
     margin-bottom: 15px;
 
     div.schd-section-times {
 
-      .schd-add-time, .schd-rmv-time {
-        margin-top: 10px;
-      }
-
       div.schd-section-time {
         margin-left: 0;
         padding: 15px 0 15px 15px;
 
-        & > div {
+        & > .dow-wrapper,
+        & > .start-time,
+        & > .end-time {
           min-width: 155px;
           padding: 0;
+          height: 100%
         }
 
         .start-time, .end-time {

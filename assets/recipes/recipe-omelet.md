@@ -25,9 +25,12 @@ My mom's omelets are famous where I come from, and for good reason.  It was diff
 ### Potatoes
 - [ ] Peel potatoes
 - [ ] Dice into small cubes (or you know, rectangular prisms).
-- [ ] Pour most of a bottle of pure vegetable oil into a large frying pan and heat on high until potatoes sizzle when placed in.
-	- Oil should be hot enough so that the outside gets crispy while the inside does not.  The burner should be at least as high as 8/10.  
-	- Be careful of splatter when pouring the potatoes into the hot oil.
+- [ ] Pour vegetable oil into a large frying pan until it's filled to a quarter of its depth.
+    - Too much oil can cause it to overflow when potatoes are added because of the large amount of sizzle
+- [ ] Heat on high until potatoes sizzle when placed in.
+    - Oil should be hot enough so that the outside gets crispy while the inside does not.  The burner should be at least as high as 8/10.  
+    - Be careful of splatter when pouring the potatoes into the hot oil. DO NOT START A GREASE FIRE! 
+    - If at any time grease starts to overflow the pan, immediately remove it from heat
 - [ ] Let sit for two minutes (stir too early and the potatoes will turn to mush).
 - [ ] Stir until potato cuboids are golden brown.
 - [ ] Dump the potatoes in a large bowl lined with paper towel to soak up grease 

@@ -15,10 +15,16 @@
     };
 
     SchedulerInput.prototype.addTimeListener = function() {
+      var i, len, ref, results, time;
       this.createAddClickListener('.schd-add-time', '.schd-section', '.schd-section-time');
       this.createRemoveClickListener('.schd-rmv-time', '.schd-section', '.schd-section-time');
-      this.hourSetAmPm('start');
-      return this.hourSetAmPm('end');
+      ref = ['start', 'end'];
+      results = [];
+      for (i = 0, len = ref.length; i < len; i++) {
+        time = ref[i];
+        results.push(this.hourSetAmPm(time));
+      }
+      return results;
     };
 
     SchedulerInput.prototype.hourSetAmPm = function(startEnd) {
@@ -30,7 +36,7 @@
         val = $(this).val();
         isAm = false;
         for (hour = i = 8; i <= 11; hour = ++i) {
-          if (val == hour) {
+          if (val === hour) {
             isAm = true;
           }
         }
@@ -64,7 +70,7 @@
           target = $(event.currentTarget);
           courseElements = target.closest(specificitySelector).find(rmvSelector);
           if (courseElements.length > 1) {
-            return courseElements.last().remove();
+            return target.closest(rmvSelector).remove();
           }
         };
       })(this));

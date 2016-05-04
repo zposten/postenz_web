@@ -248,15 +248,17 @@ app.directive('schdCourse', function () {
   return {
     restrict: 'AE',
     replace: true,
-    templateUrl: 'src/views/scheduler/schd-course.html',
-    link: function (scope, elem, attrs) {
-      window.SchedulerInput.init();
-    }
+    templateUrl: 'src/views/scheduler/schd-course.html'
   }
 });
 
 app.directive('selectTime', function () {
-  return {templateUrl: 'src/views/scheduler/select-time.html'};
+  return {
+    templateUrl: 'src/views/scheduler/select-time.html',
+    link: function (scope, elem, attrs) {
+      window.SchedulerInput.init();
+    }
+  };
 });
 
 
