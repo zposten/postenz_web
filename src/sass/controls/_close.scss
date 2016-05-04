@@ -1,9 +1,13 @@
 @import "../util";
 
-$font: normal 100%/normal Arial, Helvetica, sans-serif;
 $default-color: $main-blue; //#1abc9c;
 $hover-color: red;
-$diameter: 0.75em;
+
+$diameter: 20px;
+$x-bar-width:  $diameter * 0.45  / 0.75;
+$x-bar-height: $diameter * 0.1   / 0.75;
+$x-bar-top:    $diameter * 0.33  / 0.75;
+$x-bar-left:   $diameter * 0.155 / 0.75;
 
 
 .zp-close {
@@ -22,7 +26,9 @@ $diameter: 0.75em;
 
 .zp-close:hover {
   background: $hover-color;
-  @include transition(background 350ms cubic-bezier(0.42, 0, 0.58, 1) 10ms, all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms);
+
+  $tran-time: cubic-bezier(0.42, 0, 0.58, 1);
+  @include transition(background 350ms $tran-time 10ms, all 200ms $tran-time 10ms);
   @include transform(rotateX(-1.7188733853924696deg) rotateZ(19.48056503444799deg));
 }
 
@@ -35,19 +41,18 @@ $diameter: 0.75em;
 
 .zp-close::before,
 .zp-close::after {
-  display: inline-block;
-  @include box-sizing(content-box);
-  width: 0.45em;
-  height: 0.1em;
   position: absolute;
+  display: inline-block;
+  width: $x-bar-width;
+  height: $x-bar-height;
+  top: $x-bar-top;
+  left: $x-bar-left;
   content: "";
-  top: 0.33em;
-  left: 0.155em;
   border: none;
-  font: $font;
   color: black;
   background: white;
   text-shadow: none;
+  @include box-sizing(content-box);
   @include text-overflow(clip);
 }
 
