@@ -11,9 +11,7 @@ class SchedulerInput
   addTimeListener: ->
     @createAddClickListener('.schd-add-time', '.schd-section', '.schd-section-time')
     @createRemoveClickListener('.schd-rmv-time', '.schd-section', '.schd-section-time')
-    @hourSetAmPm('start')
-    @hourSetAmPm('end')
-
+    @hourSetAmPm(time) for time in ['start', 'end']
 
   hourSetAmPm: (startEnd) ->
     hourSelector = '.schd-section-' + startEnd + '-time-hour'
@@ -22,9 +20,7 @@ class SchedulerInput
     $('#schd-courses').on 'change', hourSelector, (event) ->
       val = $(this).val()
       isAm = false
-      for hour in [8..11]
-        if `val == hour`
-          isAm = true
+      isAm = true for hour in [8..11] when val is hour
 
       ampm = $(this).siblings(ampmSelector).last()
       ampm.val(if isAm then "AM" else "PM")
@@ -48,7 +44,7 @@ class SchedulerInput
       target = $(event.currentTarget)
 
       courseElements = target.closest(specificitySelector).find(rmvSelector)
-      courseElements.last().remove() if courseElements.length > 1
+      target.closest(rmvSelector).remove() if courseElements.length > 1
 
   addCourseListener: ->
     $('.schd-add-course').on 'click', (event) =>

@@ -172,6 +172,7 @@ div.schd-section-times {
 div.schd-section-time {
   margin-top: 10px;
   background-color: #4a4a4a;
+  position: relative;
 
   &:not(:first-child) {
     margin-left: 16.66666667%;
@@ -200,27 +201,15 @@ input.schd-section-time-dow {
 div.schd-sections {
 
   div.schd-section {
-    padding: 15px;
+    padding: 25px 15px 15px 15px;
     background-color: $nav-color;
     margin-bottom: 15px;
 
     div.schd-section-times {
 
-      .schd-add-time, .schd-rmv-time {
-        margin-top: 10px;
-      }
-
-      $sec-time-padding: 15px;
-
-      .close-wrapper {
-        position: absolute;
-        right: 5px;
-        top: $sec-time-padding;
-      }
-
       div.schd-section-time {
         margin-left: 0;
-        padding: $sec-time-padding 0 $sec-time-padding $sec-time-padding;
+        padding: 15px 0 15px 15px;
 
         & > .dow-wrapper,
         & > .start-time,

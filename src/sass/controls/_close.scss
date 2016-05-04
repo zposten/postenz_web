@@ -66,4 +66,9 @@ $x-bar-left:    $diameter * 0.155 / 0.75;
   @include transform(rotateZ(-66.46310423517549deg));
 }
 
+.close-wrapper {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
 
