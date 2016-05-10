@@ -184,13 +184,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   
   $stateProvider.state('recipes.meal', {
     url: '/meals/{meal}',
-    template: '<ul id="recipes"></ul>',
+    template: '<ul id="recipes" class="z-bubble"></ul>',
     controller: function ($scope, $stateParams, $compile) {
       var html = '';
       var recipes = $scope.$parent['recipes_' + $stateParams.meal];
       
       for (var i = 0; i < recipes.length; ++i) {
-        var item = '<li ><a href="#/blog/recipes/meals/{0}/{1}">{2}</a></li>';
+        var item = '<li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="#/blog/recipes/meals/{0}/{1}">{2}</a></li>';
         item = item.format($stateParams.meal, recipes[i].name, recipes[i].title);
         html += item;
       }

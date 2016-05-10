@@ -1,7 +1,7 @@
 // Application Specific Colors
-$main-blue: #33c4e8;
-$main-blue-transparent: rgba(51,196,232,0.5);
-$main-blue-transparent-darker: rgba(51,196,232,0.7);
+$main-blue: #2196F3;
+$main-blue-lighter: #64B5F6;
+$main-blue-darker: #1565C0;
 
 $heading-color: #dfe0e6;
 $subtitle-color: #999;
@@ -14,7 +14,11 @@ $nav-light-highlight-color: #282828;//#272727;
 $main-section-color: #282828;//#525354;
 $main-section-highlight-color: #383838;//#4C4C4C;
 
-$link-visited-color: #399ec6;
+$link-color: $main-blue;
+$link-visited-color: $main-blue-lighter;
+$link-hover-color: $main-blue-darker;
+
+
 $code-back-color: #383838;
 $code-fore-color: #cecfd5;
 
