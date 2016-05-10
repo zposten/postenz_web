@@ -19,21 +19,18 @@ div.blogpost {
   }
 }
 
-/*
- * Selection Rectangles
- */
-
 ul.z-bubble {
   padding: 20px 0 0 0;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 
   li {
     display: flex;
     justify-content: center;
-    //padding: 5px;
-    //margin: 5px 5px 15px 5px;
-    margin-bottom: 15px;
+    padding: 5px;
+    list-style: none;
+    width: 50%;
 
     & > a {
       color: white;
@@ -41,6 +38,7 @@ ul.z-bubble {
       font-size: 1.5em;
       text-decoration: none;
       text-align: center;
+      padding: 5px;
 
       float: left;
       position: relative;
@@ -59,6 +57,18 @@ ul.z-bubble {
         color: gray;
       }
     }
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  ul.z-bubble li {
+    width: 33%;
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  ul.z-bubble li {
+    width: 25%;
   }
 }
 

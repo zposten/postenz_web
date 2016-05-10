@@ -17,14 +17,14 @@ $float-input-lbl-top: -45px;
 }
 
 .float-input {
+  color: $float-input-text-color;
+  background-color: transparent;
+  display: block;
+  width: 100%;
   font-size: 18px;
   padding: 10px 10px 2px 5px;
-  display: block;
-  width: inherit;
   border: none;
   border-bottom: 1px solid $float-input-underline-color;
-  background-color: transparent;
-  color: $float-input-text-color;
 }
 
 .float-input:focus {
@@ -40,7 +40,7 @@ $float-input-lbl-top: -45px;
   pointer-events: none;
   left: 5px;
   top: $float-input-lbl-top;
-  transition: 0.2s ease all;
+  @include transition(0.2s ease all);
 }
 
 /*==============================*/
@@ -53,13 +53,13 @@ $float-input-lbl-top: -45px;
 
 .float-input-bar:before,
 .float-input-bar:after {
+  background: $float-input-focus-underline-color;
   content: '';
   height: 2px;
   width: 0;
   bottom: 1px;
   position: absolute;
-  background: $float-input-focus-underline-color;
-  transition: 0.2s ease all;
+  @include transition(0.2s ease all);
 }
 
 .float-input-bar:before {

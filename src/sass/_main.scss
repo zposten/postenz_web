@@ -9,9 +9,16 @@ $font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif;
 body {
   color: $font-color;
   background-color: $main-section-color;
+  font-size: 18px;
+  line-height: 1.5;
 }
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
   margin-top: 0;
   font-family: $font-stack;
   font-weight: normal;
@@ -43,15 +50,15 @@ code {
   transition: all 0.5s ease;
 
   &.toggled {
-    padding-left: 250px;
+    padding-left: $nav-width;
 
     #sidebar-wrapper {
-      width: 250px;
+      width: $nav-width;
     }
 
     #page-content-wrapper {
       position: absolute;
-      margin-right: -250px;
+      margin-right: -1 * $nav-width;
     }
   }
 }
@@ -81,12 +88,12 @@ code {
 .title {
   margin-top: 30px;
   margin-bottom: 0;
-  font-size: 60px;
+  font-size: 4em;
   font-weight: normal;
   text-align: center;
 }
 .subtitle {
-  font-size: 20px;
+  font-size: 1.2em;
   color: $subtitle-color;
   text-align: center;
   width: 80%;
@@ -99,23 +106,5 @@ code {
 
 .social-icon:hover {
   $scale: 1.2;
-  -webkit-transform: scale($scale, $scale); // Safari
-  transform: scale($scale, $scale);
-}
-
-
-@media(min-width: $hide-sidebar-width) {
-  #page-content-wrapper {
-    margin-top: $masthead-height;
-  }
-
-  .masthead {
-    height: $masthead-height;
-  }
-
-  #content-pane {
-    font-size: 18px;
-    line-height: 1.5;
-  }
-
+  @include transform(scale($scale, $scale));
 }

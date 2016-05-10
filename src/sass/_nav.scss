@@ -6,7 +6,7 @@ $small-pic-diameter: 100px;
 #zach_pic {
   $pic-margin: 5px;
   margin: $pic-margin;
-  width:  $small-pic-diameter - 2*$pic-margin;
+  width: $small-pic-diameter - 2*$pic-margin;
   height: $small-pic-diameter - 2*$pic-margin;
 }
 
@@ -46,7 +46,7 @@ $small-pic-diameter: 100px;
       display: block;
       text-decoration: none;
       padding: 0 auto 0 auto;
-      margin:  0 auto 0 auto;
+      margin: 0 auto 0 auto;
 
       color: white;
       font-size: x-large;
@@ -68,43 +68,48 @@ $small-pic-diameter: 100px;
 /*
  * Toggle nav side bar visibility
  */
-@media(min-width: $hide-sidebar-width) {
-    #page-wrapper {
-        padding-left: 250px;
+@media(orientation: landscape) {
+  #page-wrapper {
+    padding-left: $nav-width;
 
-        &.toggled {
-          padding-left: 0;
+    &.toggled {
+      padding-left: 0;
 
-          #sidebar-wrapper {
-              width: 0;
-          }
-
-          #page-content-wrapper {
-              position: relative;
-              margin-right: 0;
-          }
-        }
+      #sidebar-wrapper {
+        width: 0;
+      }
     }
+  }
 
-    $large-pic-diameter: $nav-width;
-    #sidebar-wrapper {
-        width: $large-pic-diameter;
-        top: $masthead-height;
-    }
+  #page-content-wrapper {
+    position: relative;
+    margin-top: $masthead-height;
+  }
 
-    .sidebar-nav {
-      margin-top: $large-pic-diameter;
-    }
+  $large-pic-diameter: $nav-width;
+  #sidebar-wrapper {
+    width: $large-pic-diameter;
+    top: $masthead-height;
+  }
 
-    #page-content-wrapper {
-        padding: 20px;
-        position: relative;
-    }
+  .sidebar-nav {
+    margin-top: $large-pic-diameter;
+  }
 
-    #zach_pic {
-      $pic-margin: 15px;
-      margin: $pic-margin;
-      width:  $large-pic-diameter - 2*$pic-margin;
-      height: $large-pic-diameter - 2*$pic-margin;
-    }
+  #zach_pic {
+    $pic-margin: 15px;
+    margin: $pic-margin;
+    width: $large-pic-diameter - 2*$pic-margin;
+    height: $large-pic-diameter - 2*$pic-margin;
+  }
+
+  .masthead {
+    height: $masthead-height;
+  }
+
+  // Nav toggle button
+  #toggle {
+    display: none;
+  }
 }
+

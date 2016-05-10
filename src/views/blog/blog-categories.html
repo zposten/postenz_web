@@ -1,11 +1,11 @@
 <div class="row">
     <ul class="z-bubble">
-        <li class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <li>
             <a ui-sref="recipes.meals">Recipes</a>
         </li>
 
         <li ng-repeat="c in categories"
-            class="col-lg-3 col-md-4 col-sm-6 col-xs-12 {{ c.list }}">
+            class="{{ c.list }}">
             <a ui-sref="blog.list(c)">{{ c.title }}</a>
         </li>
     </ul>

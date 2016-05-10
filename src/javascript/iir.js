@@ -32,7 +32,7 @@ iir.descriptions = [
 
 iir.query = function() {
 
-  var toLoad = '.main-container';
+  var toLoad = '#iir-container';
   $(toLoad).loading();
   $('#iir-response').hide();
   setInterval(function() {

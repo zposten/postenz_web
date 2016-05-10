@@ -1,12 +1,15 @@
 <div class="row center-row">
-  <div class="col-lg-9 col-md-11 col-xs 12">
+  <div class="col-lg-9 col-md-11 col-xs-12">
     <div class="header row">
         <h1 class="title">{{ title }}</h1>
         <p class="subtitle">{{ subtitle }}</p>
     </div>
 
-    <p class="description">{{ description }}</p>
-    <div ui-view></div>
+    <div class="row">
+        <p class="description">{{ description }}</p>
+    </div>
+
+    <div ui-view class="row"></div>
 
   </div>
 </div>

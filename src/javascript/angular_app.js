@@ -91,7 +91,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   
   $stateProvider.state('blog', {
     url: "/blog",
-    templateUrl: "src/views/blog.html",
+    templateUrl: "src/views/blog/blog.html",
     controller: function ($scope, $sce, $state) {
       highlightSelectedNav('nav-blog');
       $('.description').hide();
@@ -104,7 +104,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         'Break Statements',
         'Hash Symbol',
         'Static Data Storage',
-        'UIPopoverController',
+        'UI Popover Controller',
         'Transfer Delegate Selection to Parent',
         'Variable Initialization'
       ];
@@ -115,12 +115,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   
   $stateProvider.state('blog.categories', {
     url: '/categories',
-    templateUrl: 'src/views/blog-categories.html'
+    templateUrl: 'src/views/blog/blog-categories.html'
   });
   
   $stateProvider.state('blog.list', {
     url: '/{list}',
-    template: '<ul id="blog-list"></ul>',
+    template: '<ul id="blog-list" class="z-bubble"></ul>',
     controller: function ($scope, $stateParams) {
       var items = $scope.$parent[$stateParams.list];
       
@@ -149,7 +149,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   
   $stateProvider.state('recipes', {
     url: '/blog/recipes',
-    templateUrl: "src/views/blog.html",
+    templateUrl: "src/views/blog/blog.html",
     controller: function ($scope, $state) {
       highlightSelectedNav('nav-blog');
       $('.subtitle').hide();
@@ -179,7 +179,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   
   $stateProvider.state('recipes.meals', {
     url: '/meals',
-    templateUrl: 'src/views/meals.html'
+    templateUrl: 'src/views/blog/meals.html'
   });
   
   $stateProvider.state('recipes.meal', {
@@ -190,7 +190,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       var recipes = $scope.$parent['recipes_' + $stateParams.meal];
       
       for (var i = 0; i < recipes.length; ++i) {
-        var item = '<li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"><a href="#/blog/recipes/meals/{0}/{1}">{2}</a></li>';
+        var item = '<li><a href="#/blog/recipes/meals/{0}/{1}">{2}</a></li>';
         item = item.format($stateParams.meal, recipes[i].name, recipes[i].title);
         html += item;
       }

@@ -7,8 +7,6 @@
   -webkit-text-size-adjust: 100%;
   overflow: hidden;
   font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
   word-wrap: break-word;
 
   * {
@@ -440,18 +438,4 @@
 
 .footer {
   padding-top: 200px;
-}
-
-
-/* Media */
-@media only screen and (min-width: 480px) {
-  .markdown-body {
-    font-size:14px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .markdown-body {
-    font-size:16px;
-  }
 }
