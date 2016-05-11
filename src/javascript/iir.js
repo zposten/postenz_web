@@ -52,7 +52,7 @@ iir.query = function() {
 };
 
 iir.generate = function() {
-  var input = $('#iir-topic');
+  var input = $('#iir-topic .float-input');
   var topic = input.val().trim();
   var query = '';
 

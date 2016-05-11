@@ -1,23 +1,29 @@
 <div class="row center-row">
-    <div class="col-xs-12 col-lg-9">
+    <div class="col-lg-9 col-xs-10">
 
         <div class="header row">
             <h1 class="title">{{ title }}</h1>
         </div>
 
-        <div class="row"><p>{{ description }}</p></div>
+        <div class="row">
+            <p class="description">{{ description }}</p>
+        </div>
 
-        <div id="iir-container" class="row">
-            <form role="form">
-                <div class="form-group">
-                    <label for="iir-topic">The topic in question:</label>
-                    <input type="text" class="form-control" id="iir-topic" placeholder="Enter your topic here">
-                </div>
-                <button class="btn btn-default" onclick="iir.generate()">Submit</button>
-            </form>
+        <div class="row">
+            <div id="iir-container" class="col-lg-9 col-md-10 col-xs-11">
+                <form role="form">
+                    <div class="form-group">
+                        <float-input id="iir-topic" hint="Topic in question"></float-input>
+                    </div>
 
-            <br/><br/>
-            <h2 id="iir-response"></h2>
+                    <button class="btn btn-primary" onclick="iir.generate()">
+                        Submit
+                    </button>
+                </form>
+
+                <br/><br/>
+                <h2 id="iir-response"></h2>
+            </div>
         </div>
 
     </div>
