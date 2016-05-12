@@ -52,13 +52,11 @@ iir.query = function() {
 };
 
 iir.generate = function() {
-  var input = $('#iir-topic .float-input');
+  var input = $('#iir-topic');
   var topic = input.val().trim();
   var query = '';
 
-  if(!topic) {
-    query = '<b><i>Please enter a topic to search!</i></b>';
-  } else if(input.val().toLowerCase().indexOf("posten") > -1) {
+  if(input.val().toLowerCase().indexOf("posten") > -1) {
     query = iir.query(); // for loading screen
     query = 'The internet believes that that is 0% racist and <i>really</i> awesome to boot.';
   } else {
@@ -67,6 +65,8 @@ iir.generate = function() {
 
   $('#iir-response').html(query);
   input.val('');
+  input.removeClass("valid");
+  input.next().removeClass("active");
 };
 
 iir.pct = function() {
