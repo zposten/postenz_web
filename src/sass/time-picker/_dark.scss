@@ -1,0 +1,95 @@
+/*!
+ * ClockPicker v0.0.7 for jQuery (http://weareoutman.github.io/clockpicker/)
+ * Copyright 2014 Wang Shenwei.
+ * Licensed under MIT (https://github.com/weareoutman/clockpicker/blob/gh-pages/LICENSE)
+ *
+ * Further modified
+ * Copyright 2015 Ching Yaw Hao.
+ *
+ * Bootstrap v3.1.1 (http://getbootstrap.com)
+ * Copyright 2011-2014 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+@import "../../../bower_components/Materialize/sass/components/color";
+@import "variables";
+
+.darktheme {
+    .picker__box {
+        background-color: #212121;
+    }
+
+    .picker__date-display {
+        background-color: transparent;
+    }
+
+    .clockpicker-display {
+        color: white;
+    }
+
+    .clockpicker-span-am-pm {
+        color: white;
+    }
+
+    .clockpicker-span-hours,
+    .clockpicker-span-minutes,
+    #click-am,
+    #click-pm {
+        &.text-primary {
+            color: $clockpicker-dark-accent-color;
+        }
+    }
+
+    .clockpicker-plate {
+        background-color: transparent;
+    }
+
+    .clockpicker-tick {
+        color: white;
+        background-color: transparent;
+    }
+
+    .clockpicker-tick.active,
+    .clockpicker-tick:hover {
+        background-color: $clockpicker-dark-accent-color-quarter;
+    }
+
+    .clockpicker-canvas-bearing {
+        fill: white;
+    }
+
+    .clockpicker-canvas-fg {
+        fill: transparent;
+    }
+
+    .clockpicker-canvas-fg.active {
+        fill: $clockpicker-dark-accent-color-half;
+    }
+
+    .clockpicker-canvas-bg {
+        fill: $clockpicker-dark-accent-color-quarter;
+    }
+
+    .clockpicker-canvas-bg-trans {
+        fill: $clockpicker-dark-accent-color-quarter;
+    }
+
+    .clockpicker-canvas line {
+        stroke: $clockpicker-dark-accent-color-quarter;
+    }
+
+    button {
+        color: white;
+    }
+
+    .btn-floating.btn-flat.active {
+        background-color: $clockpicker-dark-accent-color-quarter;
+    }
+
+    .btn-floating.btn-flat:active {
+        background-color: $clockpicker-dark-accent-color-half;
+    }
+
+    .picker__footer .clockpicker-button:active {
+        background-color: $clockpicker-dark-accent-color-quarter;
+    }
+}

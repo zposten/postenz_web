@@ -24,6 +24,9 @@ $code-fore-color: #cecfd5;
 
 $schd-back-color: #e5e5e5;
 $schd-left-color: #c7c7c7;
+$schd-course-color: $nav-color;
+$schd-section-color: $nav-light-highlight-color;
+$schd-time-color: $nav-dark-highlight-color;
 
 // General Colors
 $light-black: rgba(0, 0, 0, 0.87);
@@ -31,19 +34,3 @@ $light-white: rgba(255, 255, 255, 0.87);
 $off-black: #242424;
 $off-white: #F1F1F1;
 $fifty-percent-gray: #808080;
-
-// Google Material Design Colors
-$blue: #2196F3;
-$dark-blue: #0D47A1;
-$amber: #FFC107;
-$dark-amber: #FF6F00;
-$red: #F44336;
-$dark-red: #B71C1C;
-$green: #4CAF50;
-$dark-green: #1B5E20;
-$purple: #9C27B0;
-$dark-purple:  #4A148C;
-$teal: #009688;
-$dark-teal: #004D40;
-$pink: #E91E63;
-$dark-pink: #880E4F;

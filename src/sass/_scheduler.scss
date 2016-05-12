@@ -124,40 +124,54 @@ $schd-input-indent: 30px;
   }
 
   .color0 {
-    border: $schd-table-border-height solid $dark-blue;
-    background-color: $blue;
+    border: $schd-table-border-height solid color("blue", "darken-4");
+    background-color: color("blue", "base");
     color: $light-white;
   }
   .color1 {
-    border: $schd-table-border-height solid $dark-amber;
-    background-color: $amber;
+    border: $schd-table-border-height solid color("amber", "darken-4");
+    background-color: color("amber", "base");
     color: $light-black;
   }
   .color2 {
-    border: $schd-table-border-height solid $dark-red;
-    background-color: $red;
+    border: $schd-table-border-height solid color("red", "darken-4");;
+    background-color: color("red", "base");;
     color: $light-white;
   }
   .color3 {
-    border: $schd-table-border-height solid $dark-green;
-    background-color: $green;
+    border: $schd-table-border-height solid color("green", "darken-4");
+    background-color: color("green", "base");
     color: $light-black;
   }
   .color4 {
-    border: $schd-table-border-height solid $dark-purple;
-    background-color: $purple;
+    border: $schd-table-border-height solid color("purple", "darken-4");;
+    background-color: color("purple", "base");
     color: $light-white;
   }
   .color5 {
-    border: $schd-table-border-height solid $dark-teal;
-    background-color: $teal;
+    border: $schd-table-border-height solid color("teal", "darken-4");
+    background-color: color("teal", "base");
     color: $light-white;
   }
   .color6 {
-    border: $schd-table-border-height solid $dark-pink;
-    background-color: $pink;
+    border: $schd-table-border-height solid color("pink", "darken-4");
+    background-color: color("pink", "base");
     color: $light-white;
   }
+}
+
+.schedule-table thead tr > th:first-child {
+  border-left: 1px solid #292929;
+}
+
+.schedule-table thead tr > th:last-child {
+  border-right: 1px solid #292929;
+}
+
+div#schedule-wrapper {
+  margin-top: $schd-input-indent;
+  width: 621px;
+  color: color("red", "lighten-1");
 }
 
 //====================
@@ -185,110 +199,79 @@ div.schd-section-time-dow {
   text-align: center;
 }
 
-input.schd-section-time-dow {
-  width: 25px;
-  margin: 0;
-  padding: 0;
-}
-
-.float-input-group.sec-num {
-  width: 100px;
+label.schd-section-time-dow {
   float: left;
-  margin: 15px 15px 15px 0;
-
+  margin-right: 15px;
 }
 
-div.schd-sections {
+#schd-courses {
+  div.schd-course {
+    margin-top: $schd-input-indent;
+    background-color: $schd-course-color;
+    padding: 15px;
+    position: relative;
 
-  div.schd-section {
-    padding: 25px 15px 15px 15px;
-    background-color: $nav-color;
-    margin-bottom: 15px;
+    .row .sec-btns.col {
+      margin-left: 50px;
+    }
 
-    div.schd-section-times {
+    div.schd-sections {
+      margin-left: 50px;
+      margin-right: 0;
 
-      div.schd-section-time {
-        margin-left: 0;
-        padding: 15px 0 15px 15px;
+      div.schd-section {
+        padding: 25px 15px 15px 15px;
+        margin-bottom: 15px;
+        position: relative;
+        background-color: $schd-section-color;
 
-        & > .dow-wrapper,
-        & > .start-time,
-        & > .end-time {
-          min-width: 155px;
-          padding: 0;
-          height: 100%
+        & > .row {
+          margin-right: 5px;
         }
 
-        .start-time, .end-time {
-          margin-top: 15px;
-        }
+        div.schd-section-times {
 
-        select {
-          color: $nav-color;
-        }
+          div.schd-section-time {
+            margin-left: 0;
+            padding: 15px 0 15px 15px;
 
-        select.ampm {
-          background-color: $subtitle-color;
+            & > .dow-wrapper,
+            & > .start-time,
+            & > .end-time {
+              min-width: 155px;
+              padding: 0;
+              height: 100%
+            }
+
+            .start-time, .end-time {
+              margin-top: 15px;
+            }
+
+            select {
+              color: $nav-color;
+            }
+
+            select.ampm {
+              background-color: $subtitle-color;
+            }
+          }
         }
       }
+
+      button.schd-add-section {
+        margin-top: 20px;
+      }
+      button.schd-rmv-section {
+        margin-top: 20px;
+      }
+
     }
   }
-
-  button.schd-add-section {
-    margin-top: 20px;
-  }
-  button.schd-rmv-section {
-    margin-top: 20px;
-  }
-
-}
-
-.clear {
-  clear: both;
-}
-
-div.schd-course {
-  padding-top: $schd-input-indent;
-
-  .sec-btns {
-    padding-left: 0;
-    margin-top: 15px;
-  }
-}
-
-.schd-add-course, .schd-rmv-course {
-  margin-top: $schd-input-indent;
 }
 
 #make-schedules {
   margin-top: 75px;
-  background-color: $main-blue;
-}
-
-div#schedule-wrapper {
-  margin-top: $schd-input-indent;
-  width: 621px;
-  color: #640000;
-}
-
-.schedule-table thead tr > th:first-child {
-  border-left: 1px solid #292929;
-}
-
-.schedule-table thead tr > th:last-child {
-  border-right: 1px solid #292929;
-}
-
-.row.buttons {
-  margin-top: 15px;
-}
-
-.schd-section > .row {
-  margin-right: 0;
-}
-
-.row > p {
-  padding: 15px;
+  background-color: color("orange", "base");
 }
 
 

@@ -9,66 +9,73 @@ class SchedulerInput
     new SchedulerInput()
 
   addTimeListener: ->
-    @createAddClickListener('.schd-add-time', '.schd-section', '.schd-section-time')
+    @createAddClickListener('.schd-add-time', '.schd-section-time', 'time')
     @createRemoveClickListener('.schd-rmv-time', '.schd-section', '.schd-section-time')
-    @hourSetAmPm(time) for time in ['start', 'end']
-
-  hourSetAmPm: (startEnd) ->
-    hourSelector = '.schd-section-' + startEnd + '-time-hour'
-    ampmSelector = '.schd-section-' + startEnd + '-time-period'
-
-    $('#schd-courses').on 'change', hourSelector, (event) ->
-      val = $(this).val()
-      isAm = false
-      isAm = true for hour in [8..11] when val is hour
-
-      ampm = $(this).siblings(ampmSelector).last()
-      ampm.val(if isAm then "AM" else "PM")
-
 
   addSectionListener: ->
-    @createAddClickListener('.schd-add-section', '.schd-course', '.schd-section')
+    @createAddClickListener('.schd-add-section', '.schd-section', 'section')
     @createRemoveClickListener('.schd-rmv-section', '.schd-course', '.schd-section')
 
-  createAddClickListener: (btnSelector, specificitySelector, cloneSelector) ->
-    $(btnSelector).on 'click', (event) =>
+  addCourseListener: ->
+    @createAddClickListener('.schd-add-course', '.schd-course', 'course')
+    @createRemoveClickListener('.schd-rmv-course', '#schd-courses', '.schd-course')
+    $('[id^=course1-section1-time1-]').pickatime({darktheme: true, autoclose: true})
+
+  createAddClickListener: (btnSelector, cloneSelector, inputID) ->
+    $('#schd-courses').on 'click', btnSelector, (event) =>
       target = $(event.currentTarget)
 
-      toClone = target.closest(specificitySelector).find(cloneSelector).last()
-      theClone = toClone.clone(true)
+      toClone = target.closest(cloneSelector)
+      theClone = toClone.clone()
+      
+      timepickers = theClone.find('.input-field > input.timepicker')
+      for picker in timepickers
+        $(picker).pickatime({darktheme: true, autoclose: true})
+
+      groups = [
+        {tag: 'input', attr: 'id'},
+        {tag: 'label', attr: 'for'}
+      ]
+
+      for group in groups
+        inputs = theClone.find(group.tag + '[' + group.attr + '*=' + inputID + ']')
+
+        for input in inputs
+          attr = $(input).attr(group.attr)
+          regex = new RegExp(inputID + '(\\d)')
+
+          matches = regex.exec(attr)
+          continue if not matches
+
+          num = Number(matches[1]) + 1
+          attr = attr.replace(regex, inputID + num)
+          $(input).attr(group.attr, attr)
+
       @resetCourseHtml(theClone)
       theClone.insertAfter(toClone)
 
   createRemoveClickListener: (btnSelector, specificitySelector, rmvSelector) ->
-    $(btnSelector).on 'click', (event) =>
+    $('#schd-courses').on 'click', btnSelector, (event) =>
       target = $(event.currentTarget)
 
       courseElements = target.closest(specificitySelector).find(rmvSelector)
       target.closest(rmvSelector).remove() if courseElements.length > 1
 
-  addCourseListener: ->
-    $('.schd-add-course').on 'click', (event) =>
-      toClone = $('div[schd-course]').last()
-      theClone = toClone.clone(true)
-      @resetCourseHtml(theClone)
-      theClone.insertAfter(toClone)
-
-    $('.schd-rmv-course').on 'click', (event) =>
-      courses = $('div[schd-course]');
-      courses.last().remove() if courses.length > 1
 
   resetCourseHtml: (course) ->
-    course.find('.float-input').val('')
-    course.find('select').attr('selectedIndex', 0)
+    course.find('input:text').val('')
+    course.find('input-field > label').removeClass('active')
     course.find('input:checkbox').prop('checked', false)
     course.find('.schd-section').not(':first').remove()
     course.find('.schd-section-time').not(':first').remove()
 
+#    for item in course.find('.input-field > input.timepicker')
+#      $(item).pickatime({autoclose: true})
+
 
 
   addMakeSchedulesListener: ->
-    noSchedules = 'No schedules could be generated'
-    badJson = 'Invalid JSON string supplied'
+    noSchedules = 'No schedules could be generated for that input'
 
     $('#make-schedules').on 'click', (event) =>
       try
@@ -80,7 +87,7 @@ class SchedulerInput
         html = scheduler.makeSchedules()
         $('div#schedule-wrapper').html(html or noSchedules)
       catch err
-        $('div#schedule-wrapper').html(badJson)
+        $('div#schedule-wrapper').html(err)
 
 
 
@@ -144,23 +151,19 @@ class SchedulerInput
 
     json = '{"dows": ['
     for checkedDay in checkedDays
-      day = $(checkedDay).val()
+      id = $(checkedDay).attr('id')
+      day = $("label[for='" + id + "']").text();
+
       dow = ['S', 'M', 'T', 'W', 'R', 'F', 'Sa'].indexOf(day.trim())
       json += (dow + ',') if dow > 0
 
     json = util.removeLastChar(json)
     json += '],'
 
-    startHour = @getValFirstChild(session, 'select.schd-section-start-time-hour')
-    startMin = @getValFirstChild(session, 'select.schd-section-start-time-min')
-    startPeriod = @getValFirstChild(session, 'select.schd-section-start-time-period')
+    startTime = @getValFirstChild(session, '.start-time > input')
+    endTime = @getValFirstChild(session, '.end-time > input')
 
-    endHour = @getValFirstChild(session, 'select.schd-section-end-time-hour')
-    endMin = @getValFirstChild(session, 'select.schd-section-end-time-min')
-    endPeriod = @getValFirstChild(session, 'select.schd-section-end-time-period')
-
-    str = '"startTime": "{0}:{1} {2}","endTime": "{3}:{4} {5}"}'
-    json += str.format(startHour, startMin, startPeriod, endHour, endMin, endPeriod)
+    json += '"startTime": "{0}","endTime": "{1}"}'.format(startTime, endTime)
     return json
 
   getValFirstChild: (jqueryObj, selector) ->

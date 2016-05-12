@@ -215,21 +215,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
  **********************************************************/
 
 
-app.directive('floatInput', function () {
-  return {
-    restrict: 'AE',
-    replace: true,
-    templateUrl: 'src/views/controls/float-input.html',
-    link: function (scope, elem, attrs) {
-      var hint = attrs.hint || attrs.label || attrs.placeholder;
-      $(elem.find('.float-input-lbl')[0]).text(hint);
-      elem.find('*').addClass(attrs.class);
-      elem.find('*').removeClass('float-input-group');
-    }
-  }
-});
-
-
 app.directive('toggle', function () {
   return {
     restrict: 'AE',

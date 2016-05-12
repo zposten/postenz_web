@@ -14,8 +14,12 @@
 @import "markdown";
 @import "scheduler";
 
-@import "controls/float-input";
 @import "controls/toggle";
 @import "controls/close";
 
-@import "../../bower_components/Materialize/stylesheets/materialize.css";
+@import "variables";
+@import "../../bower_components/Materialize/sass/materialize";
+
+@import "time-picker/variables";
+@import "time-picker/primary";
+@import "time-picker/dark";

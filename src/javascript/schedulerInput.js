@@ -15,48 +15,64 @@
     };
 
     SchedulerInput.prototype.addTimeListener = function() {
-      var i, len, ref, results, time;
-      this.createAddClickListener('.schd-add-time', '.schd-section', '.schd-section-time');
-      this.createRemoveClickListener('.schd-rmv-time', '.schd-section', '.schd-section-time');
-      ref = ['start', 'end'];
-      results = [];
-      for (i = 0, len = ref.length; i < len; i++) {
-        time = ref[i];
-        results.push(this.hourSetAmPm(time));
-      }
-      return results;
-    };
-
-    SchedulerInput.prototype.hourSetAmPm = function(startEnd) {
-      var ampmSelector, hourSelector;
-      hourSelector = '.schd-section-' + startEnd + '-time-hour';
-      ampmSelector = '.schd-section-' + startEnd + '-time-period';
-      return $('#schd-courses').on('change', hourSelector, function(event) {
-        var ampm, hour, i, isAm, val;
-        val = $(this).val();
-        isAm = false;
-        for (hour = i = 8; i <= 11; hour = ++i) {
-          if (val === hour) {
-            isAm = true;
-          }
-        }
-        ampm = $(this).siblings(ampmSelector).last();
-        return ampm.val(isAm ? "AM" : "PM");
-      });
+      this.createAddClickListener('.schd-add-time', '.schd-section-time', 'time');
+      return this.createRemoveClickListener('.schd-rmv-time', '.schd-section', '.schd-section-time');
     };
 
     SchedulerInput.prototype.addSectionListener = function() {
-      this.createAddClickListener('.schd-add-section', '.schd-course', '.schd-section');
+      this.createAddClickListener('.schd-add-section', '.schd-section', 'section');
       return this.createRemoveClickListener('.schd-rmv-section', '.schd-course', '.schd-section');
     };
 
-    SchedulerInput.prototype.createAddClickListener = function(btnSelector, specificitySelector, cloneSelector) {
-      return $(btnSelector).on('click', (function(_this) {
+    SchedulerInput.prototype.addCourseListener = function() {
+      this.createAddClickListener('.schd-add-course', '.schd-course', 'course');
+      this.createRemoveClickListener('.schd-rmv-course', '#schd-courses', '.schd-course');
+      return $('[id^=course1-section1-time1-]').pickatime({
+        darktheme: true,
+        autoclose: true
+      });
+    };
+
+    SchedulerInput.prototype.createAddClickListener = function(btnSelector, cloneSelector, inputID) {
+      return $('#schd-courses').on('click', btnSelector, (function(_this) {
         return function(event) {
-          var target, theClone, toClone;
+          var attr, group, groups, i, input, inputs, j, k, len, len1, len2, matches, num, picker, regex, target, theClone, timepickers, toClone;
           target = $(event.currentTarget);
-          toClone = target.closest(specificitySelector).find(cloneSelector).last();
-          theClone = toClone.clone(true);
+          toClone = target.closest(cloneSelector);
+          theClone = toClone.clone();
+          timepickers = theClone.find('.input-field > input.timepicker');
+          for (i = 0, len = timepickers.length; i < len; i++) {
+            picker = timepickers[i];
+            $(picker).pickatime({
+              darktheme: true,
+              autoclose: true
+            });
+          }
+          groups = [
+            {
+              tag: 'input',
+              attr: 'id'
+            }, {
+              tag: 'label',
+              attr: 'for'
+            }
+          ];
+          for (j = 0, len1 = groups.length; j < len1; j++) {
+            group = groups[j];
+            inputs = theClone.find(group.tag + '[' + group.attr + '*=' + inputID + ']');
+            for (k = 0, len2 = inputs.length; k < len2; k++) {
+              input = inputs[k];
+              attr = $(input).attr(group.attr);
+              regex = new RegExp(inputID + '(\\d)');
+              matches = regex.exec(attr);
+              if (!matches) {
+                continue;
+              }
+              num = Number(matches[1]) + 1;
+              attr = attr.replace(regex, inputID + num);
+              $(input).attr(group.attr, attr);
+            }
+          }
           _this.resetCourseHtml(theClone);
           return theClone.insertAfter(toClone);
         };
@@ -64,7 +80,7 @@
     };
 
     SchedulerInput.prototype.createRemoveClickListener = function(btnSelector, specificitySelector, rmvSelector) {
-      return $(btnSelector).on('click', (function(_this) {
+      return $('#schd-courses').on('click', btnSelector, (function(_this) {
         return function(event) {
           var courseElements, target;
           target = $(event.currentTarget);
@@ -76,39 +92,17 @@
       })(this));
     };
 
-    SchedulerInput.prototype.addCourseListener = function() {
-      $('.schd-add-course').on('click', (function(_this) {
-        return function(event) {
-          var theClone, toClone;
-          toClone = $('div[schd-course]').last();
-          theClone = toClone.clone(true);
-          _this.resetCourseHtml(theClone);
-          return theClone.insertAfter(toClone);
-        };
-      })(this));
-      return $('.schd-rmv-course').on('click', (function(_this) {
-        return function(event) {
-          var courses;
-          courses = $('div[schd-course]');
-          if (courses.length > 1) {
-            return courses.last().remove();
-          }
-        };
-      })(this));
-    };
-
     SchedulerInput.prototype.resetCourseHtml = function(course) {
-      course.find('.float-input').val('');
-      course.find('select').attr('selectedIndex', 0);
+      course.find('input:text').val('');
+      course.find('input-field > label').removeClass('active');
       course.find('input:checkbox').prop('checked', false);
       course.find('.schd-section').not(':first').remove();
       return course.find('.schd-section-time').not(':first').remove();
     };
 
     SchedulerInput.prototype.addMakeSchedulesListener = function() {
-      var badJson, noSchedules;
-      noSchedules = 'No schedules could be generated';
-      badJson = 'Invalid JSON string supplied';
+      var noSchedules;
+      noSchedules = 'No schedules could be generated for that input';
       return $('#make-schedules').on('click', (function(_this) {
         return function(event) {
           var err, error, html, json, jsonObj, scheduler;
@@ -121,7 +115,7 @@
             return $('div#schedule-wrapper').html(html || noSchedules);
           } catch (error) {
             err = error;
-            return $('div#schedule-wrapper').html(badJson);
+            return $('div#schedule-wrapper').html(err);
           }
         };
       })(this));
@@ -192,7 +186,7 @@
     };
 
     SchedulerInput.prototype.makeSessionJson = function(session) {
-      var checkedDay, checkedDays, day, dow, endHour, endMin, endPeriod, i, json, len, startHour, startMin, startPeriod, str;
+      var checkedDay, checkedDays, day, dow, endTime, i, id, json, len, startTime;
       checkedDays = session.find('input.schd-section-time-dow:checked');
       if (checkedDays.length === 0) {
         return '';
@@ -200,7 +194,8 @@
       json = '{"dows": [';
       for (i = 0, len = checkedDays.length; i < len; i++) {
         checkedDay = checkedDays[i];
-        day = $(checkedDay).val();
+        id = $(checkedDay).attr('id');
+        day = $("label[for='" + id + "']").text();
         dow = ['S', 'M', 'T', 'W', 'R', 'F', 'Sa'].indexOf(day.trim());
         if (dow > 0) {
           json += dow + ',';
@@ -208,14 +203,9 @@
       }
       json = util.removeLastChar(json);
       json += '],';
-      startHour = this.getValFirstChild(session, 'select.schd-section-start-time-hour');
-      startMin = this.getValFirstChild(session, 'select.schd-section-start-time-min');
-      startPeriod = this.getValFirstChild(session, 'select.schd-section-start-time-period');
-      endHour = this.getValFirstChild(session, 'select.schd-section-end-time-hour');
-      endMin = this.getValFirstChild(session, 'select.schd-section-end-time-min');
-      endPeriod = this.getValFirstChild(session, 'select.schd-section-end-time-period');
-      str = '"startTime": "{0}:{1} {2}","endTime": "{3}:{4} {5}"}';
-      json += str.format(startHour, startMin, startPeriod, endHour, endMin, endPeriod);
+      startTime = this.getValFirstChild(session, '.start-time > input');
+      endTime = this.getValFirstChild(session, '.end-time > input');
+      json += '"startTime": "{0}","endTime": "{1}"}'.format(startTime, endTime);
       return json;
     };
 

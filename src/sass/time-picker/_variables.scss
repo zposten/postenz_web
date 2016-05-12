@@ -1,0 +1,22 @@
+@import "../../../bower_components/Materialize/sass/components/color";
+
+//box
+$clockpicker-picker-box-background: #fff !default;
+$clockpicker-picker-box-date-display-background-color: color("teal", "lighten-1") !default;
+$clockpicker-primary-color: color("teal", "lighten-4") !default;
+//tick
+$clockpicker-tick-background-color: rgba(color("teal", "base"), 0) !default;
+$clockpicker-tick-background-color-active: rgba(color("teal", "base"), 0.25) !default;
+$clockpicker-tick-color: #666 !default;
+//canvas
+$clockpicker-canvas-bearing-fill: rgba(color("teal", "darken-4"), 0.75) !default;
+$clockpicker-canvas-fg-fill: color("teal", "darken-4") !default;
+$clockpicker-canvas-bg-fill: rgba(color("teal", "base"), 0.25) !default;
+$clockpicker-canvas-bg-stroke: $clockpicker-canvas-bg-fill !default;
+//buttons
+$clockpicker-button-background-color: color("teal", "base") !default;
+$clockpicker-button-color: $button-flat-color !default;
+// dark theme
+$clockpicker-dark-accent-color: color("blue", "base");
+$clockpicker-dark-accent-color-half: rgba($clockpicker-dark-accent-color, 0.5);
+$clockpicker-dark-accent-color-quarter: rgba($clockpicker-dark-accent-color, 0.25);

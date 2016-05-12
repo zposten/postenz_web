@@ -1,36 +1,38 @@
 <div class="schd-section-time row">
 
-    <div class="dow-wrapper col-md-3 col-sm-5 col-xs-11">
-        <div class="schd-section-time-dow" ng-repeat="day in days">{{day}}</div>
-        <br>
-        <input class="schd-section-time-dow" type="checkbox" name="c1-s1-dow" value="{{day}}" ng-repeat="day in days">
+    <div class="col s12">
+
+        <div class="dow-wrapper row">
+            <div ng-repeat="day in days">
+                <input class="schd-section-time-dow"
+                       type="checkbox"
+                       id="course1-section1-time1-{{day}}"/>
+                <label for="course1-section1-time1-{{day}}"
+                       class="schd-section-time-dow">{{ day }}</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field start-time col s6">
+                <label for="course1-section1-time1-start">Start Time</label>
+                <input id="course1-section1-time1-start" class="timepicker" type="time">
+            </div>
+
+            <div class="input-field end-time col s6">
+                <label for="course1-section1-time1-end">End Time</label>
+                <input id="course1-section1-time1-end" class="timepicker" type="time">
+            </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 0">
+            <div class="col s12">
+                <button class="btn btn-default schd-add-time">+</button>
+            </div>
+        </div>
+
+
     </div>
 
-    <div class="start-time col-md-4 col-sm-5 col-xs-6">
-        <select class="schd-section-start-time-hour">
-            <option ng-repeat="hour in hours" value="{{hour}}">{{hour}}</option>
-        </select>
-        <select class="schd-section-start-time-min">
-            <option ng-repeat="min in mins" value="{{min}}">{{min}}</option>
-        </select>
-        <select class="schd-section-start-time-period ampm">
-            <option value="AM">AM</option>
-            <option value="PM">PM</option>
-        </select>
-    </div>
-
-    <div class="end-time col-md-4 col-sm-5 col-xs-6">
-        <select class="schd-section-end-time-hour">
-            <option ng-repeat="hour in hours" value="{{hour}}">{{hour}}</option>
-        </select>
-        <select class="schd-section-end-time-min">
-            <option ng-repeat="min in mins" value="{{min}}">{{min}}</option>
-        </select>
-        <select class="schd-section-end-time-period ampm">
-            <option value="AM">AM</option>
-            <option value="PM">PM</option>
-        </select>
-    </div>
 
     <div class="close-wrapper">
         <div class="zp-close schd-rmv-time"></div>
