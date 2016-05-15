@@ -54,6 +54,7 @@ $schd-input-indent: 30px;
     text-align: center;
     vertical-align: bottom;
     -webkit-print-color-adjust: exact;
+    border-radius: 0;
   }
 
   thead th.time {
@@ -107,21 +108,11 @@ $schd-input-indent: 30px;
     left: $schd-table-time-col-width + ($day-num - 1)*$schd-table-dow-col-width;
   }
 
-  .dayM {
-    @include day-left(1);
-  }
-  .dayT {
-    @include day-left(2);
-  }
-  .dayW {
-    @include day-left(3);
-  }
-  .dayR {
-    @include day-left(4);
-  }
-  .dayF {
-    @include day-left(5);
-  }
+  .dayM {  @include day-left(1);  }
+  .dayT {  @include day-left(2);  }
+  .dayW {  @include day-left(3);  }
+  .dayR {  @include day-left(4);  }
+  .dayF {  @include day-left(5);  }
 
   .color0 {
     border: $schd-table-border-height solid color("blue", "darken-4");
