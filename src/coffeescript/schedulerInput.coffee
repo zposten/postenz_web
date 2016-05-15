@@ -1,6 +1,6 @@
 class SchedulerInput
   constructor: ->
-    @addTimeListener()
+    @addSessionListener()
     @addSectionListener()
     @addCourseListener()
     @addMakeSchedulesListener()
@@ -8,8 +8,8 @@ class SchedulerInput
   @init: ->
     new SchedulerInput()
 
-  addTimeListener: ->
-    @createAddClickListener('.schd-add-time', '.schd-section-time', 'time')
+  addSessionListener: ->
+    @createAddClickListener('.schd-add-time', '.schd-session', 'time')
     @createRemoveClickListener('.schd-rmv-time', '.schd-section', '.schd-section-time')
 
   addSectionListener: ->
@@ -130,7 +130,7 @@ class SchedulerInput
     number = @getValFirstChild(section, 'input.sec-num')
     json = '{"number": "{0}", "sessions": ['.format(number)
 
-    sessions = section.find('.schd-section-time')
+    sessions = section.find('.schd-session')
 
     if not number
       throw new Error "Invalid section number ({0})".format(number)
@@ -146,7 +146,7 @@ class SchedulerInput
     return json
 
   makeSessionJson: (session) ->
-    checkedDays = session.find('input.schd-section-time-dow:checked')
+    checkedDays = session.find('input.schd-session-dow:checked')
     return '' if checkedDays.length is 0
 
     json = '{"dows": ['

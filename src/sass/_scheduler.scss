@@ -169,12 +169,12 @@ div#schedule-wrapper {
 //SCHEDULER INPUT
 //====================
 
-div.schd-section-times {
+div.schd-sessions {
   float: left;
 
 }
 
-div.schd-section-time {
+div.schd-session {
   margin-top: 10px;
   background-color: #4a4a4a;
   position: relative;
@@ -202,8 +202,8 @@ label.schd-section-time-dow {
     padding: 15px;
     position: relative;
 
-    .row .sec-btns.col {
-      margin-left: 50px;
+    .input-field label.course-name {
+      left: 0;
     }
 
     div.schd-sections {
@@ -220,9 +220,9 @@ label.schd-section-time-dow {
           margin-right: 5px;
         }
 
-        div.schd-section-times {
+        div.schd-sessions {
 
-          div.schd-section-time {
+          div.schd-session {
             margin-left: 0;
             padding: 15px 0 15px 15px;
 

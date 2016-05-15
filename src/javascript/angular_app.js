@@ -237,9 +237,9 @@ app.directive('schdCourse', function () {
   }
 });
 
-app.directive('selectTime', function () {
+app.directive('schdSession', function () {
   return {
-    templateUrl: 'src/views/scheduler/select-time.html',
+    templateUrl: 'src/views/scheduler/schd-session.html',
     link: function (scope, elem, attrs) {
       window.SchedulerInput.init();
     }

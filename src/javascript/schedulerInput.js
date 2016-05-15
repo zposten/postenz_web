@@ -4,7 +4,7 @@
 
   SchedulerInput = (function() {
     function SchedulerInput() {
-      this.addTimeListener();
+      this.addSessionListener();
       this.addSectionListener();
       this.addCourseListener();
       this.addMakeSchedulesListener();
@@ -14,8 +14,8 @@
       return new SchedulerInput();
     };
 
-    SchedulerInput.prototype.addTimeListener = function() {
-      this.createAddClickListener('.schd-add-time', '.schd-section-time', 'time');
+    SchedulerInput.prototype.addSessionListener = function() {
+      this.createAddClickListener('.schd-add-time', '.schd-session', 'time');
       return this.createRemoveClickListener('.schd-rmv-time', '.schd-section', '.schd-section-time');
     };
 
@@ -168,7 +168,7 @@
       var i, json, len, number, session, sessions;
       number = this.getValFirstChild(section, 'input.sec-num');
       json = '{"number": "{0}", "sessions": ['.format(number);
-      sessions = section.find('.schd-section-time');
+      sessions = section.find('.schd-session');
       if (!number) {
         throw new Error("Invalid section number ({0})".format(number));
       }
@@ -187,7 +187,7 @@
 
     SchedulerInput.prototype.makeSessionJson = function(session) {
       var checkedDay, checkedDays, day, dow, endTime, i, id, json, len, startTime;
-      checkedDays = session.find('input.schd-section-time-dow:checked');
+      checkedDays = session.find('input.schd-session-dow:checked');
       if (checkedDays.length === 0) {
         return '';
       }
