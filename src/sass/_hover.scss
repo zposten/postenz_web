@@ -1,0 +1,44 @@
+@import "../../bower_components/hover/scss/options";
+@import "../../bower_components/hover/scss/mixins";
+@import "../../bower_components/hover/scss/hacks";
+
+@import "../../bower_components/hover/scss/effects/2d-transitions/wobble-horizontal";
+.#{$nameSpace}-wobble-horizontal {
+  @include wobble-horizontal();
+}
+
+
+@import "../../bower_components/hover/scss/effects/2d-transitions/pulse";
+@if $includeClasses {
+  .#{$nameSpace}-pulse {
+    @include pulse();
+  }
+}
+
+@import "../../bower_components/hover/scss/effects/2d-transitions/wobble-horizontal";
+@if $includeClasses {
+  .#{$nameSpace}-wobble-horizontal {
+    @include wobble-horizontal();
+  }
+}
+
+@import "../../bower_components/hover/scss/effects/icons/icon-wobble-horizontal";
+@if $includeClasses {
+  .#{$nameSpace}-icon-wobble-horizontal {
+    @include icon-wobble-horizontal();
+  }
+}
+
+@import "../../bower_components/hover/scss/effects/icons/icon-bounce";
+@if $includeClasses {
+  .#{$nameSpace}-icon-bounce {
+    @include icon-bounce();
+
+    &:before {
+      content: "\f067";
+      top: 1px;
+      left: 19px;
+    }
+  }
+}
+

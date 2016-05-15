@@ -1,6 +1,19 @@
-<ul class="z-bubble">
-    <li ng-repeat="m in meals">
-        <a class="{{ m.meal }}" ui-sref="recipes.meal(m)">{{ m.title }}</a>
-    </li>
-</ul>
+<!--<ul class="z-bubble">-->
+    <!--<li ng-repeat="m in meals">-->
+        <!--<a class="{{ m.meal }}" ui-sref="recipes.meal(m)">{{ m.title }}</a>-->
+    <!--</li>-->
+<!--</ul>-->
+
+
+<div class="col s12 m6" ng-repeat="m in meals" ui-sref="recipes.meal(m)">
+    <div class="card medium hvr-wobble-horizontal">
+        <div class="card-image">
+            <img src="{{ m.src }}">
+        </div>
+        <div class="card-content">
+            <span class="card-title activator white-text">{{ m.title }}</span>
+            <p>{{ m.desc }}</p>
+        </div>
+    </div>
+</div>
 

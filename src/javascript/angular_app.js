@@ -160,8 +160,18 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         ' much for my reference as anyone else\'s, but please do try your hand and let me' +
         ' know what you think!';
       $scope.meals = [
-        {meal: 'breakfast', title: 'Breakfast'},
-        {meal: 'dinner', title: 'Not Breakfast'}
+        {
+          meal: 'breakfast',
+          title: 'Breakfast',
+          src: 'http://restaurants-stlouismo.com/wp-content/uploads/2016/04/Pancake-Breakfast.jpg',
+          desc: 'The most important meal of the day'
+        },
+        {
+          meal: 'dinner',
+          title: 'Not Breakfast',
+          src: 'http://www.westportwhiskeyandwine.com/wp-content/uploads/2012/11/dinner.jpg',
+          desc: "That meal you just can't wait to get home for"
+        }
       ];
       $scope.recipes_dinner = [
         {name: 'chicken-and-rice', title: 'Mom\'s Chicken and Rice'},

@@ -60,6 +60,19 @@ ul.z-bubble {
   }
 }
 
+
+#main-content {
+  .card {
+    cursor: pointer;
+    background-color: $nav-color;
+
+    .card-content {
+      background-color: $nav-color;
+    }
+
+  }
+}
+
 @media (min-width: $screen-md-min) {
   ul.z-bubble li {
     width: 33%;
