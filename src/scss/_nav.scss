@@ -1,0 +1,77 @@
+@import "util";
+
+$nav-font-stack: 'Anton', sans-serif;
+
+@mixin pic($diameter) {
+  $margin: 15px;
+  margin: $margin;
+  width: $diameter - 2*$margin;
+  height: $diameter - 2*$margin;
+}
+
+#zach-pic {
+  @include pic(100px);
+
+  @include media(">phone") {
+    @include pic($nav-width);
+  }
+}
+
+#pic-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+header, main, footer {
+  padding-left: $nav-width;
+
+  @include media("<tablet") {
+    padding-left: 0;
+  }
+}
+
+#page-header {
+  nav {
+    background-color: $main-blue;
+  }
+
+}
+
+#side-nav {
+  background-color: $nav-color;
+  color: white;
+
+  li {
+    a {
+      display: block;
+      text-decoration: none;
+      padding: 0 auto 0 auto;
+      margin: 0 auto 0 auto;
+
+      color: white;
+      font-size: x-large;
+      font-family: $nav-font-stack;
+
+      &.active {
+        background-color: $nav-light-highlight-color;
+        // Avoid hairline darker vertical line at the edge of the nav
+        width: 101%;
+      }
+
+      &:hover {
+        background-color: $nav-dark-highlight-color;
+      }
+    }
+  }
+}
+
+#menu-button {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  color: white;
+
+  i {
+    font-size: 40px;
+  }
+}

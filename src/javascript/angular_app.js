@@ -269,3 +269,12 @@ app.directive('photoswipe', ['$rootScope', function ($rootScope) {
     }
   };
 }]);
+
+app.directive('zNav', function() {
+  return {
+    templateUrl: 'src/views/z-nav.html',
+    link: function (scope, elem, attrs) {
+      $('.button-collapse').sideNav();
+    }
+  }
+});

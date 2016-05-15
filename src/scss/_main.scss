@@ -41,34 +41,6 @@ code {
   background-color: $code-back-color;
 }
 
-/*
- * Sections
- */
-
-#page-wrapper {
-  padding-left: 0;
-  transition: all 0.5s ease;
-
-  &.toggled {
-    padding-left: $nav-width;
-
-    #sidebar-wrapper {
-      width: $nav-width;
-    }
-
-    #page-content-wrapper {
-      position: absolute;
-      margin-right: -1 * $nav-width;
-    }
-  }
-}
-
-#page-content-wrapper {
-    width: 100%;
-    position: absolute;
-    margin-top: $masthead-height-small;
-}
-
 .masthead {
   position: fixed;
   top: 0;
@@ -99,7 +71,3 @@ code {
   width: 80%;
 }
 
-.row.center {
-  display: flex;
-  justify-content: center;
-}

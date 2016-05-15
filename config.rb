@@ -3,8 +3,8 @@ require 'compass/import-once/activate'
 
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "stylesheets"
-sass_dir = "sass"
+css_dir = "src/stylesheets"
+sass_dir = "src/scss"
 images_dir = "images"
 javascripts_dir = "javascript"
 
@@ -22,4 +22,4 @@ javascripts_dir = "javascript"
 # project again passing --syntax sass, or you can uncomment this:
 # preferred_syntax = :sass
 # and then run:
-# sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
+# sass-convert -R --from scss --to sass src/scss scss && rm -rf sass && mv scss sass
