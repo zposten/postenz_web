@@ -153,13 +153,13 @@
       var amPmButtons = $(amPmButtonsTemplate);
 
       if (!options.ampmclickable) {
-        $('<button type="button" class="btn-floating btn-flat clockpicker-button am-button" tabindex="1">' + "AM" + '</button>').on("click", function () {
+        $('<button type="button" class="btn-floating btn-flat clockpicker-button am-button" tabindex="1">' + "AM" + '</button>').on("click touchstart", function () {
           self.amOrPm = "AM";
           self.amPmBlock.children('.pm-button').removeClass('active');
           self.amPmBlock.children('.am-button').addClass('active');
           self.spanAmPm.empty().append('AM');
         }).appendTo(this.amPmBlock);
-        $('<button type="button" class="btn-floating btn-flat clockpicker-button pm-button" tabindex="2">' + "PM" + '</button>').on("click", function () {
+        $('<button type="button" class="btn-floating btn-flat clockpicker-button pm-button" tabindex="2">' + "PM" + '</button>').on("click touchstart", function () {
           self.amOrPm = 'PM';
           self.amPmBlock.children('.am-button').removeClass('active');
           self.amPmBlock.children('.pm-button').addClass('active');
@@ -168,7 +168,7 @@
       }
       else {
         this.spanAmPm.empty();
-        $('<div id="click-am">AM</div>').on("click", function () {
+        $('<div id="click-am">AM</div>').on("click touchstart", function () {
           self.spanAmPm.children('#click-am').addClass("text-primary");
           self.spanAmPm.children('#click-pm').removeClass("text-primary");
           self.amOrPm = "AM";
@@ -190,13 +190,13 @@
     var tabIndex = options.twelvehour ? '3' : '1';
     var button = '<button type="button" class="btn-flat clockpicker-button" tabindex="{0}">{1}</button>'
     button = button.format(tabIndex, options.donetext);
-    $(button).click($.proxy(this.done, this)).appendTo(this.footer);
+    $(button).on('click touchstart', $.proxy(this.done, this)).appendTo(this.footer);
 
-    this.spanHours.click($.proxy(this.toggleView, this, 'hours'));
-    this.spanMinutes.click($.proxy(this.toggleView, this, 'minutes'));
+    this.spanHours.on('click touchstart', $.proxy(this.toggleView, this, 'hours'));
+    this.spanMinutes.on('click touchstart', $.proxy(this.toggleView, this, 'minutes'));
 
     // Show or toggle
-    input.on('focus.clockpicker click.clockpicker', $.proxy(this.show, this));
+    input.on('focus.clockpicker click.clockpicker touchstart.clockpicker', $.proxy(this.show, this));
 
     // Build ticks
     var tickTpl = $('<div class="clockpicker-tick"></div>'),
@@ -461,7 +461,7 @@
     this.locate();
     this.isShown = true;
     // Hide when clicking or tabbing on any element except the clock and input
-    $doc.on('click.clockpicker.' + this.id + ' focusin.clockpicker.' + this.id, function (e) {
+    $doc.on('click.clockpicker.' + this.id + ' focusin.clockpicker.' + this.id + ' touchstart.clockpicker.' + this.id, function (e) {
       var target = $(e.target);
       if (target.closest(self.popover.find('.picker__wrap')).length === 0 && target.closest(self.input).length === 0)
         self.hide();
@@ -484,7 +484,7 @@
       $(this).attr('tabindex', index + 1);
     });
     // Unbinding events on document
-    $doc.off('click.clockpicker.' + this.id + ' focusin.clockpicker.' + this.id);
+    $doc.off('click.clockpicker.' + this.id + ' focusin.clockpicker.' + this.id + ' touchstart.clockpicker.' + this.id);
     $doc.off('keyup.clockpicker.' + this.id);
     this.popover.hide();
     raiseCallback(this.options.afterHide);
@@ -675,7 +675,7 @@
   // Remove clockpicker from input
   ClockPicker.prototype.remove = function () {
     this.element.removeData('clockpicker');
-    this.input.off('focus.clockpicker click.clockpicker');
+    this.input.off('focus.clockpicker click.clockpicker touchstart.clockpicker');
     if (this.isShown)
       this.hide();
     if (this.isAppended) {
