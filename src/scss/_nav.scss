@@ -25,7 +25,7 @@ $nav-font-stack: 'Anton', sans-serif;
 header, main, footer {
   padding-left: $nav-width;
 
-  @include media("<tablet") {
+  @include media($media-hide-nav) {
     padding-left: 0;
   }
 }

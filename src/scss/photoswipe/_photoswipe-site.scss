@@ -1,3 +1,4 @@
+@import "../util";
 
 figure {
   display: block;
@@ -38,17 +39,31 @@ img.img--with_border {
   margin-left: 212px;
 }
 
-.demo-gallery {
-  // Set child to 100% of the viewport width, or 100 vw, with compensation for nav
-  width: calc(100vw - 320px);
+//.demo-gallery {
+//  // Set child to 100% of the viewport width, or 100 vw, with compensation for nav
+//  width: calc(100vw - 320px);
+//
+//  // Then move the child to the left by the difference between the half paren's width
+//  // (because we're only adjusting the left side) and the viewport width, with
+//  // compensation for the nav.
+//  left: calc(50% - 50vw + 180px);
+//  height: auto;
+//  float: left;
+//  padding-left: 0;
+//}
 
-  // Then move the child to the left by the difference between the half paren's width
-  // (because we're only adjusting the left side) and the viewport width, with
-  // compensation for the nav.
-  left: calc(50% - 50vw + 180px);
+.demo-gallery {
+  width: calc(100vw - 320px);
   height: auto;
   float: left;
   padding-left: 0;
+  position: absolute;
+  left: $nav-width + 40px;
+
+  @include media($media-hide-nav) {
+    left: 20px;
+    width: 100%;
+  }
 }
 
 .demo-gallery a {
