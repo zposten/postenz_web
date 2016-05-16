@@ -3,12 +3,14 @@
     <div class="col s12">
 
         <div class="dow-wrapper row">
-            <div ng-repeat="day in days">
-                <input class="schd-session-dow"
-                       type="checkbox"
-                       id="course1-section1-time1-{{day}}"/>
-                <label for="course1-section1-time1-{{day}}"
-                       class="schd-section-time-dow">{{ day }}</label>
+            <div class="col s12">
+                <div ng-repeat="day in days">
+                    <input class="schd-session-dow"
+                           type="checkbox"
+                           id="course1-section1-time1-{{day}}"/>
+                    <label for="course1-section1-time1-{{day}}"
+                           class="schd-section-time-dow">{{ day }}</label>
+                </div>
             </div>
         </div>
 
