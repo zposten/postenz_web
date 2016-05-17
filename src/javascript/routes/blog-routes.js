@@ -8,7 +8,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       $('.description').hide();
 
       $scope.title = 'The Blog';
-      $scope.subtitle = 'I will be updating this page soon';
+      $scope.subtitle = 'My thoughts, views, and opinions on technical and non-technical matters';
       $scope.categories = [
         {
           list: 'recipes',

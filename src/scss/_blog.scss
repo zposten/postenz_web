@@ -1,6 +1,6 @@
 @import "util";
 
-div.blogpost {
+.blogpost {
   background-color: $main-section-highlight-color;
   width:  100%;
   padding: 20px;
@@ -69,7 +69,22 @@ ul.z-bubble {
     .card-content {
       background-color: $nav-color;
     }
+  }
 
+  .parallax-container {
+    height: 400px;
+    width: calc(100vw - #{$nav-width});
+    //noinspection CssInvalidPropertyValue
+    margin-left: calc((100vw - #{$nav-width} - 100%) / -2);
+    margin-top: 30px;
+    margin-bottom: 50px;
+
+    @include media($media-hide-nav) {
+      height: 300px;
+      width: 100vw;
+      //noinspection CssInvalidPropertyValue
+      margin-left: calc((100vw - 100%) / -2);
+    }
   }
 }
 
@@ -122,3 +137,4 @@ ul.z-bubble {
     margin-bottom: 0;
   }
 }
+
