@@ -98,7 +98,22 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       
       $scope.title = 'The Blog';
       $scope.subtitle = 'I will be updating this page soon';
-      $scope.categories = [{list: 'ios', title: 'iOS posts'}];
+      $scope.categories = [
+        {
+          list: 'recipes',
+          title: 'Recipes',
+          state: 'recipes.meals',
+          src: 'http://wupy101.com/wp-content/uploads/sites/61/t1larg.recipes.jpg',
+          desc: 'Delicious concoctions you\'ll be itching to try!'
+        },
+        {
+          list: 'ios',
+          title: 'iOS posts',
+          state: 'blog.list',
+          src: 'https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iOS/move-to-ios-icon.png',
+          desc: 'Issues I ran into during my first attempt at iOS development'
+        }
+      ];
       $scope.ios = [
         'iOS UI Creation Methods',
         'Break Statements',
@@ -115,7 +130,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   
   $stateProvider.state('blog.categories', {
     url: '/categories',
-    templateUrl: 'src/views/blog/blog-categories.html'
+    template: '<div card items="categories" state="blog.list" size="medium" cols="s12 m6"></div>'
   });
   
   $stateProvider.state('blog.list', {
@@ -174,38 +189,66 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         }
       ];
       $scope.recipes_dinner = [
-        {name: 'chicken-and-rice', title: 'Mom\'s Chicken and Rice'},
-        {name: 'one-pot-taco-pasta', title: 'One Pot Taco Pasta'},
-        {name: 'goulash', title: 'American Goulash'},
-        {name: 'bbq-chicken', title: 'Crockpot BBQ Chicken'},
-        {name: 'pizza', title: 'Johnny\'s Hommade Pizza'}
+        {
+          name: 'chicken-and-rice',
+          title: 'Mom\'s Chicken and Rice',
+          src: 'http://www.campbellskitchen.com/recipeimages/one-dish-chicken-rice-bake-large-24702.jpg',
+          desc: "You guessed it, there's chicken and there's rice, but it doesn't stop there!"
+        },
+        {
+          name: 'one-pot-taco-pasta',
+          title: 'One Pot Taco Pasta',
+          src: 'http://assets.kraftfoods.com/recipe_images/opendeploy/127214_640x428.jpg',
+          desc: "You like tacos and you like pasta, what's not to love?"
+        },
+        {
+          name: 'goulash',
+          title: 'American Goulash',
+          src: 'http://cdn.gonnawantseconds.netdna-cdn.com/wp-content/uploads/2012/11/American-Goulash-1.jpg',
+          desc: "This traditional family favorite is nothing if not a comfort food"
+        },
+        {
+          name: 'bbq-chicken',
+          title: 'Crockpot BBQ Chicken',
+          src: 'http://cf.familyfreshmeals.com/wp-content/uploads/2014/06/The-Best-Crockpot-BBQ-Chicken-Family-Fresh-Meals-.png',
+          desc: "The easiest BBQ chicken you've ever made!"
+        },
+        {
+          name: 'pizza',
+          title: 'Johnny\'s Hommade Pizza',
+          src: 'http://hilahcooking.com/wp-content/uploads/2011/12/pizza.jpg',
+          desc: "It's hard to believe that this guy can cook, but after you try his pizza, there is no longer any denying."
+        }
       ];
       $scope.recipes_breakfast = [
-        {name: 'omelet', title: 'Mom\'s Omlets'},
-        {name: 'french-toast', title: 'Scotty\'s French Toast'}
+        {
+          name: 'omelet',
+          title: "Mom's Omlets",
+          src: 'http://static.parade.com/wp-content/uploads/2012/12/potato-bacon-omelet_lucy-schaeffer1.jpg',
+          desc: "My childhood favorite"
+        },
+        {
+          name: 'french-toast',
+          title: "Scotty's French Toast",
+          src: 'http://cookdiary.net/wp-content/uploads/images/Cinnamon_French_Toast_2936.jpg',
+          desc: "Back in 711, this stuff was a Sunday of finals week tradition"
+        }
       ];
     }
   });
   
   $stateProvider.state('recipes.meals', {
     url: '/meals',
-    templateUrl: 'src/views/blog/meals.html'
+    template: '<div card items="meals" state="recipes.meal" size="medium" cols="s12 m6"></div>'
   });
   
   $stateProvider.state('recipes.meal', {
     url: '/meals/{meal}',
-    template: '<ul id="recipes" class="z-bubble"></ul>',
-    controller: function ($scope, $stateParams, $compile) {
-      var html = '';
-      var recipes = $scope.$parent['recipes_' + $stateParams.meal];
-      
-      for (var i = 0; i < recipes.length; ++i) {
-        var item = '<li><a href="#/blog/recipes/meals/{0}/{1}">{2}</a></li>';
-        item = item.format($stateParams.meal, recipes[i].name, recipes[i].title);
-        html += item;
-      }
-      
-      $('#recipes').html(html);
+    // template: '<ul id="recipes" class="z-bubble"></ul>',
+    template: function ($stateParams) {
+      var markup = '<div card items="{0}" state="recipes.recipe" size="medium" cols="s12 m6"></div>';
+      var items = 'recipes_' + $stateParams.meal;
+      return markup.format(items);
     }
   });
   
@@ -270,11 +313,23 @@ app.directive('photoswipe', ['$rootScope', function ($rootScope) {
   };
 }]);
 
-app.directive('zNav', function() {
+app.directive('zNav', function () {
   return {
     templateUrl: 'src/views/z-nav.html',
     link: function (scope, elem, attrs) {
       $('.button-collapse').sideNav();
+    }
+  }
+});
+
+app.directive('card', function () {
+  return {
+    templateUrl: 'src/views/controls/card.html',
+    scope: {
+      size: "@",
+      items: "=",
+      cols: "@",
+      state: "@"
     }
   }
 });

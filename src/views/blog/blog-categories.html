@@ -1,12 +1,1 @@
-<div class="row">
-    <ul class="z-bubble">
-        <li>
-            <a ui-sref="recipes.meals">Recipes</a>
-        </li>
-
-        <li ng-repeat="c in categories"
-            class="{{ c.list }}">
-            <a ui-sref="blog.list(c)">{{ c.title }}</a>
-        </li>
-    </ul>
-</div>
+<div class="row"><div card items="categories" state="blog.list" size="medium" cols="s12 m6"></div></div>

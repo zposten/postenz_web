@@ -1,0 +1,12 @@
+<div class="col {{ cols }}" ng-repeat="i in items" ui-sref="{{ i.state || state }}(i)">
+
+    <div class="card {{ size }} hvr-wobble-horizontal">
+        <div class="card-image">
+            <img src="{{ i.src }}">
+        </div>
+        <div class="card-content">
+            <span class="card-title activator white-text">{{ i.title }}</span>
+            <p>{{ i.desc }}</p>
+        </div>
+    </div>
+</div>
