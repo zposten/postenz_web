@@ -79,7 +79,10 @@ util.removeLastChar = function(str) {
 util.insertMarkdown = function(mdFileUrl, containerSelector, error) {
     $.get(mdFileUrl, function(data) {
 
-      var md = new Remarkable({
+      var md = new Remarkable('full', {
+        html: true,
+        linkify: true,
+        typographer: true,
         highlight: function (str, lang) {
           if (lang && hljs.getLanguage(lang)) {
             try {
@@ -96,21 +99,8 @@ util.insertMarkdown = function(mdFileUrl, containerSelector, error) {
       });
       $(containerSelector).html(md.render(data));
       $(containerSelector).find('pre code').addClass('hljs');
-      console.log(md.render(data));
-
-
-      //
-      //   var converter = new window.showdown.Converter(
-      //     {
-      //       tasklists: true,
-      //       tables: true,
-      //       extensions: ['prettify']
-      //     });
-      //   $(containerSelector).html(converter.makeHtml(data));
-
 
       $(containerSelector + ' input').prop('disabled', false);
-      $(containerSelector).addClass('markdown-body');
     }).fail(function () {
         if (error) error();
         console.log("didn't get markdown");

@@ -4,25 +4,28 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   
   // Send any unmatched paths to /home
   $urlRouterProvider.otherwise("/home");
-  
+
   $stateProvider.state('home', {
     url: '/home',
-    templateUrl: 'src/views/home.html',
+    templateUrl: 'src/views/content-page.html',
     controller: function ($scope) {
       highlightSelectedNav('nav-home');
       $scope.title = 'Zach Posten';
       $scope.subtitle = 'Sometimes I just want to give it all up and become a handsome billionaire.';
-      $scope.resumeUrl = 'https://drive.google.com/open?id=0B1UtegqS9PrTNjQ5TEQteGdqeWM';
+
+      util.insertMarkdown('assets/content/home.md', '#page-body');
     }
   });
   
   $stateProvider.state('bio', {
     url: '/bio',
-    templateUrl: 'src/views/bio.html',
+    templateUrl: 'src/views/content-page.html',
     controller: function ($scope) {
       highlightSelectedNav('nav-home');
       $scope.title = 'My Bio';
       $scope.subtitle = 'A head-first dash toward an unrealistic goal.';
+
+      util.insertMarkdown('assets/content/bio.md', '#page-body');
     }
   });
   
@@ -95,20 +98,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
  * DIRECTIVES 
  **********************************************************/
 
-
-app.directive('toggle', function () {
-  return {
-    restrict: 'AE',
-    replace: true,
-    templateUrl: 'src/views/controls/toggle.html',
-    link: function (scope, elem, attrs) {
-      $('#toggle').on('click', function () {
-        $(this).toggleClass("on");
-        $('#page-wrapper').toggleClass('toggled');
-      });
-    }
-  }
-});
 
 app.directive('schdCourse', function () {
   return {

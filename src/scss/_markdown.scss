@@ -1,10 +1,13 @@
 @import "util";
 
-.markdown-body {
+.blog-post {
   display: block;
   overflow: hidden;
   font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
   word-wrap: break-word;
+  background-color: $main-section-highlight-color;
+  padding: 20px;
+  border-radius: 3px;
 
   * {
     -moz-box-sizing: border-box;
@@ -197,10 +200,6 @@
     hr {
       box-sizing: content-box;
       height: 0;
-    }
-
-    td, th {
-      padding: 0;
     }
 
     th, td {

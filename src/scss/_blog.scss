@@ -1,24 +1,5 @@
 @import "util";
 
-.blogpost {
-  background-color: $main-section-highlight-color;
-  width:  100%;
-  padding: 20px;
-  border-radius: 20px;
-
-  h1 {
-    color: $off-white;
-    margin: 0 0 20px 0;
-    padding: 0;
-    font-size: 3.5em;
-    letter-spacing: -2px;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 900;
-    line-height: 1.1;
-    text-align: center;
-  }
-}
-
 ul.z-bubble {
   padding: 20px 0 0 0;
   display: flex;

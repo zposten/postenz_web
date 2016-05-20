@@ -2,7 +2,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('recipes', {
     url: '/blog/recipes',
-    templateUrl: "src/views/blog.html",
+    templateUrl: "src/views/content-page.html",
     controller: function ($scope, $state) {
       highlightSelectedNav('nav-blog');
       $('.subtitle').hide();
@@ -105,18 +105,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         '    <img src="http://az619519.vo.msecnd.net/files/Plumeria_EN-US10602273150_1366x768.jpg">',
         '  </div>',
         '</div>',
-        '<markdown id="recipe" class="blogpost"></divmarkdown>'
+        '<markdown id="recipe" class="blog-post"></divmarkdown>'
       ].join('\n');
     },
     controller: function ($scope, $stateParams) {
       var url = 'assets/recipes/recipe-' + $stateParams.name + '.md';
       util.insertMarkdown(url, '#recipe');
 
-      console.log('here');
-      console.log($scope.$parent)
-      console.log($stateParams.meal);
       var recipes = $scope.$parent['recipes_' + $stateParams.meal];
-      console.log(recipes);
       var recipe = $.grep(recipes, function (e) {return e.name == $stateParams.name;})[0];
 
       $('.parallax > img').attr('src', recipe.src);

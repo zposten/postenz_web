@@ -2,7 +2,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('blog', {
     url: "/blog",
-    templateUrl: "src/views/blog.html",
+    templateUrl: "src/views/content-page.html",
     controller: function ($scope, $sce, $state) {
       highlightSelectedNav('nav-blog');
       $('.description').hide();
@@ -70,6 +70,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       var url = 'assets/blog-posts/{0}/blog{1}.md';
       url = url.format($stateParams.list, $stateParams.blogPostId);
       util.insertMarkdown(url, '#blogpost');
+      $('#blogpost').addClass('markdown-body');
     }
   });
 
