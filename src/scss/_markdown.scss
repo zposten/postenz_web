@@ -63,11 +63,6 @@
     padding-bottom: 10px;
     line-height: 1.2;
     margin-bottom: 20px;
-    // background-color: white;
-    // color: black;
-    // border-radius: 20px;
-    line-height: 1.1;
-    // text-align: center;
 
   }
   h2 {
@@ -91,7 +86,15 @@
     font-size: 11px;
   }
 
-  ol ol, ul ol {
+
+  // LISTS
+  ul {
+    li { list-style-type: disc; }
+    ul li { list-style-type: circle; }
+  }
+
+  ol ol,
+  ul ol {
     list-style-type: lower-roman;
   }
   ul ul ol,
@@ -113,12 +116,14 @@
     margin-top: 0;
     margin-bottom: 0;
   }
+
+
   li > p {
     margin-top: 16px;
     margin-bottom: 0;
   }
 
-  p, blockquote, ul, ol, dl, table, pre {
+  p, blockquote, ul, ol, dl, table {
     margin-top: 0;
     margin-bottom: 16px;
   }
@@ -146,116 +151,6 @@
     padding: 0;
   }
 
-  pre {
-    overflow: auto;
-  }
-
-  .codehilitetable {
-    border: 0;
-    border-spacing: 0;
-  }
-
-  .codehilitetable tr {
-    border: 0;
-  }
-
-  .codehilitetable pre,
-  .codehilitetable div.codehilite {
-    margin: 0;
-  }
-
-  .linenos,
-  .code,
-  .codehilitetable td {
-    border: 0;
-    padding: 0;
-  }
-
-  td:not(.linenos) .linenodiv {
-    padding: 0 !important;
-  }
-
-
-  // Code
-  code, pre, samp {
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    font-size: 12px;
-  }
-  pre code {
-    display: inline;
-    max-width: initial;
-    padding: 0;
-    margin: 0;
-    overflow: initial;
-    line-height: inherit;
-    word-wrap: normal;
-    background-color: transparent;
-    border: 0;
-  }
-  pre > code {
-    padding: 0;
-    margin: 0;
-    font-size: 100%;
-    word-break: normal;
-    white-space: pre;
-    background: transparent;
-    border: 0;
-  }
-  .code {
-    width: 100%;
-  }
-  pre {
-    margin-top: 0;
-    margin-bottom: 0;
-    word-wrap: normal;
-
-    code:before, code:after {
-      content: normal;
-    }
-  }
-
-  code, samp {
-    padding: 0;
-    padding-top: 0.2em;
-    padding-bottom: 0.2em;
-    margin: 0;
-    font-size: 85%;
-    background-color: rgba(0,0,0,0.3);
-    border-radius: 3px;
-  }
-
-  .linenos div pre,
-  .linenodiv pre,
-  .linenodiv {
-    border: 0;
-    -webkit-border-radius: 3px 0 0 3px;
-    -moz-border-radius: 3px 0 0 3px;
-    border-radius: 3px 0 0 3px;
-  }
-
-  .code div pre,
-  .code div {
-    border: 0;
-    -webkit-border-radius: 0 3px 3px 0;
-    -moz-border-radius: 0 3px 3px 0;
-    border-radius: 0 3px 3px 0;
-  }
-
-  code:before,
-  code:after {
-    letter-spacing: -0.2em;
-    content: "\00a0";
-  }
-
-  .codehilite {
-    margin-bottom: 16px;
-
-    pre {
-      margin-bottom: 0;
-      word-break: normal;
-    }
-  }
-
   hr {
     overflow: hidden;
     background: transparent;
@@ -278,96 +173,16 @@
 
   blockquote {
     margin: 0;
-  }
-
-  dd {
-    margin-left: 0;
-  }
-
-  .headeranchor {
-    font: normal normal 16px octicons-anchor;
-    line-height: 1;
-    display: inline-block;
-    text-decoration: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-
-  .headeranchor:before {
-    content: '\f05c';
-  }
-
-  .headeranchor-link {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    display: block;
-    padding-right: 6px;
-    padding-left: 30px;
-    margin-left: -30px;
-  }
-
-  .headeranchor-link:focus {
-    outline: none;
-  }
-
-
-  h1, h2, h3, h4, h5, h6 {
-    .headeranchor {
-      display: none;
-      color: $font-color;
-      vertical-align: middle;
-    }
-  }
-
-  h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
-    .headeranchor-link {
-      height: 1em;
-      padding-left: 8px;
-      margin-left: -30px;
-      line-height: 1;
-      text-decoration: none;
-
-      .headeranchor {
-        display: inline-block;
-      }
-    }
-  }
-
-  dl {
-    padding: 0;
-  }
-
-  dl dt {
-    padding: 0;
-    margin-top: 16px;
-    font-size: 1em;
-    font-style: italic;
-    font-weight: bold;
-  }
-
-  dl dd {
-    padding: 0 16px;
-    margin-bottom: 16px;
-  }
-
-  blockquote {
     padding: 0 15px;
     color: #777;
     border-left: 4px solid #ddd;
-  }
 
-  blockquote > :first-child {
-    margin-top: 0;
-  }
-
-  blockquote > :last-child {
-    margin-bottom: 0;
+    & > :first-child {
+      margin-top: 0;
+    }
+    & > :last-child {
+      margin-bottom: 0;
+    }
   }
 
   table {
@@ -376,6 +191,17 @@
     overflow: auto;
     word-break: keep-all;
     border-color: $nav-color;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    hr {
+      box-sizing: content-box;
+      height: 0;
+    }
+
+    td, th {
+      padding: 0;
+    }
 
     th, td {
       padding: 6px 13px;
@@ -387,20 +213,11 @@
     }
     tr {
       background-color: $main-section-color;
-      //border-top: 1px solid red;
     }
 
     tr:nth-child(2n) {
       background-color: rgba(65, 65, 66, 0.7);
     }
-  }
-
-  .task-list-item {
-    list-style-type: none;
-  }
-
-  .task-list-item + .task-list-item {
-    margin-top: 3px;
   }
 
   input {
@@ -427,12 +244,4 @@
     cursor: default;
   }
 
-  .task-list-item input {
-    margin: 0 4px 0.25em -20px;
-    vertical-align: middle;
-  }
-}
-
-.footer {
-  padding-top: 200px;
 }

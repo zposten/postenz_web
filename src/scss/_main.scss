@@ -36,11 +36,6 @@ a {
   }
 }
 
-code {
-  color: $code-fore-color;
-  background-color: $code-back-color;
-}
-
 .masthead {
   position: fixed;
   top: 0;
@@ -71,3 +66,6 @@ code {
   width: 80%;
 }
 
+code {
+  background: #333;
+}

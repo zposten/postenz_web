@@ -78,23 +78,53 @@ util.removeLastChar = function(str) {
 
 util.insertMarkdown = function(mdFileUrl, containerSelector, error) {
     $.get(mdFileUrl, function(data) {
-        var converter = new window.showdown.Converter({tasklists: true, tables: true});
-        $(containerSelector).html(converter.makeHtml(data));
-        $(containerSelector + ' input').prop('disabled', false);
-        $(containerSelector).addClass('markdown-body');
+
+      var md = new Remarkable({
+        highlight: function (str, lang) {
+          if (lang && hljs.getLanguage(lang)) {
+            try {
+              return hljs.highlight(lang, str).value;
+            } catch (err) {}
+          }
+
+          try {
+            return hljs.highlightAuto(str).value;
+          } catch (err) {}
+
+          return ''; // use external default escaping
+        }
+      });
+      $(containerSelector).html(md.render(data));
+      $(containerSelector).find('pre code').addClass('hljs');
+      console.log(md.render(data));
+
+
+      //
+      //   var converter = new window.showdown.Converter(
+      //     {
+      //       tasklists: true,
+      //       tables: true,
+      //       extensions: ['prettify']
+      //     });
+      //   $(containerSelector).html(converter.makeHtml(data));
+
+
+      $(containerSelector + ' input').prop('disabled', false);
+      $(containerSelector).addClass('markdown-body');
     }).fail(function () {
         if (error) error();
+        console.log("didn't get markdown");
     })
 };
 
 util.getAngularElementScope = function (elem) {
   return angular.element(elem).scope();
-}
+};
 
 util.findScopeAttrInHeirarchy = function (attr) {
   if(scope[attr]) return scope[attr];
   if(scope.$parent) findScopeAttrInHeirarchy(scope.$parent, attr);
-}
+};
 
 /***************************************/
 /** JAVASCRIPT LANGUAGE MANIPULATIONS */
