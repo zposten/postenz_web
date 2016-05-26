@@ -61,6 +61,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
           meal: 'dinner',
           src: 'http://hilahcooking.com/wp-content/uploads/2011/12/pizza.jpg',
           desc: "It's hard to believe that this guy can cook, but after you try his pizza, there is no longer any denying."
+        },
+        {
+          name: 'mashed-potatoes',
+          title: 'Perfect Mashed Potatoes',
+          meal: 'dinner',
+          src: 'http://tastykitchen.com/recipes/wp-content/uploads/sites/2/2009/10/Creamy-Mashed-Potatoes1-420x278.jpg',
+          desc: "You've had mashed potatoes, but you've never had THESE mashed potatoes"
         }
       ];
       $scope.recipes_breakfast = [
