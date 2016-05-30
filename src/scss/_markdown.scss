@@ -1,6 +1,6 @@
 @import "util";
 
-.blog-post {
+#main-content .blog-post {
   display: block;
   overflow: hidden;
   font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
@@ -10,8 +10,7 @@
   border-radius: 3px;
 
   * {
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    @include box-sizing(border-box);
   }
 
   & > *:first-child {
@@ -92,6 +91,8 @@
 
   // LISTS
   ul {
+    padding-left: 40px;
+
     li { list-style-type: disc; }
     ul li { list-style-type: circle; }
   }

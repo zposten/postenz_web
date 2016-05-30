@@ -64,12 +64,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider.state('blog.post', {
     url: '/item/{list}/{blogPostId}',
     template: function () {
-      return '<div markdown id="blogpost" class="blogpost"></markdown>';
+      return '<div markdown id="blog-post" class="blog-post"></markdown>';
     },
     controller: function ($scope, $stateParams, $window) {
       var url = 'assets/blog-posts/{0}/blog{1}.md';
       url = url.format($stateParams.list, $stateParams.blogPostId);
-      util.insertMarkdown(url, '#blogpost');
+      util.insertMarkdown(url, '#blog-post');
       $('#blogpost').addClass('markdown-body');
     }
   });
