@@ -6,23 +6,21 @@
 @import "main";
 @import "nav";
 @import "blog";
-
-@import "photoswipe/photoswipe";
-@import "photoswipe/photoswipe-default-skin";
-@import "photoswipe/photoswipe-site";
-
-@import "markdown";
 @import "scheduler";
+@import "markdown";
 
-@import "controls/toggle";
 @import "controls/close";
 
 @import "variables";
 @import "../../bower_components/Materialize/sass/materialize";
+@import "hover";
 
 @import "time-picker/variables";
 @import "time-picker/primary";
 @import "time-picker/dark";
 
-@import "hover";
-//@import "../../bower_components/hover/scss/hover";
+@import "photoswipe/photo-gallery.scss";
+@import "photoswipe/photoswipe-site";
+@import "../../bower_components/photoswipe/dist/photoswipe.css";
+@import "../../bower_components/photoswipe/dist/default-skin/default-skin.css";
+@import "../../bower_components/photoswipe/dist/photoswipe.css";

@@ -41,12 +41,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   
   $stateProvider.state('photos', {
     url: '/photos',
-    templateUrl: 'src/views/photos.html',
+    templateUrl: 'src/views/photoswipe/photos.html',
     controller: function ($scope) {
       highlightSelectedNav('nav-photos');
       $scope.title = 'Posten Photography';
       $scope.subtitle = 'I have taken at least one good photo';
-      $scope.photos = photoswipe.photos;
+      $scope.photos = photos.list;
+
+      photos.init();
     }
   });
   
@@ -116,19 +118,6 @@ app.directive('schdSession', function () {
   };
 });
 
-
-app.directive('photoswipe', ['$rootScope', function ($rootScope) {
-  return {
-    restrict: 'AE',
-    templateUrl: 'src/views/gallery.html',
-    link: function (scope, elem, attrs) {
-      //attrs references any attributes on the directive element in html
-      //elem is the actual DOM element of the directive,so you can bind it with jQuery
-      
-      photoswipe.init('.demo-gallery');
-    }
-  };
-}]);
 
 app.directive('zNav', function () {
   return {

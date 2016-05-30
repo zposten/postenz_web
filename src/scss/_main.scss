@@ -59,6 +59,10 @@ a {
   font-size: 4em;
   font-weight: normal;
   text-align: center;
+
+  @include media("<tablet") {
+    font-size: 3em;
+  }
 }
 .subtitle {
   font-size: 1.2em;

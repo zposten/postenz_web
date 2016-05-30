@@ -25,7 +25,8 @@
     "Materialize": "materialize#^0.97.6",
     "hover": "Hover#^2.0.2",
     "remarkable": "^1.6.2",
-    "highlightjs": "^9.3.0"
+    "highlightjs": "^9.3.0",
+    "photoswipe": "^4.1.1"
   },
   "devDependencies": {
     "jasmine-jquery": "^2.1.1"

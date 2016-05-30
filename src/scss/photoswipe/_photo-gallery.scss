@@ -1,0 +1,43 @@
+.gallery {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  //width: calc(100vw - 320px);
+  //float: left;
+  //padding-left: 0;
+  //position: absolute;
+  //left: $nav-width + 40px;
+  //
+  //@include media($media-hide-nav) {
+  //  left: 20px;
+  //  right: 20px;
+  //  width: 100%;
+  //}
+
+
+  figure {
+    margin: 3px;
+    //height: 200px;
+    flex: 1 1 auto;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+
+.demo-gallery {
+  width: calc(100vw - 320px);
+  float: left;
+  padding-left: 0;
+  position: absolute;
+  left: $nav-width + 40px;
+
+  @include media($media-hide-nav) {
+    left: 20px;
+    width: 100%;
+  }
+}

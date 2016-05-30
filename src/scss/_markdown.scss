@@ -7,7 +7,7 @@
   word-wrap: break-word;
   background-color: $main-section-highlight-color;
   padding: 20px;
-  border-radius: 3px;
+  @include border-radius(3px);
 
   * {
     @include box-sizing(border-box);
@@ -135,14 +135,12 @@
 
   img {
     max-width: 100%;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    @include box-sizing(border-box);
     border: 0;
   }
 
   hr {
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
+    @include box-sizing(content-box);
     height: 0;
   }
 

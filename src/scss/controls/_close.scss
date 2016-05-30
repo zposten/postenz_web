@@ -21,7 +21,7 @@ $x-bar-left:    $diameter / 5;
   border: none;
   @include box-sizing(content-box);
   @include border-radius($border-radius);
-  @include text-overflow(clip);
+  text-overflow: clip;
   @include transform(rotateZ(471.54426539266757deg));
 }
 
@@ -55,7 +55,7 @@ $x-bar-left:    $diameter / 5;
   color: black;
   background: white;
   @include box-sizing(content-box);
-  @include text-overflow(clip);
+  text-overflow: clip;
 }
 
 .zp-close::before {
