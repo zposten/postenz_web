@@ -41,6 +41,7 @@ header, main, footer {
   background-color: $nav-color;
   color: white;
   width: $nav-width;
+  z-index: 999;
 
   li {
     a {

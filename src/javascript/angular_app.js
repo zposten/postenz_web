@@ -7,7 +7,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('home', {
     url: '/home',
-    templateUrl: 'src/views/content-page.html',
+    templateUrl: 'src/views/home.html',
     controller: function ($scope) {
       highlightSelectedNav('nav-home');
       $scope.title = 'Zach Posten';

@@ -74,3 +74,56 @@ a {
 code {
   background: #333;
 }
+
+
+$jumbotron-height: 300px;
+$jumbotron-small-height: 2 / 3 * $jumbotron-height;
+.jumbotron {
+  height: $jumbotron-height;
+  width: calc(100vw - #{$nav-width});
+  left: $nav-width;
+  position: absolute;
+  background-color: $main-blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include media($media-hide-nav) {
+    left: 0;
+    width: 100vw;
+    height: $jumbotron-small-height;
+  }
+
+  .title {
+    font-size: 5em;
+    font-weight: 900;
+    color: white;
+
+    @include media('<=phone') {
+      font-size: 3em;
+      margin: 0;
+    }
+  }
+
+  .subtitle {
+    color: white;
+
+    @include media('<tablet') {  font-size: 1em;  }
+    @include media('<=phone') {
+      font-size: 0.75em;
+      margin: 0;
+    }
+  }
+
+  & ~ #page-body {
+    margin-top: $jumbotron-height + 30px;
+    @include media('<tablet') {
+      margin-top: $jumbotron-small-height + 30px;
+    }
+
+    p {
+      font-weight: 300;
+    }
+  }
+
+}
