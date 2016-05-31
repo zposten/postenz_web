@@ -38,7 +38,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
           name: 'one-pot-taco-pasta',
           title: 'One Pot Taco Pasta',
           meal: 'dinner',
-          src: 'http://assets.kraftfoods.com/recipe_images/opendeploy/127214_640x428.jpg',
+          src: 'https://c1.staticflickr.com/8/7714/26624294184_95972edd57_k.jpg',
           desc: "You like tacos and you like pasta, what's not to love?"
         },
         {

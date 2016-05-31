@@ -48,7 +48,7 @@ The first iteration of this website held all the text for the various pages insi
 
 Additionally, although I am still not sure what the general practice is, I don't like writing content in HTML files.  It's bulky and takes the focus away from the content.  Because that is the precise problem that Markdown was written to combat, I'm also writing my content-heavy web pages (like this one) in markdown, and parcing it in a similar fashion to the blog posts.
 
-Photography has become one of my hobbies over the last few years, and as part of my personal website I wanted to showcase photos that I've taken.  Originally I was planning on building a photo-viewer myself, but I decided that reinventing the wheel would only waste time and create something that's already been done better before.  So I did some searching, and I found [Photoswipe][photoswipe].  Photoswipe allows me to display my photos in a low quality grid (to shorten page load time), and when a user clicks on one, a higher quality version of that photo is requested.  It's also touch friendly which is very useful for mobile phones.  Reworking the [photos][photos] section of this site is next on my list of improvements.
+Photography has become one of my hobbies over the last few years, and as part of my personal website I wanted to showcase photos that I've taken.  Originally I was planning on building a photo-viewer myself, but I decided that reinventing the wheel would only waste time and create something that's already been done better before.  So I did some searching, and I found [Photoswipe][photoswipe].  Photoswipe allows me to display my photos in a low quality grid (to shorten page load time), and when a user clicks on one, a higher quality version of that photo is shown in a [lightbox][lightbox] style.  The user is then able to use the arrow keys (or swipe) to see additional pictures in this full screen view.  It's also touch friendly which is very useful for mobile phones.  This can be seen in action in the [photos][photos] section of this here site.
 
 
 [angular]: https://angularjs.org
@@ -61,6 +61,7 @@ Photography has become one of my hobbies over the last few years, and as part of
 [remarkable]: https://github.com/jonschlinkert/remarkable
 [highlightjs]: https://highlightjs.org
 [photoswipe]: http://photoswipe.com
+[lightbox]: http://lokeshdhakar.com/projects/lightbox2
 
 [blog]: #/blog/categories
 [photos]: #/photos
