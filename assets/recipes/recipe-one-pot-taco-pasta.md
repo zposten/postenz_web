@@ -21,7 +21,8 @@
 - [ ] Add peppers, cook 5 min or until crips-tender, stirring occasionally
 - [ ] Stir in garlic and chili powder; cook 1 min.
 - [ ] Add water and sauce; stir
-- [ ] Simmar 15 min, or until pasta is tender, stirring occasionally
+- [ ] Bring the concoction to a boil and then  stir in the pasta and cover.
+- [ ] Simmer for 15 min or until pasta is tender, stirring occasionally
 - [ ] Stir in corn; cook 3 to 4 min or until heated through
 - [ ] Top with cheese!!
 

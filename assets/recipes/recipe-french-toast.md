@@ -19,7 +19,7 @@ Back in 711, this stuff was a Sunday of finals week tradition.
 
 ## Make It
 
-- [ ] Beat together everything, except for the bread.
+- [ ] Beat together everything, except for the bread...obviously.
 - [ ] Heat a lightly oiled griddle or skillet over medium heat.
 - [ ] Dunk each slice of break in egg concoction, soaking both sides.
 - [ ] Cook the bread until both sides are golden.
