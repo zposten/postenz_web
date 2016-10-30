@@ -16,7 +16,7 @@
 
     SchedulerInput.prototype.addSessionListener = function() {
       this.createAddClickListener('.schd-add-time', '.schd-session', 'time');
-      return this.createRemoveClickListener('.schd-rmv-time', '.schd-section', '.schd-section-time');
+      return this.createRemoveClickListener('.schd-rmv-time', '.schd-section', '.schd-session');
     };
 
     SchedulerInput.prototype.addSectionListener = function() {
@@ -83,8 +83,16 @@
       return $('#schd-courses').on('click', btnSelector, (function(_this) {
         return function(event) {
           var courseElements, target;
+          console.log("btnSelector: " + btnSelector);
+          console.log("specificitySelector: " + specificitySelector);
+          console.log("rmvSelector: " + rmvSelector);
           target = $(event.currentTarget);
+          console.log("target: ");
+          console.log(target);
           courseElements = target.closest(specificitySelector).find(rmvSelector);
+          console.log("courseElements: ");
+          console.log(courseElements);
+          console.log("courseElements.length: " + courseElements.length);
           if (courseElements.length > 1) {
             return target.closest(rmvSelector).remove();
           }

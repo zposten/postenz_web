@@ -10,7 +10,7 @@ class SchedulerInput
 
   addSessionListener: ->
     @createAddClickListener('.schd-add-time', '.schd-session', 'time')
-    @createRemoveClickListener('.schd-rmv-time', '.schd-section', '.schd-section-time')
+    @createRemoveClickListener('.schd-rmv-time', '.schd-section', '.schd-session')
 
   addSectionListener: ->
     @createAddClickListener('.schd-add-section', '.schd-section', 'section')
@@ -56,9 +56,19 @@ class SchedulerInput
 
   createRemoveClickListener: (btnSelector, specificitySelector, rmvSelector) ->
     $('#schd-courses').on 'click', btnSelector, (event) =>
+      console.log("btnSelector: " + btnSelector)
+      console.log("specificitySelector: " + specificitySelector)
+      console.log("rmvSelector: " + rmvSelector)
+
       target = $(event.currentTarget)
+      console.log("target: ")
+      console.log(target)
 
       courseElements = target.closest(specificitySelector).find(rmvSelector)
+      console.log("courseElements: ")
+      console.log(courseElements)
+      console.log("courseElements.length: " + courseElements.length)
+
       target.closest(rmvSelector).remove() if courseElements.length > 1
 
 
