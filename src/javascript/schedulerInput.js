@@ -3,6 +3,22 @@
   var SchedulerInput;
 
   SchedulerInput = (function() {
+    var timePickerOptions;
+
+    timePickerOptions = {
+      darktheme: true,
+      autoclose: true,
+      afterDone: function() {
+        return $.each($('div.input-field'), function(index, value) {
+          var picker;
+          picker = $(value).children('.timepicker').first();
+          if (picker.val() != null) {
+            return $(value).children('label').addClass('active');
+          }
+        });
+      }
+    };
+
     function SchedulerInput() {
       this.addSessionListener();
       this.addSectionListener();
@@ -27,10 +43,7 @@
     SchedulerInput.prototype.addCourseListener = function() {
       this.createAddClickListener('.schd-add-course', '.schd-course', 'course');
       this.createRemoveClickListener('.schd-rmv-course', '#schd-courses', '.schd-course');
-      return $('[id^=course1-section1-time1-]').pickatime({
-        darktheme: true,
-        autoclose: true
-      });
+      return $('[id^=course1-section1-time1-]').pickatime(timePickerOptions);
     };
 
     SchedulerInput.prototype.createAddClickListener = function(btnSelector, cloneSelector, inputID) {
@@ -43,10 +56,7 @@
           timepickers = theClone.find('.input-field > input.timepicker');
           for (i = 0, len = timepickers.length; i < len; i++) {
             picker = timepickers[i];
-            $(picker).pickatime({
-              darktheme: true,
-              autoclose: true
-            });
+            $(picker).pickatime(timePickerOptions);
           }
           groups = [
             {
@@ -83,16 +93,8 @@
       return $('#schd-courses').on('click', btnSelector, (function(_this) {
         return function(event) {
           var courseElements, target;
-          console.log("btnSelector: " + btnSelector);
-          console.log("specificitySelector: " + specificitySelector);
-          console.log("rmvSelector: " + rmvSelector);
           target = $(event.currentTarget);
-          console.log("target: ");
-          console.log(target);
           courseElements = target.closest(specificitySelector).find(rmvSelector);
-          console.log("courseElements: ");
-          console.log(courseElements);
-          console.log("courseElements.length: " + courseElements.length);
           if (courseElements.length > 1) {
             return target.closest(rmvSelector).remove();
           }

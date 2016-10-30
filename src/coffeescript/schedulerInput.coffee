@@ -1,4 +1,11 @@
 class SchedulerInput
+  timePickerOptions = {darktheme: true, autoclose: true, afterDone: () =>
+    $.each($('div.input-field'), (index, value) =>
+      picker = $(value).children('.timepicker').first()
+      $(value).children('label').addClass('active') if picker.val()?
+    )
+  }
+
   constructor: ->
     @addSessionListener()
     @addSectionListener()
@@ -19,7 +26,7 @@ class SchedulerInput
   addCourseListener: ->
     @createAddClickListener('.schd-add-course', '.schd-course', 'course')
     @createRemoveClickListener('.schd-rmv-course', '#schd-courses', '.schd-course')
-    $('[id^=course1-section1-time1-]').pickatime({darktheme: true, autoclose: true})
+    $('[id^=course1-section1-time1-]').pickatime(timePickerOptions)
 
   createAddClickListener: (btnSelector, cloneSelector, inputID) ->
     $('#schd-courses').on 'click', btnSelector, (event) =>
@@ -30,7 +37,7 @@ class SchedulerInput
       
       timepickers = theClone.find('.input-field > input.timepicker')
       for picker in timepickers
-        $(picker).pickatime({darktheme: true, autoclose: true})
+        $(picker).pickatime(timePickerOptions)
 
       groups = [
         {tag: 'input', attr: 'id'},
@@ -56,19 +63,8 @@ class SchedulerInput
 
   createRemoveClickListener: (btnSelector, specificitySelector, rmvSelector) ->
     $('#schd-courses').on 'click', btnSelector, (event) =>
-      console.log("btnSelector: " + btnSelector)
-      console.log("specificitySelector: " + specificitySelector)
-      console.log("rmvSelector: " + rmvSelector)
-
       target = $(event.currentTarget)
-      console.log("target: ")
-      console.log(target)
-
       courseElements = target.closest(specificitySelector).find(rmvSelector)
-      console.log("courseElements: ")
-      console.log(courseElements)
-      console.log("courseElements.length: " + courseElements.length)
-
       target.closest(rmvSelector).remove() if courseElements.length > 1
 
 
@@ -78,11 +74,6 @@ class SchedulerInput
     course.find('input:checkbox').prop('checked', false)
     course.find('.schd-section').not(':first').remove()
     course.find('.schd-section-time').not(':first').remove()
-
-#    for item in course.find('.input-field > input.timepicker')
-#      $(item).pickatime({autoclose: true})
-
-
 
   addMakeSchedulesListener: ->
     noSchedules = 'No schedules could be generated for that input'

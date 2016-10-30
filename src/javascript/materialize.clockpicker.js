@@ -651,8 +651,6 @@
   ClockPicker.prototype.done = function () {
     raiseCallback(this.options.beforeDone);
     this.hide();
-    this.label.addClass('active');
-    console.log('adding active to label in clockpicker');
 
     var last = this.input.prop('value'),
       value = leadingZero(this.hours) + ':' + leadingZero(this.minutes);
